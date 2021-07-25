@@ -1,0 +1,113 @@
+/* Global setting */
+body, h1, h2, h3, h4, h5, h6, p{
+    margin:0 auto;
+}
+body{
+    font-family: 'Noto Sans KR', sans-serif;
+}
+ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+img{
+    border:0;
+    outline:none;
+    border:none;
+}
+a{
+    text-decoration: none;
+    color:#000;
+    outline:none;
+    border:none;
+    cursor: pointer;
+}
+
+/* INNER */
+/* 내용을 화면 중간에 위치시키고 싶을 때 html class에 추가하면 됩니다 */
+/* 좌우에 여백이 조금 있어요 */
+.inner{
+    width:95vw;
+    margin: 0 auto;
+    position:relative;
+}
+
+/* BUTTON */
+button{
+    padding:0;
+    margin:0;
+    outline:none;
+    border:none;
+    background:transparent;
+    resize: none;
+}
+
+
+/* HEADER */
+.header__container{
+    z-index:100;
+    position: fixed;
+    width:100%;
+    padding-top: 20px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__container .logo{
+    flex:2;
+    margin-left:30px;
+}
+.header__container .logo p{
+    color:#333;
+    font-size:32px;
+    font-weight: 800;
+}
+.header__container .navbar{
+    flex:1;
+    display:flex;
+    margin-right:30px;
+}
+.header__container .navbar #menu{
+    flex:2;
+}
+.header__container .navbar #menu li span{
+    color:#333;
+    padding: 5px 10px;
+}
+.header__container .navbar #menu li span:hover{
+    background-color: rgba(238, 238, 238, 0.3);
+    border-radius: 5px;
+    color:#333;
+}
+.header__container .navbar .member{
+    flex:1;
+    display:flex;
+    justify-content: space-between;
+}
+.header__container .navbar .member .signin{
+
+}
+.header__container .navbar .member .login{
+
+}
+
+/* HOME */
+#fullpage{
+    z-index:-1;
+}
+#home__section1{
+    height:100vh;
+    background-image: url(../img/wall.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+#home__section2{
+    background-color: royalblue;
+}
+#home__section3{
+    background-color:rosybrown;
+}
+#home__section4{
+    background: teal;
+}
