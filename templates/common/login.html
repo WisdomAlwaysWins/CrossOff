@@ -1,0 +1,7 @@
+<form action="{% url 'common:login' %}" method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <div class="login_content_submit">
+        <input type="submit" value="로그인">
+    </div>
+</form>
