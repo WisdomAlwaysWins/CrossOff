@@ -18,3 +18,8 @@ def new(request):
         return redirect('home:main')
     else:
         return render(request, 'mandalart/new.html')
+
+
+@login_required
+def show(request):
+    pass

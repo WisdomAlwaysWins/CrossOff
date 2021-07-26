@@ -27,3 +27,4 @@ class SpecificGoal(models.Model):
     mid = models.ForeignKey(MidGoal,
                             on_delete=models.CASCADE,
                             related_name='midgoal')
+    content = models.CharField(max_length=200)
