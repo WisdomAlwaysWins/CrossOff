@@ -1,5 +1,9 @@
-<form action="{% url 'common:register' %}" method="POST">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="회원 가입">
-</form>
+이미 회원이시라고요?
+<a href="{% url 'common:login' %}">로그인</a>
+  <form action="{% url 'common:register' %}" method="POST">
+    {% csrf_token %} {{form.as_p}}
+    <div class="register_content_submit">
+      <input type="submit" value="회원 가입" />
+    </div>
+  </form>
+</a>
