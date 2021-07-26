@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('common/', include('common.urls')),
     path('home/', include('home.urls')),
+    path('mandalart/', include('mandalart.urls')),
 ]

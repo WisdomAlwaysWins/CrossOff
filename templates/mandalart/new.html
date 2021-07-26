@@ -1,0 +1,15 @@
+<form action="{% url 'mandalart:new' %}" method="POST">
+  {% csrf_token %} 대목표
+  <input type="text" name="big" />
+  중목표
+  <input type="text" name="mid1" />
+  <input type="text" name="mid2" />
+  <input type="text" name="mid3" />
+  <input type="text" name="mid4" />
+  <input type="text" name="mid5" />
+  <input type="text" name="mid6" />
+  <input type="text" name="mid7" />
+  <input type="text" name="mid8" />
+
+  <input type="submit" value="제출" />
+</form>
