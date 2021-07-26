@@ -14,6 +14,7 @@ class BigGoal(models.Model):
                                  on_delete=models.CASCADE,
                                  primary_key=True)
     content = models.CharField(max_length=200)
+    is_achieved = models.BooleanField(default=False, null=False)
 
 
 class MidGoal(models.Model):
@@ -21,6 +22,7 @@ class MidGoal(models.Model):
                             on_delete=models.CASCADE,
                             related_name='biggoal')
     content = models.CharField(max_length=200)
+    is_achieved = models.BooleanField(default=False, null=False)
 
 
 class SpecificGoal(models.Model):
@@ -28,3 +30,4 @@ class SpecificGoal(models.Model):
                             on_delete=models.CASCADE,
                             related_name='midgoal')
     content = models.CharField(max_length=200)
+    is_achieved = models.BooleanField(default=False, null=False)
