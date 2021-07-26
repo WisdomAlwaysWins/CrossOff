@@ -43,10 +43,20 @@ class RegisterForm(UserCreationForm):
             'placeholder': '동일한 비밀번호를 입력하세요',
             'class': 'register_input_password'
         }))
-    nickname = forms.CharField(label='별명', widget=forms.TextInput())
-    birthdate = forms.DateField(label='생년월일', widget=forms.SelectDateWidget())
-    gender = forms.ChoiceField(label='성별', choices=User.GENDER_CHOICES)
-    job = forms.ChoiceField(label='직업', choices=User.JOB_CHOICES)
+    nickname = forms.CharField(
+        label='별명',
+        widget=forms.TextInput(attrs={'class': 'register_input_nickname'}))
+    birthdate = forms.DateField(
+        label='생년월일',
+        widget=forms.SelectDateWidget(attrs={'class': 'register_input_date'}))
+    gender = forms.ChoiceField(
+        label='성별',
+        choices=User.GENDER_CHOICES,
+        widget=forms.Select(attrs={'class': 'register_select'}))
+    job = forms.ChoiceField(
+        label='직업',
+        choices=User.JOB_CHOICES,
+        widget=forms.Select(attrs={'class': 'register_select'}))
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
