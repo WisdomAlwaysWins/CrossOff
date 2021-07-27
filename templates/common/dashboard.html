@@ -1,0 +1,179 @@
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
+Dashboard
+{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock css %}
+
+{% block content %}
+<section id="dashboard" class="content inner">
+    <div class="dashboard__title">
+        <p>Dashboard</p>
+    </div>
+    <div class="dashboard__content_top">
+        <div class="content__left">
+            <div class="customer_data">
+                <div class="datas">
+                    <div class="profile_picture">
+                        <img src="img/mini_jae.png" />
+                    </div>
+                    <div class="names">
+                        <p>{{user.nickname}} 님</p>
+                    </div>
+                </div>
+                <div class="edit__btns">
+                    <button class="btn btn_white">Edit Profile</button>
+                    <button class="btn btn_gray">See Profile</button>
+                </div>
+            </div>
+            <div class="levels">
+                <div class="level_picture">
+                    <p>2</p>
+                </div>
+                <div class="descrip">
+                    <p>Level 2</p>
+                    <p>다음 단계를 위해서 세부 계획 3개를 더 완료하세요!</p>
+                </div>
+            </div>
+        </div>
+        <div class="content__right">
+            <div class="badges">
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">language</span>
+                    </div>
+                    <p>목표1</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">code</span>
+                    </div>
+                    <p>목표2</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">space_dashboard</span>
+                    </div>
+                    <p>목표3</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">sentiment_satisfied</span>
+                    </div>
+                    <p>목표4</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            self_improvement
+                        </span>
+                    </div>
+                    <p>목표5</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            savings
+                        </span>
+                    </div>
+                    <p>목표6</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            people_outline
+                        </span>
+                    </div>
+                    <p>목표7</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            movie_creation
+                        </span>
+                    </div>
+                    <p>목표8</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            movie_creation
+                        </span>
+                    </div>
+                    <p>목표8</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            movie_creation
+                        </span>
+                    </div>
+                    <p>목표8</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            movie_creation
+                        </span>
+                    </div>
+                    <p>목표8</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            movie_creation
+                        </span>
+                    </div>
+                    <p>목표8</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            movie_creation
+                        </span>
+                    </div>
+                    <p>목표8</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            movie_creation
+                        </span>
+                    </div>
+                    <p>목표8</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            movie_creation
+                        </span>
+                    </div>
+                    <p>목표8</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            movie_creation
+                        </span>
+                    </div>
+                    <p>목표8</p>
+                </div>
+                <div class="badge_item">
+                    <div class="badge">
+                        <span class="material-icons">
+                            movie_creation
+                        </span>
+                    </div>
+                    <p>목표8</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="dashboard__content_bottom">
+        <img src="img/2021_man.png" alt="mandalart-planner">
+    </div>
+</section>
+{% endblock content %}
