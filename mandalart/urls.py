@@ -4,5 +4,6 @@ from . import views
 app_name = 'mandalart'
 
 urlpatterns = [
-    path('', views.new, name='new'),
+    path('new/', views.new, name='new'),
+    path('test/', views.test, name='test')
 ]
