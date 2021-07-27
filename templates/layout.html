@@ -40,6 +40,7 @@
         <div class="member">
 
           {% if user.is_authenticated %}
+          <span class="dashboard"><a href="">{{user.nickname}}님</a></span>
           <span class="logout"><a href="{% url 'common:logout' %}">LOG OUT</a></span>
           {% endif %}
           {% if not user.is_authenticated %}
