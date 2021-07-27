@@ -5,9 +5,7 @@ app_name = 'mandalart'
 
 urlpatterns = [
 
-    path('plan_big/', views.plan_big, name='plan_big'),
     path('plan_small/', views.plan_small, name='plan_small'),
     path('new/', views.new, name='new'),
     path('test/', views.test, name='test')
 ]
-
