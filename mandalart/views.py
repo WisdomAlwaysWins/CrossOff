@@ -7,9 +7,10 @@ from .models import *
 def new(request):
     if request.method == 'POST':
         u = request.user
-        print(u)
         a = Mandalart(user=u)
+        u.is_manda = True
         a.save()
+        u.save()
         b = BigGoal(manda=a, content=request.POST['big'])
         b.save()
         for i in range(1, 9):
@@ -17,6 +18,9 @@ def new(request):
             MidGoal(big=b, content=request.POST[c]).save()
         return redirect('home:main')
     else:
+        u = request.user
+        if(u.is_manda):
+            return redirect('/')
         return render(request, 'mandalart/new.html')
 
 
