@@ -2,6 +2,7 @@ from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from .forms import *
+from mandalart.models import *
 
 
 def register(request):
@@ -27,6 +28,7 @@ def login_(request):
                                 password=password)
             if user is not None:
                 login(request, user)
+                return redirect('../dashboard/' + str(user.id))
         return redirect('home:main')
     else:
         form = LoginForm()
@@ -41,4 +43,18 @@ def logout_(request):
 @login_required
 def dashboard(request, id):
     user = User.objects.get(id=id)
-    return render(request, 'common/dashboard.html', {'user': user})
+    lst = []
+    manda = Mandalart.objects.get(user=request.user.id)
+    big = BigGoal.objects.get(manda=manda)
+    lst.append(big.content)
+    mid = MidGoal.objects.filter(big=big)
+    for i in range(len(mid)):
+        lst2 = []
+        lst3 = []
+        lst2.append(mid[i].content)
+        spe = SpecificGoal.objects.filter(mid=mid[i])
+        for j in range(len(spe)):
+            lst3.append(spe[j].content)
+        lst2.append(lst3)
+        lst.append(lst2)
+    return render(request, 'common/dashboard.html', {'user': user, 'manda': lst})
