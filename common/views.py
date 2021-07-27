@@ -28,7 +28,7 @@ def login_(request):
                                 password=password)
             if user is not None:
                 login(request, user)
-                return redirect('../dashboard/' + str(user.id))
+                return redirect('mandalart:new')
         return redirect('home:main')
     else:
         form = LoginForm()

@@ -16,11 +16,11 @@ def new(request):
         for i in range(1, 9):
             c = 'mid' + str(i)
             MidGoal(big=b, content=request.POST[c]).save()
-        return redirect('home:main')
+        return redirect('/common/dashboard/' + str(u.id))
     else:
         u = request.user
         if(u.is_manda):
-            return redirect('/')
+            return redirect('/common/dashboard/' + str(u.id))
         return render(request, 'mandalart/plan_big.html')
 
 
