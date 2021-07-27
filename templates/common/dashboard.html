@@ -1,8 +1,12 @@
 {% extends 'layout.html' %}
-
+{% load static %}
 {% block title %}
 Dashboard
 {% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+{% endblock css %}
 
 {% block content %}
 <section id="dashboard" class="content inner">
