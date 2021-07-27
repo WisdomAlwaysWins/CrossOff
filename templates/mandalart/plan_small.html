@@ -15,35 +15,76 @@
 <style type="text/css">
 .board {
     display: grid;
-    grid-template-rows: 150px 150px 150px;
-    grid-template-columns: 150px 150px 150px;
+    grid-template-rows: 450px 450px 450px;
+    grid-template-columns: 450px 450px 450px;
+}
+.box {
+    display: grid;
+    grid-template-rows: 130px 130px 130px;
+    grid-template-columns: 130px 130px 130px;
+    margin: 10px;
 }
 body {
     display: grid;
     justify-content: center;
 }
-.box {
-    background: #444;
-    border: 1px solid #555;
+.element {
+    background: rgb(245, 196, 243);
+    border: 2px solid white;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #AAA;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-style: bold;
+    font-size: large;
+}
+#element5{
+    background: orchid;   
+}
+#box5 #element1{
+    background: orchid;   
+}
+#box5 #element2{
+    background: orchid;   
+}
+#box5 #element3{
+    background: orchid;   
+}
+#box5 #element4{
+    background: orchid;   
+}
+#box5 #element5{
+    background: rgb(178, 79, 228);
+}
+#box5 #element6{
+    background: orchid;   
+}
+#box5 #element7{
+    background: orchid;   
+}
+#box5 #element8{
+    background: orchid;   
+}
+#box5 #element9{
+    background: orchid;   
 }
 </style>
 
 <form action="{% url 'mandalart:plan_small' %}" method="POST">
     <div class="board">
         <script>
-            for(let i = 0; i < 9; i++) {
-                for(let j = 0; j < 9; j++){
-                    document.write('<div class="box">200px x 200px</div>');
+            for(let i = 1; i <= 9; i++) {
+                document.write('<div class="box" id="box'+i+'">')
+                for(let j = 1; j <= 9; j++){
+                    document.write('<input class="element" id="element'+j+'"></input>');
                 }
-                // if(i%3===0) {document.write('<br>');}
+                document.write('</div>')
             }
         </script>
     </div>
+    <button type="submit" class="button_finish"> 계획 짜기 끝! </button>
 </form>
-
 </body>
 </html>

@@ -61,7 +61,7 @@
                 <label for="answer_2">이 목표를통해 당신은 어떤 사람이 되고 싶으신가요?<br> 혹은 어떤 한 해를 보내고 싶으신가요?</label></p>
                 <textarea id="answer_2" cols="50" rows="3" placeholder=
                     "Ex. 좋은 사람 되기, 꿈에 가까워지는 한 해"></textarea><br>
-                <button type="button" class="button_small" onclick="location.href = 'C:\Users\home\Desktop\Cross Out\CrossOff\templates\mandalart\plan_small.html'"> 세부 계획 짜러 가기 </button>
+                <button type="button" class="button_small" onclick="location.href = '../plan_small'"> 세부 계획 짜러 가기 </button>
                 </div>
             </li>
         </ul>
@@ -91,62 +91,3 @@ new Swiper( '.swiper-container', {
 </script>
 </body>
 </html>
-
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cross OFF</title>
-    <style>
-        *{margin:0;padding:0;}
-        ul,li{list-style:none;}
-        .slide{height: 1000px;; overflow:hidden;}
-        .slide ul{height:100%;}
-        .slide li{height:100%;}
-        .slide li:nth-child(1){background:mediumorchid;}
-        .slide li:nth-child(2){background:darkorchid;}
-        .slide li:nth-child(3){background:orchid;}
-      </style>
-    <script>
-        const all = ele => document.querySelectorAll(ele)
-        const one = ele => document.querySelector(ele)
-        const slide = _ => {
-        const wrap = one('.slide')
-        const target = wrap.children[0]
-        const len = target.children.length
-        const liStyle = `
-            position:absolute;
-            left:0;right:0;top:0;bottom:0;transition:1s;opacity:0
-        `
-        target.style.cssText = `position:relative;`
-        Array.from(target.children)
-        .forEach(ele => ele.style.cssText = liStyle)
-        target.children[0].style.opacity = 1
-        let pos = 0
-        setInterval(_ => {
-            target.children[pos].style.opacity = 0
-            pos = (pos + 1) % len 
-            target.children[pos].style.opacity = 1
-        }, 1500)
-        }
-        window.onload = function(){
-            slide()
-        }
-    </script>
-</head>
-<body>
-    <div class="slide">
-        <ul >
-          <li>중</li>
-          <li>대</li>
-          <li>소</li>
-        </ul>
-        <div class="btn">
-          <button type="button" class="prev"> < </button>
-          <button type="button" class="next"> > </button>
-        </div>
-    </div>
-</body>
-</html> -->
