@@ -11,7 +11,7 @@ def register(request):
         if form.is_valid():
             user = form.save()
             login(request, user)
-        return redirect('home:main')
+        return redirect('mandalart:new')
     else:
         form = RegisterForm()
         return render(request, 'common/register.html', {'form': form})
