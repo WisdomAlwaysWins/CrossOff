@@ -1,93 +1,90 @@
 <!doctype html>
 <html lang="ko">
+
 <head>
-<meta charset="utf-8">
-<title>CROSS OFF - 새로운 삶</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
-<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <meta charset="utf-8">
+    <title>CROSS OFF - 새로운 삶</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
+
 <body>
-<!-- 이 예제에서는 필요한 js, css 를 링크걸어 사용 -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-<style type="text/css">
-    .swiper-container {
-        width:100%;
-        height: 900px;;
-        border:5px solid silver;
-        border-radius:7px;
-    }
-    .swiper-slide {
-        background:mediumorchid;
-        color: white;
-        text-align:center;
-        display:flex; /* 내용을 중앙정렬 하기위해 flex 사용 */
-        flex-direction: column;
-        align-items:center; /* 위아래 기준 중앙정렬 */
-        justify-content:center; /* 좌우 기준 중앙정렬 */
-    }
-    /* .question_1{
-        background:mediumorchid;
-        color: white;
-    }
-    .question_2{
-        background:darkorchid;
-        color: white;
-    }
-    .question_3 {
-        background:orchid;
-        color: white;
-    } */
-</style>
+    <!-- 이 예제에서는 필요한 js, css 를 링크걸어 사용 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+    <style type="text/css">
+        .swiper-container {
+            width: 100%;
+            height: 900px;
+            ;
+            border: 5px solid silver;
+            border-radius: 7px;
+        }
 
-<form action="{% url 'mandalart:plan_big' %}" method="POST">
-    <div class="swiper-container">
-        <ul class="swiper-wrapper">
-            <li class="swiper-slide">
-                <div id="question_1">
-                <label for="answer_1">올해 이루고 싶은 목표 여덟 가지를 적어주세요.</label></p>
-                <script>
-                    var i = 1;
-                    while(i<=8){
-                        document.write('<textarea id="answer_1" name="mid_'+i+'" placeholder="목표 '+i+'" rows="2" cols="30"></textarea><br><br>');
-                        i+=1;
-                    }
-                </script>
-                </div>
-            </li>
-            <li class="swiper-slide">
-                <div id="question_2">
-                <label for="answer_2">이 목표를통해 당신은 어떤 사람이 되고 싶으신가요?<br> 혹은 어떤 한 해를 보내고 싶으신가요?</label></p>
-                <textarea id="answer_2" cols="50" rows="3" placeholder=
-                    "Ex. 좋은 사람 되기, 꿈에 가까워지는 한 해"></textarea><br>
-                <button type="button" class="button_small" onclick="location.href = '../plan_small'"> 세부 계획 짜러 가기 </button>
-                </div>
-            </li>
-        </ul>
-        <!-- 네비게이션 버튼 -->
-	    <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-	    <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
-	    <!-- 페이징 -->
-	    <div class="swiper-pagination"></div>
-    </div>    
-</form>
+        .swiper-slide {
+            background: mediumorchid;
+            color: white;
+            text-align: center;
+            display: flex;
+            /* 내용을 중앙정렬 하기위해 flex 사용 */
+            flex-direction: column;
+            align-items: center;
+            /* 위아래 기준 중앙정렬 */
+            justify-content: center;
+            /* 좌우 기준 중앙정렬 */
+        }
+    </style>
 
-<script>
-new Swiper( '.swiper-container', {
+    <form action="{% url 'mandalart:new' %}" method="POST">
+        {% csrf_token %}
+        <div class="swiper-container">
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    <div id="question_1">
+                        <label for="answer_1">올해 이루고 싶은 목표 여덟 가지를 적어주세요.</label></p>
+                        <script>
+                            var i = 1;
+                            while (i <= 8) {
+                                document.write('<textarea id="answer_1" name="mid' + i + '" placeholder="목표 ' + i + '" rows="2" cols="30"></textarea><br><br>');
+                                i += 1;
+                            }
+                        </script>
+                    </div>
+                </li>
+                <li class="swiper-slide">
+                    <div id="question_2">
+                        <label for="answer_2">이 목표를통해 당신은 어떤 사람이 되고 싶으신가요?<br> 혹은 어떤 한 해를 보내고 싶으신가요?</label></p>
+                        <textarea id="answer_2" name="big" cols="50" rows="3"
+                            placeholder="Ex. 좋은 사람 되기, 꿈에 가까워지는 한 해"></textarea><br>
+                        <input type="submit" value="세부 계획 짜러 가기">
+                    </div>
+                </li>
+            </ul>
+            <!-- 네비게이션 버튼 -->
+            <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+            <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
+            <!-- 페이징 -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </form>
+    <script>
+        new Swiper('.swiper-container', {
 
-	effect : 'fade', // 페이드 효과 사용
+            effect: 'fade', // 페이드 효과 사용
 
-    // 무한 반복
-	pagination : { // 페이징 설정
-		el : '.swiper-pagination',
-		clickable : true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
-	},
-	navigation : { // 네비게이션 설정
-		nextEl : '.swiper-button-next', // 다음 버튼 클래스명
-		prevEl : '.swiper-button-prev', // 이번 버튼 클래스명
-	},
-});
-</script>
+            // 무한 반복
+            pagination: { // 페이징 설정
+                el: '.swiper-pagination',
+                clickable: true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+            },
+            navigation: { // 네비게이션 설정
+                nextEl: '.swiper-button-next', // 다음 버튼 클래스명
+                prevEl: '.swiper-button-prev', // 이번 버튼 클래스명
+            },
+        });
+    </script>
 </body>
 </html>
+
+
