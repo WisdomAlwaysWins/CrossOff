@@ -2921,3 +2921,9 @@
 
     }; //end of $.fn.fullpage
 });
+
+new fullpage('#fullpage', {
+	//options here
+	autoScrolling:true,
+	scrollHorizontally: true
+});

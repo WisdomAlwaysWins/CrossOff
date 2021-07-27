@@ -16,33 +16,36 @@
       rel="stylesheet"
     />
     <!-- JS -->
-    <script src="../static/js/layout.js"></script>
-    {% block js %}{% endblock js %}
+    {% block js %}
+    {% endblock js %}
     <!-- CSS -->
+    {% block css %}
+    {% endblock css %}    
     <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    {% block css %}{% endblock css %}    
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   </head>
   <body>
     <header>
       <div class="header__container">
         <div class="logo">
-            <a href=""><p>Cross<br />Out</p></a>
+            <a href=""><p>Cross<br />Off</p></a>
         </div>
         <div class="navbar">
             <ul id="menu">
                 <li>
-                    <span>
-                        <a href="">FIND GROUP</a>
-                    </span>
+                  <a href="">FIND GROUP</a>
                 </li>
             </ul>
             <div class="member">
                 <span class="signin">
-                    <a href="">SIGN IN</a></span>
-                <span class="login"><a href="">LOG IN</a></span>
+                    <a href="{% url 'common:register' %}">SIGN UP</a></span>
+                <span class="login"><a href="{% url 'common:login' %}">LOG IN</a></span>
             </div>
         </div>
     </header>
+    <div class="toggleBtn__content">
+      <span>💜</span>
+    </div>
     {% block content %} {% endblock content %}
   </body>
 </html>
