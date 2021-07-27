@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>CROSS OFF - 새로운 삶</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+<!-- 이 예제에서는 필요한 js, css 를 링크걸어 사용 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+
+<style type="text/css">
+.board {
+    display: grid;
+    grid-template-rows: 150px 150px 150px;
+    grid-template-columns: 150px 150px 150px;
+}
+body {
+    display: grid;
+    justify-content: center;
+}
+.box {
+    background: #444;
+    border: 1px solid #555;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #AAA;
+}
+</style>
+
+<form action="{% url 'mandalart:plan_small' %}" method="POST">
+    <div class="board">
+        <script>
+            for(let i = 0; i < 9; i++) {
+                for(let j = 0; j < 9; j++){
+                    document.write('<div class="box">200px x 200px</div>');
+                }
+                // if(i%3===0) {document.write('<br>');}
+            }
+        </script>
+    </div>
+</form>
+
+</body>
+</html>
