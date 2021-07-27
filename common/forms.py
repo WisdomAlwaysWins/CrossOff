@@ -1,5 +1,6 @@
 from django import forms
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField
+from django.utils import timezone
 from .models import *
 
 
@@ -24,6 +25,8 @@ class LoginForm(AuthenticationForm):
 
 
 class RegisterForm(UserCreationForm):
+    year = timezone.now().year
+    years = [x for x in range(1970, year + 1)]
     username = UsernameField(label='ID',
                              widget=forms.TextInput(
                                  attrs={
@@ -48,7 +51,7 @@ class RegisterForm(UserCreationForm):
         widget=forms.TextInput(attrs={'class': 'register_input_nickname'}))
     birthdate = forms.DateField(
         label='생년월일',
-        widget=forms.SelectDateWidget(attrs={'class': 'register_input_date'}))
+        widget=forms.SelectDateWidget(years=years, attrs={'class': 'register_input_date', 'default': 1990}))
     gender = forms.ChoiceField(
         label='성별',
         choices=User.GENDER_CHOICES,
