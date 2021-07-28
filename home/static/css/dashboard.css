@@ -1,0 +1,214 @@
+img{
+    display:block;
+}
+.inner{
+    width:1400px;
+    margin:0 auto;
+    position: relative;
+}
+button{
+    background: transparent;
+    border: none;
+}
+
+.btn_gray{
+    padding:10px;
+    background: #333;
+    color:white;
+    border-radius: 10px;
+    padding: 10px 15px;
+    transition: 300ms;
+}
+.btn_gray:hover{
+    background: rgb(100, 100, 100);
+}
+.btn_white{
+    padding:10px;
+    background: white;
+    color:#333;
+    border: 1px solid rgb(100, 100, 100, 0.25);
+    border-radius: 10px;
+    padding: 10px 15px;
+    transition: 300ms;
+}
+.btn_white:hover{
+    border: 1px solid rgb(100, 100, 100,0.6);
+}
+/* header */
+header{
+    position: relative;
+}
+.head__title h1{
+    color:#333;
+}
+
+.head__description ul li{
+    color:#333;
+}
+
+.menu_box{
+    border:4px solid #333;
+}
+
+.menu_box_one p{
+    color:#333;
+}
+body{
+    background-color: rgba(225, 225, 225, 0.2);
+}
+/* DashBoard */
+#dashboard{
+    top:50px;
+}
+.dashboard__title{
+    padding: 15px;
+}
+.dashboard__title p{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.dashboard__content_top{
+    /* background-color: antiquewhite; */
+    position: absolute;
+    width:100%;
+    height:500px;
+    display:flex;
+}
+
+.dashboard__content_top .content__left{
+    flex:4;
+    height:100%;
+    position: relative;
+}
+.dashboard__content_top .content__left .customer_data{
+    position: absolute;
+    width:100%;
+    height:60%;
+    margin: 10px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+.dashboard__content_top .content__left .customer_data .datas{
+    padding: 40px;
+    display: flex;
+    align-items: center;
+}
+.dashboard__content_top .content__left .customer_data .datas .profile_picture {
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard__content_top .content__left .customer_data .datas .profile_picture img{
+    padding:20px;
+    background-color: #333;
+    border-radius: 50%;
+    width:100px;
+}
+.dashboard__content_top .content__left .customer_data .datas .names{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+
+}
+.dashboard__content_top .content__left .customer_data .datas .names p{
+    font-size: 32px;
+    font-weight: 600;
+}
+.dashboard__content_top .content__left .customer_data .edit__btns{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard__content_top .content__left .customer_data .edit__btns .btn{
+    margin: 0 10px;
+    font-weight: bold;
+}
+.dashboard__content_top .content__left .levels{
+    position: absolute;
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    margin:10px;
+    width:100%;
+    height:30%;
+    bottom: 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard__content_top .content__left .levels .level_picture{
+    flex:3;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard__content_top .content__left .levels .level_picture p{
+    font-size: 72px;
+    color:yellowgreen;
+}
+.dashboard__content_top .content__left .levels .descrip{
+    flex:7;
+}
+.dashboard__content_top .content__left .levels .descrip p{
+    margin: 15px 0;
+}
+
+.dashboard__content_top .content__right{
+    position: relative;
+    width:100%;
+    flex:6;
+    margin:10px;
+    display: flex;
+}
+.dashboard__content_top .content__right .badges{
+    padding:20px;
+    position: absolute;
+    height:92%;
+    width:93%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    margin-left:20px;
+    display:grid;
+    align-items: center;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(5,1fr);
+    overflow: auto;
+}
+.dashboard__content_top .content__right .badges .badge_item{
+    display:flex;
+    margin:0 auto;
+    width:100%;
+    height:200px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard__content_top .content__right .badges .badge_item .badge{
+    background-color: #333;
+    width:100px;
+    height:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.dashboard__content_top .content__right .badges .badge_item .badge .material-icons{
+    font-size: 50px;
+    color:white;
+}
+.dashboard__content_top .content__right .badges .badge_item p{
+    color:#333;
+}
+.dashboard__content_bottom{
+    position: absolute;
+    width:100%;
+    top: 600px;
+    display: flex;
+    justify-content: center;
+}

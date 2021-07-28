@@ -1,7 +1,9 @@
 회원이 아니신가요?
 <a href="{% url 'common:register' %}">회원가입</a>
 <form action="{% url 'common:login' %}" method="POST">
-  {% csrf_token %} {{form.as_p}}
+  {% csrf_token %}
+  {% include "form_errors.html" %}
+  {{form.as_p}}
   <div class="login_content_submit">
     <input type="submit" value="로그인" />
   </div>
