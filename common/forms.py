@@ -22,6 +22,10 @@ class LoginForm(AuthenticationForm):
                 'class': 'login_pwForm'
             }),
     )
+    error_messages = {
+        'invalid_login': "비밀번호나 ID가 올바르지 않습니다.",
+        'inactive': "이 계정은 활성화되지 않았습니다.",
+    }
 
 
 class RegisterForm(UserCreationForm):
