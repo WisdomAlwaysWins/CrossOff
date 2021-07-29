@@ -1,8 +1,24 @@
 /* Global setting */
-body, h1, h2, h3, h4, h5, h6, p{
+:root{
+    /* color */
+    --color-main--:#603ec0;
+    --color-white--:#eee;
+    --color-black--:#333;
+
+    /* Transition Duration */
+    --transition-duration--: 400ms ;
+
+    /* Border Radius */
+    --border-radius--:10px;
+
+}
+
+body{
     margin:0 auto;
 }
 body{
+    margin:0;
+    padding:0;
     font-family: 'Noto Sans KR', sans-serif;
 }
 ul{
@@ -16,16 +32,20 @@ img{
     border:none;
 }
 a{
+    margin:0;
+    padding:0;
     text-decoration: none;
     color:#000;
     outline:none;
     border:none;
     cursor: pointer;
 }
-
+span,
+p{
+    padding:0;
+    margin:0;
+}
 /* INNER */
-/* 내용을 화면 중간에 위치시키고 싶을 때 html class에 추가하면 됩니다 */
-/* 좌우에 여백이 조금 있어요 */
 .inner{
     width:95vw;
     margin: 0 auto;
@@ -34,15 +54,37 @@ a{
 
 /* BUTTON */
 button{
-    padding:0;
+    padding:10px 15px;
     margin:0;
-    outline:none;
     border:none;
-    background:transparent;
-    resize: none;
+    background-color: transparent;
+    font-size: 15px;
+    transition: var(--transition-duration--);
+    border-radius: var(--border-radius--);
 }
-
-
+.btn-black{
+    background-color: var(--color-black--);
+    color:white;
+}
+.btn-black:hover{
+    background-color: black;
+}
+.btn-purple{
+    background-color: rgba(96,62,192,0.8);
+    color:white;
+}
+.btn-purple:hover{ 
+    background-color: #603ec0; 
+    color:white;
+}
+.btn-white{
+    background-color: var(--color-white--);
+    color: #3e3260;
+}
+.btn-white:hover{ 
+    background-color: white;
+    color:#3e3260;
+}
 /* HEADER */
 .header__container{
     z-index:100;
@@ -59,9 +101,11 @@ button{
     margin-left:30px;
 }
 .header__container .logo p{
-    color:#333;
+    color:black;
     font-size:32px;
     font-weight: 800;
+    text-decoration: line-through;
+    text-decoration-color: var(--color-main--);
 }
 .header__container .navbar{
     flex:1;
@@ -71,48 +115,296 @@ button{
 .header__container .navbar #menu{
     flex:2;
 }
-.header__container .navbar #menu li span{
-    color:#333;
+.header__container .navbar #menu li a{
+    color:var(--color-white--);
     padding: 5px 10px;
+    transition: var(--transition-duration--);
 }
-.header__container .navbar #menu li span:hover{
-    background-color: rgba(238, 238, 238, 0.3);
-    border-radius: 5px;
-    color:#333;
+.header__container .navbar #menu li a:hover{
+    color:var(--color-main--);
 }
 .header__container .navbar .member{
     flex:1;
     display:flex;
     justify-content: space-between;
 }
-.header__container .navbar .member .signin{
-
+.header__container .navbar .member .signin a,
+.header__container .navbar .member .login a {
+    padding: 5px 10px;
+    border-radius: var(--border-radius--);
+    color:var(--color-white--);
+    transition: var(--transition-duration--);
 }
-.header__container .navbar .member .login{
+.header__container .navbar .member .signin a:hover,
+.header__container .navbar .member .login a:hover{
+    color:var(--color-main--);
+}
 
+.toggleBtn__content{
+    width:25px;
+    height:25px;
+    position: fixed;
+    bottom: 40px;
+    right:40px;
+    background-color: var(--color-white--);
+    padding: 10px;
+    border-radius: 50%;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    cursor:pointer;
+}
+.toggleBtn__content:hover{
+    background-color:rgba(96,62,192,0.2);
 }
 
 /* HOME */
-#fullpage{
-    z-index:-1;
-}
-#home__section1{
-    height:100vh;
+/* section 1 - Main Page */
+.home__content #fullpage #section1{
     background-image: url(../img/wall.jpg);
     background-size: cover;
     background-repeat: no-repeat;
+
+    position: relative;
 }
-#home__section2{
-    background-color: royalblue;
+.home__content #fullpage #section1 .mainMent{
+    position:absolute;
+    width: 80%;
+    top:30%;
+    left:50%;
+    transform: translate(-50%, 0);
+    text-align: center;
 }
-#home__section3{
-    background-color:rosybrown;
+.home__content #fullpage #section1 .mainMent h1{
+    font-size:36px;
+    font-weight: 600;
+    color:var(--color-black--);
+    padding: 20px;
 }
-#home__section4{
-    background: teal;
+.home__content #fullpage #section1 .mainMent h1 span{
+    color:var(--color-main--);
+}
+.home__content #fullpage #section1 .swiper-container{
+    position: absolute;
+    top: 60%;
+    left:50%;
+    transform: translate(-50%,0);
+    width: 50%;
+    height: 35px;
+}
+.home__content #fullpage #section1 .swiper-container .swiper-slide{
+    text-align:center;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.home__content #fullpage #section1 .swiper-container .swiper-slide .material-icons{
+    color:rgba(51, 51, 51,0.3);
+}
+.home__content #fullpage #section1 .swiper-container .swiper-slide p{
+    margin:10px;
+    cursor:default;
+}
+.home__content #fullpage #section1 .getTogether{
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translate(-50%,0);
+    display:flex;
+}
+.home__content #fullpage #section1 .getTogether p{
+    font-size:15px;
+}
+.home__content #fullpage #section1 .getTogether .getTogether-logo{
+    text-decoration: line-through;
+    text-decoration-color: var(--color-main--);
+    padding: 0 3px;
+}
+.home__content #fullpage #section1 .getTogether .getTogether-mandalart{
+    color:var(--color-main--);
+    padding: 0 3px;
+}
+/* section 2 - About Mandal-art planner */
+.home__content #fullpage #section2{
+    background-color: #ab9fca;
+    position: relative;
+}
+.home__content #fullpage #secion2 .fp-slides{
+    position: relative;
+}
+.home__content #fullpage #section2 .fp-controlArrow{
+    position: absolute;
+    top: 53%;
+}
+.home__content #fullpage #section2 .fp-controlArrow.fp-prev{
+    margin-left: 50px;
+    border-width: 20px 20px 20px 0;
+
+}
+.home__content #fullpage #section2 .fp-controlArrow.fp-next{
+    margin-right:50px;
+    border-width: 20px 0px 20px 20px;
 }
 
-/* Creat Mandalart */
+.home__content #fullpage #section2 #slide1{
+    text-align: center;
+}
+.home__content #fullpage #section2 #slide1 .title{
+    font-size: 42px;
+    font-weight: 600;
+    color:#3e3260;
+    margin-bottom: 20px;
+    display:flex;
+    flex-direction: column;
+}
+.home__content #fullpage #section2 #slide1 .description{
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.home__content #fullpage #section2 #slide1 .description .detail{
+    display: flex;
+    align-items: center;
+}
+.home__content #fullpage #section2 #slide1 .description .detail.one{
+    color:var(--color-white--);
+    padding: 20px 0;
+}
+.home__content #fullpage #section2 #slide1 .description .detail.second{
+    color:var(--color-white--);
+    padding: 20px 0;
+}
+.home__content #fullpage #section2 #slide1 .description .detail p{
+    color: #4d3e76;
+    font-weight: 600;
+    padding:0 5px;
+}
+.home__content #fullpage #section2 #slide1 p{
+    padding: 15px;
+    font-size: 15px;
+    color:var(--color-white--);
+}
+.home__content #fullpage #section2 #slide2{
+    position: relative;
+    text-align: center;
+}
+.home__content #fullpage #section2 #slide2 p{
+    font-size: 24px;
+    font-weight: 600;
+    color:var(--color-white--);
+    margin-bottom: 30px;
+}
+.home__content #fullpage #section2 #slide2 img{
+    width: 400px;
+}
+.home__content #fullpage #section2 #slide3{
+    text-align: center;
+}
+.home__content #fullpage #section2 #slide3 .title{
+    font-size: 24px;
+    font-weight: 600;
+    color:var(--color-white--);
+    margin-bottom: 30px;
+}
+.home__content #fullpage #section2 #slide3 .description{
+    font-size:15px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.home__content #fullpage #section2 #slide3 .description .detail{
+    padding: 20px 0;
+    display: flex;
+    color:var(--color-white--);
+}
+.home__content #fullpage #section2 #slide3 .description .detail p{
+    color:#4d3e76;
+    font-weight: 600;
+    padding:0 5px;
+}
+.home__content #fullpage #section2 #slide3 .description .detail.tips{
+    color:var(--color-white--);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.home__content #fullpage #section2 #slide3 .description .detail.tips #tip{
+    background-color: #695F85;
+    color:white;
+    font-weight: 400;
+    padding: 5px 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+/* section 3 - people involved in */
+.home__content #fullpage #section3{
+    height: 1000px;
+    background-color: #695F85;
+    text-align: center;
+}
+.home__content #fullpage #section3 .involvedPeople{
+    position: relative;
+    top:-5%;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.home__content #fullpage #section3 .involvedPeople .description{
+    padding: 50px;
+    color:var(--color-white--);
+}
+.home__content #fullpage #section3 .involvedPeople ul{
+    display:flex;
+}
+.home__content #fullpage #section3 .involvedPeople ul li{
+    padding: 0 20px;
+}
+/* 임시 */
+.home__content #fullpage #section3 .involvedPeople ul li .circle{
+    width:80px;
+    height:80px;
+    background-color: black;
+    border-radius: 50%;
+}
+.home__content #fullpage #section3 .involvedPeople ul li img{
+    width: 80px;
+}
+.home__content #fullpage #section3 .involvedPeople ul li p{
+    font-size:12px;
+    color: var(--color-white--);
+    margin-top: 10px;
+}
+
+/* Start Button - Go to Register */
+.home__content .startBtn__content{
+    position: fixed;
+    bottom: 8%;
+    left:50%;
+    transform: translate(-50%,0);
+}
+.home__content .startBtn__content #startBtn a{
+    color:var(--color-white--);
+}
+
+/* Toggle up Button - go to top */
+.toggleupBtn__content{
+    position: fixed;
+    bottom: 8%;
+    right:20px;
+}
+.toggleupBtn__content #toggleBtn{
+    font-size: 12px;
+    padding: 8px;
+    border-radius: 50%;
+    background-color: #d1ccdf;
+    transition: var(--transition-duration--);
+}
+.toggleupBtn__content #toggleBtn:hover{
+    background-color: white;
+}
+
 
 /* login */
 .login_background{
