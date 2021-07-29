@@ -160,14 +160,14 @@ button{
 
 /* HOME */
 /* section 1 - Main Page */
-#fullpage #section1{
+.home__content #fullpage #section1{
     background-image: url(../img/wall.jpg);
     background-size: cover;
     background-repeat: no-repeat;
 
     position: relative;
 }
-#fullpage #section1 .mainMent{
+.home__content #fullpage #section1 .mainMent{
     position:absolute;
     width: 80%;
     top:30%;
@@ -175,16 +175,16 @@ button{
     transform: translate(-50%, 0);
     text-align: center;
 }
-#fullpage #section1 .mainMent h1{
+.home__content #fullpage #section1 .mainMent h1{
     font-size:36px;
     font-weight: 600;
     color:var(--color-black--);
     padding: 20px;
 }
-#fullpage #section1 .mainMent h1 span{
+.home__content #fullpage #section1 .mainMent h1 span{
     color:var(--color-main--);
 }
-#fullpage #section1 .swiper-container{
+.home__content #fullpage #section1 .swiper-container{
     position: absolute;
     top: 60%;
     left:50%;
@@ -192,64 +192,64 @@ button{
     width: 50%;
     height: 35px;
 }
-#fullpage #section1 .swiper-container .swiper-slide{
+.home__content #fullpage #section1 .swiper-container .swiper-slide{
     text-align:center;
     display:flex;
     align-items: center;
     justify-content: center;
 }
-#fullpage #section1 .swiper-container .swiper-slide .material-icons{
+.home__content #fullpage #section1 .swiper-container .swiper-slide .material-icons{
     color:rgba(51, 51, 51,0.3);
 }
-#fullpage #section1 .swiper-container .swiper-slide p{
+.home__content #fullpage #section1 .swiper-container .swiper-slide p{
     margin:10px;
     cursor:default;
 }
-#fullpage #section1 .getTogether{
+.home__content #fullpage #section1 .getTogether{
     position: absolute;
     bottom: 20%;
     left: 50%;
     transform: translate(-50%,0);
     display:flex;
 }
-#fullpage #section1 .getTogether p{
+.home__content #fullpage #section1 .getTogether p{
     font-size:15px;
 }
-#fullpage #section1 .getTogether .getTogether-logo{
+.home__content #fullpage #section1 .getTogether .getTogether-logo{
     text-decoration: line-through;
     text-decoration-color: var(--color-main--);
     padding: 0 3px;
 }
-#fullpage #section1 .getTogether .getTogether-mandalart{
+.home__content #fullpage #section1 .getTogether .getTogether-mandalart{
     color:var(--color-main--);
     padding: 0 3px;
 }
 /* section 2 - About Mandal-art planner */
-#fullpage #section2{
+.home__content #fullpage #section2{
     background-color: #ab9fca;
     position: relative;
 }
-#fullpage #secion2 .fp-slides{
+.home__content #fullpage #secion2 .fp-slides{
     position: relative;
 }
-#fullpage #section2 .fp-controlArrow{
+.home__content #fullpage #section2 .fp-controlArrow{
     position: absolute;
     top: 53%;
 }
-#fullpage #section2 .fp-controlArrow.fp-prev{
+.home__content #fullpage #section2 .fp-controlArrow.fp-prev{
     margin-left: 50px;
     border-width: 20px 20px 20px 0;
 
 }
-#fullpage #section2 .fp-controlArrow.fp-next{
+.home__content #fullpage #section2 .fp-controlArrow.fp-next{
     margin-right:50px;
     border-width: 20px 0px 20px 20px;
 }
 
-#fullpage #section2 #slide1{
+.home__content #fullpage #section2 #slide1{
     text-align: center;
 }
-#fullpage #section2 #slide1 .title{
+.home__content #fullpage #section2 #slide1 .title{
     font-size: 42px;
     font-weight: 600;
     color:#3e3260;
@@ -257,79 +257,79 @@ button{
     display:flex;
     flex-direction: column;
 }
-#fullpage #section2 #slide1 .description{
+.home__content #fullpage #section2 #slide1 .description{
     display:flex;
     flex-direction: column;
     align-items: center;
 }
-#fullpage #section2 #slide1 .description .detail{
+.home__content #fullpage #section2 #slide1 .description .detail{
     display: flex;
     align-items: center;
 }
-#fullpage #section2 #slide1 .description .detail.one{
+.home__content #fullpage #section2 #slide1 .description .detail.one{
     color:var(--color-white--);
     padding: 20px 0;
 }
-#fullpage #section2 #slide1 .description .detail.second{
+.home__content #fullpage #section2 #slide1 .description .detail.second{
     color:var(--color-white--);
     padding: 20px 0;
 }
-#fullpage #section2 #slide1 .description .detail p{
+.home__content #fullpage #section2 #slide1 .description .detail p{
     color: #4d3e76;
     font-weight: 600;
     padding:0 5px;
 }
-#fullpage #section2 #slide1 p{
+.home__content #fullpage #section2 #slide1 p{
     padding: 15px;
     font-size: 15px;
     color:var(--color-white--);
 }
-#fullpage #section2 #slide2{
+.home__content #fullpage #section2 #slide2{
     position: relative;
     text-align: center;
 }
-#fullpage #section2 #slide2 p{
+.home__content #fullpage #section2 #slide2 p{
     font-size: 24px;
     font-weight: 600;
     color:var(--color-white--);
     margin-bottom: 30px;
 }
-#fullpage #section2 #slide2 img{
+.home__content #fullpage #section2 #slide2 img{
     width: 400px;
 }
-#fullpage #section2 #slide3{
+.home__content #fullpage #section2 #slide3{
     text-align: center;
 }
-#fullpage #section2 #slide3 .title{
+.home__content #fullpage #section2 #slide3 .title{
     font-size: 24px;
     font-weight: 600;
     color:var(--color-white--);
     margin-bottom: 30px;
 }
-#fullpage #section2 #slide3 .description{
+.home__content #fullpage #section2 #slide3 .description{
     font-size:15px;
     display:flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#fullpage #section2 #slide3 .description .detail{
+.home__content #fullpage #section2 #slide3 .description .detail{
     padding: 20px 0;
     display: flex;
     color:var(--color-white--);
 }
-#fullpage #section2 #slide3 .description .detail p{
+.home__content #fullpage #section2 #slide3 .description .detail p{
     color:#4d3e76;
     font-weight: 600;
     padding:0 5px;
 }
-#fullpage #section2 #slide3 .description .detail.tips{
+.home__content #fullpage #section2 #slide3 .description .detail.tips{
     color:var(--color-white--);
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-#fullpage #section2 #slide3 .description .detail.tips #tip{
+.home__content #fullpage #section2 #slide3 .description .detail.tips #tip{
     background-color: #695F85;
     color:white;
     font-weight: 400;
@@ -338,12 +338,12 @@ button{
     border-radius: 3px;
 }
 /* section 3 - people involved in */
-#fullpage #section3{
+.home__content #fullpage #section3{
     height: 1000px;
     background-color: #695F85;
     text-align: center;
 }
-#fullpage #section3 .involvedPeople{
+.home__content #fullpage #section3 .involvedPeople{
     position: relative;
     top:-5%;
     display:flex;
@@ -351,27 +351,27 @@ button{
     justify-content: center;
     align-items: center;
 }
-#fullpage #section3 .involvedPeople .description{
+.home__content #fullpage #section3 .involvedPeople .description{
     padding: 50px;
     color:var(--color-white--);
 }
-#fullpage #section3 .involvedPeople ul{
+.home__content #fullpage #section3 .involvedPeople ul{
     display:flex;
 }
-#fullpage #section3 .involvedPeople ul li{
+.home__content #fullpage #section3 .involvedPeople ul li{
     padding: 0 20px;
 }
 /* 임시 */
-#fullpage #section3 .involvedPeople ul li .circle{
+.home__content #fullpage #section3 .involvedPeople ul li .circle{
     width:80px;
     height:80px;
     background-color: black;
     border-radius: 50%;
 }
-#fullpage #section3 .involvedPeople ul li img{
+.home__content #fullpage #section3 .involvedPeople ul li img{
     width: 80px;
 }
-#fullpage #section3 .involvedPeople ul li p{
+.home__content #fullpage #section3 .involvedPeople ul li p{
     font-size:12px;
     color: var(--color-white--);
     margin-top: 10px;
