@@ -1,10 +1,45 @@
-회원이 아니신가요?
-<a href="{% url 'common:register' %}">회원가입</a>
-<form action="{% url 'common:login' %}" method="POST">
-  {% csrf_token %}
-  {% include "form_errors.html" %}
-  {{form.as_p}}
-  <div class="login_content_submit">
-    <input type="submit" value="로그인" />
-  </div>
-</form>
+{% load static %}
+<html lang="en">
+    <head>
+      <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+      <title>login</title>
+    </head>
+    <body> 
+      <div class = "login_background">
+        <div class = login_body>
+          <!-- logo --> <div class = "login_logo"> Cross <br> off </div>
+          <form action="{% url 'common:login' %}" method<="POST">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            {{form.as_p}}
+        
+            <div class="login_content_submit">
+              <input type="submit" value="로그인" 
+              style="position:relative;
+              left:40%;
+              transform: translateX(-50%);
+              width:80%;
+              height:40px;
+              background:#603ec0;
+              color:white;
+              font-weight: bold;
+              border:none;
+              cursor:pointer;
+              transition: 0.4s;
+              display:inline;
+              font-size: 15px;"/>
+            </div>
+          </form>
+          <div class = "login_check">
+          <input type="checkbox" id="keepLogin" name="keepLogin">     
+          <label for="keepLogin"><span>로그인 상태 유지</span></label>
+          <input type="checkbox" id="keepLogin" name="keepLogin">
+          <label for="keepLogin"><span>아이디 저장</span></label>
+        </div>
+        <div class = "login_no">
+          회원이 아니신가요? 
+          <a href="{% url 'common:register' %}"><b>회원가입</b></a>    
+        </div>    
+
+    </body>
+</html>

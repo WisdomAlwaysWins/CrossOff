@@ -9,8 +9,8 @@ class LoginForm(AuthenticationForm):
                              widget=forms.TextInput(
                                  attrs={
                                      'autofocus': True,
-                                     'placeholder': 'ID를 입력하세요',
-                                     'class': 'login_input_id'
+                                     'placeholder': ' ID',
+                                     'class': 'login_idForm'
                                  }))
     password = forms.CharField(
         strip=False,
@@ -18,8 +18,8 @@ class LoginForm(AuthenticationForm):
         widget=forms.PasswordInput(
             attrs={
                 'autocomplete': 'current-password',
-                'placeholder': '비밀번호를 입력하세요',
-                'class': 'login_input_pwd'
+                'placeholder': ' PW',
+                'class': 'login_pwForm'
             }),
     )
 
@@ -31,35 +31,35 @@ class RegisterForm(UserCreationForm):
                              widget=forms.TextInput(
                                  attrs={
                                      'autofocus': True,
-                                     'placeholder': 'ID를 입력하세요',
-                                     'class': 'register_input_id'
+                                     'placeholder': '',
+                                     'class': 'register_idForm'
                                  }))
     password1 = forms.CharField(
         label='비밀번호',
         widget=forms.PasswordInput(attrs={
-            'placeholder': '비밀번호를 입력하세요',
-            'class': 'register_input_password'
+            'placeholder': '',
+            'class': 'register_pwForm'
         }))
     password2 = forms.CharField(
         label='비밀번호 확인',
         widget=forms.PasswordInput(attrs={
-            'placeholder': '동일한 비밀번호를 입력하세요',
-            'class': 'register_input_password'
+            'placeholder': '',
+            'class': 'register_pwcheckForm'
         }))
     nickname = forms.CharField(
         label='별명',
-        widget=forms.TextInput(attrs={'class': 'register_input_nickname'}))
+        widget=forms.TextInput(attrs={'class': 'register_nicknameForm'}))
     birthdate = forms.DateField(
         label='생년월일',
-        widget=forms.SelectDateWidget(years=years, attrs={'class': 'register_input_date', 'default': 1990}))
+        widget=forms.SelectDateWidget(years=years, attrs={'class': 'register_birthForm', 'default': 1990}))
     gender = forms.ChoiceField(
         label='성별',
         choices=User.GENDER_CHOICES,
-        widget=forms.Select(attrs={'class': 'register_select'}))
+        widget=forms.Select(attrs={'class': 'register_genderForm'}))
     job = forms.ChoiceField(
         label='직업',
         choices=User.JOB_CHOICES,
-        widget=forms.Select(attrs={'class': 'register_select'}))
+        widget=forms.Select(attrs={'class': 'register_jobForm'}))
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
