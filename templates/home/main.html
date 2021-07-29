@@ -4,32 +4,145 @@
 Home 
 {% endblock title %} 
 {% block js %}
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="../static/js/jquery.fullPage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+{% endblock js %}
+{% block css %}
 <link
   rel="stylesheet"
   href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
   integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
   crossorigin="anonymous"
 />
-{% block css %}
 <link rel="stylesheet" href="{% static 'css/jquery.fullPage.css' %}" />
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
 {% endblock css %}
-<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="../static/js/jquery.fullPage.js"></script>
-<script src="../static/js/home.js"></script>
-{% endblock js %} {% block content %}
-<section id="fullpage">
-  <div class="section" id="home__section1">
-    <p>새해 첫날 세운 목표, 잘 이뤄나가고 계신가요?</p>
-    <p>아니, 목표를 세우긴 하셨나요?</p>
-  </div>
-  <div class="section" id="home__section2">
-    <h2>Section 2</h2>
-  </div>
-  <div class="section" id="home__section3">
-    <h2>Section 3</h2>
-  </div>
-  <div class="section" id="home__section4">
-    <h2>Section 4</h2>
-  </div>
-</section>
+{% block content %}
+  <section class="home__content">
+    <div id="fullpage">
+      <!-- Section 1 - Welcome Page -->
+      <div class="section" id="section1">
+        <div class="mainMent">
+          <h1>새해 첫날 세운 <span>목표</span> 잘 이뤄나가고 계신가요?</h1>
+          <h1>아니, <span>목표</span>를 세우긴 하셨나요?</h1>
+        </div>
+        <div class="swiper-container">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <span class="material-icons">check_circle</span>
+              <p>뚜렷한 계획과 목표가 없는 당신</p>
+            </div>
+            <div class="swiper-slide">
+              <span class="material-icons">check_circle</span>
+              <p>목표를 어디서부터 어떻게 세워야 할지 모르는 당신</p>
+            </div>
+            <div class="swiper-slide">
+              <span class="material-icons">check_circle</span>
+              <p>목표를 세웠지만 무슨 일부터 해야할 지 고민하고 있는 당신</p>
+            </div>
+            <div class="swiper-slide">
+              <span class="material-icons">check_circle</span>
+              <p>목표에 대한 세부적인 계획을 세우고 싶은 당신</p>
+            </div>
+          </div>
+        </div>
+        <div class="getTogether">
+          <p class="getTogether-logo">Cross Off</p>
+          <p>가 제공하는 
+          <p class="getTogether-mandalart">만다라트 계획표</p>
+          <p>와 함께 계획적인 사람으로 거듭나세요!</p>
+        </div>
+      </div>
+      <!-- Section 2 - What is Mandal-art planner -->
+      <div class="section" id="section2">
+        <div class="slide" id="slide1">
+          <p class="title">Mandal-Art Planner</p> 
+          <div class="description">
+            <span class="detail one">목적을 달성하는 기술을 가진 플래너 📒</span>
+            <span class="detail second">일본 디자이너 이마이즈미 히로아키가 1987년 <p>만다라</p>의 모양에서 영감을 얻어 고안한 것으로<br></span>
+            <span class="detail second"><p>핵심 목표</p>를 중심으로 확산하는 형태의 <p>세부 목표</p>를 작성하는 <p>계획표</p>입니다.<br></span>
+          </div>
+        </div>
+        <div class="slide" id="slide2">
+          <p class="slide2_title">Example of Mandal-art Planner</p>
+          <img src="{% static 'img/example_purple.png' %}" alt="만다라트 계획표 에시">
+        </div>
+        <div class="slide" id="slide3">
+          <p class="title">How To</p>
+          <div class="description">
+            <span class="detail">9X9의 표의 가운데에 이루고자 하는 <p>핵심 목표</p>를 기입합니다.<br></span>
+            <span class="detail">핵심 목표를 둘러싼 8개의 사각형에는 <p>그 목표를 실현하기 위한 목표</p>를 적습니다.<br></span>
+            <span class="detail">그 8개의 목표를 주변으로 확장해 <p>세부 목표</p>를 작성합니다.<br></span>
+            <span class="detail">한눈에 목표를 확인하면서 <p>체계적⌛</p>으로 계획을 괸리할 수 있습니다.<br></span>
+            <span class="detail">작은 성취가 모여 최종 목표까지 달성했을 때에 성취감🎉을 느껴보세요!<br></span>
+            <span class="detail tips"><p id="tip">TIP</p>목표는 <p>구체적</p>일수록 좋습니다 🤍<br></span>
+            <span class="detail">고민하는 시간이 중요합니다!</span>
+            <span class="detail">충분한 시간을 들여 계획표를 차근차근 채워나가세요. 😉</span>
+          </div>
+        </div>
+      </div>
+      <!-- Section 3 - People who involved in -->
+      <div class="section" id="section3">
+        <!-- 주어진 높이만큼 하고 싶으면 class에 fp-auto-height 추가하기 -->
+        <div class="involvedPeople">
+          <p class="description">people involved in developing this website</p>
+          <ul>
+            <li>
+              <div class="circle"></div>
+              <p>이현직</p>
+            </li>
+            <li>
+              <div class="circle"></div>
+              <p>김대연</p>
+            </li>
+            <li>
+              <div class="circle"></div>
+              <p>조나원</p>
+            </li>
+            <li>
+              <div class="circle"></div>
+              <p>김민솔</p>
+            </li>
+            <li>
+              <img src="{% static 'img/mini_jae.png'%}" alt="">
+              <p>김지혜</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="startBtn__content">
+      <button id="startBtn" class="btn-purple"><a href="{% url "common:register" %}">START</a></button>
+    </div>
+    <div class="toggleupBtn__content">
+      <a id="toggleBtn">💜</a>
+    </div>
+  </section>
+</div>
+
+<script>
+// 따로 js 파일을 분리하니까 swiper가 작동을 안해서 html 밑에 붙여놓았습니다..
+// Full Page JS
+$(function(){
+    $('#fullpage').fullpage({
+      autoScrolling:true,
+      scrollHorizontally:true,
+      loopBottom:true,
+    });
+});
+$('#toggleBtn').click(function () {
+			$.fn.fullpage.moveTo(1, 1); // 이동하고싶은 페이지
+		});
+
+// Section 1 - swiper
+const swiper = new Swiper('.swiper-container', {  
+    direction: 'vertical',  
+     loop: true,  
+     autoplay:{
+       delay:3000,
+       disableOnInterraction:false,
+     }
+});
+</script>
 {% endblock content %}
