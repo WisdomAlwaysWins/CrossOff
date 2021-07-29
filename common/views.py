@@ -67,3 +67,8 @@ def dashboard(request, id):
         lst2.append(lst3)
         lst.append(lst2)
     return render(request, 'common/dashboard.html', {'user': user, 'manda': lst})
+
+
+def profile(request, id):
+    user = User.objects.get(id=id)
+    return render(request, 'common/seeProfile.html', {'user': user})
