@@ -1,7 +1,7 @@
-{% extends 'layout.html' %} {% load static %} 
-{% block title %} 
+{% extends 'layout.html' %} {% load static %}
+{% block title %}
 Dashboard
-{% endblock title %} 
+{% endblock title %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
 {% endblock css %} {% block content %}
@@ -17,13 +17,13 @@ Dashboard
             <img src="img/mini_jae.png" />
           </div>
           <div class="names">
-            <p>{{user.n}} 님</p>
+            <p>{{user.nickname}} 님</p>
           </div>
         </div>
         <div class="edit__btns">
-            <button class="btn btn_gray">
-              <a href="{% url 'common:profile' user.id %}">See Profile</a>
-            </button>
+          <button class="btn btn_gray">
+            <a href="{% url 'common:profile' user.id %}">See Profile</a>
+          </button>
         </div>
       </div>
       <div class="levels">

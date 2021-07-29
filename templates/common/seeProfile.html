@@ -1,4 +1,5 @@
-{% extends 'layout.html' %} {% block content %}
+{% extends 'layout.html' %}
+{% block content %}
 <section id="seePropfile">
   <div class="seeProfile__background">
     <div class="content__title">
@@ -18,21 +19,21 @@
         <tr>
           <th class="type">성별</th>
           <td class="content">
-            {% if user.gender == 1 %} 여자 
-            {% elif user.gender == 0 %} 남자 
+            {% if user.gender == 1 %} 여자
+            {% elif user.gender == 0 %} 남자
             {%endif %}
           </td>
         </tr>
         <tr>
           <th class="type">직업</th>
           <td class="content">
-              {% if user.job == 0 %} 초등학생 
-              {% elif user.job == 1 %} 중학생
-              {% elif user.job == 2 %} 고등학생
-              {% elif user.job == 3 %} 대학생
-              {% elif user.job == 4 %} 직장인
-              {% elif user.job == 5 %} 무직
-              {% endif %}
+            {% if user.job == 0 %} 초등학생
+            {% elif user.job == 1 %} 중학생
+            {% elif user.job == 2 %} 고등학생
+            {% elif user.job == 3 %} 대학생
+            {% elif user.job == 4 %} 직장인
+            {% elif user.job == 5 %} 무직
+            {% endif %}
           </td>
         </tr>
       </table>

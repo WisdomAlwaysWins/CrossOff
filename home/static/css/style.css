@@ -447,7 +447,7 @@ button{
     transition: 0.4s;
     display:inline;
     font-size: 15px;
-  }
+}
 
 .login_pwForm{
     position:relative;
@@ -513,8 +513,9 @@ button{
     transition: 0.4s;
     display:inline;
     font-size: 15px;
-  }
-  .register_pwForm{
+}
+
+.register_pwForm{
     position:relative;
     left:40%;
     transform: translateX(-50%);
@@ -528,7 +529,7 @@ button{
     transition: 0.4s;
     display:inline;
     font-size: 15px;
-  }
+}
 
 .register_pwcheckForm{
     position:relative;
@@ -543,7 +544,7 @@ button{
     transition: 0.4s;
     display:inline;
     font-size: 15px;
-  }
+}
 
 .register_nicknameForm{
     position:relative;
@@ -558,7 +559,7 @@ button{
     transition: 0.4s;
     display:inline;
     font-size: 15px;
-  }
+}
 
 .register_birthForm{
     position:relative;
@@ -573,9 +574,9 @@ button{
     transition: 0.4s;
     display:inline;
     font-size: 15px;
-  }
+}
 
-  .register_genderForm{
+.register_genderForm{
     position:relative;
     left:40%;
     transform: translateX(-50%);
@@ -588,8 +589,8 @@ button{
     transition: 0.4s;
     display:inline;
     font-size: 15px;
-  }
-  .register_jobForm{
+}
+.register_jobForm{
     position:relative;
     left:40%;
     transform: translateX(-50%);
@@ -602,12 +603,16 @@ button{
     transition: 0.4s;
     display:inline;
     font-size: 15px;
-  }
+}
 .register_ok{
     font-size: 15.5px;
     margin-top: 20px;
 }
 
+.errorlist{
+    background-color: #f5d682;
+    border: 1px solid #FEB61C;
+}
 /* See Profile */
 
 .seeProfile__background{

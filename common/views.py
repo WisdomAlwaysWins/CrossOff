@@ -8,6 +8,9 @@ from mandalart.models import *
 def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
+        if form.errors:
+            print(form.errors)
+            return render(request, 'common/register.html', {'form': form})
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -34,7 +37,6 @@ def login_(request):
         else:
             return redirect('common:fail')
 
-        return redirect('home:main')
     else:
         form = LoginForm()
         return render(request, 'common/login.html', {'form': form})
