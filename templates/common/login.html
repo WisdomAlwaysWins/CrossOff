@@ -8,7 +8,7 @@
       <div class = "login_background">
         <div class = login_body>
           <!-- logo --> <div class = "login_logo"> Cross <br> off </div>
-          <form action="{% url 'common:login' %}" method<="POST">
+          <form action="{% url 'common:login' %}" method="POST">
             {% csrf_token %}
             {% include "form_errors.html" %}
             {{form.as_p}}
