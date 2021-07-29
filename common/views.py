@@ -29,11 +29,16 @@ def login_(request):
             if user is not None:
                 login(request, user)
                 return redirect('mandalart:new')
+        else:
+            return redirect('common:fail')
+        
         return redirect('home:main')
     else:
         form = LoginForm()
         return render(request, 'common/login.html', {'form': form})
 
+def fail(request):
+    return render(request, 'common/login_fail.html')
 
 def logout_(request):
     logout(request)
