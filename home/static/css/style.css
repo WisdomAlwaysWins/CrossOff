@@ -607,3 +607,76 @@ button{
     font-size: 15.5px;
     margin-top: 20px;
 }
+
+/* See Profile */
+
+.seeProfile__background{
+    position: relative;
+    background: var(--color-white--);
+    width: 100vw;
+    height:100vh;
+    display:flex;
+    justify-content: center;
+}
+.seeProfile__background .content__title{
+    position: absolute;
+    width:100%;
+    justify-content: center;
+    display:flex;
+    top: 150px;
+}
+.seeProfile__background .content__title p{
+    color:var(--color-black--);
+    font-size: 32px;
+    font-weight: 600;
+    padding: 0 5px;
+}.seeProfile__background .content__title #nickname{
+    color:var(--color-main--);
+}
+.seeProfile__background .seeProfile__content{
+    margin: 0 auto;
+    margin-top:210px;
+    width:450px;
+    height: 500px;
+    background-color: white;
+    border-radius: 10px;
+    display:flex;
+    justify-content: center;
+    position: relative;
+}
+
+.seeProfile__background .seeProfile__content .customer_table{
+    position: absolute;
+    top: 50px;
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    margin: 20px 10px;
+}
+
+.seeProfile__background .seeProfile__content .customer_table th{
+    width: 120px;
+    padding: 20px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    color:var(--color-black--);
+}
+
+.seeProfile__background .seeProfile__content .customer_table td{
+    width: 150px;
+    padding: 20px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    color:#4d3e76;
+}
+
+.seeProfile__background .seeProfile__content .buttons{
+    position: absolute;
+    bottom:70px;
+}
+.seeProfile__background .seeProfile__content .buttons button a{
+    padding: 0 10px;
+    color:white;
+}
