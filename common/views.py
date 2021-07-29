@@ -42,14 +42,14 @@ def fail(request):
 
 def logout_(request):
     logout(request)
-    return redirect('home:main')
+    return redirect('home:home')
 
 
 @login_required
 def dashboard(request, id):
     user = User.objects.get(id=id)
     lst = []
-    manda = Mandalart.objects.get(user=request.user.id)
+    manda = Mandalart.objects.get(user=user.id)
     big = BigGoal.objects.get(manda=manda)
     lst.append(big.content)
     mid = MidGoal.objects.filter(big=big)

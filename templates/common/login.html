@@ -1,5 +1,6 @@
 {% load static %}
 <html lang="en">
+
     <head>
       <link rel="stylesheet" href="{% static 'css/style.css' %}" />
       <title>login</title>
@@ -27,19 +28,20 @@
               cursor:pointer;
               transition: 0.4s;
               display:inline;
-              font-size: 15px;"/>
-            </div>
-          </form>
-          <div class = "login_check">
-          <input type="checkbox" id="keepLogin" name="keepLogin">     
-          <label for="keepLogin"><span>로그인 상태 유지</span></label>
-          <input type="checkbox" id="keepLogin" name="keepLogin">
-          <label for="keepLogin"><span>아이디 저장</span></label>
+              font-size: 15px;" />
         </div>
-        <div class = "login_no">
-          회원이 아니신가요? 
-          <a href="{% url 'common:register' %}"><b>회원가입</b></a>    
-        </div>    
+      </form>
+      <div class="login_check">
+        <input type="checkbox" id="keepLogin" name="keepLogin">
+        <label for="keepLogin"><span>로그인 상태 유지</span></label>
+        <input type="checkbox" id="keepLogin" name="keepLogin">
+        <label for="keepLogin"><span>아이디 저장</span></label>
+      </div>
+      <div class="login_no">
+        회원이 아니신가요?
+        <a href="{% url 'common:register' %}"><b>회원가입</b></a>
+      </div>
 
-    </body>
+</body>
+
 </html>
