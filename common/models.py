@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.validators import UnicodeUsernameValidator
 import uuid
 from django.utils import timezone
 
@@ -22,6 +23,18 @@ class User(AbstractUser):
                           editable=False,
                           unique=True,
                           serialize=True)
+    username_validator = UnicodeUsernameValidator()
+
+    username = models.CharField(
+        'ID',
+        max_length=150,
+        unique=True,
+        help_text='150자 이내, 영문자, 숫자, @/./+/-/_ 만 사용 가능',
+        validators=[username_validator],
+        error_messages={
+            'unique': "이미 존재하는 ID 입니다.",
+        },
+    )
     nickname = models.CharField(blank=False, null=False, max_length=100)
     birthdate = models.DateField(blank=False, null=False)
     gender = models.IntegerField(choices=GENDER_CHOICES,
