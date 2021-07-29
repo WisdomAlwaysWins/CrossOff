@@ -1,0 +1,34 @@
+{% extends 'layout.html' %} 
+{% block content %}
+<section id="seePropfile">
+    <div class="seeProfile__background">
+        <div class="content__title">
+            <p id="nickname">💜 {{user.nickname}}</p>
+            <p>님의 프로필 정보 💜</p>
+        </div>
+        <div class="seeProfile__content">
+            <table class="customer_table">
+                <tr>
+                    <th class="type">별명</th>
+                    <td class="content">{{user.nickname}}</td>
+                </tr>
+                <tr>
+                    <th class="type">생년월일</th>
+                    <td class="content">{{user.birthdate}}</td>
+                </tr>
+                <tr>
+                    <th class="type">성별</th>
+                    <td class="content">{{user.gender}}</td>
+                </tr>
+                <tr>
+                    <th class="type">직업</th>
+                    <td class="content">{{user.job}}</td>
+                </tr>
+            </table>
+            <div class="buttons">
+                <button class="btn-purple"><a href="{% url 'common:dashboard' user.id %}">대시보드로 가기</a></button>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock content %}
