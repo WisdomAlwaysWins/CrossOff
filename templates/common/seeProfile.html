@@ -1,34 +1,47 @@
-{% extends 'layout.html' %} 
-{% block content %}
+{% extends 'layout.html' %} {% block content %}
 <section id="seePropfile">
-    <div class="seeProfile__background">
-        <div class="content__title">
-            <p id="nickname">💜 {{user.nickname}}</p>
-            <p>님의 프로필 정보 💜</p>
-        </div>
-        <div class="seeProfile__content">
-            <table class="customer_table">
-                <tr>
-                    <th class="type">별명</th>
-                    <td class="content">{{user.nickname}}</td>
-                </tr>
-                <tr>
-                    <th class="type">생년월일</th>
-                    <td class="content">{{user.birthdate}}</td>
-                </tr>
-                <tr>
-                    <th class="type">성별</th>
-                    <td class="content">{{user.gender}}</td>
-                </tr>
-                <tr>
-                    <th class="type">직업</th>
-                    <td class="content">{{user.job}}</td>
-                </tr>
-            </table>
-            <div class="buttons">
-                <button class="btn-purple"><a href="{% url 'common:dashboard' user.id %}">대시보드로 가기</a></button>
-            </div>
-        </div>
+  <div class="seeProfile__background">
+    <div class="content__title">
+      <p id="nickname">💜 {{user.nickname}}</p>
+      <p>님의 프로필 정보 💜</p>
     </div>
+    <div class="seeProfile__content">
+      <table class="customer_table">
+        <tr>
+          <th class="type">별명</th>
+          <td class="content">{{user.nickname}}</td>
+        </tr>
+        <tr>
+          <th class="type">생년월일</th>
+          <td class="content">{{user.birthdate}}</td>
+        </tr>
+        <tr>
+          <th class="type">성별</th>
+          <td class="content">
+            {% if user.gender == 1 %} 여자 
+            {% elif user.gender == 0 %} 남자 
+            {%endif %}
+          </td>
+        </tr>
+        <tr>
+          <th class="type">직업</th>
+          <td class="content">
+              {% if user.job == 0 %} 초등학생 
+              {% elif user.job == 1 %} 중학생
+              {% elif user.job == 2 %} 고등학생
+              {% elif user.job == 3 %} 대학생
+              {% elif user.job == 4 %} 직장인
+              {% elif user.job == 5 %} 무직
+              {% endif %}
+          </td>
+        </tr>
+      </table>
+      <div class="buttons">
+        <button class="btn-purple">
+          <a href="{% url 'common:dashboard' user.id %}">대시보드로 가기</a>
+        </button>
+      </div>
+    </div>
+  </div>
 </section>
 {% endblock content %}
