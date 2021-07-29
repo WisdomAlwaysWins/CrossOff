@@ -13,6 +13,8 @@ def register(request):
             login(request, user)
         return redirect('mandalart:new')
     else:
+        if request.user.is_authenticated:
+            return redirect('mandalart:new')
         form = RegisterForm()
         return render(request, 'common/register.html', {'form': form})
 
@@ -31,14 +33,16 @@ def login_(request):
                 return redirect('mandalart:new')
         else:
             return redirect('common:fail')
-        
+
         return redirect('home:main')
     else:
         form = LoginForm()
         return render(request, 'common/login.html', {'form': form})
 
+
 def fail(request):
     return render(request, 'common/login_fail.html')
+
 
 def logout_(request):
     logout(request)
