@@ -609,9 +609,9 @@ button{
     margin-top: 20px;
 }
 
-.errorlist{
-    background-color: #f5d682;
-    border: 1px solid #FEB61C;
+.errorlist li{
+    color: red;
+    font-weight: bold;
 }
 /* See Profile */
 

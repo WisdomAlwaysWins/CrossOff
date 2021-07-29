@@ -9,7 +9,6 @@ def register(request):
     if request.method == 'POST':
         form = RegisterForm(request.POST)
         if form.errors:
-            print(form.errors)
             return render(request, 'common/register.html', {'form': form})
         if form.is_valid():
             user = form.save()
@@ -25,6 +24,8 @@ def register(request):
 def login_(request):
     if request.method == 'POST':
         form = LoginForm(request=request, data=request.POST)
+        if form.errors:
+            return render(request, 'common/login.html', {'form': form})
         if form.is_valid():
             username = form.cleaned_data['username']
             password = form.cleaned_data['password']

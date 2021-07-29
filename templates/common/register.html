@@ -3,6 +3,7 @@
 
 <head>
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
   <title>register</title>
 </head>
 
@@ -38,6 +39,13 @@
 
     </div>
   </div>
+  <script>
+    $(document).ready(function () {
+      $("ul.errorlist").each(function (index) {
+        $(this).appendTo($(this).parent());
+      });
+    });
+  </script>
 </body>
 
 </html>
