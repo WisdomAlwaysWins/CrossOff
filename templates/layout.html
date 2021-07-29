@@ -14,11 +14,13 @@
   <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
   <!-- JS -->
-  <script src=" {% static 'js/layout.js' %}"></script>
-  {% block js %}{% endblock js %}
+  {% block js %}
+  {% endblock js %}
   <!-- CSS -->
+  {% block css %}
+  {% endblock css %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-  {% block css %}{% endblock css %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
 <body>
@@ -52,7 +54,7 @@
         </div>
       </div>
   </header>
- 
+
   {% block content %} {% endblock content %}
 </body>
 
