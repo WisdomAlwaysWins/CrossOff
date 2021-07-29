@@ -1,48 +1,59 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>{% block title %}{% endblock title %}</title>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css"/>
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="{% static 'favicon.png' %}"/>
-    <!-- Font -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap"
-      rel="stylesheet"
-    />
-    <!-- JS -->
-    {% block js %}
-    {% endblock js %}
-    <!-- CSS -->
-    {% block css %}
-    {% endblock css %}    
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  </head>
-  <body>
-    <header>
-      <div class="header__container">
-        <div class="logo">
-            <a href=""><p>Cross<br />Off</p></a>
+<head>
+  <title>{% block title %}{% endblock title %}</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css" />
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{% static 'favicon.png' %}" />
+  <!-- Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet" />
+  <!-- JS -->
+  <script src=" {% static 'js/layout.js' %}"></script>
+  {% block js %}{% endblock js %}
+  <!-- CSS -->
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  {% block css %}{% endblock css %}
+</head>
+
+<body>
+  <header>
+    <div class="header__container">
+      <div class="logo">
+        <a href="">
+          <p>Cross<br />Out</p>
+        </a>
+      </div>
+      <div class="navbar">
+        <ul id="menu">
+          <li>
+            <span>
+              <a href="">FIND GROUP</a>
+            </span>
+          </li>
+        </ul>
+        <div class="member">
+
+          {% if user.is_authenticated %}
+          <span class="dashboard"><a href="{% url 'common:dashboard' user.id %}">{{user.nickname}}님</a></span>
+          <span class="logout"><a href="{% url 'common:logout' %}">LOG OUT</a></span>
+          {% endif %}
+          {% if not user.is_authenticated %}
+          <span class="signin">
+            <a href="{% url 'common:register' %}">SIGN UP</a></span>
+          <span class="login"><a href="{% url 'common:login' %}">LOG IN</a></span>
+          {% endif %}
+
         </div>
-        <div class="navbar">
-            <ul id="menu">
-                <li>
-                  <a href="">FIND GROUP</a>
-                </li>
-            </ul>
-            <div class="member">
-                <span class="signin">
-                    <a href="{% url 'common:register' %}">SIGN UP</a></span>
-                <span class="login"><a href="{% url 'common:login' %}">LOG IN</a></span>
-            </div>
-        </div>
-    </header>
-    {% block content %} {% endblock content %}
-  </body>
+      </div>
+  </header>
+ 
+  {% block content %} {% endblock content %}
+</body>
+
 </html>
