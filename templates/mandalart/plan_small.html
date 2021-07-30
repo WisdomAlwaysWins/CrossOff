@@ -54,6 +54,7 @@ body {
 </style>
 
 <form action="{% url 'mandalart:plan_small' %}" method="POST">
+    {% csrf_token %}
     <div class="board">
         <script>
             for(let i = 1; i <= 9; i++) {
@@ -61,10 +62,11 @@ body {
                 for(let j = 1; j <= 9; j++){
                     document.write('<input class="element" id="element'+j+'"></input>');
                 }
-            </script>
+                document.write('</div>')
+            }
+        </script>
         </div>
         <input type="submit" class="button_finish"> 계획 짜기 끝! </input>
     </form>
 </body>
-
 </html>
