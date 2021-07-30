@@ -44,10 +44,6 @@ def login_(request):
         return render(request, 'common/login.html', {'form': form})
 
 
-def fail(request):
-    return render(request, 'common/login_fail.html')
-
-
 def logout_(request):
     logout(request)
     return redirect('home:home')
@@ -72,12 +68,12 @@ def dashboard(request, id):
         lst.append(lst2)
     return render(request, 'common/dashboard.html', {'user': user, 'manda': lst})
 
-
+@login_required
 def profile(request, id):
     user = User.objects.get(id=id)
     return render(request, 'common/seeProfile.html', {'user': user})
 
-
+@login_required
 def profileUpdate(request):
     if request.method == 'POST':
         user_change_form = CustomUserChangeForm(
@@ -85,12 +81,12 @@ def profileUpdate(request):
 
         if user_change_form.is_valid():
             user_change_form.save()
-            return render(request, 'common/dashboard.html')
+        return redirect('/common/dashboard/' + str(request.user.id))
     else:
         user_change_form = CustomUserChangeForm(instance=request.user)
         return render(request, 'common/updateProfile.html', {'user_change_form': user_change_form})
 
-
+@login_required
 def passwordEdit(request):
     if request.method == 'POST':
         password_change_form = CustomPasswordChangeForm(
@@ -99,7 +95,7 @@ def passwordEdit(request):
             user = password_change_form.save()
             update_session_auth_hash(request, user)
             messages.success(request, '비밀번호 변경 완료!')
-            return render(request, 'common/dashboard.html')
+        return redirect('/common/dashboard/' + str(request.user.id))
     else:
         password_change_form = CustomPasswordChangeForm(request.user)
     return render(request, 'common/editPassword.html', {'password_change_form': password_change_form})

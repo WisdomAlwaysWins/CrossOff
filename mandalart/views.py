@@ -24,7 +24,7 @@ def new(request):
             return redirect('/common/dashboard/' + str(u.id))
         return render(request, 'mandalart/plan_big.html')
 
-
+@login_required
 def plan_small(request):
     if request.method == 'POST':
         a = Mandalart.objects.get(user=request.user.id)

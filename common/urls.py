@@ -6,7 +6,6 @@ app_name = 'common'
 
 urlpatterns = [
     path('login/', views.login_, name='login'),
-    path('fail/', views.fail, name='fail'),
     path('logout/', views.logout_, name='logout'),
     path('register/', views.register, name='register'),
     path('dashboard/<str:id>', views.dashboard, name='dashboard'),
