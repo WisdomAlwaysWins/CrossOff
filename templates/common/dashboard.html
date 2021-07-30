@@ -22,6 +22,9 @@ Dashboard
         </div>
         <div class="edit__btns">
           <button class="btn btn_gray">
+            <a href="{% url 'common:edit_password' %}">Edit Password</a>
+          </button>
+          <button class="btn btn_gray">
             <a href="{% url 'common:profile' user.id %}">See Profile</a>
           </button>
         </div>

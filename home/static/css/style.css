@@ -45,6 +45,16 @@ p{
     padding:0;
     margin:0;
 }
+input,
+select{
+    border:none;
+    color:#3e3260;
+}
+input:focus,
+select:focus{
+    outline:none;
+}
+
 /* INNER */
 .inner{
     width:95vw;
@@ -84,6 +94,14 @@ button{
 .btn-white:hover{ 
     background-color: white;
     color:#3e3260;
+}
+.btn-lightgray{
+    background-color:rgb(215, 210, 216);
+    color: var(--color-black--);
+}
+.btn-lightgray:hover{
+    background-color:rgb(191, 187, 192);
+    color: var(--color-black--);
 }
 /* HEADER */
 .header__container{
@@ -635,7 +653,8 @@ button{
     font-size: 32px;
     font-weight: 600;
     padding: 0 5px;
-}.seeProfile__background .content__title #nickname{
+}
+.seeProfile__background .content__title #nickname{
     color:var(--color-main--);
 }
 .seeProfile__background .seeProfile__content{
@@ -680,8 +699,182 @@ button{
 .seeProfile__background .seeProfile__content .buttons{
     position: absolute;
     bottom:70px;
+    display:flex;
 }
-.seeProfile__background .seeProfile__content .buttons button a{
-    padding: 0 10px;
+.seeProfile__background .seeProfile__content .buttons .btn{
+    margin: 0 10px;
+}
+.seeProfile__background .seeProfile__content .buttons .btn a{
     color:white;
+}
+
+/* Update Profile */
+#updateProfile{
+    width:100vw;
+    height:100vh;
+    background-color:rosybrown;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#updateProfile .background{
+    position: relative;
+    background: var(--color-white--);
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#updateProfile .background .content__title{
+    position: absolute;
+    width:100%;
+    justify-content: center;
+    display:flex;
+    top:150px;
+}
+#updateProfile .background .content__title p{
+    color:var(--color-black--);
+    font-size: 32px;
+    font-weight: 600;
+    padding: 0 5px;
+}
+#updateProfile .background .content__title #nickname{
+    color:var(--color-main--);
+}
+#updateProfile .background .updateProfile__content{
+    position: relative;
+    margin: 0 auto;
+    margin-top: 210px;
+    width:450px;
+    height:500px;
+    background: white;
+    border-radius: 10px;
+}
+#updateProfile .background .updateProfile__content form{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#updateProfile .background .updateProfile__content .profile_edit_table{
+    position: absolute;
+    top:20px;
+    border-collapse: separate;
+    border-spacing: 1px;
+    text-align: left;
+    line-height: 1.5;
+    margin: 20px 10px;
+}
+#updateProfile .background .updateProfile__content .profile_edit_table th{
+    width: 120px;
+    padding: 20px;
+    font-weight: bold;
+    vertical-align: top;
+    border-bottom:  1px solid #ccc;
+    color:var(--color-black--);
+}
+#updateProfile .background .updateProfile__content .profile_edit_table td{
+    width:150px;
+    padding: 20px;
+    vertical-align: top;
+    border-bottom: 1px solid #ccc;
+    color:#5b41a2;
+}
+#updateProfile .background .updateProfile__content .buttons{
+    position: absolute;
+    width: 100%;
+    bottom: 70px;
+    justify-content: center;
+    display:flex;
+}
+#updateProfile .background .updateProfile__content .buttons .btn{
+    margin: 0 10px;
+}
+#updateProfile .background .updateProfile__content .buttons .btn a{
+    color:white;
+}
+/* Edit Password */
+#editPassword{
+    width:100vw;
+    height:100vh;
+    background-color:#eee;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+#editPassword .background{
+    position: relative;
+    background: var(--color-white--);
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+#editPassword .background .content__title{
+    position: absolute;
+    width:100%;
+    justify-content: center;
+    display:flex;
+    top:150px;
+}
+#editPassword .background .content__title p{
+    color:var(--color-black--);
+    font-size: 32px;
+    font-weight: 600;
+    padding: 0 5px;
+}
+#editPassword .background .editPassword__content{
+    position: relative;
+    margin: 0 auto;
+    margin-top: 210px;
+    width:450px;
+    height:500px;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+}
+#editPassword .background .editPassword__content form .password{
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+#editPassword .background .editPassword__content form .password .basic__content{
+    display:flex;
+    padding: 15px 0;
+}
+#editPassword .background .editPassword__content form .password .basic__content label{
+    width: 120px;
+}
+#editPassword .background .editPassword__content form .password .basic__content .input_content{
+    width: 200px;
+}
+#editPassword .background .editPassword__content form .password .invalid-feedback{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color:var(--color-main--);
+}
+#editPassword .background .editPassword__content form .buttons{
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+}
+#editPassword .background .editPassword__content form .buttons .btn{
+    margin: 0 10px;
+}
+#editPassword .background .editPassword__content form .buttons .btn a{
+    color:var(--color-white--);
 }

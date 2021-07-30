@@ -38,8 +38,11 @@
         </tr>
       </table>
       <div class="buttons">
-        <button class="btn-purple">
+        <button class="btn btn-lightgray">
           <a href="{% url 'common:dashboard' user.id %}">대시보드로 가기</a>
+        </button>
+        <button class="btn btn-purple">
+          <a href="{% url 'common:profile_update' %}">프로필 편집하기</a>
         </button>
       </div>
     </div>

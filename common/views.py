@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from mandalart.models import *
+from django.contrib import messages
 
 
 def register(request):
@@ -75,3 +76,30 @@ def dashboard(request, id):
 def profile(request, id):
     user = User.objects.get(id=id)
     return render(request, 'common/seeProfile.html', {'user': user})
+
+
+def profileUpdate(request):
+    if request.method == 'POST':
+        user_change_form = CustomUserChangeForm(
+            request.POST, instance=request.user)
+
+        if user_change_form.is_valid():
+            user_change_form.save()
+            return render(request, 'common/dashboard.html')
+    else:
+        user_change_form = CustomUserChangeForm(instance=request.user)
+        return render(request, 'common/updateProfile.html', {'user_change_form': user_change_form})
+
+
+def passwordEdit(request):
+    if request.method == 'POST':
+        password_change_form = CustomPasswordChangeForm(
+            request.user, request.POST)
+        if password_change_form.is_valid():
+            user = password_change_form.save()
+            update_session_auth_hash(request, user)
+            messages.success(request, '비밀번호 변경 완료!')
+            return render(request, 'common/dashboard.html')
+    else:
+        password_change_form = CustomPasswordChangeForm(request.user)
+    return render(request, 'common/editPassword.html', {'password_change_form': password_change_form})

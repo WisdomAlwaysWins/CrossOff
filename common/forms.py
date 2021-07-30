@@ -1,5 +1,8 @@
 from django import forms
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField
+from django.contrib.auth import get_user_model
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField, UserChangeForm, PasswordChangeForm
+from django.db.models import fields
+from django.http import request
 from django.utils import timezone
 from .models import *
 
@@ -85,3 +88,29 @@ class RegisterForm(UserCreationForm):
             'username', 'password1', 'password2', 'nickname', 'birthdate',
             'gender', 'job'
         ]
+
+
+class CustomUserChangeForm(UserChangeForm):
+    password = None
+
+    class Meta:
+        model = get_user_model()
+        fields = ['nickname', 'birthdate', 'gender', 'job', ]
+
+
+class CustomPasswordChangeForm(PasswordChangeForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomPasswordChangeForm, self).__init__(*args, **kwargs)
+        self.fields['old_password'].label = '기본 비밀번호'
+        self.fields['old_password'].widget.attrs.update({
+            'class': 'form-control',
+            'autofocus': False,
+        })
+        self.fields['new_password1'].label = '새 비밀번호'
+        self.fields['new_password1'].widget.attrs.update({
+            'class': 'form-control',
+        })
+        self.fields['new_password2'].label = '새 비밀번호 확인'
+        self.fields['new_password2'].widget.attrs.update({
+            'class': 'form-control',
+        })
