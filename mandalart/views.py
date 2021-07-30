@@ -16,7 +16,8 @@ def new(request):
         for i in range(1, 9):
             c = 'mid' + str(i)
             MidGoal(big=b, content=request.POST[c]).save()
-        return redirect('/common/dashboard/' + str(u.id))
+        return redirect('mandalart:plan_small')
+
     else:
         u = request.user
         if(u.is_manda):
@@ -25,7 +26,26 @@ def new(request):
 
 
 def plan_small(request):
-    return render(request, 'mandalart/plan_small.html')
+    if request.method == 'POST':
+        a = Mandalart.objects.get(user=request.user.id)
+        b = BigGoal.objects.get(manda=a)
+        m = MidGoal.objects.filter(big=b)
+        for i in range(len(m)):
+            for j in range(0, 8):
+                s = SpecificGoal(mid=m[i], content=request.POST['box' + str(i) + str(j)])
+                s.save()
+        return redirect('/common/dashboard/' + str(request.user.id))
+    else:
+        lst = []
+        manda = Mandalart.objects.get(user=request.user.id)
+        big = BigGoal.objects.get(manda=manda)
+        lst.append(big.content)
+        mid = MidGoal.objects.filter(big=big)
+        lst2 = []
+        for i in range(len(mid)):
+            lst2.append(mid[i].content)
+        lst.append(lst2)
+        return render(request, 'mandalart/plan_small.html', {'manda': lst})
 
 
 @login_required

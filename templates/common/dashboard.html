@@ -1,218 +1,203 @@
-{% extends 'layout.html' %}
-{% load static %}
+{% extends 'layout.html' %} {% load static %}
 {% block title %}
 Dashboard
 {% endblock title %}
-
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-{% endblock css %}
-
-{% block content %}
+<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+{% endblock css %} {% block content %}
 <section id="dashboard" class="content inner">
-    <div class="dashboard__title">
-        <p>Dashboard</p>
+  <div class="dashboard__title">
+    <p>Dashboard</p>
+  </div>
+  <div class="dashboard__content_top">
+    <div class="content__left">
+      <div class="customer_data">
+        <div class="datas">
+          <div class="profile_picture">
+            <img src="img/mini_jae.png" />
+          </div>
+          <div class="names">
+            <p>{{user.nickname}} 님</p>
+          </div>
+        </div>
+        <div class="edit__btns">
+          <button class="btn btn_gray">
+            <a href="{% url 'common:profile' user.id %}">See Profile</a>
+          </button>
+        </div>
+      </div>
+      <div class="levels">
+        <div class="level_picture">
+          <p>2</p>
+        </div>
+        <div class="descrip">
+          <p>Level 2</p>
+          <p>다음 단계를 위해서 세부 계획 3개를 더 완료하세요!</p>
+        </div>
+      </div>
     </div>
-    <div class="dashboard__content_top">
-        <div class="content__left">
-            <div class="customer_data">
-                <div class="datas">
-                    <div class="profile_picture">
-                        <img src="img/mini_jae.png" />
-                    </div>
-                    <div class="names">
-                        <p>{{user.nickname}} 님</p>
-                    </div>
-                </div>
-                <div class="edit__btns">
-                    <button class="btn btn_white">Edit Profile</button>
-                    <button class="btn btn_gray">See Profile</button>
-                </div>
-            </div>
-            <div class="levels">
-                <div class="level_picture">
-                    <p>2</p>
-                </div>
-                <div class="descrip">
-                    <p>Level 2</p>
-                    <p>다음 단계를 위해서 세부 계획 3개를 더 완료하세요!</p>
-                </div>
-            </div>
+    <div class="content__right">
+      <div class="badges">
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons">language</span>
+          </div>
+          <p>목표1</p>
         </div>
-        <div class="content__right">
-            <div class="badges">
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">language</span>
-                    </div>
-                    <p>목표1</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">code</span>
-                    </div>
-                    <p>목표2</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">space_dashboard</span>
-                    </div>
-                    <p>목표3</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">sentiment_satisfied</span>
-                    </div>
-                    <p>목표4</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            self_improvement
-                        </span>
-                    </div>
-                    <p>목표5</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            savings
-                        </span>
-                    </div>
-                    <p>목표6</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            people_outline
-                        </span>
-                    </div>
-                    <p>목표7</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            movie_creation
-                        </span>
-                    </div>
-                    <p>목표8</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            movie_creation
-                        </span>
-                    </div>
-                    <p>목표8</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            movie_creation
-                        </span>
-                    </div>
-                    <p>목표8</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            movie_creation
-                        </span>
-                    </div>
-                    <p>목표8</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            movie_creation
-                        </span>
-                    </div>
-                    <p>목표8</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            movie_creation
-                        </span>
-                    </div>
-                    <p>목표8</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            movie_creation
-                        </span>
-                    </div>
-                    <p>목표8</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            movie_creation
-                        </span>
-                    </div>
-                    <p>목표8</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            movie_creation
-                        </span>
-                    </div>
-                    <p>목표8</p>
-                </div>
-                <div class="badge_item">
-                    <div class="badge">
-                        <span class="material-icons">
-                            movie_creation
-                        </span>
-                    </div>
-                    <p>목표8</p>
-                </div>
-            </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons">code</span>
+          </div>
+          <p>목표2</p>
         </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons">space_dashboard</span>
+          </div>
+          <p>목표3</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons">sentiment_satisfied</span>
+          </div>
+          <p>목표4</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> self_improvement </span>
+          </div>
+          <p>목표5</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> savings </span>
+          </div>
+          <p>목표6</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> people_outline </span>
+          </div>
+          <p>목표7</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> movie_creation </span>
+          </div>
+          <p>목표8</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> movie_creation </span>
+          </div>
+          <p>목표8</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> movie_creation </span>
+          </div>
+          <p>목표8</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> movie_creation </span>
+          </div>
+          <p>목표8</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> movie_creation </span>
+          </div>
+          <p>목표8</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> movie_creation </span>
+          </div>
+          <p>목표8</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> movie_creation </span>
+          </div>
+          <p>목표8</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> movie_creation </span>
+          </div>
+          <p>목표8</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> movie_creation </span>
+          </div>
+          <p>목표8</p>
+        </div>
+        <div class="badge_item">
+          <div class="badge">
+            <span class="material-icons"> movie_creation </span>
+          </div>
+          <p>목표8</p>
+        </div>
+      </div>
     </div>
-    <div class="dashboard__content_bottom">
-        <div class="content__top">
-            <div class="names_mandalart">
-                <p><h2>{{user.nickname}}의 만다라트</h2></p>
-            </div>
-            <div class="icon_edit_mandalart">
-                
-            </div>
-            <div class="icon_delete_mandalart">
-                <i class="fa fa-trash" aria-hidden="true"></i>
-            </div>
-        </div>
-        <div class="content__bottom">
-            <div class="manda__table">
-                <script>
-                    for(let i = 1; i <= 9; i++) {
-                        document.write('<div class="box" id="box'+i+'">')
-                        for(let j = 1; j <= 9; j++){
-                            document.write('<input class="element" id="element'+j+'"" autocomplete="on"></input>');
-                        }
-                        document.write('</div>')
-                    }
-                </script>
-            </div>
-            <div class="manda__checkbox">
-                <script>
-                    for(let i = 0; i < 8; i++) {
-                        document.write('<p><div class="object" id="object'+i+'">');
-                        document.write('{{manda_mid'+i+'}}');
-                        for(let j = 1; j <= 9; j++){
-                            document.write('<label for="obj'+j+'"></label>');
-                            document.write('<input type="checkbox" class="elements" id="obj'+j+'">'+j+'</input>');
-                        }
-                        document.write('</div></p>');
-                    }
-                </script>
-            </div>
-            <div class="btn__select_manda_mode">
-                
-            </div>
-        </div>
+  </div>
+  <div class="dashboard__content_bottom">
+    <div class="manda__table">
+        <script>
+            for(let i = 1; i <= 9; i++) {
+                document.write('<div class="box" id="box'+i+'">')
+                for(let j = 1; j <= 9; j++){
+                    document.write('<input class="element" id="element'+j+'"" autocomplete="on"></input>');
+                }
+                document.write('</div>')
+            }
+        </script>
     </div>
+    <div class="manda__checkbox">
+        <script>
+            for(let i = 0; i < 8; i++) {
+                document.write('<p><div class="object" id="object'+i+'">');
+                document.write('{{manda_mid}}');
+                for(let j = 1; j <= 9; j++){
+                    document.write('<label for="obj'+j+'"></label>');
+                    document.write('<input type="checkbox" class="elements" id="obj'+j+'">'+j+'</input>');
+                }
+                document.write('</div></p>');
+            }
+        </script>
+    </div>
+    <div class="btn__select_manda_mode">
+      <input id="night_day" type="button" value="night" onclick="
+        var target=document.querySelector('body').style;
+        if(this.value === 'night'){
+          target.backgroundColor='black';
+          target.color='white';
+          this.value='day';
+          
+          var alist = document.querySelectorAll('a');
+          var i=0;
+          while(i<alist.length){
+              console.log(alist[i]);
+              alist[i].style.color='powderblue';
+              i+=1;
+          }
+        } else{
+            target.backgroundColor='white';
+            target.color='black';
+            this.value='night';
+
+            var alist = document.querySelectorAll('a');
+            var i=0;
+            while(i<alist.length){
+                console.log(alist[i]);
+                alist[i].style.color='blue';
+                i+=1;
+            }
+        }
+      ">
+    </div>
+  </div>
 </section>
 {% endblock content %}

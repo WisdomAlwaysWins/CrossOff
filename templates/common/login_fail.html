@@ -1,0 +1,59 @@
+{% load static %}
+<html lang="en">
+    <head>
+      <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+      <title>login</title>
+    </head>
+    <style>
+      .login_popup{
+        font-size: 35px;
+        font-weight: bolder;
+        margin: 70px auto ;
+      }
+      .login_find a{
+        font-weight:normal;
+        font-size: 14px;
+        color: rgb(99, 99, 99);
+      }
+      .login_find{
+        margin-top: 10px;
+      }
+    </style>
+    <body> 
+      <div class = "login_background">
+        <div class = login_body>
+          <!-- logo --> <div class = "login_logo"> Cross <br> off </div>
+          <form action="{% url 'common:login' %}" method="POST">
+            {% csrf_token %}
+            {% include "form_errors.html" %}
+            <div class=login_popup>
+              로그인 실패!!<br>
+            </div>  
+
+
+
+          </form> 
+
+          <div class="login_content_submit">
+            <a href="{% url 'common:login' %}"><input type="submit" value="확인" 
+            style="position:relative;
+            left:40%;
+            transform: translateX(-50%);
+            width:80%;
+            height:40px;
+            background:#603ec0;
+            color:white;
+            font-weight: bold;
+            border:none;
+            cursor:pointer;
+            transition: 0.4s;
+            display:inline;
+            font-size: 15px;"/></a>
+          </div>  
+          <div class = "login_find">
+            <a href="">아이디찾기 </a>
+            <a href="">비밀번호찾기 </a>
+            <a href="{% url 'common:register' %}">회원가입</a>  
+          </div>   
+    </body>
+</html>
