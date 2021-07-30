@@ -1,47 +1,44 @@
-{% extends 'layout.html' %}
-{% block content %}
+{% extends 'layout.html' %} {% block content %}
 <section id="updateProfile">
-    <div class="background">
-        <div class="content__title">
-            <p id="nickname">🤍 {{user.nickname}}</p>
-            <p>님의 프로필 수정 🤍</p>
-          </div>
-          <div class="updateProfile__content">
-            <form method="POST">
-                {% csrf_token %}
-                <table class="profile_edit_table">
-                    <tr>
-                        <th>ID</th>
-                        <td>{{user.username}}</td>
-                    </tr>
-                    <tr>
-                        <th>별명</th>
-                        <td>{{user_change_form.nickname}}</td>
-                    <tr>
-                        <th class="type">생년월일</th>
-                        <td class="content">{{user_change_form.birthdate}}</td>
-                    </tr>
-                    <tr>
-                        <th class="type">성별</th>
-                        <td class="content">
-                            {{user_change_form.gender}}
-                        </td>
-                    </tr>
-                      <tr>
-                        <th class="type">직업</th>
-                        <td class="content">
-                            {{user_change_form.job}}
-                        </td>
-                      </tr>
-                </table>
-            </form>
-            <div class="buttons">
-                <button class="btn btn-lightgray">
-                    <a href="{% url 'common:dashboard' user.id %}">취소</a>
-                </button>
-                <button type="submit" class=" btn btn-purple">수정</button>
-            </div>
-          </div>
+  <div class="background">
+    <div class="content__title">
+      <p id="nickname">🤍 {{user.nickname}}</p>
+      <p>님의 프로필 수정 🤍</p>
     </div>
+    <div class="updateProfile__content">
+      <form action="{% url 'common:profile_update' %}" method="POST">
+        {% csrf_token %}
+        <table class="profile_edit_table">
+          <tr>
+            <th>ID</th>
+            <td>{{user.username}}</td>
+          </tr>
+          <tr>
+            <th>별명</th>
+            <td>{{user_change_form.nickname}}</td>
+          </tr>
+
+          <tr>
+            <th class="type">생년월일</th>
+            <td class="content">{{user_change_form.birthdate}}</td>
+          </tr>
+          <tr>
+            <th class="type">성별</th>
+            <td class="content">{{user_change_form.gender}}</td>
+          </tr>
+          <tr>
+            <th class="type">직업</th>
+            <td class="content">{{user_change_form.job}}</td>
+          </tr>
+        </table>
+        <div class="buttons">
+          <button class="btn btn-lightgray">
+            <a href="{% url 'common:dashboard' user.id %}">취소</a>
+          </button>
+          <button type="submit" class="btn btn-purple">수정</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </section>
 {% endblock content %}
