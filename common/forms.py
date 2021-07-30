@@ -101,7 +101,7 @@ class CustomUserChangeForm(UserChangeForm):
 class CustomPasswordChangeForm(PasswordChangeForm):
     def __init__(self, *args, **kwargs):
         super(CustomPasswordChangeForm, self).__init__(*args, **kwargs)
-        self.fields['old_password'].label = '기본 비밀번호'
+        self.fields['old_password'].label = '기존 비밀번호'
         self.fields['old_password'].widget.attrs.update({
             'class': 'form-control',
             'autofocus': False,
