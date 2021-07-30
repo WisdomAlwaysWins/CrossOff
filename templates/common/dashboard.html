@@ -173,8 +173,46 @@ Dashboard
         </div>
     </div>
     <div class="dashboard__content_bottom">
-        <img src="img/2021_man.png" alt="mandalart-planner">
-        {{manda}}
+        <div class="content__top">
+            <div class="names_mandalart">
+                <p><h2>{{user.nickname}}의 만다라트</h2></p>
+            </div>
+            <div class="icon_edit_mandalart">
+                
+            </div>
+            <div class="icon_delete_mandalart">
+                <i class="fa fa-trash" aria-hidden="true"></i>
+            </div>
+        </div>
+        <div class="content__bottom">
+            <div class="manda__table">
+                <script>
+                    for(let i = 1; i <= 9; i++) {
+                        document.write('<div class="box" id="box'+i+'">')
+                        for(let j = 1; j <= 9; j++){
+                            document.write('<input class="element" id="element'+j+'"" autocomplete="on"></input>');
+                        }
+                        document.write('</div>')
+                    }
+                </script>
+            </div>
+            <div class="manda__checkbox">
+                <script>
+                    for(let i = 0; i < 8; i++) {
+                        document.write('<p><div class="object" id="object'+i+'">');
+                        document.write('{{manda_mid'+i+'}}');
+                        for(let j = 1; j <= 9; j++){
+                            document.write('<label for="obj'+j+'"></label>');
+                            document.write('<input type="checkbox" class="elements" id="obj'+j+'">'+j+'</input>');
+                        }
+                        document.write('</div></p>');
+                    }
+                </script>
+            </div>
+            <div class="btn__select_manda_mode">
+                
+            </div>
+        </div>
     </div>
 </section>
 {% endblock content %}

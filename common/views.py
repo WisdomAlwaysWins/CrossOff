@@ -48,13 +48,14 @@ def dashboard(request, id):
     big = BigGoal.objects.get(manda=manda)
     lst.append(big.content)
     mid = MidGoal.objects.filter(big=big)
+    lst2 = []
+    lst4 ={}
     for i in range(len(mid)):
-        lst2 = []
-        lst3 = []
+        lst3 = []  
         lst2.append(mid[i].content)
         spe = SpecificGoal.objects.filter(mid=mid[i])
         for j in range(len(spe)):
             lst3.append(spe[j].content)
-        lst2.append(lst3)
-        lst.append(lst2)
-    return render(request, 'common/dashboard.html', {'user': user, 'manda': lst})
+        lst4[i] = lst3
+    return render(request, 'common/dashboard.html', {'user': user, 'manda': lst, 'manda_mid':lst2, 'manda_small' : lst4})
+
