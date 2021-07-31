@@ -209,6 +209,54 @@ body{
     position: absolute;
     width:100%;
     top: 600px;
+    display: grid;
+    justify-content: center;
+}
+
+/* DashBoard Bottom */
+
+
+.dashboard__content_bottom .manda__options{
     display: flex;
     justify-content: center;
+}
+.manda__contents{
+    overflow: hidden;
+}
+.manda__table{
+    display: grid;
+    grid-template-rows: 450px 450px 450px;
+    grid-template-columns: 450px 450px 450px;
+}
+
+.box {
+    display: grid;
+    grid-template-rows: 130px 130px 130px;
+    grid-template-columns: 130px 130px 130px;
+    margin: 10px;
+}
+
+.manda__table .box .element {
+    background: rgb(245, 196, 243);
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-style: bold;
+    font-size: large;
+}
+
+#element5 {
+    background: orchid;
+}
+
+#box5 .element {
+    background: orchid;
+}
+
+#box5 #element5 {
+    background: rgb(178, 79, 228);
 }

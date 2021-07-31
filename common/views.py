@@ -69,7 +69,7 @@ def dashboard(request, id):
         for j in range(len(spe)):
             lst3.append(spe[j].content)
         lst4[i] = lst3
-    return render(request, 'common/dashboard.html', {'user': user, 'manda': lst, 'manda_mid':lst2, 'manda_small' : lst4})
+    return render(request, 'common/dashboard.html', {'user': user, 'manda': lst, 'manda_mid':lst2, 'manda_small' : lst4, 'manda_mid1':lst2[0],'manda_mid2':lst2[1],'manda_mid3':lst2[2],'manda_mid4':lst2[3],'manda_mid5':lst2[4],'manda_mid6':lst2[5],'manda_mid7':lst2[6],'manda_mid8':lst2[7]})
 
 def profile(request, id):
     user = User.objects.get(id=id)
