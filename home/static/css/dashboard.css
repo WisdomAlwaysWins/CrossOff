@@ -1,38 +1,75 @@
+/* Global setting */
+:root{
+    /* color */
+    --color-main--:#603ec0;
+    --color-white--:#eee;
+    --color-black--:#333;
+
+    /* Transition Duration */
+    --transition-duration--: 400ms ;
+
+    /* Border Radius */
+    --border-radius--:10px;
+
+}
+body{
+    margin:0 auto;
+}
+body{
+    margin:0;
+    padding:0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+ul{
+    list-style:none;
+    margin:0;
+    padding:0;
+}
+
 img{
     display:block;
 }
-.inner{
-    width:1400px;
-    margin:0 auto;
-    position: relative;
-}
-button{
-    background: transparent;
-    border: none;
-}
 
-.btn_gray{
-    padding:10px;
-    background: #333;
+/* BUTTON */
+button{
+    padding:10px 15px;
+    margin:0;
+    border:none;
+    background-color: transparent;
+    font-size: 15px;
+    transition: var(--transition-duration--);
+    border-radius: var(--border-radius--);
+}
+.btn-black{
+    background-color: var(--color-black--);
     color:white;
-    border-radius: 10px;
-    padding: 10px 15px;
-    transition: 300ms;
 }
-.btn_gray:hover{
-    background: rgb(100, 100, 100);
+.btn-black:hover{
+    background-color: black;
 }
-.btn_white{
-    padding:10px;
-    background: white;
-    color:#333;
-    border: 1px solid rgb(100, 100, 100, 0.25);
-    border-radius: 10px;
-    padding: 10px 15px;
-    transition: 300ms;
+.btn-purple{
+    background-color: rgba(96,62,192,0.8);
+    color:white;
 }
-.btn_white:hover{
-    border: 1px solid rgb(100, 100, 100,0.6);
+.btn-purple:hover{ 
+    background-color: #603ec0; 
+    color:white;
+}
+.btn-white{
+    background-color: var(--color-white--);
+    color: #3e3260;
+}
+.btn-white:hover{ 
+    background-color: white;
+    color:#3e3260;
+}
+.btn-lightgray{
+    background-color:rgb(215, 210, 216);
+    color: var(--color-black--);
+}
+.btn-lightgray:hover{
+    background-color:rgb(191, 187, 192);
+    color: var(--color-black--);
 }
 /* header */
 header{
@@ -237,10 +274,7 @@ button, button:active, button:focus{
     background-color: mediumorchid;
     outline: none;
 }
-button:hover{
-    color: white;
-    background-color: orchid;
-}
+
 button:disabled{
     color: white;
     background-color: darkorchid;
