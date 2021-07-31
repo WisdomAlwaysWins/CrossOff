@@ -4,7 +4,9 @@ Dashboard
 {% endblock title %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock css %} {% block content %}
+
 <section id="dashboard" class="content inner">
   <div class="dashboard__title">
     <p>Dashboard</p>
@@ -147,8 +149,170 @@ Dashboard
     </div>
   </div>
   <div class="dashboard__content_bottom">
-    <img src="img/2021_man.png" alt="mandalart-planner" />
-    {{manda}}
+    <div class="manda__nav">
+      <div class="manda__name">
+        <script>
+          document.write('{{user.nickname}}님의 만다라트');
+        </script>
+      </div>
+      <div class="manda__options_btn" id="manda_options_btn">
+        <div >
+          <button class="btn__mode_table"><i class="fa fa-th"></i></button>
+        </div>
+        <div >
+          <button class="btn__mode_checkbox"><i class="fa fa-th-list"></i></button>
+        </div>
+
+        <div class="btn__manda_edit">
+          <button cursor="pointer"><i class="fa fa-pencil"></i></button>
+        </div>
+        <div class="btn__manda_delete">
+          <button><i class="fa fa-trash"></i></button>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="manda__contents" id="manda_contents">
+      <div class="manda__content">
+        <div class="manda__table" id="manda_table">
+          <script>
+            for(let i = 1; i <= 9; i++) {
+                document.write('<div class="box" id="box'+i+'">')
+                for(let j = 1; j <= 9; j++){
+                    document.write('<input class="element" id="element'+j+'"" autocomplete="on" readonly></input>');
+                }
+                document.write('</div>')
+            }
+          </script>
+        </div>
+        <div class="manda__checkbox" id="manda_checkbox">
+          <div class="manda__checkbox_up">
+            <div class="object" id="object1">
+              <div class="object__mid" id="object__mid1">
+                {{manda_mid1}}
+              </div>
+              <script>
+                for(let j = 1; j <= 8; j++){
+                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
+                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
+              }</script>
+            </div><br>
+            <div class="object" id="object2">
+              <div class="object__mid" id="object__mid2">
+                {{manda_mid2}}
+              </div>
+              <script>
+                for(let j = 1; j <= 8; j++){
+                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
+                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
+              }</script>
+            </div>
+            <div class="object" id="object3">
+              <div class="object__mid" id="object__mid3">
+                {{manda_mid3}}
+              </div>
+              <script>
+                for(let j = 1; j <= 8; j++){
+                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
+                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
+              }</script>
+            </div>
+            <div class="object" id="object4">
+              <div class="object__mid" id="object__mid4">
+                {{manda_mid4}}
+              </div>
+              <script>
+                for(let j = 1; j <= 8; j++){
+                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
+                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
+              }</script>
+            </div>
+          </div>
+          <div class="manda__checkbox_down">
+            <div class="object" id="object5">
+              <div class="object__mid" id="object__mid5">
+                {{manda_mid5}}
+              </div>
+              <script>
+                for(let j = 1; j <= 8; j++){
+                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
+                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
+              }</script>
+            </div>
+            <div class="object" id="object6">
+              <div class="object__mid" id="object__mid6">
+                {{manda_mid6}}
+              </div>
+              <script>
+                for(let j = 1; j <= 8; j++){
+                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
+                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
+              }</script>
+            </div>
+            <div class="object" id="object7">
+              <div class="object__mid" id="object__mid7">
+                {{manda_mid7}}
+              </div>
+              <script>
+                for(let j = 1; j <= 8; j++){
+                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
+                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
+              }</script>
+            </div>
+            <div class="object" id="object8">
+              <div class="object__mid" id="object__mid8">
+                {{manda_mid8}}
+              </div>
+              <script>
+                for(let j = 1; j <= 8; j++){
+                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
+                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
+              }</script>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- JAVASCRIPT -->
+    <script>
+      let curPos = 0;
+      let postion = 0;
+      const IMAGE_WIDTH = 1350;
+      const tableBtn = document.querySelector(".btn__mode_table")
+      const checkboxBtn = document.querySelector(".btn__mode_checkbox")
+      const content = document.querySelector(".manda__contents")
+      
+      function table(){
+        if(curPos > 0){
+          checkboxBtn.removeAttribute("disabled")
+          postion += IMAGE_WIDTH;
+          content.style.transform = `translateX(${postion}px)`;
+          curPos = curPos - 1;
+        }
+        if(curPos == 0){
+          tableBtn.setAttribute('disabled', 'true')
+        }
+      }
+      function checkbox(){
+        if(curPos < 1){
+          tableBtn.removeAttribute("disabled")
+          postion -= IMAGE_WIDTH;
+          content.style.transform = `translateX(${postion}px)`;
+          curPos = curPos + 1;
+        }
+        if(curPos == 1){
+          checkboxBtn.setAttribute('disabled', 'true')
+        }
+      }
+      
+      function init(){
+        tableBtn.setAttribute('disabled', 'true')
+        tableBtn.addEventListener("click", table)
+        checkboxBtn.addEventListener("click", checkbox)
+      }
+      
+      init();
+    </script>
   </div>
 </section>
 {% endblock content %}

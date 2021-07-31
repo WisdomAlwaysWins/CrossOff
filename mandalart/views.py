@@ -65,3 +65,13 @@ def test(request):
         lst2.append(lst3)
         lst.append(lst2)
     return render(request, 'mandalart/test.html', {'manda': lst})
+
+@login_required
+def mid(request):
+    lst = []
+    manda = Mandalart.objects.get(user=request.user.id)
+    big = BigGoal.objects.get(manda=manda)
+    mid = MidGoal.objects.filter(big=big)
+    for i in range(len(mid)):
+        lst.append(mid[i].content)
+    return render(request, 'mandalart/test.html', {'manda_mid': lst})

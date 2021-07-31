@@ -207,10 +207,100 @@ body{
 .dashboard__content_top .content__right .badges .badge_item p{
     color:#333;
 }
+
+/* DashBoard Bottom */
 .dashboard__content_bottom{
     position: absolute;
-    width:100%;
+    width: 70%;
     top: 600px;
-    display: flex;
+    display: grid;
+    margin: 0 0 0 15%;
     justify-content: center;
+    overflow: hidden;
+}
+
+.dashboard__content_bottom .manda__nav{
+    display: flex;
+    justify-content: space-between;
+}
+.manda__nav #manda_options_btn{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+}
+
+button, button:active, button:focus{
+    width: 100px;
+    height: 30px;
+    border: none;
+    color: black;
+    background-color: mediumorchid;
+    outline: none;
+}
+button:hover{
+    color: white;
+    background-color: orchid;
+}
+button:disabled{
+    color: white;
+    background-color: darkorchid;
+}
+.manda__contents{
+    width: 1350px;
+    overflow: hidden;
+    display: grid;
+}
+
+.manda__content{
+    position: relative;
+    display: flex;
+}
+.manda__table{
+    width: 1350px;
+    display: grid;
+    grid-template-rows: 450px 450px 450px;
+    grid-template-columns: 450px 450px 450px;
+}
+
+.box {
+    display: grid;
+    grid-template-rows: 130px 130px 130px;
+    grid-template-columns: 130px 130px 130px;
+    margin: 10px;
+}
+
+.manda__table .box .element {
+    background: rgb(245, 196, 243);
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    font-style: bold;
+    font-size: large;
+}
+
+#element5 {
+    background: orchid;
+}
+
+#box5 .element {
+    background: orchid;
+}
+
+#box5 #element5 {
+    background: rgb(178, 79, 228);
+}
+
+.manda__checkbox{
+    display: grid;
+    width: 1350px;
+}
+.manda__checkbox_up{
+    display: flex;
+}
+.manda__checkbox_down{
+    display: flex;
 }
