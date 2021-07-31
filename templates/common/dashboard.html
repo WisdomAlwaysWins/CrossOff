@@ -3,7 +3,7 @@
 Dashboard
 {% endblock title %}
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/dashboard.css' %}" />
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 {% endblock css %} {% block content %}
 
@@ -150,30 +150,23 @@ Dashboard
   </div>
   <div class="dashboard__content_bottom">
     <div class="manda__nav">
-      <div class="manda__name">
-        <script>
-          document.write('{{user.nickname}}님의 만다라트');
-        </script>
-      </div>
-      <div class="manda__options_btn" id="manda_options_btn">
-        <div >
-          <button class="btn__mode_table"><i class="fa fa-th"></i></button>
-        </div>
-        <div >
-          <button class="btn__mode_checkbox"><i class="fa fa-th-list"></i></button>
-        </div>
-
-        <div class="btn__manda_edit">
-          <button cursor="pointer"><i class="fa fa-pencil"></i></button>
-        </div>
-        <div class="btn__manda_delete">
-          <button><i class="fa fa-trash"></i></button>
-        </div>
+      <div class="categories">
+        <button class="btn btn-lightgray" data-filter="table">
+          <span class="material-icons">apps</span>
+        </button>
+        <button class="btn btn-lightgray" data-filter="checkbox">
+          <span class="material-icons">format_list_bulleted</span>
+        </button>
+        <button class="btn btn-lightgray" data-filter="edit">
+          <span class="material-icons">edit</span>
+        </button>
+        <button class="btn btn-lightgray" data-filter="delete">
+          <span class="material-icons">delete</span>
+        </button>
       </div>
     </div>
-    <br>
-    <div class="manda__contents" id="manda_contents">
-      <div class="manda__content">
+    <div class="plan__content">
+      <div class="plan table" data-type="table">
         <div class="manda__table" id="manda_table">
           <script>
             for(let i = 1; i <= 9; i++) {
@@ -185,134 +178,126 @@ Dashboard
             }
           </script>
         </div>
+      </div>
+      <div class="plan checkbox" data-type="checkbox">
         <div class="manda__checkbox" id="manda_checkbox">
-          <div class="manda__checkbox_up">
-            <div class="object" id="object1">
-              <div class="object__mid" id="object__mid1">
-                {{manda_mid1}}
+            <div class="up side">
+              <div class="object" id="object1">
+                <div class="mid" id="object__mid1">
+                  <p>{{manda_mid1}}</p>
+                </div>
+                <script>
+                  for(let j = 1; j <= 8; j++){
+                  document.write('<div class="object__small"><input type="checkbox" class="elements" id="obj'+j+'"/>');
+                  document.write('<label for="obj'+j+'">세부목표 '+j+'</label></div>');
+                }</script>
               </div>
-              <script>
-                for(let j = 1; j <= 8; j++){
-                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
-                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
-              }</script>
-            </div><br>
-            <div class="object" id="object2">
-              <div class="object__mid" id="object__mid2">
-                {{manda_mid2}}
+              <div class="object" id="object2">
+                <div class="mid" id="object__mid2">
+                  <p>{{manda_mid2}}</p>
+                </div>
+                <script>
+                  for(let j = 1; j <= 8; j++){
+                  document.write('<div class="object__small"><input type="checkbox" class="elements" id="obj'+j+'"/>');
+                  document.write('<label for="obj'+j+'">세부목표 '+j+'</label></div>');
+                }</script>
               </div>
-              <script>
-                for(let j = 1; j <= 8; j++){
-                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
-                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
-              }</script>
+              <div class="object" id="object3">
+                <div class="mid" id="object__mid3">
+                  <p>{{manda_mid3}}</p>
+                </div>
+                <script>
+                  for(let j = 1; j <= 8; j++){
+                  document.write('<div class="object__small"><input type="checkbox" class="elements" id="obj'+j+'"/>');
+                  document.write('<label for="obj'+j+'">세부목표 '+j+'</label></div>');
+                }</script>
+              </div>
+              <div class="object" id="object4">
+                <div class="mid" id="object__mid4">
+                  <p>{{manda_mid4}}</p>
+                </div>
+                <script>
+                  for(let j = 1; j <= 8; j++){
+                  document.write('<div class="object__small"><input type="checkbox" class="elements" id="obj'+j+'"/>');
+                  document.write('<label for="obj'+j+'">세부목표 '+j+'</label></div>');
+                }</script>
+              </div>
             </div>
-            <div class="object" id="object3">
-              <div class="object__mid" id="object__mid3">
-                {{manda_mid3}}
+            <div class="down side">
+              <div class="object" id="object5">
+                <div class="mid" id="object__mid5">
+                  <p>{{manda_mid5}}</p>
+                </div>
+                <script>
+                  for(let j = 1; j <= 8; j++){
+                  document.write('<div class="object__small"><input type="checkbox" class="elements" id="obj'+j+'"/>');
+                  document.write('<label for="obj'+j+'">세부목표 '+j+'</label></div>');
+                }</script>
               </div>
-              <script>
-                for(let j = 1; j <= 8; j++){
-                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
-                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
-              }</script>
-            </div>
-            <div class="object" id="object4">
-              <div class="object__mid" id="object__mid4">
-                {{manda_mid4}}
+              <div class="object" id="object6">
+                <div class="mid" id="object__mid6">
+                  <p>{{manda_mid6}}</p>
+                </div>
+                <script>
+                  for(let j = 1; j <= 8; j++){
+                  document.write('<div class="object__small"><input type="checkbox" class="elements" id="obj'+j+'"/>');
+                  document.write('<label for="obj'+j+'">세부목표 '+j+'</label></div>');
+                }</script>
               </div>
-              <script>
-                for(let j = 1; j <= 8; j++){
-                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
-                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
-              }</script>
-            </div>
-          </div>
-          <div class="manda__checkbox_down">
-            <div class="object" id="object5">
-              <div class="object__mid" id="object__mid5">
-                {{manda_mid5}}
+              <div class="object" id="object7">
+                <div class="mid" id="object__mid7">
+                  <p>{{manda_mid7}}</p>
+                </div>
+                <script>
+                  for(let j = 1; j <= 8; j++){
+                  document.write('<div class="object__small"><input type="checkbox" class="elements" id="obj'+j+'"/>');
+                  document.write('<label for="obj'+j+'">세부목표 '+j+'</label></div>');
+                }</script>
               </div>
-              <script>
-                for(let j = 1; j <= 8; j++){
-                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
-                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
-              }</script>
-            </div>
-            <div class="object" id="object6">
-              <div class="object__mid" id="object__mid6">
-                {{manda_mid6}}
+              <div class="object" id="object8">
+                <div class="mid" id="object__mid8">
+                  <p>{{manda_mid8}}</p>
+                </div>
+                <script>
+                  for(let j = 1; j <= 8; j++){
+                  document.write('<div class="object__small"><input type="checkbox" class="elements" id="obj'+j+'"/>');
+                  document.write('<label for="obj'+j+'">세부목표 '+j+'</label></div>');
+                }</script>
               </div>
-              <script>
-                for(let j = 1; j <= 8; j++){
-                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
-                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
-              }</script>
             </div>
-            <div class="object" id="object7">
-              <div class="object__mid" id="object__mid7">
-                {{manda_mid7}}
-              </div>
-              <script>
-                for(let j = 1; j <= 8; j++){
-                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
-                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
-              }</script>
-            </div>
-            <div class="object" id="object8">
-              <div class="object__mid" id="object__mid8">
-                {{manda_mid8}}
-              </div>
-              <script>
-                for(let j = 1; j <= 8; j++){
-                document.write('<br><div class="object__small"><label for="obj'+j+'"></label>');
-                document.write('<input type="checkbox" class="elements" id="obj'+j+'">세부목표 '+j+'</input></div>');
-              }</script>
-            </div>
-          </div>
         </div>
       </div>
+      <div class="plan edit" data-type="edit">
+        <p>여기 안에 편집 내용이 들어가유</p>
+      </div>
+      <div class="plan delete" data-type="delete">
+        <p>여긴 삭제 (만약에 삭제 기능을 DB를 날리는 거라면.. 여긴 필요가 없겠죠..?)</p>
+      </div>
     </div>
-    <!-- JAVASCRIPT -->
-    <script>
-      let curPos = 0;
-      let postion = 0;
-      const IMAGE_WIDTH = 1350;
-      const tableBtn = document.querySelector(".btn__mode_table")
-      const checkboxBtn = document.querySelector(".btn__mode_checkbox")
-      const content = document.querySelector(".manda__contents")
-      
-      function table(){
-        if(curPos > 0){
-          checkboxBtn.removeAttribute("disabled")
-          postion += IMAGE_WIDTH;
-          content.style.transform = `translateX(${postion}px)`;
-          curPos = curPos - 1;
-        }
-        if(curPos == 0){
-          tableBtn.setAttribute('disabled', 'true')
-        }
-      }
-      function checkbox(){
-        if(curPos < 1){
-          tableBtn.removeAttribute("disabled")
-          postion -= IMAGE_WIDTH;
-          content.style.transform = `translateX(${postion}px)`;
-          curPos = curPos + 1;
-        }
-        if(curPos == 1){
-          checkboxBtn.setAttribute('disabled', 'true')
-        }
-      }
-      
-      function init(){
-        tableBtn.setAttribute('disabled', 'true')
-        tableBtn.addEventListener("click", table)
-        checkboxBtn.addEventListener("click", checkbox)
-      }
-      
-      init();
-    </script>
   </div>
 </section>
+<!-- JAVASCRIPT -->
+<script>
+  // 만다라트 보기 방식 변경 by 지혜
+  const btnContainer = document.querySelector('.categories');
+  const planContainer = document.querySelector('.plan__content');
+  const plans = document.querySelectorAll('.plan');
+  btnContainer.addEventListener('click', (e)=>{
+    const filter = e.target.dataset.filter || e.target.parentNode.dataset.filter;
+    if(filter == null){
+      return;
+    }
+    planContainer.classList.add('anim-out');
+    setTimeout(()=>{
+      plans.forEach((plan)=>{
+      if(filter === plan.dataset.type){
+        plan.classList.remove('invisible');
+      }else{
+        plan.classList.add('invisible');
+      }
+      });
+      planContainer.classList.remove('anim-out');
+    },300);
+  });
+</script>
 {% endblock content %}

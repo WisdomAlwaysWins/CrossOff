@@ -878,3 +878,401 @@ button{
 #editPassword .background .editPassword__content form .buttons .btn a{
     color:var(--color-white--);
 }
+
+/* Dashboard */
+/* DashBoard */
+#dashboard{
+    top:50px;
+}
+.dashboard__title{
+    padding: 15px;
+}
+.dashboard__title p{
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.dashboard__content_top{
+    /* background-color: antiquewhite; */
+    position: absolute;
+    width:100%;
+    height:500px;
+    display:flex;
+}
+
+.dashboard__content_top .content__left{
+    flex:4;
+    height:100%;
+    position: relative;
+}
+.dashboard__content_top .content__left .customer_data{
+    position: absolute;
+    width:100%;
+    height:60%;
+    margin: 10px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+}
+.dashboard__content_top .content__left .customer_data .datas{
+    padding: 40px;
+    display: flex;
+    align-items: center;
+}
+.dashboard__content_top .content__left .customer_data .datas .profile_picture {
+    flex:1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard__content_top .content__left .customer_data .datas .profile_picture img{
+    padding:20px;
+    background-color: #333;
+    border-radius: 50%;
+    width:100px;
+}
+.dashboard__content_top .content__left .customer_data .datas .names{
+    flex: 1;
+    display:flex;
+    justify-content: center;
+
+}
+.dashboard__content_top .content__left .customer_data .datas .names p{
+    font-size: 32px;
+    font-weight: 600;
+}
+.dashboard__content_top .content__left .customer_data .edit__btns{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard__content_top .content__left .customer_data .edit__btns .btn{
+    margin: 0 10px;
+}
+.dashboard__content_top .content__left .customer_data .edit__btns .btn a{
+    color:#eee;
+}
+.dashboard__content_top .content__left .levels{
+    position: absolute;
+    background-color: white;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    margin:10px;
+    width:100%;
+    height:30%;
+    bottom: 0;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard__content_top .content__left .levels .level_picture{
+    flex:3;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard__content_top .content__left .levels .level_picture p{
+    font-size: 72px;
+    color:yellowgreen;
+}
+.dashboard__content_top .content__left .levels .descrip{
+    flex:7;
+}
+.dashboard__content_top .content__left .levels .descrip p{
+    margin: 15px 0;
+}
+
+.dashboard__content_top .content__right{
+    position: relative;
+    width:100%;
+    flex:6;
+    margin:10px;
+    display: flex;
+}
+.dashboard__content_top .content__right .badges{
+    padding:20px;
+    position: absolute;
+    height:92%;
+    width:93%;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px rgba(0,0,0,0.3);
+    margin-left:20px;
+    display:grid;
+    align-items: center;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: repeat(5,1fr);
+    overflow: auto;
+}
+.dashboard__content_top .content__right .badges .badge_item{
+    display:flex;
+    margin:0 auto;
+    width:100%;
+    height:200px;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard__content_top .content__right .badges .badge_item .badge{
+    background-color: #333;
+    width:100px;
+    height:100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+.dashboard__content_top .content__right .badges .badge_item .badge .material-icons{
+    font-size: 50px;
+    color:white;
+}
+.dashboard__content_top .content__right .badges .badge_item p{
+    color:#333;
+}
+
+/* DashBoard Bottom */
+.dashboard__content_bottom{
+    position: relative;
+    left:50%;
+    transform: translate(-50%,0);
+    width: 90vw;
+    top: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin:0;
+}
+
+.dashboard__content_bottom .manda__nav{
+    width:100%;
+    height: 50px;
+    display: flex;
+}
+.dashboard__content_bottom .manda__nav .title{
+    flex: 4;
+}
+.dashboard__content_bottom .manda__nav .categories{
+    position: absolute;
+    right:0;
+    flex:1;
+    display:flex;
+    align-items:center;
+}
+.dashboard__content_bottom .manda__nav .categories .btn{
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color:var(--color-white--);
+    margin: 0 10px;
+}
+.dashboard__content_bottom .manda__nav .categories .btn .material-icons{
+    font-size: 18px;
+}
+.dashboard__content_bottom .plan__content .plan{
+    width: 100%;
+    height: 1400px;
+}
+.dashboard__content_bottom .plan__content .plan.invisible{
+    display:none;
+}
+.dashboard__content_bottom .plan__content .table{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+.dashboard__content_bottom .plan__content .table .manda__table{
+    width:1260px;
+    height:1260px;
+    display: grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.dashboard__content_bottom .plan__content .table .manda__table .box{
+    width:420px;
+    height:420px;
+    display:grid;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard__content_bottom .plan__content .table .manda__table .box .element{
+    padding:0;
+    margin:0;
+    width:137px;
+    height:137px;
+    text-align: center;
+    display:flex;
+    background-color: #eee;
+
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box1 .element{
+    background: #F8D4D0;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box1 #element5{
+    background: #EC9790;
+} 
+.dashboard__content_bottom .plan__content .table .manda__table #box2 .element{
+    background: #FAD9BE;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box2 #element5{
+    background: #FAC188;
+} 
+.dashboard__content_bottom .plan__content .table .manda__table #box3 .element{
+    background: #F9EDBB;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box3 #element5{
+    background: #F4DA85;
+} 
+.dashboard__content_bottom .plan__content .table .manda__table #box4 .element{
+    background: #EFDDEB;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box4 #element5{
+    background: #CD9BC4;
+} 
+.dashboard__content_bottom .plan__content .table .manda__table #box6 .element{
+    background: #DBECE2;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box6 #element5{
+    background: #9AD1B2;
+} 
+.dashboard__content_bottom .plan__content .table .manda__table #box7 .element{
+    background: #C9D5ED;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box7 #element5{
+    background: #82A0D2;
+} 
+.dashboard__content_bottom .plan__content .table .manda__table #box8 .element{
+    background: #E3EDF7;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box8 #element5{
+    background: #BAD3EF;
+} 
+.dashboard__content_bottom .plan__content .table .manda__table #box9 .element{
+    background: #D0EAEB;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box9 #element5{
+    background: #51BDBD;
+} 
+
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element5{
+    background: var(--color-white--);
+} 
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element1{
+    background: #EC9790;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element2{
+    background: #FAC188;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element3{
+    background: #F4DA85;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element4{
+    background: #CD9BC4;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element6{
+    background: #9AD1B2;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element7{
+    background: #82A0D2;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element8{
+    background: #BAD3EF;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element9{
+    background: #51BDBD;  
+}
+
+.dashboard__content_bottom .plan__content .checkbox{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height:1000px;
+    background-color: rgba(238, 238, 238, 0.6);
+    border-radius: 5px;
+}
+.dashboard__content_bottom .plan__content .checkbox .manda__checkbox{
+    width:90%;
+}
+.dashboard__content_bottom .plan__content .checkbox .side{
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.dashboard__content_bottom .plan__content .checkbox .object{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 250px;
+    margin-bottom: 100px;
+}
+.dashboard__content_bottom .plan__content .checkbox .object .mid{
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 5px;
+}
+.dashboard__content_bottom .plan__content .checkbox .object #object__mid1{
+    background-color: #EC9790;
+}
+.dashboard__content_bottom .plan__content .checkbox .object #object__mid2{
+    background-color: #FAC188;
+}
+.dashboard__content_bottom .plan__content .checkbox .object #object__mid3{
+    background-color: #F4DA85;
+}
+.dashboard__content_bottom .plan__content .checkbox .object #object__mid4{
+    background-color: #CD9BC4;
+}
+.dashboard__content_bottom .plan__content .checkbox .object #object__mid5{
+    background-color: #9AD1B2;
+}
+.dashboard__content_bottom .plan__content .checkbox .object #object__mid6{
+    background-color:  #82A0D2;
+}
+.dashboard__content_bottom .plan__content .checkbox .object #object__mid7{
+    background-color: #BAD3EF;
+}
+.dashboard__content_bottom .plan__content .checkbox .object #object__mid8{
+    background-color: #51BDBD;  
+}
+.dashboard__content_bottom .plan__content .checkbox .object .mid p{
+    font-size: 20px;
+    color:white;
+}
+.dashboard__content_bottom .plan__content .checkbox .object .object__small{
+    display:flex;
+    padding-top: 20px;
+}
+.dashboard__content_bottom .plan__content .checkbox .object .elements{
+    display:flex;
+}
+.dashboard__content_bottom .plan__content .checkbox .object label{
+    font-size: 16px;
+    margin-left: 10px;
+    color:var(--color-black--);
+}
+.dashboard__content_bottom .plan__content .edit{
+    width:100%;
+    height: 800px;
+    background: darkgreen;
+}
+.dashboard__content_bottom .plan__content .delete{
+    width:100%;
+    height: 800px;
+    background: sandybrown;
+}
+.dashboard__content_bottom .plan__content{
+    opacity: 1;
+    transition: all var(--transition-duration--) ease-in;
+}
+.dashboard__content_bottom .plan__content.anim-out{
+    opacity: 0.6;
+    transform: scale(0.98) translateY(15px);
+}
+
+
