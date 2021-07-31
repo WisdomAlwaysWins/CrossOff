@@ -68,10 +68,12 @@ def dashboard(request, id):
         lst.append(lst2)
     return render(request, 'common/dashboard.html', {'user': user, 'manda': lst})
 
+
 @login_required
 def profile(request, id):
     user = User.objects.get(id=id)
     return render(request, 'common/seeProfile.html', {'user': user})
+
 
 @login_required
 def profileUpdate(request):
@@ -86,6 +88,7 @@ def profileUpdate(request):
         user_change_form = CustomUserChangeForm(instance=request.user)
         return render(request, 'common/updateProfile.html', {'user_change_form': user_change_form})
 
+
 @login_required
 def passwordEdit(request):
     if request.method == 'POST':
@@ -94,8 +97,7 @@ def passwordEdit(request):
         if password_change_form.is_valid():
             user = password_change_form.save()
             update_session_auth_hash(request, user)
-            messages.success(request, '비밀번호 변경 완료!')
-        return redirect('/common/dashboard/' + str(request.user.id))
+            return redirect('/common/dashboard/' + str(request.user.id))
     else:
         password_change_form = CustomPasswordChangeForm(request.user)
     return render(request, 'common/editPassword.html', {'password_change_form': password_change_form})
