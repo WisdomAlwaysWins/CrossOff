@@ -124,7 +124,9 @@ body{
 }
 .dashboard__content_top .content__left .customer_data .edit__btns .btn{
     margin: 0 10px;
-    font-weight: bold;
+}
+.dashboard__content_top .content__left .customer_data .edit__btns .btn a{
+    color:#eee;
 }
 .dashboard__content_top .content__left .levels{
     position: absolute;

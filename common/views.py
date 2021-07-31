@@ -1,8 +1,9 @@
 from django.shortcuts import redirect, render
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from mandalart.models import *
+from django.contrib import messages
 
 
 def register(request):
@@ -43,10 +44,6 @@ def login_(request):
         return render(request, 'common/login.html', {'form': form})
 
 
-def fail(request):
-    return render(request, 'common/login_fail.html')
-
-
 def logout_(request):
     logout(request)
     return redirect('home:home')
@@ -71,6 +68,35 @@ def dashboard(request, id):
         lst4[i] = lst3
     return render(request, 'common/dashboard.html', {'user': user, 'manda': lst, 'manda_mid':lst2, 'manda_small' : lst4, 'manda_mid1':lst2[0],'manda_mid2':lst2[1],'manda_mid3':lst2[2],'manda_mid4':lst2[3],'manda_mid5':lst2[4],'manda_mid6':lst2[5],'manda_mid7':lst2[6],'manda_mid8':lst2[7]})
 
+@login_required
 def profile(request, id):
     user = User.objects.get(id=id)
     return render(request, 'common/seeProfile.html', {'user': user})
+
+
+@login_required
+def profileUpdate(request):
+    if request.method == 'POST':
+        user_change_form = CustomUserChangeForm(
+            request.POST, instance=request.user)
+
+        if user_change_form.is_valid():
+            user_change_form.save()
+        return redirect('/common/dashboard/' + str(request.user.id))
+    else:
+        user_change_form = CustomUserChangeForm(instance=request.user)
+        return render(request, 'common/updateProfile.html', {'user_change_form': user_change_form})
+
+
+@login_required
+def passwordEdit(request):
+    if request.method == 'POST':
+        password_change_form = CustomPasswordChangeForm(
+            request.user, request.POST)
+        if password_change_form.is_valid():
+            user = password_change_form.save()
+            update_session_auth_hash(request, user)
+            return redirect('/common/dashboard/' + str(request.user.id))
+    else:
+        password_change_form = CustomPasswordChangeForm(request.user)
+    return render(request, 'common/editPassword.html', {'password_change_form': password_change_form})
