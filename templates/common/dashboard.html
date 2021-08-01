@@ -345,6 +345,10 @@
   const btnContainer = document.querySelector(".categories");
   const planContainer = document.querySelector(".plan__content");
   const plans = document.querySelectorAll(".plan");
+  plans.forEach((plan) => {
+    console.log(plan.dataset);
+    if (plan.dataset.type !== "table") plan.classList.add("invisible");
+  });
   btnContainer.addEventListener("click", (e) => {
     const filter =
       e.target.dataset.filter || e.target.parentNode.dataset.filter;
@@ -352,7 +356,10 @@
       return;
     }
     if (filter == "delete") {
-      window.location.href = "/mandalart/delete/";
+      var answer = window.confirm("정말로 삭제하시겠습니까?");
+      if (answer) {
+        window.location.href = "/mandalart/delete/";
+      }
     }
     planContainer.classList.add("anim-out");
     setTimeout(() => {

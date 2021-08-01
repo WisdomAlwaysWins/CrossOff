@@ -46,3 +46,4 @@ class User(AbstractUser):
                               null=False,
                               default=5)
     is_manda = models.BooleanField(default=False)
+    REQUIRED_FIELDS = ['nickname', 'birthdate']
