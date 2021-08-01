@@ -75,3 +75,13 @@ def mid(request):
     for i in range(len(mid)):
         lst.append(mid[i].content)
     return render(request, 'mandalart/test.html', {'manda_mid': lst})
+
+
+@login_required
+def delMandalart(request):
+    user = request.user
+    manda = Mandalart.objects.get(user=user.id)
+    manda.delete()
+    user.is_manda = False
+    user.save()
+    return redirect('mandalart:new')
