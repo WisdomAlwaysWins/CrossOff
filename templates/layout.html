@@ -57,5 +57,12 @@
 
   {% block content %} {% endblock content %}
 </body>
-
+<script>
+  // 스크롤하면 네브바가 투명해져요..
+  const nav = document.querySelector('.header__container');
+  const navHeight = nav.getBoundingClientRect().height;
+  document.addEventListener('scroll',()=>{
+    nav.style.opacity = (1 - window.scrollY / navHeight);
+  });
+</script>
 </html>

@@ -61,23 +61,47 @@ def dashboard(request, id):
     lst.append(big.content)
     mid = MidGoal.objects.filter(big=big)
     lst2 = []
-    lst4 ={}
+    lst4 = {}
     for i in range(len(mid)):
-        lst3 = []  
+        lst3 = []
         lst2.append(mid[i].content)
         spe = SpecificGoal.objects.filter(mid=mid[i])
         for j in range(len(spe)):
             lst3.append(spe[j].content)
         lst4[i] = lst3
-    return render(request, 'common/dashboard.html', {'user': user, 'manda': lst, 'manda_mid':lst2, 'manda_small' : lst4, 'manda_mid1':lst2[0],'manda_mid2':lst2[1],'manda_mid3':lst2[2],'manda_mid4':lst2[3],'manda_mid5':lst2[4],'manda_mid6':lst2[5],'manda_mid7':lst2[6],'manda_mid8':lst2[7]})
 
-@login_required
+    achieve_goal = SpecificGoal.objects.filter(is_achieved=True)
+    achieve_num = len(achieve_goal)
+
+    check_mid_achieve = []
+    for i in range(len(mid)):
+        if mid[i].is_achieved == True:
+            # mid goal을 달성했으면 1 저장
+            check_mid_achieve.append(1)
+        else:
+            # 달성하지 못했으면 0 저장
+            check_mid_achieve.append(0)
+
+    return render(
+        request,
+        'common/dashboard.html',
+        {
+            'user': user,
+            'manda': lst, 'manda_mid': lst2, 'manda_small': lst4,
+            'manda_mid1': lst2[0], 'manda_mid2': lst2[1], 'manda_mid3': lst2[2], 'manda_mid4': lst2[3], 'manda_mid5': lst2[4], 'manda_mid6': lst2[5], 'manda_mid7': lst2[6], 'manda_mid8': lst2[7],
+            'achieve_num': achieve_num,
+            'check_mid_achieve': check_mid_achieve,
+        }
+    )
+
+
+@ login_required
 def profile(request, id):
     user = User.objects.get(id=id)
     return render(request, 'common/seeProfile.html', {'user': user})
 
 
-@login_required
+@ login_required
 def profileUpdate(request):
     if request.method == 'POST':
         user_change_form = CustomUserChangeForm(
@@ -91,7 +115,7 @@ def profileUpdate(request):
         return render(request, 'common/updateProfile.html', {'user_change_form': user_change_form})
 
 
-@login_required
+@ login_required
 def passwordEdit(request):
     if request.method == 'POST':
         password_change_form = CustomPasswordChangeForm(
