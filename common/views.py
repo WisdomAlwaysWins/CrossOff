@@ -53,6 +53,9 @@ def logout_(request):
 def dashboard(request, id):
     user = User.objects.get(id=id)
     lst = []
+    print(user.is_manda)
+    if not user.is_manda:
+        return redirect('mandalart:new')
     manda = Mandalart.objects.get(user=user.id)
     big = BigGoal.objects.get(manda=manda)
     lst.append(big.content)
