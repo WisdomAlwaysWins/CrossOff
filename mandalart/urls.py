@@ -7,5 +7,6 @@ urlpatterns = [
 
     path('plan_small/', views.plan_small, name='plan_small'),
     path('new/', views.new, name='new'),
-    path('test/', views.test, name='test')
+    path('test/', views.test, name='test'),
+    path('delete/', views.delMandalart, name='delete'),
 ]
