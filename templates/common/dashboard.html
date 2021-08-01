@@ -5,8 +5,91 @@
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 {% endblock css %} {% block content %}
+<script>
+  var manda_big = JSON.parse("{{manda}}".replace(/&quot;/g, '"'));
+  var manda_mid = JSON.parse("{{manda_mid}}".replace(/&quot;/g, '"'));
+  var manda_small = JSON.parse("{{manda_small}}".replace(/&quot;/g, '"'));
+  function putvalue(isEdit) {
+    var id = "element";
+    if (isEdit) id += "_edit";
+    for (let i = 1; i <= 9; i++) {
+      document.write('<div class="box" id="box' + i + '">');
+      for (let j = 1; j <= 9; j++) {
+        if (isEdit) {
+          if (j == 5) {
+            document.write(
+              '<input class="element" id="' +
+                id +
+                i +
+                j +
+                '"" autocomplete="on" name=box' +
+                i +
+                j +
+                " readonly></input>"
+            );
+          } else {
+            document.write(
+              '<input class="element" id="' +
+                id +
+                i +
+                j +
+                '"" autocomplete="on" name=box' +
+                i +
+                j +
+                "></input>"
+            );
+          }
+        } else {
+          document.write(
+            '<input class="element" id="' +
+              id +
+              i +
+              j +
+              '"" autocomplete="on" name=box' +
+              i +
+              j +
+              " readonly></input>"
+          );
+        }
+      }
+      document.write("</div>");
+    }
 
+    for (let i = 0; i < 9; i++) {
+      if (i < 4) {
+        document.getElementById(id + 5 + (i + 1)).value = manda_mid[i];
+        document.getElementById(id + (i + 1) + 5).value = manda_mid[i];
+      } else if (i == 4) document.getElementById(id + 55).value = manda_big[0];
+      else {
+        document.getElementById(id + 5 + (i + 1)).value = manda_mid[i - 1];
+        document.getElementById(id + (i + 1) + 5).value = manda_mid[i - 1];
+      }
+    }
+    for (let i = 1; i <= 9; i++) {
+      for (let j = 1; j <= 9; j++) {
+        if (i == 5 || j == 5) continue;
+        if (i < 5) {
+          if (j < 5)
+            document.getElementById(id + i + j).value =
+              manda_small[i - 1][j - 1];
+          else
+            document.getElementById(id + i + j).value =
+              manda_small[i - 1][j - 2];
+        } else {
+          if (j < 5) {
+            document.getElementById(id + i + j).value =
+              manda_small[i - 2][j - 1];
+          } else {
+            document.getElementById(id + i + j).value =
+              manda_small[i - 2][j - 2];
+          }
+        }
+      }
+    }
+  }
+</script>
 <section id="dashboard" class="content inner">
   <div class="dashboard__title">
     <p>Dashboard</p>
@@ -169,17 +252,57 @@
       <div class="plan table" data-type="table">
         <div class="manda__table" id="manda_table">
           <script>
-            for (let i = 1; i <= 9; i++) {
-              document.write('<div class="box" id="box' + i + '">');
-              for (let j = 1; j <= 9; j++) {
-                document.write(
-                  '<input class="element" id="element' +
-                    j +
-                    '"" autocomplete="on" readonly></input>'
-                );
+            putvalue(false);
+              {% comment %} for (let i = 1; i <= 9; i++) {
+                document.write('<div class="box" id="box' + i + '">');
+                for (let j = 1; j <= 9; j++) {
+                  document.write(
+                    '<input class="element" id="element' +
+                      i +
+                      j +
+                      '"" autocomplete="on"' +
+                      " readonly></input>"
+                  );
+                }
+                document.write("</div>");
               }
-              document.write("</div>");
-            }
+
+              for (let i = 0; i < 9; i++) {
+                if (i < 4) {
+                  document.getElementById("element5" + (i + 1)).value =
+                    manda_mid[i];
+                  document.getElementById("element" + (i + 1) + 5).value =
+                    manda_mid[i];
+                } else if (i == 4)
+                  document.getElementById("element55").value = manda_big[0];
+                else {
+                  document.getElementById("element5" + (i + 1)).value =
+                    manda_mid[i - 1];
+                  document.getElementById("element" + (i + 1) + 5).value =
+                    manda_mid[i - 1];
+                }
+              }
+              for (let i = 1; i <= 9; i++) {
+                for (let j = 1; j <= 9; j++) {
+                  if (i == 5 || j == 5) continue;
+                  if (i < 5) {
+                    if (j < 5)
+                      document.getElementById("element" + i + j).value =
+                        manda_small[i - 1][j - 1];
+                    else
+                      document.getElementById("element" + i + j).value =
+                        manda_small[i - 1][j - 2];
+                  } else {
+                    if (j < 5) {
+                      document.getElementById("element" + i + j).value =
+                        manda_small[i - 2][j - 1];
+                    } else {
+                      document.getElementById("element" + i + j).value =
+                        manda_small[i - 2][j - 2];
+                    }
+                  }
+                }
+              } {% endcomment %}
           </script>
         </div>
       </div>
@@ -327,8 +450,16 @@
           </div>
         </div>
       </div>
-      <div class="plan edit" data-type="edit">
-        <p>여기 안에 편집 내용이 들어가유</p>
+      <div class="plan table edit" data-type="edit">
+        <div class="manda__table" id="manda_table">
+          <form action="{% url 'mandalart:edit' %}" method="POST">
+            <input type="submit" value="변경 내용 저장" class="btn-purple" />
+            {% csrf_token %}
+            <script>
+              putvalue(true);
+            </script>
+          </form>
+        </div>
       </div>
     </div>
   </div>
@@ -340,7 +471,6 @@
   const planContainer = document.querySelector(".plan__content");
   const plans = document.querySelectorAll(".plan");
   plans.forEach((plan) => {
-    console.log(plan.dataset);
     if (plan.dataset.type !== "table") plan.classList.add("invisible");
   });
   btnContainer.addEventListener("click", (e) => {
@@ -354,13 +484,12 @@
       if (answer) {
         window.location.href = "/mandalart/delete/";
       }
+      return;
     }
     planContainer.classList.add("anim-out");
     setTimeout(() => {
       plans.forEach((plan) => {
-        if (filter === "delete") {
-          return;
-        } else if (filter === plan.dataset.type) {
+        if (filter === plan.dataset.type) {
           plan.classList.remove("invisible");
         } else {
           plan.classList.add("invisible");
@@ -368,6 +497,12 @@
       });
       planContainer.classList.remove("anim-out");
     }, 300);
+  });
+
+  $(document).keypress(function (event) {
+    if (event.which == "13") {
+      event.preventDefault();
+    }
   });
 </script>
 {% endblock content %}

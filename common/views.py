@@ -5,6 +5,7 @@ from .forms import *
 from mandalart.models import *
 from django.contrib import messages
 from django.conf import settings
+import json
 
 
 def register(request):
@@ -77,17 +78,17 @@ def dashboard(request, id):
     return render(
         request, 'common/dashboard.html', {
             'user': user,
-            'manda': lst,
-            'manda_mid': lst2,
-            'manda_small': lst4,
-            'manda_mid1': lst2[0],
-            'manda_mid2': lst2[1],
-            'manda_mid3': lst2[2],
-            'manda_mid4': lst2[3],
-            'manda_mid5': lst2[4],
-            'manda_mid6': lst2[5],
-            'manda_mid7': lst2[6],
-            'manda_mid8': lst2[7]
+            'manda': json.dumps(lst),
+            'manda_mid': json.dumps(lst2),
+            'manda_small': json.dumps(lst4),
+            'manda_mid1': json.dumps(lst2[0]),
+            'manda_mid2': json.dumps(lst2[1]),
+            'manda_mid3': json.dumps(lst2[2]),
+            'manda_mid4': json.dumps(lst2[3]),
+            'manda_mid5': json.dumps(lst2[4]),
+            'manda_mid6': json.dumps(lst2[5]),
+            'manda_mid7': json.dumps(lst2[6]),
+            'manda_mid8': json.dumps(lst2[7])
         })
 
 
