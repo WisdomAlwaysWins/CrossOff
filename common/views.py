@@ -35,14 +35,15 @@ def login_(request):
                                 username=username,
                                 password=password)
             if user is not None:
-                request.session['user_id'] = str(user.id)
                 login(request, user)
                 remember_session = request.POST.get('keepLogin', False)
+                print(settings.SESSION_EXPIRE_AT_BROWSER_CLOSE)
                 if remember_session:
                     settings.SESSION_EXPIRE_AT_BROWSER_CLOSE = False
+                    print(settings.SESSION_EXPIRE_AT_BROWSER_CLOSE)
                 return redirect('mandalart:new')
         else:
-            return redirect('common:fail')
+            return redirect('home:home')
 
     else:
         form = LoginForm()
