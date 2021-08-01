@@ -62,16 +62,6 @@ textarea{
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* color:rgb(0, 0, 0);
-    padding:20px;
-    background:#fff;
-    border-bottom:4px solid #5e95cd;
-    box-shadow: 0px 0px 30px #888888;
-    border-radius: 10px;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 300px;
-    resize: none; */
 
  
 }
@@ -86,16 +76,7 @@ input{
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* color:rgb(0, 0, 0);
-    padding:20px;
-    background:#fff;
-    border-bottom:4px solid #5e95cd;
-    box-shadow: 0px 0px 30px #888888;
-    border-radius: 10px;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 300px;
-    resize: none; */
+
 }
 
 #answer_1{
@@ -124,14 +105,7 @@ input{
 .biggoal:hover{transition : 0.4s; background-color:#613ec015;  }
 
 .midgoal:hover{transition : 0.4s; background-color:#613ec015; font-size: 40px; width: 240px; height: 300px; }
-/* #midgoal_2:hover{transition : 0.4s; background-color:#FAD9BE; font-size: 40px; width: 240px; height: 300px;}
-#midgoal_3:hover{transition : 0.4s; background-color:#F9EDBB; font-size: 40px; width: 240px; height: 300px;}
-#midgoal_4:hover{transition : 0.4s; background-color:#EFDDEB; font-size: 40px; width: 240px; height: 300px;}
-#midgoal_5:hover{transition : 0.4s; background-color:#DBECE2; font-size: 40px; width: 240px; height: 300px;}
-#midgoal_6:hover{transition : 0.4s; background-color:#C9D5ED; font-size: 40px; width: 240px; height: 300px;}
-#midgoal_7:hover{transition : 0.4s; background-color:#E3EDF7; font-size: 40px; width: 240px; height: 300px;}
-#midgoal_8:hover{transition : 0.4s; background-color:#D0EAEB; font-size: 40px; width: 240px; height: 300px;}
- */
+
 
 
 .midgoal{
@@ -149,7 +123,6 @@ input{
     margin: 15px;
     box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
     background-size: 10;
-    /* background: linear-gradient(360deg, #ffffff 80%, rgb(184, 127, 127) 10%  ); */
 }
 
 .bigtext{
