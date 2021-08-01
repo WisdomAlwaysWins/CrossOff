@@ -330,12 +330,6 @@
       <div class="plan edit" data-type="edit">
         <p>여기 안에 편집 내용이 들어가유</p>
       </div>
-      <div class="plan delete" data-type="delete">
-        <p>
-          여긴 삭제 (만약에 삭제 기능을 DB를 날리는 거라면.. 여긴 필요가
-          없겠죠..?)
-        </p>
-      </div>
     </div>
   </div>
 </section>
@@ -364,7 +358,9 @@
     planContainer.classList.add("anim-out");
     setTimeout(() => {
       plans.forEach((plan) => {
-        if (filter === plan.dataset.type) {
+        if (filter === "delete") {
+          return;
+        } else if (filter === plan.dataset.type) {
           plan.classList.remove("invisible");
         } else {
           plan.classList.add("invisible");
