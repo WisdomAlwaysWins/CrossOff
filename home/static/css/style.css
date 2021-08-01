@@ -579,6 +579,21 @@ button{
     font-size: 15px;
 }
 
+.register_emailForm{
+    position:relative;
+    left:40%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    left:43.2%;
+    width:60%;
+    height:35px;
+    font-weight: bold;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+    font-size: 15px;
+}
+
 .register_birthForm{
     position:relative;
     left:40%;
