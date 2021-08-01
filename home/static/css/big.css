@@ -1,0 +1,178 @@
+body{
+    margin: 0;
+}
+.swiper-container {
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+}
+.swiper-wrapper{
+    margin-top: 0;
+}
+.swiper-slide {
+    background: #eee;;
+    color: #333;
+
+    /* 내용을 중앙정렬 하기위해 flex 사용 */
+    align-items: center;
+    /* 위아래 기준 중앙정렬 */
+   /* justify-content: center; */
+    /* 좌우 기준 중앙정렬 */
+}
+.swiper-button-prev,.swiper-button-next{
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translateY(-50%);
+    z-index: 999999;
+    display: inline-block;
+    height: 5em;
+    width: 5em;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+}
+.swiper-button-prev{
+    margin-left: 100px;
+}
+.swiper-button-next{
+    margin-right: 100px;
+}
+.plan_big_box{
+    position:absolute;
+    width:300px;
+    height:400px;
+    padding: 40px 30px 30px 30px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:30%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+}
+textarea{
+    resize: none;
+    width: 400px;
+    height: 100px;
+    border-radius: 20px;
+    text-align: center;
+    padding:0;
+    margin-top: 0px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+ 
+}
+input{
+    resize: none;
+    width: 400px;
+    height: 100px;
+    border-radius: 20px;
+    text-align: center;
+    padding:0;
+    margin-top: 0px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+}
+
+#answer_1{
+    margin-top: 75px;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
+    border: none;
+}
+#answer_1:focus{
+    outline: none;
+}
+.biggoal{
+    outline: none;
+    border: none;
+    font-size: 20px;
+    font-style: "돋움";
+    resize: none;
+    width: 400px;
+    height: 150px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
+    background-size: 10;
+}
+.biggoal:hover{transition : 0.4s; background-color:#613ec015;  }
+
+.midgoal:hover{transition : 0.4s; background-color:#613ec015; font-size: 40px; width: 240px; height: 300px; }
+
+
+
+.midgoal{
+    outline: none;
+    border: none;
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: "돋움";
+    resize: none;
+    width: 200px;
+    height: 250px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
+    background-size: 10;
+}
+
+.bigtext{
+    width:20px;
+    height:50px;
+}
+
+#question_1, #question_2{
+    margin-top: 100px;
+    height: 500px;
+}
+#question_1 .q{
+    margin-top: 150px;
+}
+#question_2 .q{
+    margin-top: 100px;
+}
+.midgoals{
+    margin-top: 50px;
+}
+input{
+    margin-top: 30px;
+}
+.l{
+    color: #603ec0;
+    font-weight: bold;
+    font-size: 30px;
+}
+p{
+    display:inline-block;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.final_btn{
+    position:center ;
+    width:350px;
+    height:60px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+     background: #603ec0;                        
+    border:1px rgb(83, 83, 83);
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+    border-radius: 10px;
+}
+
+.final_btn:hover{
+    background-color: #613ec0c4;
+}
+
