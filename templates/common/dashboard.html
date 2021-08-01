@@ -253,56 +253,6 @@
         <div class="manda__table" id="manda_table">
           <script>
             putvalue(false);
-              {% comment %} for (let i = 1; i <= 9; i++) {
-                document.write('<div class="box" id="box' + i + '">');
-                for (let j = 1; j <= 9; j++) {
-                  document.write(
-                    '<input class="element" id="element' +
-                      i +
-                      j +
-                      '"" autocomplete="on"' +
-                      " readonly></input>"
-                  );
-                }
-                document.write("</div>");
-              }
-
-              for (let i = 0; i < 9; i++) {
-                if (i < 4) {
-                  document.getElementById("element5" + (i + 1)).value =
-                    manda_mid[i];
-                  document.getElementById("element" + (i + 1) + 5).value =
-                    manda_mid[i];
-                } else if (i == 4)
-                  document.getElementById("element55").value = manda_big[0];
-                else {
-                  document.getElementById("element5" + (i + 1)).value =
-                    manda_mid[i - 1];
-                  document.getElementById("element" + (i + 1) + 5).value =
-                    manda_mid[i - 1];
-                }
-              }
-              for (let i = 1; i <= 9; i++) {
-                for (let j = 1; j <= 9; j++) {
-                  if (i == 5 || j == 5) continue;
-                  if (i < 5) {
-                    if (j < 5)
-                      document.getElementById("element" + i + j).value =
-                        manda_small[i - 1][j - 1];
-                    else
-                      document.getElementById("element" + i + j).value =
-                        manda_small[i - 1][j - 2];
-                  } else {
-                    if (j < 5) {
-                      document.getElementById("element" + i + j).value =
-                        manda_small[i - 2][j - 1];
-                    } else {
-                      document.getElementById("element" + i + j).value =
-                        manda_small[i - 2][j - 2];
-                    }
-                  }
-                }
-              } {% endcomment %}
           </script>
         </div>
       </div>
