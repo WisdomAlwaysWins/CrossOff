@@ -28,7 +28,7 @@
                         </div>
                 
                         <div>
-                            <input class = "biggoal" autocomplete="off" id="answer_1" name="big" cols="50" rows="7"placeholder="Ex. 좋은 사람 되기, 꿈에 가까워지는 한 해"></input><br>
+                            <input type="textarea" class = "biggoal" autocomplete="off" id="answer_1" name="big" cols="50" rows="7"placeholder="Ex. 좋은 사람 되기, 꿈에 가까워지는 한 해"></input><br>
                         </div>
                        
                         
@@ -88,6 +88,12 @@
                 prevEl: '.swiper-button-prev', // 이번 버튼 클래스명
             },
         });
+        $(document).keypress(
+  function(event){
+    if (event.which == '13') {
+      event.preventDefault();
+    }
+});
     </script>
 </body>
 
