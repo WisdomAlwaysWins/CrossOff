@@ -30,7 +30,7 @@ body{
     width: 5em;
     background-position: center center;
     background-repeat: no-repeat;
-    color:#603ec0;
+
 }
 .swiper-button-prev{
     margin-left: 100px;
@@ -62,16 +62,6 @@ textarea{
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* color:rgb(0, 0, 0);
-    padding:20px;
-    background:#fff;
-    border-bottom:4px solid #5e95cd;
-    box-shadow: 0px 0px 30px #888888;
-    border-radius: 10px;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 300px;
-    resize: none; */
 
  
 }
@@ -86,19 +76,9 @@ input{
     align-items: center;
     justify-content: center;
     text-align: center;
-    /* color:rgb(0, 0, 0);
-    padding:20px;
-    background:#fff;
-    border-bottom:4px solid #5e95cd;
-    box-shadow: 0px 0px 30px #888888;
-    border-radius: 10px;
-    font-size: 20px;
-    text-align: center;
-    margin-top: 300px;
-    resize: none; */
 
- 
 }
+
 #answer_1{
     margin-top: 75px;
     box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
@@ -107,33 +87,42 @@ input{
 #answer_1:focus{
     outline: none;
 }
-#midgoal_1:focus{background-color:#F8D4D0;
-    outline: none;}
-#midgoal_2:focus{background-color:#FAD9BE;
-    outline: none;}
-#midgoal_3:focus{background-color:#F9EDBB;
-    outline: none;}
-#midgoal_4:focus{background-color:#EFDDEB;
-    outline: none;}
-#midgoal_5:focus{background-color:#DBECE2;
-    outline: none;}
-#midgoal_6:focus{background-color:#C9D5ED;
-    outline: none;}
-#midgoal_7:focus{background-color:#E3EDF7;
-    outline: none;}
-#midgoal_8:focus{background-color:#D0EAEB;
-    outline: none;}
-
-.midgoal{
+.biggoal{
+    outline: none;
+    border: none;
+    font-size: 20px;
+    font-style: "돋움";
     resize: none;
-    width: 200px;
+    width: 400px;
     height: 150px;
     border-radius: 10px;
     text-align: center;
-    padding:0;
-    margin-top: 0px;
+    padding: 20px;
+    margin: 15px;
     box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
+    background-size: 10;
+}
+.biggoal:hover{transition : 0.4s; background-color:#613ec015;  }
+
+.midgoal:hover{transition : 0.4s; background-color:#613ec015; font-size: 40px; width: 240px; height: 300px; }
+
+
+
+.midgoal{
+    outline: none;
     border: none;
+    font-size: 20px;
+    font-weight: bolder;
+    font-style: "돋움";
+    resize: none;
+    width: 200px;
+    height: 250px;
+    border-radius: 10px;
+    text-align: center;
+    padding: 20px;
+    margin: 15px;
+    box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
+    background-size: 10;
 }
 
 .bigtext{
@@ -167,3 +156,23 @@ p{
     font-size: 25px;
     font-weight: bold;
 }
+
+.final_btn{
+    position:center ;
+    width:350px;
+    height:60px;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+     background: #603ec0;                        
+    border:1px rgb(83, 83, 83);
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+    border-radius: 10px;
+}
+
+.final_btn:hover{
+    background-color: #613ec0c4;
+}
+

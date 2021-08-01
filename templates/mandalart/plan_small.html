@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="ko">
 
@@ -13,55 +14,12 @@
     <!-- 이 예제에서는 필요한 js, css 를 링크걸어 사용 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
+    <link rel="stylesheet" href="{%static 'css/small.css'%}">
 
-
-    <style type="text/css">
-        .board {
-            display: grid;
-            grid-template-rows: 450px 450px 450px;
-            grid-template-columns: 450px 450px 450px;
-        }
-
-        .box {
-            display: grid;
-            grid-template-rows: 130px 130px 130px;
-            grid-template-columns: 130px 130px 130px;
-            margin: 10px;
-        }
-
-        body {
-            display: grid;
-            justify-content: center;
-        }
-
-        .element {
-            background: rgb(245, 196, 243);
-            border: 2px solid white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            text-align: center;
-            font-weight: bold;
-            font-style: bold;
-            font-size: large;
-        }
-
-        #element5 {
-            background: orchid;
-        }
-
-        #box5 .element {
-            background: orchid;
-        }
-
-        #box5 #element5 {
-            background: rgb(178, 79, 228);
-        }
-    </style>
 
     <form action="{% url 'mandalart:plan_small' %}" method="POST">
         {% csrf_token %}
+        <br>  <br>  <br>
         <div class="board">
             <script>
                 let cnt = 0;
@@ -101,9 +59,10 @@
                     document.write('</div>')
                 }
             </script>
-            <input type="submit" value="세부 계획 짜러 가기">
-        </div>
-        <input type="submit" class="button_finish" value="계획 짜기 끝!" />
+
+    </div>
+    <input type="submit" class = "small_btn_detail" value="만다르트로 가기" >
+
     </form>
 </body>
 </html>
