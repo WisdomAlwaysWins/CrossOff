@@ -1,14 +1,101 @@
-{% extends 'layout.html' %} {% load static %} {% block title %} Dashboard
-{%endblock title %} {% block css %}
+{% extends 'layout.html' %} 
+{% load static %} 
+{% block title %} 
+Dashboard
+{%endblock title %} 
+{% block css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <link
   rel="stylesheet"
   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
 />
-{% endblock css %} {% block content %}
-
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+{% endblock css %} 
+{% block content %}
+<script>
+  var manda_big = JSON.parse("{{manda}}".replace(/&quot;/g, '"'));
+  var manda_mid = JSON.parse("{{manda_mid}}".replace(/&quot;/g, '"'));
+  var manda_small = JSON.parse("{{manda_small}}".replace(/&quot;/g, '"'));
+  function putvalue(isEdit) {
+    var id = "element";
+    if (isEdit) id += "_edit";
+    for (let i = 1; i <= 9; i++) {
+      document.write('<div class="box" id="box' + i + '">');
+      for (let j = 1; j <= 9; j++) {
+        if (isEdit) {
+          if (j == 5) {
+            document.write(
+              '<input class="element" id="' +
+                id +
+                i +
+                j +
+                '"" autocomplete="on" name=box' +
+                i +
+                j +
+                " readonly></input>"
+            );
+          } else {
+            document.write(
+              '<input class="element" id="' +
+                id +
+                i +
+                j +
+                '"" autocomplete="on" name=box' +
+                i +
+                j +
+                "></input>"
+            );
+          }
+        } else {
+          document.write(
+            '<input class="element" id="' +
+              id +
+              i +
+              j +
+              '"" autocomplete="on" name=box' +
+              i +
+              j +
+              " readonly></input>"
+          );
+        }
+      }
+      document.write("</div>");
+    }
+    for (let i = 0; i < 9; i++) {
+      if (i < 4) {
+        document.getElementById(id + 5 + (i + 1)).value = manda_mid[i];
+        document.getElementById(id + (i + 1) + 5).value = manda_mid[i];
+      } else if (i == 4) document.getElementById(id + 55).value = manda_big[0];
+      else {
+        document.getElementById(id + 5 + (i + 1)).value = manda_mid[i - 1];
+        document.getElementById(id + (i + 1) + 5).value = manda_mid[i - 1];
+      }
+    }
+    for (let i = 1; i <= 9; i++) {
+      for (let j = 1; j <= 9; j++) {
+        if (i == 5 || j == 5) continue;
+        if (i < 5) {
+          if (j < 5)
+            document.getElementById(id + i + j).value =
+              manda_small[i - 1][j - 1];
+          else
+            document.getElementById(id + i + j).value =
+              manda_small[i - 1][j - 2];
+        } else {
+          if (j < 5) {
+            document.getElementById(id + i + j).value =
+              manda_small[i - 2][j - 1];
+          } else {
+            document.getElementById(id + i + j).value =
+              manda_small[i - 2][j - 2];
+          }
+        }
+      }
+    }
+  }
+</script>
 <section id="dashboard">
-  <div class="content inner">
+  <div class="dashboard__content">
     <div class="dashboard__title">
       <p>Dashboard</p>
     </div>
@@ -39,9 +126,12 @@
           <div class="badges">
             {% if check_mid_achieve.0 == 1 %}
             <div class="badge achieve">
-              <img src="{% static 'img/icon_calcifer.png' %}" alt="">
+              <div class="badge_img"></div>
               <div class="name">
-                <p class="badge_name">{{manda_mid1}}</p>
+                <script>
+                  var manda_mid1 = JSON.parse("{{manda_mid1}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid1 + '</p>');
+                </script>
               </div>
             </div>
             {% else %}
@@ -52,12 +142,15 @@
               </div>
             </div>
             {% endif %}
-
+  
             {% if check_mid_achieve.1 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
-                <p class="badge_name">{{manda_mid2}}</p>
+                <script>
+                  var manda_mid2 = JSON.parse("{{manda_mid2}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid2 + '</p>');
+                </script>
               </div>
             </div>
             {% else %}
@@ -68,12 +161,15 @@
               </div>
             </div>
             {% endif %}
-
+  
             {% if check_mid_achieve.2 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
-                <p class="badge_name">{{manda_mid3}}</p>
+                <script>
+                  var manda_mid3 = JSON.parse("{{manda_mid3}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid3 + '</p>');
+                </script>
               </div>
             </div>
             {% else %}
@@ -84,12 +180,15 @@
               </div>
             </div>
             {% endif %}
-
+  
             {% if check_mid_achieve.3 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
-                <p class="badge_name">{{manda_mid4}}</p>
+                <script>
+                  var manda_mid4 = JSON.parse("{{manda_mid4}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid4 + '</p>');
+                </script>
               </div>
             </div>
             {% else %}
@@ -100,12 +199,15 @@
               </div>
             </div>
             {% endif %}
-
+  
             {% if check_mid_achieve.4 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
-                <p class="badge_name">{{manda_mid5}}</p>
+                <script>
+                  var manda_mid5 = JSON.parse("{{manda_mid5}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid5 + '</p>');
+                </script>
               </div>
             </div>
             {% else %}
@@ -116,12 +218,15 @@
               </div>
             </div>
             {% endif %}
-
+  
             {% if check_mid_achieve.5 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
-                <p class="badge_name">{{manda_mid6}}</p>
+                <script>
+                  var manda_mid6 = JSON.parse("{{manda_mid6}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid6 + '</p>');
+                </script>
               </div>
             </div>
             {% else %}
@@ -132,12 +237,15 @@
               </div>
             </div>
             {% endif %}
-
+  
             {% if check_mid_achieve.6 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
-                <p class="badge_name">{{manda_mid7}}</p>
+                <script>
+                  var manda_mid7 = JSON.parse("{{manda_mid7}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid7 + '</p>');
+                </script>
               </div>
             </div>
             {% else %}
@@ -148,12 +256,15 @@
               </div>
             </div>
             {% endif %}
-
+  
             {% if check_mid_achieve.7 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
-                <p class="badge_name">{{manda_mid8}}</p>
+                <script>
+                  var manda_mid8 = JSON.parse("{{manda_mid8}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid8 + '</p>');
+                </script>
               </div>
             </div>
             {% else %}
@@ -174,12 +285,12 @@
             </div>
             <form action="" id="todo-form">
               <input type="text" placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!" />
+              <input type="submit" value="🤍"/>
             </form>
             <ul id="todo-list"></ul>
           </div>
         </div>
       </div>
-
       <div class="bottom">
         <div class="goal_achievement">
           <span id="total_goal_num">64개의 세부 목표 중 </span>
@@ -209,17 +320,7 @@
         <div class="plan table" data-type="table">
           <div class="manda__table" id="manda_table">
             <script>
-              for (let i = 1; i <= 9; i++) {
-                document.write('<div class="box" id="box' + i + '">');
-                for (let j = 1; j <= 9; j++) {
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" readonly></input>'
-                  );
-                }
-                document.write("</div>");
-              }
+              putvalue(false);
             </script>
           </div>
         </div>
@@ -238,11 +339,7 @@
                         '"/>'
                     );
                     document.write(
-                      '<label for="obj' +
-                        j +
-                        '">세부목표 ' +
-                        j +
-                        "</label></div>"
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
                     );
                   }
                 </script>
@@ -259,11 +356,7 @@
                         '"/>'
                     );
                     document.write(
-                      '<label for="obj' +
-                        j +
-                        '">세부목표 ' +
-                        j +
-                        "</label></div>"
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
                     );
                   }
                 </script>
@@ -280,11 +373,7 @@
                         '"/>'
                     );
                     document.write(
-                      '<label for="obj' +
-                        j +
-                        '">세부목표 ' +
-                        j +
-                        "</label></div>"
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
                     );
                   }
                 </script>
@@ -301,11 +390,7 @@
                         '"/>'
                     );
                     document.write(
-                      '<label for="obj' +
-                        j +
-                        '">세부목표 ' +
-                        j +
-                        "</label></div>"
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
                     );
                   }
                 </script>
@@ -324,11 +409,7 @@
                         '"/>'
                     );
                     document.write(
-                      '<label for="obj' +
-                        j +
-                        '">세부목표 ' +
-                        j +
-                        "</label></div>"
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
                     );
                   }
                 </script>
@@ -345,11 +426,7 @@
                         '"/>'
                     );
                     document.write(
-                      '<label for="obj' +
-                        j +
-                        '">세부목표 ' +
-                        j +
-                        "</label></div>"
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
                     );
                   }
                 </script>
@@ -366,11 +443,7 @@
                         '"/>'
                     );
                     document.write(
-                      '<label for="obj' +
-                        j +
-                        '">세부목표 ' +
-                        j +
-                        "</label></div>"
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
                     );
                   }
                 </script>
@@ -387,11 +460,7 @@
                         '"/>'
                     );
                     document.write(
-                      '<label for="obj' +
-                        j +
-                        '">세부목표 ' +
-                        j +
-                        "</label></div>"
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
                     );
                   }
                 </script>
@@ -399,14 +468,16 @@
             </div>
           </div>
         </div>
-        <div class="plan edit" data-type="edit">
-          <p>여기 안에 편집 내용이 들어가유</p>
-        </div>
-        <div class="plan delete" data-type="delete">
-          <p>
-            여긴 삭제 (만약에 삭제 기능을 DB를 날리는 거라면.. 여긴 필요가
-            없겠죠..?)
-          </p>
+        <div class="plan table edit" data-type="edit">
+          <div class="manda__table" id="manda_table">
+            <form action="{% url 'mandalart:edit' %}" method="POST">
+              <input type="submit" value="변경 내용 저장" class="btn-purple" />
+              {% csrf_token %}
+              <script>
+                putvalue(true);
+              </script>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -414,6 +485,12 @@
 </section>
 <!-- JAVASCRIPT -->
 <script>
+// 수정 부분 엔터키 방지
+$(document).keypress(function (event) {
+    if (event.which == "13") {
+      event.preventDefault();
+    }
+  });
 
   // TODO-LIST
 const day = document.querySelector("p#day");
@@ -491,7 +568,6 @@ if (savedToDos !== null){
   const planContainer = document.querySelector(".plan__content");
   const plans = document.querySelectorAll(".plan");
   plans.forEach((plan) => {
-    console.log(plan.dataset);
     if (plan.dataset.type !== "table") plan.classList.add("invisible");
   });
   btnContainer.addEventListener("click", (e) => {
@@ -505,6 +581,7 @@ if (savedToDos !== null){
       if (answer) {
         window.location.href = "/mandalart/delete/";
       }
+      return;
     }
     planContainer.classList.add("anim-out");
     setTimeout(() => {
@@ -518,5 +595,7 @@ if (savedToDos !== null){
       planContainer.classList.remove("anim-out");
     }, 300);
   });
+
+
 </script>
 {% endblock content %}

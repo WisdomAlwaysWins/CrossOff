@@ -8,13 +8,13 @@ from .models import *
 
 
 class LoginForm(AuthenticationForm):
-    username = UsernameField(label=False,
-                             widget=forms.TextInput(
-                                 attrs={
-                                     'autofocus': True,
-                                     'placeholder': ' ID',
-                                     'class': 'login_idForm'
-                                 }))
+    username = UsernameField(
+        label=False,
+        widget=forms.TextInput(attrs={
+            'autofocus': True,
+            'placeholder': ' ID',
+            'class': 'login_idForm'
+        }))
     password = forms.CharField(
         strip=False,
         label=False,
@@ -34,13 +34,13 @@ class LoginForm(AuthenticationForm):
 class RegisterForm(UserCreationForm):
     year = timezone.now().year
     years = [x for x in range(1970, year + 1)]
-    username = UsernameField(label='ID',
-                             widget=forms.TextInput(
-                                 attrs={
-                                     'autofocus': True,
-                                     'placeholder': '',
-                                     'class': 'register_idForm'
-                                 }))
+    username = UsernameField(
+        label='ID',
+        widget=forms.TextInput(attrs={
+            'autofocus': True,
+            'placeholder': '',
+            'class': 'register_idForm'
+        }))
     password1 = forms.CharField(
         label='비밀번호',
         widget=forms.PasswordInput(attrs={
@@ -53,12 +53,19 @@ class RegisterForm(UserCreationForm):
             'placeholder': '',
             'class': 'register_pwcheckForm'
         }))
+    email = forms.EmailField(
+        label='이메일',
+        widget=forms.EmailInput(attrs={'class': 'register_emailForm'}))
     nickname = forms.CharField(
         label='별명',
         widget=forms.TextInput(attrs={'class': 'register_nicknameForm'}))
-    birthdate = forms.DateField(
-        label='생년월일',
-        widget=forms.SelectDateWidget(years=years, attrs={'class': 'register_birthForm', 'default': 1990}))
+    birthdate = forms.DateField(label='생년월일',
+                                widget=forms.SelectDateWidget(
+                                    years=years,
+                                    attrs={
+                                        'class': 'register_birthForm',
+                                        'default': 1990
+                                    }))
     gender = forms.ChoiceField(
         label='성별',
         choices=User.GENDER_CHOICES,
@@ -85,8 +92,8 @@ class RegisterForm(UserCreationForm):
     class Meta:
         model = User
         fields = [
-            'username', 'password1', 'password2', 'nickname', 'birthdate',
-            'gender', 'job'
+            'username', 'password1', 'password2', 'nickname', 'email',
+            'birthdate', 'gender', 'job'
         ]
 
 
@@ -95,7 +102,12 @@ class CustomUserChangeForm(UserChangeForm):
 
     class Meta:
         model = get_user_model()
-        fields = ['nickname', 'birthdate', 'gender', 'job', ]
+        fields = [
+            'nickname',
+            'birthdate',
+            'gender',
+            'job',
+        ]
 
 
 class CustomPasswordChangeForm(PasswordChangeForm):
@@ -108,9 +120,11 @@ class CustomPasswordChangeForm(PasswordChangeForm):
         })
         self.fields['new_password1'].label = '새 비밀번호'
         self.fields['new_password1'].widget.attrs.update({
-            'class': 'form-control',
+            'class':
+            'form-control',
         })
         self.fields['new_password2'].label = '새 비밀번호 확인'
         self.fields['new_password2'].widget.attrs.update({
-            'class': 'form-control',
+            'class':
+            'form-control',
         })

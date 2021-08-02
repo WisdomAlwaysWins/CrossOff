@@ -102,9 +102,9 @@ input{
     box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
     background-size: 10;
 }
-.biggoal:hover{transition : 0.4s; background-color:#613ec015;  }
+.biggoal:hover{transition : 0.7s; background-color:#613ec015;  }
 
-.midgoal:hover{transition : 0.4s; background-color:#613ec015; font-size: 40px; width: 240px; height: 300px; }
+.midgoal:hover{transition : 0.7s; background-color:#613ec015; font-size: 30px; width: 120px; height: 170px; }
 
 
 
@@ -115,12 +115,12 @@ input{
     font-weight: bolder;
     font-style: "돋움";
     resize: none;
-    width: 200px;
-    height: 250px;
+    width: 100px;
+    height: 130px;
     border-radius: 10px;
     text-align: center;
-    padding: 20px;
-    margin: 15px;
+    padding: 15px;
+    margin: 20px;
     box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
     background-size: 10;
 }
@@ -159,11 +159,11 @@ p{
 
 .final_btn{
     position:center ;
-    width:350px;
-    height:60px;
+    width:250px;
+    height:40px;
     color: white;
     font-weight: bold;
-    font-size: 20px;
+    font-size: 15px;
      background: #603ec0;                        
     border:1px rgb(83, 83, 83);
     cursor:pointer;

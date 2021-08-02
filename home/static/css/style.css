@@ -21,9 +21,6 @@ body{
     padding:0;
     font-family: 'Noto Sans KR', sans-serif;
 }
-html, body{
-    height: 100%;
-}
 ul{
     list-style:none;
     margin:0;
@@ -91,14 +88,12 @@ button{
     color:white;
 }
 .btn-white{
-
+    background-color: var(--color-white--);
     color: #3e3260;
-    border: 1px solid transparent;
 }
 .btn-white:hover{ 
     background-color: white;
     color:#3e3260;
-    border: 1px solid gray;
 }
 .btn-lightgray{
     background-color:rgb(215, 210, 216);
@@ -584,6 +579,21 @@ button{
     font-size: 15px;
 }
 
+.register_emailForm{
+    position:relative;
+    left:40%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    left:43.2%;
+    width:60%;
+    height:35px;
+    font-weight: bold;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+    font-size: 15px;
+}
+
 .register_birthForm{
     position:relative;
     left:40%;
@@ -886,11 +896,15 @@ button{
 
 /* Dashboard */
 #dashboard{
+    position: relative;
     height:auto;
     background-color: rgba(238, 238, 238, 0.35);
 }
-#dashboard .content{
-    top: 90px;
+#dashboard .dashboard__content{
+    position: absolute;
+    width: 100%;
+    margin:0 auto;
+    top: 80px;
 }
 .dashboard__title{
     margin-left: 4%;
@@ -1018,6 +1032,8 @@ button{
     align-items: center;
 }
 .dashboard__content_top .top .todo .content{
+    width: 300px;
+    height:100%;
     display:flex;
     flex-direction: column;
     justify-content: center;
@@ -1036,7 +1052,7 @@ button{
 .dashboard__content_top .top .todo .mention .title{
     font-size: 20px;
     font-weight: bold;
-    background-color: #ab9fca;
+    background-color: #8d7db5;
     padding: 5px 30px;
     color:white;
     margin-bottom: 15px;
@@ -1053,6 +1069,22 @@ button{
 .dashboard__content_top .top .todo #todo-form input{
     width: 300px;
     text-align: center;
+}
+.dashboard__content_top .top .todo #todo-form input[type="submit"]{
+    cursor:pointer;
+    width:25px;
+    height:25px;
+    border-radius: 50%;
+    padding: 3px;
+    font-size: 14px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d0cdd6;
+    transition: var(--transition-duration--);
+}
+.dashboard__content_top .top .todo #todo-form input[type="submit"]:hover{
+    background-color:var(--color-main--);
 }
 .dashboard__content_top .top .todo #todo-list{
     /* background-color: #51BDBD; */
@@ -1125,7 +1157,13 @@ button{
     display: flex;
     justify-content: center;
 }
+.dashboard__content_bottom .manda__nav .title{
+    flex: 4;
+}
 .dashboard__content_bottom .manda__nav .categories{
+    position: absolute;
+    right:0;
+    flex:1;
     display:flex;
     align-items:center;
 }
@@ -1141,9 +1179,6 @@ button{
 .dashboard__content_bottom .manda__nav .categories .btn .material-icons{
     font-size: 18px;
 }
-.dashboard__content_bottom .plan__content{
-    margin-bottom: 80px;
-}
 .dashboard__content_bottom .plan__content .plan{
     width: 100%;
     height: 1400px;
@@ -1156,7 +1191,7 @@ button{
     align-items: center;
     justify-content: center;
 }
-.dashboard__content_bottom .plan__content .table .manda__table{
+.dashboard__content_bottom .plan__content .table .manda__table,.dashboard__content_bottom .plan__content .table .manda__table form{
     width:1260px;
     height:1260px;
     display: grid;
@@ -1185,77 +1220,77 @@ button{
 .dashboard__content_bottom .plan__content .table .manda__table #box1 .element{
     background: #F8D4D0;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box1 #element5{
+.dashboard__content_bottom .plan__content .table .manda__table #box1 #element15,.dashboard__content_bottom .plan__content .table .manda__table #box1 #element_edit15{
     background: #EC9790;
 } 
 .dashboard__content_bottom .plan__content .table .manda__table #box2 .element{
     background: #FAD9BE;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box2 #element5{
+.dashboard__content_bottom .plan__content .table .manda__table #box2 #element25,.dashboard__content_bottom .plan__content .table .manda__table #box2 #element_edit25{
     background: #FAC188;
 } 
 .dashboard__content_bottom .plan__content .table .manda__table #box3 .element{
     background: #F9EDBB;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box3 #element5{
+.dashboard__content_bottom .plan__content .table .manda__table #box3 #element35,.dashboard__content_bottom .plan__content .table .manda__table #box3 #element_edit35{
     background: #F4DA85;
 } 
 .dashboard__content_bottom .plan__content .table .manda__table #box4 .element{
     background: #EFDDEB;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box4 #element5{
+.dashboard__content_bottom .plan__content .table .manda__table #box4 #element45,.dashboard__content_bottom .plan__content .table .manda__table #box4 #element_edit45{
     background: #CD9BC4;
 } 
 .dashboard__content_bottom .plan__content .table .manda__table #box6 .element{
     background: #DBECE2;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box6 #element5{
+.dashboard__content_bottom .plan__content .table .manda__table #box6 #element65,.dashboard__content_bottom .plan__content .table .manda__table #box6 #element_edit65{
     background: #9AD1B2;
 } 
 .dashboard__content_bottom .plan__content .table .manda__table #box7 .element{
     background: #C9D5ED;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box7 #element5{
+.dashboard__content_bottom .plan__content .table .manda__table #box7 #element75,.dashboard__content_bottom .plan__content .table .manda__table #box7 #element_edit75{
     background: #82A0D2;
 } 
 .dashboard__content_bottom .plan__content .table .manda__table #box8 .element{
     background: #E3EDF7;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box8 #element5{
+.dashboard__content_bottom .plan__content .table .manda__table #box8 #element85,.dashboard__content_bottom .plan__content .table .manda__table #box8 #element_edit85{
     background: #BAD3EF;
 } 
 .dashboard__content_bottom .plan__content .table .manda__table #box9 .element{
     background: #D0EAEB;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box9 #element5{
+.dashboard__content_bottom .plan__content .table .manda__table #box9 #element95,.dashboard__content_bottom .plan__content .table .manda__table #box9 #element_edit95{
     background: #51BDBD;
 } 
 
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element5{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element55{
     background: var(--color-white--);
 } 
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element1{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element51,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit51{
     background: #EC9790;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element2{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element52,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit52{
     background: #FAC188;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element3{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element53,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit53{
     background: #F4DA85;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element4{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element54,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit54{
     background: #CD9BC4;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element6{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element56,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit56{
     background: #9AD1B2;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element7{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element57,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit57{
     background: #82A0D2;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element8{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element58,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit58{
     background: #BAD3EF;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element9{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element59,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit59{
     background: #51BDBD;  
 }
 
@@ -1328,10 +1363,18 @@ button{
     margin-left: 10px;
     color:var(--color-black--);
 }
-.dashboard__content_bottom .plan__content .edit{
-    width:100%;
-    height: 800px;
-    background: darkgreen;
+.dashboard__content_bottom .plan__content .edit .btn-purple{
+    position:absolute;
+    top: 50px;
+    right: 238px;
+    width:fit-content;
+    height: 50px;
+    padding:10px 15px;
+    margin:0;
+    border:none;
+    font-size: 15px;
+    transition: var(--transition-duration--);
+    border-radius: var(--border-radius--);
 }
 .dashboard__content_bottom .plan__content .delete{
     width:100%;
