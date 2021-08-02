@@ -73,8 +73,8 @@ def test(request):
 def delMandalart(request):
     manda = Mandalart.objects.get(user=request.user.id)
     manda.delete()
-    user.is_manda = False
-    user.save()
+    request.user.is_manda = False
+    request.user.save()
     return redirect('mandalart:new')
 
 

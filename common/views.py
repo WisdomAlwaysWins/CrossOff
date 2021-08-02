@@ -3,7 +3,6 @@ from django.contrib.auth import authenticate, login, logout, update_session_auth
 from django.contrib.auth.decorators import login_required
 from .forms import *
 from mandalart.models import *
-from django.contrib import messages
 from django.conf import settings
 import json
 
