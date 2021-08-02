@@ -75,30 +75,45 @@ def dashboard(request, id):
         for j in range(len(spe)):
             lst3.append(spe[j].content)
         lst4[i] = lst3
+
+    achieve_goal = SpecificGoal.objects.filter(is_achieved=True)
+    achieve_num = len(achieve_goal)
+
+    check_mid_achieve = []
+    for i in range(len(mid)):
+        if mid[i].is_achieved == True:
+            # mid goal을 달성했으면 1 저장
+            check_mid_achieve.append(1)
+        else:
+            # 달성하지 못했으면 0 저장
+            check_mid_achieve.append(0)
+
     return render(
         request, 'common/dashboard.html', {
             'user': user,
             'manda': json.dumps(lst),
             'manda_mid': json.dumps(lst2),
             'manda_small': json.dumps(lst4),
-            'manda_mid1': json.dumps(lst2[0]),
-            'manda_mid2': json.dumps(lst2[1]),
-            'manda_mid3': json.dumps(lst2[2]),
-            'manda_mid4': json.dumps(lst2[3]),
-            'manda_mid5': json.dumps(lst2[4]),
-            'manda_mid6': json.dumps(lst2[5]),
-            'manda_mid7': json.dumps(lst2[6]),
-            'manda_mid8': json.dumps(lst2[7])
+            'manda_mid1': json.dumps(lst2[0], ensure_ascii=False),
+            'manda_mid2': json.dumps(lst2[1], ensure_ascii=False),
+            'manda_mid3': json.dumps(lst2[2], ensure_ascii=False),
+            'manda_mid4': json.dumps(lst2[3], ensure_ascii=False),
+            'manda_mid5': json.dumps(lst2[4], ensure_ascii=False),
+            'manda_mid6': json.dumps(lst2[5], ensure_ascii=False),
+            'manda_mid7': json.dumps(lst2[6], ensure_ascii=False),
+            'manda_mid8': json.dumps(lst2[7], ensure_ascii=False),
+            'achieve_num': achieve_num,
+            'check_mid_achieve': check_mid_achieve,
         })
 
 
-@login_required
+@ login_required
 def profile(request, id):
     user = User.objects.get(id=id)
     return render(request, 'common/seeProfile.html', {'user': user})
 
 
-@login_required
+@ login_required
 def profileUpdate(request):
     if request.method == 'POST':
         user_change_form = CustomUserChangeForm(request.POST,
@@ -113,7 +128,7 @@ def profileUpdate(request):
                       {'user_change_form': user_change_form})
 
 
-@login_required
+@ login_required
 def passwordEdit(request):
     if request.method == 'POST':
         password_change_form = CustomPasswordChangeForm(
