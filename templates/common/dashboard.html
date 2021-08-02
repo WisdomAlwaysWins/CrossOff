@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {% extends 'layout.html' %} {% load static %} {% block title %} Dashboard
 {%endblock title %} {% block css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
@@ -368,3 +369,606 @@
   });
 </script>
 {% endblock content %}
+=======
+{% extends 'layout.html' %} 
+{% load static %} 
+{% block title %} 
+Dashboard
+{%endblock title %} 
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
+<script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+{% endblock css %} 
+{% block content %}
+<script>
+  var manda_big = JSON.parse("{{manda}}".replace(/&quot;/g, '"'));
+  var manda_mid = JSON.parse("{{manda_mid}}".replace(/&quot;/g, '"'));
+  var manda_small = JSON.parse("{{manda_small}}".replace(/&quot;/g, '"'));
+  function putvalue(isEdit) {
+    var id = "element";
+    if (isEdit) id += "_edit";
+    for (let i = 1; i <= 9; i++) {
+      document.write('<div class="box" id="box' + i + '">');
+      for (let j = 1; j <= 9; j++) {
+        if (isEdit) {
+          if (j == 5) {
+            document.write(
+              '<input class="element" id="' +
+                id +
+                i +
+                j +
+                '"" autocomplete="on" name=box' +
+                i +
+                j +
+                " readonly></input>"
+            );
+          } else {
+            document.write(
+              '<input class="element" id="' +
+                id +
+                i +
+                j +
+                '"" autocomplete="on" name=box' +
+                i +
+                j +
+                "></input>"
+            );
+          }
+        } else {
+          document.write(
+            '<input class="element" id="' +
+              id +
+              i +
+              j +
+              '"" autocomplete="on" name=box' +
+              i +
+              j +
+              " readonly></input>"
+          );
+        }
+      }
+      document.write("</div>");
+    }
+    for (let i = 0; i < 9; i++) {
+      if (i < 4) {
+        document.getElementById(id + 5 + (i + 1)).value = manda_mid[i];
+        document.getElementById(id + (i + 1) + 5).value = manda_mid[i];
+      } else if (i == 4) document.getElementById(id + 55).value = manda_big[0];
+      else {
+        document.getElementById(id + 5 + (i + 1)).value = manda_mid[i - 1];
+        document.getElementById(id + (i + 1) + 5).value = manda_mid[i - 1];
+      }
+    }
+    for (let i = 1; i <= 9; i++) {
+      for (let j = 1; j <= 9; j++) {
+        if (i == 5 || j == 5) continue;
+        if (i < 5) {
+          if (j < 5)
+            document.getElementById(id + i + j).value =
+              manda_small[i - 1][j - 1];
+          else
+            document.getElementById(id + i + j).value =
+              manda_small[i - 1][j - 2];
+        } else {
+          if (j < 5) {
+            document.getElementById(id + i + j).value =
+              manda_small[i - 2][j - 1];
+          } else {
+            document.getElementById(id + i + j).value =
+              manda_small[i - 2][j - 2];
+          }
+        }
+      }
+    }
+  }
+</script>
+<section id="dashboard">
+  <div class="dashboard__content">
+    <div class="dashboard__title">
+      <p>Dashboard</p>
+    </div>
+    <div class="dashboard__content_top">
+      <!-- 유저의 모든 정보는 여기서 -->
+      <div class="top">
+        <div class="user__total">
+          <!-- 유저의 프로필 / 이름 / 편집 버튼 -->
+          <div class="profile">
+            <div class="image">
+              <img src="{% static 'img/user_image.png' %}" alt="user image" />
+            </div>
+            <div class="info">
+              <div class="name">
+                <p>{{user.nickname}} 님</p>
+              </div>
+              <div class="buttons">
+                <button class="btn btn-white">
+                  <a href="{% url 'common:edit_password' %}">Edit Password</a>
+                </button>
+                <button class="btn btn-white">
+                  <a href="{% url 'common:profile' user.id %}">See Profile</a>
+                </button>
+              </div>
+            </div>
+          </div>
+          <!-- 배지 -->
+          <div class="badges">
+            {% if check_mid_achieve.0 == 1 %}
+            <div class="badge achieve">
+              <div class="badge_img"></div>
+              <div class="name">
+                <script>
+                  var manda_mid1 = JSON.parse("{{manda_mid1}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid1 + '</p>');
+                </script>
+              </div>
+            </div>
+            {% else %}
+            <div class="badge">
+              <div class="badge_img"></div>
+              <div class="name">
+                <p class="badge_name material-icons">lock</p>
+              </div>
+            </div>
+            {% endif %}
+  
+            {% if check_mid_achieve.1 == 1 %}
+            <div class="badge achieve">
+              <div class="badge_img"></div>
+              <div class="name">
+                <script>
+                  var manda_mid2 = JSON.parse("{{manda_mid2}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid2 + '</p>');
+                </script>
+              </div>
+            </div>
+            {% else %}
+            <div class="badge">
+              <div class="badge_img"></div>
+              <div class="name">
+                <p class="badge_name material-icons">lock</p>
+              </div>
+            </div>
+            {% endif %}
+  
+            {% if check_mid_achieve.2 == 1 %}
+            <div class="badge achieve">
+              <div class="badge_img"></div>
+              <div class="name">
+                <script>
+                  var manda_mid3 = JSON.parse("{{manda_mid3}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid3 + '</p>');
+                </script>
+              </div>
+            </div>
+            {% else %}
+            <div class="badge">
+              <div class="badge_img"></div>
+              <div class="name">
+                <p class="badge_name material-icons">lock</p>
+              </div>
+            </div>
+            {% endif %}
+  
+            {% if check_mid_achieve.3 == 1 %}
+            <div class="badge achieve">
+              <div class="badge_img"></div>
+              <div class="name">
+                <script>
+                  var manda_mid4 = JSON.parse("{{manda_mid4}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid4 + '</p>');
+                </script>
+              </div>
+            </div>
+            {% else %}
+            <div class="badge">
+              <div class="badge_img"></div>
+              <div class="name">
+                <p class="badge_name material-icons">lock</p>
+              </div>
+            </div>
+            {% endif %}
+  
+            {% if check_mid_achieve.4 == 1 %}
+            <div class="badge achieve">
+              <div class="badge_img"></div>
+              <div class="name">
+                <script>
+                  var manda_mid5 = JSON.parse("{{manda_mid5}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid5 + '</p>');
+                </script>
+              </div>
+            </div>
+            {% else %}
+            <div class="badge">
+              <div class="badge_img"></div>
+              <div class="name">
+                <p class="badge_name material-icons">lock</p>
+              </div>
+            </div>
+            {% endif %}
+  
+            {% if check_mid_achieve.5 == 1 %}
+            <div class="badge achieve">
+              <div class="badge_img"></div>
+              <div class="name">
+                <script>
+                  var manda_mid6 = JSON.parse("{{manda_mid6}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid6 + '</p>');
+                </script>
+              </div>
+            </div>
+            {% else %}
+            <div class="badge">
+              <div class="badge_img"></div>
+              <div class="name">
+                <p class="badge_name material-icons">lock</p>
+              </div>
+            </div>
+            {% endif %}
+  
+            {% if check_mid_achieve.6 == 1 %}
+            <div class="badge achieve">
+              <div class="badge_img"></div>
+              <div class="name">
+                <script>
+                  var manda_mid7 = JSON.parse("{{manda_mid7}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid7 + '</p>');
+                </script>
+              </div>
+            </div>
+            {% else %}
+            <div class="badge">
+              <div class="badge_img"></div>
+              <div class="name">
+                <p class="badge_name material-icons">lock</p>
+              </div>
+            </div>
+            {% endif %}
+  
+            {% if check_mid_achieve.7 == 1 %}
+            <div class="badge achieve">
+              <div class="badge_img"></div>
+              <div class="name">
+                <script>
+                  var manda_mid8 = JSON.parse("{{manda_mid8}}".replace(/&quot;/g, '"'));
+                  document.write('<p class="badge_name">' + manda_mid8 + '</p>');
+                </script>
+              </div>
+            </div>
+            {% else %}
+            <div class="badge">
+              <div class="badge_img"></div>
+              <div class="name">
+                <p class="badge_name material-icons">lock</p>
+              </div>
+            </div>
+            {% endif %}
+          </div>
+        </div>
+        <div class="todo">
+          <div class="content">
+            <div class="mention">
+              <p class="title">TO DO LIST</p>
+              <p id="day"></p>
+            </div>
+            <form action="" id="todo-form">
+              <input type="text" placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!" />
+              <input type="submit" value="🤍"/>
+            </form>
+            <ul id="todo-list"></ul>
+          </div>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="goal_achievement">
+          <span id="total_goal_num">64개의 세부 목표 중 </span>
+          <span id="achieve">{{achieve_num}}</span>
+          <span>개의 목표를 완료! 더 많은 목표를 달성해 배지를 모아보세요 💜</span>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard__content_bottom">
+      <div class="manda__nav">
+        <div class="categories">
+          <button class="btn btn-lightgray" data-filter="table">
+            <span class="material-icons">apps</span>
+          </button>
+          <button class="btn btn-lightgray" data-filter="checkbox">
+            <span class="material-icons">format_list_bulleted</span>
+          </button>
+          <button class="btn btn-lightgray" data-filter="edit">
+            <span class="material-icons">edit</span>
+          </button>
+          <button class="btn btn-lightgray" data-filter="delete">
+            <span class="material-icons">delete</span>
+          </button>
+        </div>
+      </div>
+      <div class="plan__content">
+        <div class="plan table" data-type="table">
+          <div class="manda__table" id="manda_table">
+            <script>
+              putvalue(false);
+            </script>
+          </div>
+        </div>
+        <div class="plan checkbox" data-type="checkbox">
+          <div class="manda__checkbox" id="manda_checkbox">
+            <div class="up side">
+              <div class="object" id="object1">
+                <div class="mid" id="object__mid1">
+                  <p>{{manda_mid1}}</p>
+                </div>
+                <script>
+                  for (let j = 1; j <= 8; j++) {
+                    document.write(
+                      '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
+                        j +
+                        '"/>'
+                    );
+                    document.write(
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                    );
+                  }
+                </script>
+              </div>
+              <div class="object" id="object2">
+                <div class="mid" id="object__mid2">
+                  <p>{{manda_mid2}}</p>
+                </div>
+                <script>
+                  for (let j = 1; j <= 8; j++) {
+                    document.write(
+                      '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
+                        j +
+                        '"/>'
+                    );
+                    document.write(
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                    );
+                  }
+                </script>
+              </div>
+              <div class="object" id="object3">
+                <div class="mid" id="object__mid3">
+                  <p>{{manda_mid3}}</p>
+                </div>
+                <script>
+                  for (let j = 1; j <= 8; j++) {
+                    document.write(
+                      '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
+                        j +
+                        '"/>'
+                    );
+                    document.write(
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                    );
+                  }
+                </script>
+              </div>
+              <div class="object" id="object4">
+                <div class="mid" id="object__mid4">
+                  <p>{{manda_mid4}}</p>
+                </div>
+                <script>
+                  for (let j = 1; j <= 8; j++) {
+                    document.write(
+                      '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
+                        j +
+                        '"/>'
+                    );
+                    document.write(
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                    );
+                  }
+                </script>
+              </div>
+            </div>
+            <div class="down side">
+              <div class="object" id="object5">
+                <div class="mid" id="object__mid5">
+                  <p>{{manda_mid5}}</p>
+                </div>
+                <script>
+                  for (let j = 1; j <= 8; j++) {
+                    document.write(
+                      '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
+                        j +
+                        '"/>'
+                    );
+                    document.write(
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                    );
+                  }
+                </script>
+              </div>
+              <div class="object" id="object6">
+                <div class="mid" id="object__mid6">
+                  <p>{{manda_mid6}}</p>
+                </div>
+                <script>
+                  for (let j = 1; j <= 8; j++) {
+                    document.write(
+                      '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
+                        j +
+                        '"/>'
+                    );
+                    document.write(
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                    );
+                  }
+                </script>
+              </div>
+              <div class="object" id="object7">
+                <div class="mid" id="object__mid7">
+                  <p>{{manda_mid7}}</p>
+                </div>
+                <script>
+                  for (let j = 1; j <= 8; j++) {
+                    document.write(
+                      '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
+                        j +
+                        '"/>'
+                    );
+                    document.write(
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                    );
+                  }
+                </script>
+              </div>
+              <div class="object" id="object8">
+                <div class="mid" id="object__mid8">
+                  <p>{{manda_mid8}}</p>
+                </div>
+                <script>
+                  for (let j = 1; j <= 8; j++) {
+                    document.write(
+                      '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
+                        j +
+                        '"/>'
+                    );
+                    document.write(
+                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                    );
+                  }
+                </script>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="plan table edit" data-type="edit">
+          <div class="manda__table" id="manda_table">
+            <form action="{% url 'mandalart:edit' %}" method="POST">
+              <input type="submit" value="변경 내용 저장" class="btn-purple" />
+              {% csrf_token %}
+              <script>
+                putvalue(true);
+              </script>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- JAVASCRIPT -->
+<script>
+// 수정 부분 엔터키 방지
+$(document).keypress(function (event) {
+    if (event.which == "13") {
+      event.preventDefault();
+    }
+  });
+
+  // TODO-LIST
+const day = document.querySelector("p#day");
+const week = new Array('일', '월','화','수','목','금','토');
+
+function getDate(){
+    const today= new Date();
+    const year = today.getFullYear(); // 년도
+    const month = today.getMonth() + 1;  // 월
+    const date = today.getDate();  // 날짜
+    const days = today.getDay();  // 요일
+    day.innerText = (`${year}년 ${month}월 ${date}일 ${week[days]}`);
+}
+getDate();
+setInterval(getDate, 1000);
+
+const toDoForm = document.getElementById("todo-form");
+const toDoInput = document.querySelector("#todo-form input");
+const toDoList = document.getElementById("todo-list");
+const TODOS_KEY = "todos";
+
+let toDos = [];
+
+function saveToDos(){
+    localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
+}
+
+function deleteToDo(event){
+    const li = event.target.parentElement;
+    li.remove();
+    toDos = toDos.filter(toDo => toDo.id !== parseInt(li.id));
+    saveToDos();
+}
+
+function paintToDo(newTodo){
+    const li = document.createElement("li");
+    li.id = newTodo.id;
+    const span = document.createElement("span");
+    span.innerText = newTodo.text;
+    const button = document.createElement("button");
+    button.innerText = "❌";
+    const check = document.createElement("input");
+    check.setAttribute("type", "checkbox");
+    button.addEventListener("click", deleteToDo);
+    li.appendChild(check);
+    li.appendChild(span);
+    li.appendChild(button);
+    toDoList.appendChild(li);
+}
+function handleToDoSubmit(event){
+    event.preventDefault();
+    const newTodo = toDoInput.value;
+    toDoInput.value = "";
+    const newTodoObj = {
+        text:newTodo,
+        id : Date.now(),
+    };
+    toDos.push(newTodoObj);
+    paintToDo(newTodoObj);
+    saveToDos();
+}
+
+toDoForm.addEventListener("submit", handleToDoSubmit);
+
+const savedToDos = localStorage.getItem(TODOS_KEY);
+
+if (savedToDos !== null){
+    const parsedToDos = JSON.parse(savedToDos);
+    toDos = parsedToDos;
+    parsedToDos.forEach(paintToDo);
+}
+
+  // 만다라트 보기 방식 변경 by 지혜
+  const btnContainer = document.querySelector(".categories");
+  const planContainer = document.querySelector(".plan__content");
+  const plans = document.querySelectorAll(".plan");
+  plans.forEach((plan) => {
+    if (plan.dataset.type !== "table") plan.classList.add("invisible");
+  });
+  btnContainer.addEventListener("click", (e) => {
+    const filter =
+      e.target.dataset.filter || e.target.parentNode.dataset.filter;
+    if (filter == null) {
+      return;
+    }
+    if (filter == "delete") {
+      var answer = window.confirm("정말로 삭제하시겠습니까?");
+      if (answer) {
+        window.location.href = "/mandalart/delete/";
+      }
+      return;
+    }
+    planContainer.classList.add("anim-out");
+    setTimeout(() => {
+      plans.forEach((plan) => {
+        if (filter === plan.dataset.type) {
+          plan.classList.remove("invisible");
+        } else {
+          plan.classList.add("invisible");
+        }
+      });
+      planContainer.classList.remove("anim-out");
+    }, 300);
+  });
+
+
+</script>
+{% endblock content %}
+>>>>>>> cfae6b1b0cf2ec26be601d4bcdfc4c06b0f59ab9

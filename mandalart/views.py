@@ -20,9 +20,10 @@ def new(request):
 
     else:
         u = request.user
-        if(u.is_manda):
+        if (u.is_manda):
             return redirect('/common/dashboard/' + str(u.id))
         return render(request, 'mandalart/plan_big.html')
+
 
 @login_required
 def plan_small(request):
@@ -32,7 +33,8 @@ def plan_small(request):
         m = MidGoal.objects.filter(big=b)
         for i in range(len(m)):
             for j in range(0, 8):
-                s = SpecificGoal(mid=m[i], content=request.POST['box' + str(i) + str(j)])
+                s = SpecificGoal(mid=m[i],
+                                 content=request.POST['box' + str(i) + str(j)])
                 s.save()
         return redirect('/common/dashboard/' + str(request.user.id))
     else:
@@ -66,22 +68,48 @@ def test(request):
         lst.append(lst2)
     return render(request, 'mandalart/test.html', {'manda': lst})
 
-@login_required
-def mid(request):
-    lst = []
-    manda = Mandalart.objects.get(user=request.user.id)
-    big = BigGoal.objects.get(manda=manda)
-    mid = MidGoal.objects.filter(big=big)
-    for i in range(len(mid)):
-        lst.append(mid[i].content)
-    return render(request, 'mandalart/test.html', {'manda_mid': lst})
-
 
 @login_required
 def delMandalart(request):
-    user = request.user
-    manda = Mandalart.objects.get(user=user.id)
+    manda = Mandalart.objects.get(user=request.user.id)
     manda.delete()
-    user.is_manda = False
-    user.save()
+    request.user.is_manda = False
+    request.user.save()
     return redirect('mandalart:new')
+
+
+@login_required
+def editMandalart(request):
+    bigcontent = ''
+    midlst = []
+    spelst = {}
+    for i in range(1, 10):
+        t = []
+        for j in range(1, 10):
+            if i == 5:
+                if not j == 5:
+                    midlst.append(request.POST['box' + str(i) + str(j)])
+                if j == 5:
+                    bigcontent = request.POST['box55']
+            else:
+                if j == 5:
+                    continue
+                t.append(request.POST['box' + str(i) + str(j)])
+            if i <= 5:
+                spelst[i] = t
+            else:
+                spelst[i - 1] = t
+    manda = Mandalart.objects.get(user=request.user.id)
+    big = BigGoal.objects.get(manda=manda)
+    mids = MidGoal.objects.filter(big=big)
+    for i in range(len(mids)):
+        spes = SpecificGoal.objects.filter(mid=mids[i])
+        if mids[i].content != midlst[i]:
+            mids[i].content = midlst[i]
+            mids[i].save()
+        for j in range(len(spes)):
+            if spes[j].content != spelst[i + 1][j]:
+                spes[j].content = spelst[i + 1][j]
+                spes[j].save()
+
+    return redirect('/common/dashboard/' + str(request.user.id))

@@ -35,6 +35,7 @@ class User(AbstractUser):
             'unique': "이미 존재하는 ID 입니다.",
         },
     )
+    email = models.EmailField(blank=False, null=False)
     nickname = models.CharField(blank=False, null=False, max_length=100)
     birthdate = models.DateField(blank=False, null=False)
     gender = models.IntegerField(choices=GENDER_CHOICES,
@@ -46,3 +47,4 @@ class User(AbstractUser):
                               null=False,
                               default=5)
     is_manda = models.BooleanField(default=False)
+    REQUIRED_FIELDS = ['nickname', 'birthdate', 'email']
