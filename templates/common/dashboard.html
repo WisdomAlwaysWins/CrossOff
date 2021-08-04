@@ -329,6 +329,7 @@ Dashboard
                   <p>{{manda_mid1}}</p>
                 </div>
                 <script>
+                   var manda_small = JSON.parse("{{manda_small}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
@@ -336,7 +337,7 @@ Dashboard
                       '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                      '<label for="obj' + j + '">'+manda_small[0][j - 1]+ "</label></div>"
                     );
                   }
                 </script>
@@ -353,7 +354,7 @@ Dashboard
                       '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                      '<label for="obj' + j + '">'+manda_small[1][j - 1]+ "</label></div>"
                     );
                   }
                 </script>
@@ -370,7 +371,7 @@ Dashboard
                       '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                      '<label for="obj' + j + '">'+manda_small[2][j - 1]+ "</label></div>"
                     );
                   }
                 </script>
@@ -387,7 +388,7 @@ Dashboard
                       '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                      '<label for="obj' + j + '">'+manda_small[3][j - 1]+ "</label></div>"
                     );
                   }
                 </script>
@@ -406,7 +407,7 @@ Dashboard
                       '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                      '<label for="obj' + j + '">'+manda_small[4][j - 1]+ "</label></div>"
                     );
                   }
                 </script>
@@ -423,7 +424,7 @@ Dashboard
                       '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                      '<label for="obj' + j + '">'+manda_small[5][j - 1]+  "</label></div>"
                     );
                   }
                 </script>
@@ -440,7 +441,7 @@ Dashboard
                       '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                      '<label for="obj' + j + '">'+manda_small[6][j - 1]+ "</label></div>"
                     );
                   }
                 </script>
@@ -457,7 +458,7 @@ Dashboard
                       '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
+                      '<label for="obj' + j + '">'+manda_small[7][j - 1]+  "</label></div>"
                     );
                   }
                 </script>
