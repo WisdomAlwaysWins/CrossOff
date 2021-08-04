@@ -1,16 +1,13 @@
-{% extends 'layout.html' %} 
-{% load static %} 
-{% block title %} 
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
 Dashboard
-{%endblock title %} 
+{%endblock title %}
 {% block css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-{% endblock css %} 
+{% endblock css %}
 {% block content %}
 <script>
   var manda_big = JSON.parse("{{manda}}".replace(/&quot;/g, '"'));
@@ -25,31 +22,37 @@ Dashboard
         if (isEdit) {
           if (j == 5) {
             document.write(
-              '<textarea class="element" id="' +
-                id +i +j +
-                '"" autocomplete="on" name=box' +
-                i +j +
-                " readonly></textarea>"
-            );
-          } else {
-            document.write(
-              '<textarea class="element" id="' +
-                id +i +j +
-                '"" autocomplete="on" name=box' +
-                i +j +
-                "></textarea>"
-            );
-          }
-        } else {
-          document.write(
-            '<textarea class="element" id="' +
+              '<input class="element" id="' +
               id +
               i +
               j +
               '"" autocomplete="on" name=box' +
               i +
               j +
-              " readonly></textarea>"
+              " readonly></input>"
+            );
+          } else {
+            document.write(
+              '<input class="element" id="' +
+              id +
+              i +
+              j +
+              '"" autocomplete="on" name=box' +
+              i +
+              j +
+              "></input>"
+            );
+          }
+        } else {
+          document.write(
+            '<input class="element" id="' +
+            id +
+            i +
+            j +
+            '"" autocomplete="on" name=box' +
+            i +
+            j +
+            " readonly></input>"
           );
         }
       }
@@ -136,7 +139,7 @@ Dashboard
               </div>
             </div>
             {% endif %}
-  
+
             {% if check_mid_achieve.1 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
@@ -155,7 +158,7 @@ Dashboard
               </div>
             </div>
             {% endif %}
-  
+
             {% if check_mid_achieve.2 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
@@ -174,7 +177,7 @@ Dashboard
               </div>
             </div>
             {% endif %}
-  
+
             {% if check_mid_achieve.3 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
@@ -193,7 +196,7 @@ Dashboard
               </div>
             </div>
             {% endif %}
-  
+
             {% if check_mid_achieve.4 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
@@ -212,7 +215,7 @@ Dashboard
               </div>
             </div>
             {% endif %}
-  
+
             {% if check_mid_achieve.5 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
@@ -231,7 +234,7 @@ Dashboard
               </div>
             </div>
             {% endif %}
-  
+
             {% if check_mid_achieve.6 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
@@ -250,7 +253,7 @@ Dashboard
               </div>
             </div>
             {% endif %}
-  
+
             {% if check_mid_achieve.7 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
@@ -279,7 +282,7 @@ Dashboard
             </div>
             <form action="" id="todo-form">
               <input type="text" placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!" />
-              <input type="submit" value="🤍"/>
+              <input type="submit" value="🤍" />
             </form>
             <ul id="todo-list"></ul>
           </div>
@@ -329,8 +332,8 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                        j +
-                        '"/>'
+                      j +
+                      '"/>'
                     );
                     document.write(
                       '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
@@ -346,8 +349,8 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                        j +
-                        '"/>'
+                      j +
+                      '"/>'
                     );
                     document.write(
                       '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
@@ -363,8 +366,8 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                        j +
-                        '"/>'
+                      j +
+                      '"/>'
                     );
                     document.write(
                       '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
@@ -380,8 +383,8 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                        j +
-                        '"/>'
+                      j +
+                      '"/>'
                     );
                     document.write(
                       '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
@@ -399,8 +402,8 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                        j +
-                        '"/>'
+                      j +
+                      '"/>'
                     );
                     document.write(
                       '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
@@ -416,8 +419,8 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                        j +
-                        '"/>'
+                      j +
+                      '"/>'
                     );
                     document.write(
                       '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
@@ -433,8 +436,8 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                        j +
-                        '"/>'
+                      j +
+                      '"/>'
                     );
                     document.write(
                       '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
@@ -450,8 +453,8 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                        j +
-                        '"/>'
+                      j +
+                      '"/>'
                     );
                     document.write(
                       '<label for="obj' + j + '">세부목표 ' + j + "</label></div>"
@@ -464,7 +467,7 @@ Dashboard
         </div>
         <div class="plan table edit" data-type="edit">
           <div class="manda__table" id="manda_table">
-            <form action="{% url 'mandalart:edit' %}" method="POST">
+            <form action="{% url 'mandalart:edit' %}" method="POST" id="editMandaForm">
               <input type="submit" value="변경 내용 저장" class="btn-purple" />
               {% csrf_token %}
               <script>
@@ -479,47 +482,47 @@ Dashboard
 </section>
 <!-- JAVASCRIPT -->
 <script>
-// 수정 부분 엔터키 방지
-$(document).keypress(function (event) {
+  // 수정 부분 엔터키 방지
+  $('#editMandaForm').keypress(function (event) {
     if (event.which == "13") {
       event.preventDefault();
     }
   });
 
   // TODO-LIST
-const day = document.querySelector("p#day");
-const week = new Array('일', '월','화','수','목','금','토');
+  const day = document.querySelector("p#day");
+  const week = new Array('일', '월', '화', '수', '목', '금', '토');
 
-function getDate(){
-    const today= new Date();
+  function getDate() {
+    const today = new Date();
     const year = today.getFullYear(); // 년도
     const month = today.getMonth() + 1;  // 월
     const date = today.getDate();  // 날짜
     const days = today.getDay();  // 요일
     day.innerText = (`${year}년 ${month}월 ${date}일 ${week[days]}`);
-}
-getDate();
-setInterval(getDate, 1000);
+  }
+  getDate();
+  setInterval(getDate, 1000);
 
-const toDoForm = document.getElementById("todo-form");
-const toDoInput = document.querySelector("#todo-form input");
-const toDoList = document.getElementById("todo-list");
-const TODOS_KEY = "todos";
+  const toDoForm = document.getElementById("todo-form");
+  const toDoInput = document.querySelector("#todo-form input");
+  const toDoList = document.getElementById("todo-list");
+  const TODOS_KEY = "todos";
 
-let toDos = [];
+  let toDos = [];
 
-function saveToDos(){
+  function saveToDos() {
     localStorage.setItem(TODOS_KEY, JSON.stringify(toDos));
-}
+  }
 
-function deleteToDo(event){
+  function deleteToDo(event) {
     const li = event.target.parentElement;
     li.remove();
     toDos = toDos.filter(toDo => toDo.id !== parseInt(li.id));
     saveToDos();
-}
+  }
 
-function paintToDo(newTodo){
+  function paintToDo(newTodo) {
     const li = document.createElement("li");
     li.id = newTodo.id;
     const span = document.createElement("span");
@@ -533,29 +536,29 @@ function paintToDo(newTodo){
     li.appendChild(span);
     li.appendChild(button);
     toDoList.appendChild(li);
-}
-function handleToDoSubmit(event){
+  }
+  function handleToDoSubmit(event) {
     event.preventDefault();
     const newTodo = toDoInput.value;
     toDoInput.value = "";
     const newTodoObj = {
-        text:newTodo,
-        id : Date.now(),
+      text: newTodo,
+      id: Date.now(),
     };
     toDos.push(newTodoObj);
     paintToDo(newTodoObj);
     saveToDos();
-}
+  }
 
-toDoForm.addEventListener("submit", handleToDoSubmit);
+  toDoForm.addEventListener("submit", handleToDoSubmit);
 
-const savedToDos = localStorage.getItem(TODOS_KEY);
+  const savedToDos = localStorage.getItem(TODOS_KEY);
 
-if (savedToDos !== null){
+  if (savedToDos !== null) {
     const parsedToDos = JSON.parse(savedToDos);
     toDos = parsedToDos;
     parsedToDos.forEach(paintToDo);
-}
+  }
 
   // 만다라트 보기 방식 변경 by 지혜
   const btnContainer = document.querySelector(".categories");
