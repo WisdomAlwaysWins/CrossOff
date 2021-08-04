@@ -106,7 +106,7 @@ def dashboard(request, id):
             'manda_mid7': json.dumps(lst2[6], ensure_ascii=False),
             'manda_mid8': json.dumps(lst2[7], ensure_ascii=False),
             'achieve_num': achieve_num,
-            'check_mid_achieve': check_mid_achieve,
+            'check_mid_achieve': json.dumps(check_mid_achieve),
             'todos': json.dumps(todolst, ensure_ascii=False)
         })
 
