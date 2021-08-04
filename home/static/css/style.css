@@ -119,6 +119,7 @@ button{
     margin-left:30px;
 }
 .header__container .logo p{
+    display:inline-block;
     color:black;
     font-size:32px;
     font-weight: 800;
