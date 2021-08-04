@@ -58,6 +58,10 @@ def logout_(request):
 @login_required
 def dashboard(request, id):
     user = User.objects.get(id=id)
+    todos = user.todo.all()
+    todolst = {}
+    for todo in todos:
+        todolst[todo.id] = todo.content
     lst = []
     if not user.is_manda:
         return redirect('mandalart:new')
@@ -103,16 +107,17 @@ def dashboard(request, id):
             'manda_mid8': json.dumps(lst2[7], ensure_ascii=False),
             'achieve_num': achieve_num,
             'check_mid_achieve': check_mid_achieve,
+            'todos': json.dumps(todolst, ensure_ascii=False)
         })
 
 
-@ login_required
+@login_required
 def profile(request, id):
     user = User.objects.get(id=id)
     return render(request, 'common/seeProfile.html', {'user': user})
 
 
-@ login_required
+@login_required
 def profileUpdate(request):
     if request.method == 'POST':
         user_change_form = CustomUserChangeForm(request.POST,
@@ -127,7 +132,7 @@ def profileUpdate(request):
                       {'user_change_form': user_change_form})
 
 
-@ login_required
+@login_required
 def passwordEdit(request):
     if request.method == 'POST':
         password_change_form = CustomPasswordChangeForm(

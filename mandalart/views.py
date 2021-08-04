@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .models import *
 import json
 
+
 @login_required
 def new(request):
     if request.method == 'POST':
@@ -48,7 +49,8 @@ def plan_small(request):
             lst2.append(mid[i].content)
         lst.append(lst2)
         print(lst)
-        return render(request, 'mandalart/plan_small.html', {'manda': json.dumps(lst,ensure_ascii=False)})
+        return render(request, 'mandalart/plan_small.html',
+                      {'manda': json.dumps(lst, ensure_ascii=False)})
 
 
 @login_required
@@ -113,4 +115,21 @@ def editMandalart(request):
                 spes[j].content = spelst[i + 1][j]
                 spes[j].save()
 
+    return redirect('/common/dashboard/' + str(request.user.id))
+
+
+@login_required
+def addTodo(request):
+    u = request.user
+    newTodo = Todo(user=u)
+    newTodo.content = request.POST['todoInput']
+    newTodo.save()
+    return redirect('/common/dashboard/' + str(request.user.id))
+
+
+@login_required
+def delTodo(request, id):
+    u = request.user
+    deltodo = Todo.objects.get(user=u, id=id)
+    deltodo.delete()
     return redirect('/common/dashboard/' + str(request.user.id))

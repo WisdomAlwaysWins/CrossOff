@@ -26,7 +26,7 @@ class BigGoal(models.Model):
 class MidGoal(models.Model):
     big = models.ForeignKey(BigGoal,
                             on_delete=models.CASCADE,
-                            related_name='biggoal')
+                            related_name='midgoal')
     content = models.CharField(max_length=200)
     is_achieved = models.BooleanField(default=False, null=False)
 
@@ -37,9 +37,21 @@ class MidGoal(models.Model):
 class SpecificGoal(models.Model):
     mid = models.ForeignKey(MidGoal,
                             on_delete=models.CASCADE,
-                            related_name='midgoal')
+                            related_name='specificgoal')
     content = models.CharField(max_length=200)
     is_achieved = models.BooleanField(default=False, null=False)
 
     def __str__(self):
         return str(self.mid.big.manda.user.nickname) + '의 ' + str(self.content)
+
+
+class Todo(models.Model):
+    user = models.ForeignKey(User,
+                             on_delete=models.CASCADE,
+                             related_name='todo')
+    content = models.CharField(max_length=200, null=True, blank=True)
+    created_date = models.DateTimeField(auto_now_add=True)
+    is_achieved = models.BooleanField(default=False, null=False)
+
+    def __str__(self):
+        return str(self.user.nickname) + '의 ' + str(self.content)

@@ -1,18 +1,37 @@
-{% extends 'layout.html' %}
-{% load static %}
-{% block title %}
-Dashboard
-{%endblock title %}
-{% block css %}
+{% extends 'layout.html' %} {% load static %} {% block title %} Dashboard
+{%endblock title %} {% block css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
-{% endblock css %}
-{% block content %}
+{% endblock css %} {% block content %}
 <script>
-  var manda_big = JSON.parse("{{manda}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
-  var manda_mid = JSON.parse("{{manda_mid}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
-  var manda_small = JSON.parse("{{manda_small}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
+  var manda_big = JSON.parse(
+    "{{manda}}"
+      .replace(/&quot;/g, '"')
+      .replace(/\r/gi, "\\r")
+      .replace(/\n/gi, "\\n")
+      .replace(/\t/gi, "\\t")
+      .replace(/\f/gi, "\\f")
+  );
+  var manda_mid = JSON.parse(
+    "{{manda_mid}}"
+      .replace(/&quot;/g, '"')
+      .replace(/\r/gi, "\\r")
+      .replace(/\n/gi, "\\n")
+      .replace(/\t/gi, "\\t")
+      .replace(/\f/gi, "\\f")
+  );
+  var manda_small = JSON.parse(
+    "{{manda_small}}"
+      .replace(/&quot;/g, '"')
+      .replace(/\r/gi, "\\r")
+      .replace(/\n/gi, "\\n")
+      .replace(/\t/gi, "\\t")
+      .replace(/\f/gi, "\\f")
+  );
   function putvalue(isEdit) {
     var id = "element";
     if (isEdit) id += "_edit";
@@ -23,6 +42,29 @@ Dashboard
           if (j == 5) {
             document.write(
               '<textarea class="element" id="' +
+                id +
+                i +
+                j +
+                '"" autocomplete="on" name=box' +
+                i +
+                j +
+                " readonly></textarea>"
+            );
+          } else {
+            document.write(
+              '<textarea class="element" id="' +
+                id +
+                i +
+                j +
+                '"" autocomplete="on" name=box' +
+                i +
+                j +
+                "></textarea>"
+            );
+          }
+        } else {
+          document.write(
+            '<textarea class="element" id="' +
               id +
               i +
               j +
@@ -30,29 +72,6 @@ Dashboard
               i +
               j +
               " readonly></textarea>"
-            );
-          } else {
-            document.write(
-              '<textarea class="element" id="' +
-              id +
-              i +
-              j +
-              '"" autocomplete="on" name=box' +
-              i +
-              j +
-              "></textarea>"
-            );
-          }
-        } else {
-          document.write(
-            '<textarea class="element" id="' +
-            id +
-            i +
-            j +
-            '"" autocomplete="on" name=box' +
-            i +
-            j +
-            " readonly></textarea>"
           );
         }
       }
@@ -90,6 +109,14 @@ Dashboard
       }
     }
   }
+  var todos = JSON.parse(
+    "{{todos}}"
+      .replace(/&quot;/g, '"')
+      .replace(/\r/gi, "\\r")
+      .replace(/\n/gi, "\\n")
+      .replace(/\t/gi, "\\t")
+      .replace(/\f/gi, "\\f")
+  );
 </script>
 <section id="dashboard">
   <div class="dashboard__content">
@@ -126,8 +153,17 @@ Dashboard
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid1 = JSON.parse("{{manda_mid1}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
-                  document.write('<p class="badge_name">' + manda_mid1 + '</p>');
+                  var manda_mid1 = JSON.parse(
+                    "{{manda_mid1}}"
+                      .replace(/&quot;/g, '"')
+                      .replace(/\r/gi, "\\r")
+                      .replace(/\n/gi, "\\n")
+                      .replace(/\t/gi, "\\t")
+                      .replace(/\f/gi, "\\f")
+                  );
+                  document.write(
+                    '<p class="badge_name">' + manda_mid1 + "</p>"
+                  );
                 </script>
               </div>
             </div>
@@ -138,15 +174,22 @@ Dashboard
                 <p class="badge_name material-icons">lock</p>
               </div>
             </div>
-            {% endif %}
-
-            {% if check_mid_achieve.1 == 1 %}
+            {% endif %} {% if check_mid_achieve.1 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid2 = JSON.parse("{{manda_mid2}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
-                  document.write('<p class="badge_name">' + manda_mid2 + '</p>');
+                  var manda_mid2 = JSON.parse(
+                    "{{manda_mid2}}"
+                      .replace(/&quot;/g, '"')
+                      .replace(/\r/gi, "\\r")
+                      .replace(/\n/gi, "\\n")
+                      .replace(/\t/gi, "\\t")
+                      .replace(/\f/gi, "\\f")
+                  );
+                  document.write(
+                    '<p class="badge_name">' + manda_mid2 + "</p>"
+                  );
                 </script>
               </div>
             </div>
@@ -157,15 +200,22 @@ Dashboard
                 <p class="badge_name material-icons">lock</p>
               </div>
             </div>
-            {% endif %}
-
-            {% if check_mid_achieve.2 == 1 %}
+            {% endif %} {% if check_mid_achieve.2 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid3 = JSON.parse("{{manda_mid3}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
-                  document.write('<p class="badge_name">' + manda_mid3 + '</p>');
+                  var manda_mid3 = JSON.parse(
+                    "{{manda_mid3}}"
+                      .replace(/&quot;/g, '"')
+                      .replace(/\r/gi, "\\r")
+                      .replace(/\n/gi, "\\n")
+                      .replace(/\t/gi, "\\t")
+                      .replace(/\f/gi, "\\f")
+                  );
+                  document.write(
+                    '<p class="badge_name">' + manda_mid3 + "</p>"
+                  );
                 </script>
               </div>
             </div>
@@ -176,15 +226,22 @@ Dashboard
                 <p class="badge_name material-icons">lock</p>
               </div>
             </div>
-            {% endif %}
-
-            {% if check_mid_achieve.3 == 1 %}
+            {% endif %} {% if check_mid_achieve.3 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid4 = JSON.parse("{{manda_mid4}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
-                  document.write('<p class="badge_name">' + manda_mid4 + '</p>');
+                  var manda_mid4 = JSON.parse(
+                    "{{manda_mid4}}"
+                      .replace(/&quot;/g, '"')
+                      .replace(/\r/gi, "\\r")
+                      .replace(/\n/gi, "\\n")
+                      .replace(/\t/gi, "\\t")
+                      .replace(/\f/gi, "\\f")
+                  );
+                  document.write(
+                    '<p class="badge_name">' + manda_mid4 + "</p>"
+                  );
                 </script>
               </div>
             </div>
@@ -195,15 +252,22 @@ Dashboard
                 <p class="badge_name material-icons">lock</p>
               </div>
             </div>
-            {% endif %}
-
-            {% if check_mid_achieve.4 == 1 %}
+            {% endif %} {% if check_mid_achieve.4 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid5 = JSON.parse("{{manda_mid5}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
-                  document.write('<p class="badge_name">' + manda_mid5 + '</p>');
+                  var manda_mid5 = JSON.parse(
+                    "{{manda_mid5}}"
+                      .replace(/&quot;/g, '"')
+                      .replace(/\r/gi, "\\r")
+                      .replace(/\n/gi, "\\n")
+                      .replace(/\t/gi, "\\t")
+                      .replace(/\f/gi, "\\f")
+                  );
+                  document.write(
+                    '<p class="badge_name">' + manda_mid5 + "</p>"
+                  );
                 </script>
               </div>
             </div>
@@ -214,15 +278,22 @@ Dashboard
                 <p class="badge_name material-icons">lock</p>
               </div>
             </div>
-            {% endif %}
-
-            {% if check_mid_achieve.5 == 1 %}
+            {% endif %} {% if check_mid_achieve.5 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid6 = JSON.parse("{{manda_mid6}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
-                  document.write('<p class="badge_name">' + manda_mid6 + '</p>');
+                  var manda_mid6 = JSON.parse(
+                    "{{manda_mid6}}"
+                      .replace(/&quot;/g, '"')
+                      .replace(/\r/gi, "\\r")
+                      .replace(/\n/gi, "\\n")
+                      .replace(/\t/gi, "\\t")
+                      .replace(/\f/gi, "\\f")
+                  );
+                  document.write(
+                    '<p class="badge_name">' + manda_mid6 + "</p>"
+                  );
                 </script>
               </div>
             </div>
@@ -233,15 +304,22 @@ Dashboard
                 <p class="badge_name material-icons">lock</p>
               </div>
             </div>
-            {% endif %}
-
-            {% if check_mid_achieve.6 == 1 %}
+            {% endif %} {% if check_mid_achieve.6 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid7 = JSON.parse("{{manda_mid7}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
-                  document.write('<p class="badge_name">' + manda_mid7 + '</p>');
+                  var manda_mid7 = JSON.parse(
+                    "{{manda_mid7}}"
+                      .replace(/&quot;/g, '"')
+                      .replace(/\r/gi, "\\r")
+                      .replace(/\n/gi, "\\n")
+                      .replace(/\t/gi, "\\t")
+                      .replace(/\f/gi, "\\f")
+                  );
+                  document.write(
+                    '<p class="badge_name">' + manda_mid7 + "</p>"
+                  );
                 </script>
               </div>
             </div>
@@ -252,15 +330,22 @@ Dashboard
                 <p class="badge_name material-icons">lock</p>
               </div>
             </div>
-            {% endif %}
-
-            {% if check_mid_achieve.7 == 1 %}
+            {% endif %} {% if check_mid_achieve.7 == 1 %}
             <div class="badge achieve">
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid8 = JSON.parse("{{manda_mid8}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
-                  document.write('<p class="badge_name">' + manda_mid8 + '</p>');
+                  var manda_mid8 = JSON.parse(
+                    "{{manda_mid8}}"
+                      .replace(/&quot;/g, '"')
+                      .replace(/\r/gi, "\\r")
+                      .replace(/\n/gi, "\\n")
+                      .replace(/\t/gi, "\\t")
+                      .replace(/\f/gi, "\\f")
+                  );
+                  document.write(
+                    '<p class="badge_name">' + manda_mid8 + "</p>"
+                  );
                 </script>
               </div>
             </div>
@@ -280,11 +365,41 @@ Dashboard
               <p class="title">TO DO LIST</p>
               <p id="day"></p>
             </div>
-            <form action="" id="todo-form">
-              <input type="text" placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!" />
+            <form
+              action="{% url 'mandalart:addTodo' %}"
+              id="todo-form"
+              method="POST"
+            >
+              {% csrf_token %}
+              <input
+                type="text"
+                placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!"
+                name="todoInput"
+              />
               <input type="submit" value="🤍" />
             </form>
-            <ul id="todo-list"></ul>
+            <ul id="todo-list">
+              <script>
+                var toDoList = document.getElementById("todo-list");
+                for (const [key, value] of Object.entries(todos)) {
+                  var li = document.createElement("li");
+                  var span = document.createElement("span");
+                  var button = document.createElement("button");
+                  const check = document.createElement("input");
+                  li.id = key;
+                  span.innerText = value;
+                  button.innerText = "❌";
+                  button.addEventListener("click", (event) => {
+                    window.location.href = "/mandalart/delTodo/" + key;
+                  });
+                  check.setAttribute("type", "checkbox");
+                  li.appendChild(check);
+                  li.appendChild(span);
+                  li.appendChild(button);
+                  toDoList.appendChild(li);
+                }
+              </script>
+            </ul>
           </div>
         </div>
       </div>
@@ -292,7 +407,9 @@ Dashboard
         <div class="goal_achievement">
           <span id="total_goal_num">64개의 세부 목표 중 </span>
           <span id="achieve">{{achieve_num}}</span>
-          <span>개의 목표를 완료! 더 많은 목표를 달성해 배지를 모아보세요 💜</span>
+          <span
+            >개의 목표를 완료! 더 많은 목표를 달성해 배지를 모아보세요 💜</span
+          >
         </div>
       </div>
     </div>
@@ -329,15 +446,26 @@ Dashboard
                   <p>{{manda_mid1}}</p>
                 </div>
                 <script>
-                   var manda_small = JSON.parse("{{manda_small}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
+                  var manda_small = JSON.parse(
+                    "{{manda_small}}"
+                      .replace(/&quot;/g, '"')
+                      .replace(/\r/gi, "\\r")
+                      .replace(/\n/gi, "\\n")
+                      .replace(/\t/gi, "\\t")
+                      .replace(/\f/gi, "\\f")
+                  );
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                      j +
-                      '"/>'
+                        j +
+                        '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">'+manda_small[0][j - 1]+ "</label></div>"
+                      '<label for="obj' +
+                        j +
+                        '">' +
+                        manda_small[0][j - 1] +
+                        "</label></div>"
                     );
                   }
                 </script>
@@ -350,11 +478,15 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                      j +
-                      '"/>'
+                        j +
+                        '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">'+manda_small[1][j - 1]+ "</label></div>"
+                      '<label for="obj' +
+                        j +
+                        '">' +
+                        manda_small[1][j - 1] +
+                        "</label></div>"
                     );
                   }
                 </script>
@@ -367,11 +499,15 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                      j +
-                      '"/>'
+                        j +
+                        '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">'+manda_small[2][j - 1]+ "</label></div>"
+                      '<label for="obj' +
+                        j +
+                        '">' +
+                        manda_small[2][j - 1] +
+                        "</label></div>"
                     );
                   }
                 </script>
@@ -384,11 +520,15 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                      j +
-                      '"/>'
+                        j +
+                        '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">'+manda_small[3][j - 1]+ "</label></div>"
+                      '<label for="obj' +
+                        j +
+                        '">' +
+                        manda_small[3][j - 1] +
+                        "</label></div>"
                     );
                   }
                 </script>
@@ -403,11 +543,15 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                      j +
-                      '"/>'
+                        j +
+                        '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">'+manda_small[4][j - 1]+ "</label></div>"
+                      '<label for="obj' +
+                        j +
+                        '">' +
+                        manda_small[4][j - 1] +
+                        "</label></div>"
                     );
                   }
                 </script>
@@ -420,11 +564,15 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                      j +
-                      '"/>'
+                        j +
+                        '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">'+manda_small[5][j - 1]+  "</label></div>"
+                      '<label for="obj' +
+                        j +
+                        '">' +
+                        manda_small[5][j - 1] +
+                        "</label></div>"
                     );
                   }
                 </script>
@@ -437,11 +585,15 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                      j +
-                      '"/>'
+                        j +
+                        '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">'+manda_small[6][j - 1]+ "</label></div>"
+                      '<label for="obj' +
+                        j +
+                        '">' +
+                        manda_small[6][j - 1] +
+                        "</label></div>"
                     );
                   }
                 </script>
@@ -454,11 +606,15 @@ Dashboard
                   for (let j = 1; j <= 8; j++) {
                     document.write(
                       '<div class="object__small"><input type="checkbox" class="elements" id="obj' +
-                      j +
-                      '"/>'
+                        j +
+                        '"/>'
                     );
                     document.write(
-                      '<label for="obj' + j + '">'+manda_small[7][j - 1]+  "</label></div>"
+                      '<label for="obj' +
+                        j +
+                        '">' +
+                        manda_small[7][j - 1] +
+                        "</label></div>"
                     );
                   }
                 </script>
@@ -468,7 +624,11 @@ Dashboard
         </div>
         <div class="plan table edit" data-type="edit">
           <div class="manda__table" id="manda_table">
-            <form action="{% url 'mandalart:edit' %}" method="POST" id="editMandaForm">
+            <form
+              action="{% url 'mandalart:edit' %}"
+              method="POST"
+              id="editMandaForm"
+            >
               <input type="submit" value="변경 내용 저장" class="btn-purple" />
               {% csrf_token %}
               <script>
@@ -484,7 +644,7 @@ Dashboard
 <!-- JAVASCRIPT -->
 <script>
 
-  // TODO-LIST
+  {% comment %} // TODO-LIST
   const day = document.querySelector("p#day");
   const week = new Array('일', '월', '화', '수', '목', '금', '토');
 
@@ -553,7 +713,7 @@ Dashboard
     const parsedToDos = JSON.parse(savedToDos);
     toDos = parsedToDos;
     parsedToDos.forEach(paintToDo);
-  }
+  } {% endcomment %}
 
   // 만다라트 보기 방식 변경 by 지혜
   const btnContainer = document.querySelector(".categories");
@@ -587,7 +747,5 @@ Dashboard
       planContainer.classList.remove("anim-out");
     }, 300);
   });
-
-
 </script>
 {% endblock content %}
