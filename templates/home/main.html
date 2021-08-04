@@ -86,26 +86,26 @@ Home
       <div class="section" id="section3">
         <!-- 주어진 높이만큼 하고 싶으면 class에 fp-auto-height 추가하기 -->
         <div class="involvedPeople">
-          <p class="description">people involved in developing this website</p>
+          <p class="description">💻 people who participated 💻</p>
           <ul>
             <li>
-              <div class="circle"></div>
+              <img src="{% static 'img/hyunjik.png'%}" alt="">
               <p>이현직</p>
             </li>
             <li>
-              <div class="circle"></div>
+              <img src="{% static 'img/daeyeon.png'%}" alt="">
               <p>김대연</p>
             </li>
             <li>
-              <div class="circle"></div>
+              <img src="{% static 'img/hyunjik.png'%}" alt="">
               <p>조나원</p>
             </li>
             <li>
-              <div class="circle"></div>
+              <img src="{% static 'img/minsol.png'%}" alt="">
               <p>김민솔</p>
             </li>
             <li>
-              <img src="{% static 'img/mini_jae.png'%}" alt="">
+              <img src="{% static 'img/jihye.png'%}" alt="">
               <p>김지혜</p>
             </li>
           </ul>
@@ -113,7 +113,9 @@ Home
       </div>
     </div>
     <div class="startBtn__content">
-      <button id="startBtn" class="btn-purple"><a href="{% url "common:register" %}">START</a></button>
+      <button id="startBtn" class="btn-purple">
+        <a href="{% url 'common:register' %}">START</a>
+      </button>
     </div>
     <div class="toggleupBtn__content">
       <a id="toggleBtn">💜</a>

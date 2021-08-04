@@ -119,6 +119,7 @@ button{
     margin-left:30px;
 }
 .header__container .logo p{
+    display:inline-block;
     color:black;
     font-size:32px;
     font-weight: 800;
@@ -158,23 +159,6 @@ button{
     color:var(--color-main--);
 }
 
-.toggleBtn__content{
-    width:25px;
-    height:25px;
-    position: fixed;
-    bottom: 40px;
-    right:40px;
-    background-color: var(--color-white--);
-    padding: 10px;
-    border-radius: 50%;
-    display:flex;
-    justify-content: center;
-    align-items:center;
-    cursor:pointer;
-}
-.toggleBtn__content:hover{
-    background-color:rgba(96,62,192,0.2);
-}
 
 /* HOME */
 /* section 1 - Main Page */
@@ -370,7 +354,9 @@ button{
     align-items: center;
 }
 .home__content #fullpage #section3 .involvedPeople .description{
-    padding: 50px;
+    font-size: 20px;
+    margin : 60px 0;
+    padding: 15px 30px;
     color:var(--color-white--);
 }
 .home__content #fullpage #section3 .involvedPeople ul{
@@ -387,30 +373,40 @@ button{
     border-radius: 50%;
 }
 .home__content #fullpage #section3 .involvedPeople ul li img{
-    width: 80px;
+    width: 100px;
 }
 .home__content #fullpage #section3 .involvedPeople ul li p{
-    font-size:12px;
+    font-size:14px;
     color: var(--color-white--);
-    margin-top: 10px;
+    margin-top: 15px;
 }
 
 /* Start Button - Go to Register */
 .home__content .startBtn__content{
     position: fixed;
-    bottom: 8%;
+    bottom: 6%;
     left:50%;
     transform: translate(-50%,0);
 }
+.home__content .startBtn__content #startBtn{
+    width:150px;
+    height: 60px;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: none;
+}
 .home__content .startBtn__content #startBtn a{
+    display:block;
     color:var(--color-white--);
+    padding:20px 50px;
 }
 
 /* Toggle up Button - go to top */
 .toggleupBtn__content{
     position: fixed;
-    bottom: 8%;
-    right:20px;
+    bottom: 60px;
+    right:40px;
 }
 .toggleupBtn__content #toggleBtn{
     font-size: 12px;
