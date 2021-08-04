@@ -898,13 +898,13 @@ button{
 #dashboard{
     position: relative;
     height:auto;
-    background-color: rgba(238, 238, 238, 0.35);
 }
 #dashboard .dashboard__content{
     position: absolute;
     width: 100%;
     margin:0 auto;
-    top: 80px;
+    background-color: rgba(216, 216, 216, 0.2);
+    padding-top:80px;
 }
 .dashboard__title{
     margin-left: 4%;
