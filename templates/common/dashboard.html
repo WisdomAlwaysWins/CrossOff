@@ -10,9 +10,9 @@ Dashboard
 {% endblock css %}
 {% block content %}
 <script>
-  var manda_big = JSON.parse("{{manda}}".replace(/&quot;/g, '"'));
-  var manda_mid = JSON.parse("{{manda_mid}}".replace(/&quot;/g, '"'));
-  var manda_small = JSON.parse("{{manda_small}}".replace(/&quot;/g, '"'));
+  var manda_big = JSON.parse("{{manda}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
+  var manda_mid = JSON.parse("{{manda_mid}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
+  var manda_small = JSON.parse("{{manda_small}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
   function putvalue(isEdit) {
     var id = "element";
     if (isEdit) id += "_edit";
@@ -126,7 +126,7 @@ Dashboard
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid1 = JSON.parse("{{manda_mid1}}".replace(/&quot;/g, '"'));
+                  var manda_mid1 = JSON.parse("{{manda_mid1}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
                   document.write('<p class="badge_name">' + manda_mid1 + '</p>');
                 </script>
               </div>
@@ -145,7 +145,7 @@ Dashboard
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid2 = JSON.parse("{{manda_mid2}}".replace(/&quot;/g, '"'));
+                  var manda_mid2 = JSON.parse("{{manda_mid2}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
                   document.write('<p class="badge_name">' + manda_mid2 + '</p>');
                 </script>
               </div>
@@ -164,7 +164,7 @@ Dashboard
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid3 = JSON.parse("{{manda_mid3}}".replace(/&quot;/g, '"'));
+                  var manda_mid3 = JSON.parse("{{manda_mid3}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
                   document.write('<p class="badge_name">' + manda_mid3 + '</p>');
                 </script>
               </div>
@@ -183,7 +183,7 @@ Dashboard
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid4 = JSON.parse("{{manda_mid4}}".replace(/&quot;/g, '"'));
+                  var manda_mid4 = JSON.parse("{{manda_mid4}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
                   document.write('<p class="badge_name">' + manda_mid4 + '</p>');
                 </script>
               </div>
@@ -202,7 +202,7 @@ Dashboard
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid5 = JSON.parse("{{manda_mid5}}".replace(/&quot;/g, '"'));
+                  var manda_mid5 = JSON.parse("{{manda_mid5}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
                   document.write('<p class="badge_name">' + manda_mid5 + '</p>');
                 </script>
               </div>
@@ -221,7 +221,7 @@ Dashboard
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid6 = JSON.parse("{{manda_mid6}}".replace(/&quot;/g, '"'));
+                  var manda_mid6 = JSON.parse("{{manda_mid6}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
                   document.write('<p class="badge_name">' + manda_mid6 + '</p>');
                 </script>
               </div>
@@ -240,7 +240,7 @@ Dashboard
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid7 = JSON.parse("{{manda_mid7}}".replace(/&quot;/g, '"'));
+                  var manda_mid7 = JSON.parse("{{manda_mid7}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
                   document.write('<p class="badge_name">' + manda_mid7 + '</p>');
                 </script>
               </div>
@@ -259,7 +259,7 @@ Dashboard
               <div class="badge_img"></div>
               <div class="name">
                 <script>
-                  var manda_mid8 = JSON.parse("{{manda_mid8}}".replace(/&quot;/g, '"'));
+                  var manda_mid8 = JSON.parse("{{manda_mid8}}".replace(/&quot;/g, '"').replace(/\r/gi, '\\r').replace(/\n/gi, '\\n').replace(/\t/gi, '\\t').replace(/\f/gi, '\\f'));
                   document.write('<p class="badge_name">' + manda_mid8 + '</p>');
                 </script>
               </div>
