@@ -8,181 +8,107 @@
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   </head>
-
+  <script>
+      var lst = JSON.parse("{{manda}}".replace(/&quot;/g, '"'));
+      var big = lst[0];
+      var mid_lst = lst[1];
+  </script>
   <body>
+        <style>
+            .popup__specific {
+                display: none;
+                position: fixed; 
+                z-index: 1;
+                padding-top: 100px;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%; 
+                overflow: auto; 
+                background-color: rgb(0,0,0); 
+                background-color: rgba(0,0,0,0.4);
+            }
+            .specific_content {
+                background-color: #fefefe;
+                margin: auto;
+                padding: 20px;
+                border: 1px solid #888;
+                width: 80%;
+            }
+            .close {
+                color: #aaaaaa;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            .close:hover,
+            .close:focus {
+                color: #000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+        </style>
     <!-- 이 예제에서는 필요한 js, css 를 링크걸어 사용 -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
-    <link rel="stylesheet" href="{%static 'css/small.css'%}" />
+    <link rel="stylesheet" href="{%static 'css/small.css'%}">
+    <div class="small_top">
+        <div class="small_title">
+            <h1>세부계획 세우기</h1>
+        </div>
+        <div class="small_instruction">
+            <h2>목표를 이루기 위해 해야할 일을 자세히 생각해보세요.</h2>
+        </div>
+        <div class="small_example">
+            <h3>어떻게 세워야할 지 잘 모르겠다면 <a href="https://pds.joins.com/news/component/tong/201602/03/mandalat_otani.jpg">여기</a>를 참고하세요.</h3>
+        </div>
+    </div>
 
-    <form action="{% url 'mandalart:plan_small' %}" method="POST">
-      {% csrf_token %}
-      <br />
-      <br />
-      <br />
-      <div class="board">
-        <script>
-          let cnt = 0;
-          for (let i = 1; i <= 9; i++) {
-            document.write('<div class="box" id="box' + i + '">');
-            for (let j = 1; j <= 9; j++) {
-              if (i == 5) {
-                if (j == 5)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.0}}" disabled ></input>'
-                  );
-                else if (j == 1)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.0}}" disabled></input>'
-                  );
-                else if (j == 2)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.1}}" disabled></input>'
-                  );
-                else if (j == 3)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.2}}" disabled></input>'
-                  );
-                else if (j == 4)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.3}}" disabled></input>'
-                  );
-                else if (j == 6)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.4}}" disabled></input>'
-                  );
-                else if (j == 7)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.5}}" disabled></input>'
-                  );
-                else if (j == 8)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.6}}" disabled></input>'
-                  );
-                else if (j == 9)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.7}}" disabled></input>'
-                  );
-              } else if (j == 5) {
-                if (i == 1)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.0}}" disabled></input>'
-                  );
-                else if (i == 2)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.1}}" disabled></input>'
-                  );
-                else if (i == 3)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.2}}" disabled></input>'
-                  );
-                else if (i == 4)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.3}}" disabled></input>'
-                  );
-                else if (i == 6)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.4}}" disabled></input>'
-                  );
-                else if (i == 7)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.5}}" disabled></input>'
-                  );
-                else if (i == 8)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.6}}" disabled></input>'
-                  );
-                else if (i == 9)
-                  document.write(
-                    '<input class="element" id="element' +
-                      j +
-                      '"" autocomplete="on" value="{{manda.1.7}}" disabled></input>'
-                  );
-              } else if (i > 5) {
-                if (j > 5)
-                  document.write(
-                    '<input class="element" name="box' +
-                      (i - 2) +
-                      (j - 2) +
-                      '" id="element' +
-                      j +
-                      '"" autocomplete="on"></input>'
-                  );
-                else
-                  document.write(
-                    '<input class="element" name="box' +
-                      (i - 2) +
-                      (j - 1) +
-                      '" id="element' +
-                      j +
-                      '"" autocomplete="on"></input>'
-                  );
-              } else {
-                if (j > 5)
-                  document.write(
-                    '<input class="element" name="box' +
-                      (i - 1) +
-                      (j - 2) +
-                      '" id="element' +
-                      j +
-                      '"" autocomplete="on"></input>'
-                  );
-                else
-                  document.write(
-                    '<input class="element" name="box' +
-                      (i - 1) +
-                      (j - 1) +
-                      '" id="element' +
-                      j +
-                      '"" autocomplete="on"></input>'
-                  );
-              }
-            }
-            document.write("</div>");
-          }
-          $(document).keypress(function (event) {
-            if (event.which == "13") {
-              event.preventDefault();
-            }
-          });
-        </script>
-      </div>
-      <input type="submit" class="small_btn_detail" value="계획짜기 완료!" />
-    </form>
-  </body>
+    <div class="small_bottom">
+        <form action="{% url 'mandalart:plan_small' %}" method="POST">
+            {% csrf_token %}
+            <div class="board">
+                <script>
+                    let cnt = 0;
+                    for (let i = 1; i <= 9; i++) {
+                        document.write('<div class="box" id="box' + i + '">')
+                        for (let j = 1; j <= 9; j++) {
+                            if (i == 5){
+                                if (j == 5) document.write('<textarea class="element" id="element' + j + 
+                                    '"" autocomplete="on" disabled >'+big+'</textarea>');
+                                else if(j > 5) document.write('<textarea class="element" id="element' + j + 
+                                    '"" autocomplete="on" disabled>'+mid_lst[j-2]+'</textarea>');
+                                else document.write('<textarea class="element" id="element' + j + 
+                                    '"" autocomplete="on" disabled> '+mid_lst[j-1]+'</textarea>');
+                            }
+                            else if (j == 5) {
+                                if(i < 5)
+                                    document.write('<textarea class="element" id="element' + j + 
+                                    '"" autocomplete="on" disabled> '+mid_lst[i-1]+'</textarea>');
+                                else 
+                                    document.write('<textarea class="element" id="element' + j + 
+                                    '"" autocomplete="on" disabled> '+mid_lst[i-2]+'</textarea>');
+                            }
+                            else if (i > 5) {
+                                if (j > 5) document.write('<div class="textarea-container"><textarea class="element" name="box' + (i - 2) + (j - 2) + '" id="element' + j +
+                                    '"" autocomplete="on"></textarea></div>');
+                                else document.write('<div class="textarea-container"><textarea class="element" name="box' + (i - 2) + (j - 1) + '" id="element' + j +
+                                    '"" autocomplete="on"></textarea></div>');
+                            }
+                            else {
+                                if (j > 5) document.write('<div class="textarea-container"><textarea class="element" name="box' + (i - 1) + (j - 2) + '" id="element' + j +
+                                    '"" autocomplete="on"></textarea></div>');
+                                else document.write('<div class="textarea-container"><textarea class="element" name="box' + (i - 1) + (j - 1) + '" id="element' + j +
+                                    '"" autocomplete="on"></textarea></div>');
+                            }
+                        }
+                        document.write('</div>')
+                    }
+                </script>
+            </div>
+        <input type="submit" class = "small_btn_detail" value="프로필로 이동" >
+        </form>
+    </div>
+    
+</body>
 </html>

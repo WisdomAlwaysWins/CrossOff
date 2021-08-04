@@ -301,11 +301,14 @@ button:disabled{
     grid-template-rows: 130px 130px 130px;
     grid-template-columns: 130px 130px 130px;
     margin: 10px;
+    border: none;
+    resize: none;
+    overflow: hidden;
 }
 
 .manda__table .box .element {
     background: rgb(245, 196, 243);
-    border: 2px solid white;
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -314,6 +317,8 @@ button:disabled{
     font-weight: bold;
     font-style: bold;
     font-size: large;
+    overflow: hidden;
+    resize: none;
 }
 
 #element5 {

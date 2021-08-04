@@ -1208,13 +1208,20 @@ button{
     align-items: center;
 }
 .dashboard__content_bottom .plan__content .table .manda__table .box .element{
-    padding:0;
-    margin:0;
-    width:137px;
-    height:137px;
-    text-align: center;
-    display:flex;
     background-color: #eee;
+    border: 2px solid white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-style: bold;
+    font-size: large;
+    overflow: hidden;
+    padding: 35.7% 5% 35.7% 5%;
+    resize: none;
+    word-break: break-all;
 
 }
 .dashboard__content_bottom .plan__content .table .manda__table #box1 .element{
