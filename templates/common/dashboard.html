@@ -482,12 +482,6 @@ Dashboard
 </section>
 <!-- JAVASCRIPT -->
 <script>
-  // 수정 부분 엔터키 방지
-  $('#editMandaForm').keypress(function (event) {
-    if (event.which == "13") {
-      event.preventDefault();
-    }
-  });
 
   // TODO-LIST
   const day = document.querySelector("p#day");

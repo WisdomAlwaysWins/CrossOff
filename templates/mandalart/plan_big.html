@@ -26,20 +26,22 @@
                             <p class="l">|</p>
                             <p for="answer_1">어떤 한 해를 보내고 싶으신가요?</p>
                         </div>
-                
+
                         <div>
-                            <input type="textarea" class = "biggoal" autocomplete="off" id="answer_1" name="big" cols="50" rows="7"placeholder="Ex. 좋은 사람 되기, 꿈에 가까워지는 한 해"></input><br>
+                            <input type="textarea" class="biggoal" autocomplete="off" id="answer_1" name="big" cols="50"
+                                rows="7" placeholder="Ex. 좋은 사람 되기, 꿈에 가까워지는 한 해"></input><br>
                         </div>
-                       
-                        
+
+
                     </div>
                 </li>
                 <li class="swiper-slide">
                     <div id="question_2">
                         <div class="q">
-                            <p class="l">|</p><p for="answer_2">  올해 이루고 싶은 목표 여덟 가지를 적어주세요.</p>
+                            <p class="l">|</p>
+                            <p for="answer_2"> 올해 이루고 싶은 목표 여덟 가지를 적어주세요.</p>
                         </div>
-                        
+
                         <div class="midgoals">
                             <div>
                                 <script>
@@ -56,16 +58,16 @@
                                     document.write('<br>')
                                 </script>
                             </div>
-                            
+
                         </div>
-                    
+
                         <br>
                         <input type="submit" value="세부 계획 짜러 가기" class="final_btn" />
                     </div>
                 </li>
 
             </ul>
- 
+
             <!-- 네비게이션 버튼 -->
             <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
             <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
@@ -88,12 +90,6 @@
                 prevEl: '.swiper-button-prev', // 이번 버튼 클래스명
             },
         });
-        $(document).keypress(
-  function(event){
-    if (event.which == '13') {
-      event.preventDefault();
-    }
-});
     </script>
 </body>
 
