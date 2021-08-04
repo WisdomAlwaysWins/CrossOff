@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import *
-
+import json
 
 @login_required
 def new(request):
@@ -47,7 +47,8 @@ def plan_small(request):
         for i in range(len(mid)):
             lst2.append(mid[i].content)
         lst.append(lst2)
-        return render(request, 'mandalart/plan_small.html', {'manda': lst})
+        print(lst)
+        return render(request, 'mandalart/plan_small.html', {'manda': json.dumps(lst,ensure_ascii=False)})
 
 
 @login_required
