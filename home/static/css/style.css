@@ -12,6 +12,10 @@
     --border-radius--:10px;
 
 }
+textarea {
+    font-family: inherit;
+    font-size: inherit;
+}
 
 body{
     margin:0 auto;
