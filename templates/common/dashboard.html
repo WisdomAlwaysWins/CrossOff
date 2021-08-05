@@ -178,6 +178,38 @@
         elem.id = id + i + j;
         elem.name = "box" + i + j;
         elem.setAttribute("autocomplete", "on");
+        if (!isEdit) {
+          if (i < 5) {
+            if (j < 5) {
+              if (manda_small_achieve[i - 1][j - 1]) {
+                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
+              }
+            }
+            else if (j == 5) {
+
+            }
+            else {
+              if (manda_small_achieve[i - 1][j - 2]) {
+                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
+              }
+            }
+          }
+          else {
+            if (j < 5) {
+              if (manda_small_achieve[i - 2][j - 1]) {
+                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
+              }
+            }
+            else if (j == 5) {
+
+            }
+            else {
+              if (manda_small_achieve[i - 2][j - 2]) {
+                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
+              }
+            }
+          }
+        }
         if (isEdit) {
           if (i == 5 || j == 5) {
             box.appendChild(elem);
@@ -187,6 +219,7 @@
           boxwrap.className = "inside__box";
           boxwrap.id = "inside__box" + i + j;
           let achieveBox = document.createElement("input");
+          achieveBox.className = "achieve__check";
           achieveBox.setAttribute("type", "checkbox");
           achieveBox.setAttribute("value", "True");
           achieveBox.name = "chk" + i + j;
@@ -213,6 +246,8 @@
         document.getElementById(id + (i + 1) + 5).value = manda_mid[i - 1];
       }
     }
+    console.log(manda_small);
+    console.log(manda_small_achieve);
     for (let i = 1; i <= 9; i++) {
       for (let j = 1; j <= 9; j++) {
         if (i == 5 || j == 5) continue;
@@ -267,10 +302,13 @@
         spechkbox.setAttribute("type", "checkbox");
         spechkbox.setAttribute("disabled", true);
         spechkbox.className = "elements";
-        if (manda_small_achieve[i - 1][j])
+        if (manda_small_achieve[i - 1][j]) {
           spechkbox.setAttribute("checked", true);
+          specontent.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
+        }
         spechkbox.id = "obj" + i + (j + 1);
         specontent.setAttribute("for", "obj" + i + (j + 1));
+        specontent.setAttribute("id", "obj" + i + (j + 1));
         specontent.innerText = manda_small[i - 1][j];
         spegoal.appendChild(spechkbox);
         spegoal.appendChild(specontent);
