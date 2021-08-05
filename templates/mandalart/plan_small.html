@@ -10,7 +10,14 @@
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <script>
-    var lst = JSON.parse("{{manda}}".replace(/&quot;/g, '"'));
+    var lst = JSON.parse(
+        "{{manda}}"
+            .replace(/&quot;/g, '"')
+            .replace(/\r/gi, "\\r")
+            .replace(/\n/gi, "\\n")
+            .replace(/\t/gi, "\\t")
+            .replace(/\f/gi, "\\f")
+    );
     var big = lst[0];
     var mid_lst = lst[1];
 </script>

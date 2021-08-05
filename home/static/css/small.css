@@ -1,3 +1,11 @@
+body{
+  font-family: 'Noto Sans KR', sans-serif;
+}
+textarea {
+  font-family: inherit;
+  font-size: inherit;
+}
+
 .small_example a:hover{
     background-color: violet;
     color: white;
@@ -83,44 +91,6 @@ body {
 #box5 #element8 {background: #BAD3EF;}
 #box5 #element9 {background: #51BDBD;}
 
-/*--------------popup--------------*/
-.popup__specific {
-  display: none;
-  position: fixed; 
-  z-index: 1;
-  padding-top: 100px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%; 
-  overflow: auto; 
-  background-color: rgb(0,0,0); 
-  background-color: rgba(0,0,0,0.4);
-}
-
-.specific_content {
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-}
-
-.close {
-  color: #aaaaaa;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: #000;
-  text-decoration: none;
-  cursor: pointer;
-}
-/*--------------------*/
-
 .small_btn_detail{
     position:center ;
     width:280px;
@@ -128,7 +98,7 @@ body {
     color: white;
     font-weight: bold;
     font-size: 25px;
-     background: rgb(209, 209, 209);                        
+    background: rgb(209, 209, 209);                        
     border:1px rgb(83, 83, 83);
     cursor:pointer;
     transition: 0.4s;
