@@ -1,6 +1,6 @@
 from django import forms
 from django.contrib.auth import get_user_model
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UsernameField, UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm, SetPasswordForm, UserCreationForm, UsernameField, UserChangeForm, PasswordChangeForm
 from django.db.models import fields
 from django.http import request
 from django.utils import timezone
@@ -128,3 +128,19 @@ class CustomPasswordChangeForm(PasswordChangeForm):
             'class':
             'form-control',
         })
+
+class CustomPasswordSetForm(SetPasswordForm):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['new_password1'].label = '새 비밀번호'
+        self.fields['new_password1'].widget.attrs.update({
+            'class':
+            'form-control',
+        })
+        self.fields['new_password1'].help_text = None
+        self.fields['new_password2'].label = '새 비밀번호 확인'
+        self.fields['new_password2'].widget.attrs.update({
+            'class':
+            'form-control',
+        })
+        self.fields['new_password2'].help_text = None

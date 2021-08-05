@@ -251,7 +251,7 @@ class UserPasswordResetView(PasswordResetView):
         if User.objects.filter(email=self.request.POST.get("email")).exists():
             return super().form_valid(form)
         else:
-            return render(self.request, 'password_reset_done_fail.html')
+            return render(self.request, 'common/password_reset_done_fail.html')
 
 
 class UserPasswordResetDoneView(PasswordResetDoneView):
@@ -259,8 +259,10 @@ class UserPasswordResetDoneView(PasswordResetDoneView):
 
 
 class UserPasswordResetConfirmView(PasswordResetConfirmView):
-    form_class = SetPasswordForm
-    success_url = reverse_lazy('password_reset_complete')
+
+    form_class = CustomPasswordSetForm
+    success_url=reverse_lazy('password_reset_complete')
+
     template_name = 'common/password_reset_confirm.html'
 
     def form_valid(self, form):
