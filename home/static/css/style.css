@@ -1030,7 +1030,7 @@ button{
     display:none;
 }
 .dashboard__content_top .top .badges .badge .name{
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .dashboard__content_top .top .badges .badge .name .badge_name{
     display:inline-block;
