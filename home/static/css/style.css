@@ -369,6 +369,10 @@ button{
 .home__content #fullpage #section3 .involvedPeople ul li{
     padding: 0 20px;
 }
+.home__content #fullpage #section3 .involvedPeople ul li img{
+    width:100px;
+    height:100px;
+}
 /* 임시 */
 .home__content #fullpage #section3 .involvedPeople ul li .circle{
     width:80px;
@@ -399,11 +403,13 @@ button{
     align-items: center;
     justify-content: center;
     padding: none;
+    border-radius: 15px;
 }
 .home__content .startBtn__content #startBtn a{
     display:block;
     color:var(--color-white--);
-    padding:20px 50px;
+    padding:18px 45px;
+    font-size:18px;
 }
 
 /* Toggle up Button - go to top */
@@ -942,15 +948,20 @@ button{
     display: flex;
 }
 .dashboard__content_top .top .user__total .profile .image{
+    flex:1;
     display:flex;
     justify-content: center;
     align-items: center;
-    padding: 0 80px 0 30px;
+    margin:0 auto;
 }
-.dashboard__content_top .top .user__total .profile .image img{
-    width: 120px;
+.dashboard__content_top .top .user__total .profile .image .material-icons{
+    display:inline-block;
+    font-size:120px;
+    color:gray;
+    
 }
 .dashboard__content_top .top .profile .info{
+    flex:1.5;
     display:flex;
     flex-direction: column;
     justify-content: center;

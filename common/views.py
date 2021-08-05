@@ -1,7 +1,9 @@
 from django.shortcuts import redirect, render
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import views as auth_views
 from .forms import *
+from .models import *
 from mandalart.models import *
 from django.conf import settings
 import json
@@ -120,6 +122,9 @@ def profile(request, id):
     user = User.objects.get(id=id)
     return render(request, 'common/seeProfile.html', {'user': user})
 
+def idfind(request):
+    return render(request, 'common/password_reset_form.html')
+
 
 @login_required
 def profileUpdate(request):
@@ -149,3 +154,24 @@ def passwordEdit(request):
         password_change_form = CustomPasswordChangeForm(request.user)
     return render(request, 'common/editPassword.html',
                   {'password_change_form': password_change_form})
+
+
+class UserPasswordResetView(auth_views.PasswordResetView):
+    template_name = 'password_reset_form.html' #템플릿을 변경하려면 이와같은 형식으로 입력
+
+    def form_valid(self, form):
+        if User.objects.filter(email=self.request.POST.get("email")).exists():
+            opts = {
+                'use_https': self.request.is_secure(),
+                'token_generator': self.token_generator,
+                'from_email': self.from_email,
+                'email_template_name': self.email_template_name,
+                'subject_template_name': self.subject_template_name,
+                'request': self.request,
+                'html_email_template_name': self.html_email_template_name,
+                'extra_email_context': self.extra_email_context,
+            }
+            form.save(**opts)
+            return super().form_valid(form)
+        else:
+            return render(self.request, 'password_reset_done_fail.html')
