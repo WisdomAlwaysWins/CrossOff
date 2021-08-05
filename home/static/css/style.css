@@ -365,6 +365,10 @@ button{
 .home__content #fullpage #section3 .involvedPeople ul li{
     padding: 0 20px;
 }
+.home__content #fullpage #section3 .involvedPeople ul li img{
+    width:100px;
+    height:100px;
+}
 /* 임시 */
 .home__content #fullpage #section3 .involvedPeople ul li .circle{
     width:80px;
@@ -395,11 +399,13 @@ button{
     align-items: center;
     justify-content: center;
     padding: none;
+    border-radius: 15px;
 }
 .home__content .startBtn__content #startBtn a{
     display:block;
     color:var(--color-white--);
-    padding:20px 50px;
+    padding:18px 45px;
+    font-size:18px;
 }
 
 /* Toggle up Button - go to top */
