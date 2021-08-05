@@ -20,6 +20,7 @@ body{
     margin:0;
     padding:0;
     font-family: 'Noto Sans KR', sans-serif;
+    cursor: default;
 }
 ul{
     list-style:none;
@@ -988,32 +989,45 @@ button{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding-bottom: 30px;
 }
+/* badges -> badge -> badge_img -> img (stamp) / span (lock) */
 .dashboard__content_top .top .badges .badge{
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    opacity: 0.5;
     position: relative;
 }
-.dashboard__content_top .top .badges .badge.achieve{
+.dashboard__content_top .top .badges .badge_img{
+    position: relative;
+    margin : 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.dashboard__content_top .top .badges .badge_img img{
+    width:60px;
+    height: 60px;
+    opacity: 0.5;
+}
+.dashboard__content_top .top .badges .badge.achieve img{
     opacity: 1;
 }
-.dashboard__content_top .top .badges .badge .badge_img{
-    margin : 0 auto;
-    background: rosybrown;
-    width: 60px;
-    height: 60px;
-    border: 5px solid var(--color-white--);
-    border-radius: 50%;
+.dashboard__content_top .top .badges .badge_img span{
+    z-index: 10;
+    position: absolute;
+    left:19px;
+    top:21px;
+    font-size: 15px;
+    border-radius: 3px;
+    padding: 3px;
+    background-color:rgb(103, 84, 123);
+    color:white;
 }
-.dashboard__content_top .top .badges .badge img{
-    margin : 0 auto;
-    background: rosybrown;
-    width: 60px;
-    height: 60px;
-    border: 5px solid var(--color-white--);
-    border-radius: 50%;
+.dashboard__content_top .top .badges .badge.achieve span{
+    display:none;
 }
 .dashboard__content_top .top .badges .badge .name{
     margin-top: 5px;
@@ -1026,6 +1040,10 @@ button{
     border-radius: var(--border-radius--);
     color:var(--color-black--);
     box-shadow: 0px 2px 5px gray;
+    opacity: 0.5;
+}
+.dashboard__content_top .top .badges .badge.achieve .badge_name{
+    opacity: 1;
 }
 .dashboard__content_top .top .todo{
     width: 50%;
@@ -1157,7 +1175,6 @@ button{
     justify-content: center;
     margin:0;
 }
-
 .dashboard__content_bottom .manda__nav{
     width:100%;
     height: 50px;
