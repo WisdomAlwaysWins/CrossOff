@@ -67,8 +67,6 @@ textarea{
     align-items: center;
     justify-content: center;
     text-align: center;
-
- 
 }
 input{
     resize: none;
@@ -81,13 +79,13 @@ input{
     align-items: center;
     justify-content: center;
     text-align: center;
-
 }
 
 #answer_1{
     margin-top: 75px;
     box-shadow: 5px 5px 10px rgb(0 0 0 / 30%);
     border: none;
+    overflow: hidden;
 }
 #answer_1:focus{
     outline: none;

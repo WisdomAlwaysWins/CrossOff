@@ -11,5 +11,8 @@ urlpatterns = [
     path('dashboard/<str:id>', views.dashboard, name='dashboard'),
     path('profile/<str:id>', views.profile, name='profile'),
     path('profile/update/', views.profileUpdate, name='profile_update'),
-    path('profile/password/', views.passwordEdit, name='edit_password')
+    path('profile/password/', views.passwordEdit, name='edit_password'),
+    path('findid/', views.idfind, name='password_reset_form'),
+
+
 ]

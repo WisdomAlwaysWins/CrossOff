@@ -40,7 +40,9 @@
       </form>
       <div class="login_no">
         회원이 아니신가요?
-        <a href="{% url 'common:register' %}"><b>회원가입</b></a>
+        <a href="{% url 'common:register' %}"><b>회원가입</b></a><br>
+        비밀번호가 기억 안 나면
+        <a href="{% url 'common:password_reset_form' %}"><b>비밀번호 찾기</b></a>
       </div>
       <script>
         $(document).ready(function () {

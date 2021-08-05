@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
-import os
+import os,json
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -132,3 +132,30 @@ AUTH_USER_MODEL = 'common.User'
 LOGIN_URL = '/common/login'
 
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
+
+EMAIL_HOST = 'smtp.gmail.com'
+# 메일을 호스트하는 서버
+
+EMAIL_PORT = '587'
+# gmail과의 통신하는 포트
+
+EMAIL_HOST_USER = 'jiggy0429@likelion.org'
+# 발신할 이메일
+
+EMAIL_HOST_PASSWORD = '63544330'
+# 발신할 메일의 비밀번호
+
+EMAIL_USE_TLS = True
+# TLS 보안 방법
+
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
+# 사이트와 관련한 자동응답을 받을 이메일 주소
+
+
+# # 발신할 이메일
+# # EMAIL_HOST_USER = '구글아이디@gmail.com'
+# EMAIL_HOST_USER = get_secret("jiggy0429@likelion.net")
+
+# # 발신할 메일의 비밀번호
+# # EMAIL_HOST_PASSWORD = '구글비밀번호'
+# EMAIL_HOST_PASSWORD = get_secret("63544330")
