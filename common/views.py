@@ -117,7 +117,9 @@ def dashboard(request, id):
     lst2 = []
     lst4 = {}
     lst5 = {}
+    midcnt = 0
     for i in range(len(mid)):
+        specnt = 0
         lst3 = []
         lst6 = []
         lst2.append(mid[i].content)
@@ -125,8 +127,17 @@ def dashboard(request, id):
         for j in range(len(spe)):
             lst3.append(spe[j].content)
             lst6.append(spe[j].is_achieved)
+            if spe[j].is_achieved:
+                specnt += 1
+        if specnt == 8:
+            mid[i].is_achieved = True
+            mid[i].save()
+            midcnt += 1
         lst4[i] = lst3
         lst5[i] = lst6
+    if midcnt == 8:
+        big.is_achieved = True
+        big.save()
 
     achieve_goal = SpecificGoal.objects.filter(is_achieved=True)
     achieve_num = len(achieve_goal)
@@ -232,27 +243,29 @@ def passwordEdit(request):
 #             return render(self.request, 'password_reset_done_fail.html')
 
 class UserPasswordResetView(PasswordResetView):
-    template_name = 'common/password_reset.html' #템플릿을 변경하려면 이와같은 형식으로 입력
+    template_name = 'common/password_reset.html'  # 템플릿을 변경하려면 이와같은 형식으로 입력
     success_url = reverse_lazy('password_reset_done')
     form_class = PasswordResetForm
-    
+
     def form_valid(self, form):
         if User.objects.filter(email=self.request.POST.get("email")).exists():
             return super().form_valid(form)
         else:
             return render(self.request, 'password_reset_done_fail.html')
 
-            
+
 class UserPasswordResetDoneView(PasswordResetDoneView):
-    template_name = 'common/password_reset_done.html' #템플릿을 변경하려면 이와같은 형식으로 입력
+    template_name = 'common/password_reset_done.html'  # 템플릿을 변경하려면 이와같은 형식으로 입력
+
 
 class UserPasswordResetConfirmView(PasswordResetConfirmView):
     form_class = SetPasswordForm
-    success_url=reverse_lazy('password_reset_complete')
+    success_url = reverse_lazy('password_reset_complete')
     template_name = 'common/password_reset_confirm.html'
 
     def form_valid(self, form):
         return super().form_valid(form)
+
 
 class UserPasswordResetCompleteView(PasswordResetCompleteView):
     template_name = 'common/password_reset_complete.html'

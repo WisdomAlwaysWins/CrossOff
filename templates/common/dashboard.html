@@ -1,6 +1,7 @@
 {% extends 'layout.html' %} {% load static %} {% block title %} Dashboard
 {%endblock title %} {% block css %}
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+  integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -147,7 +148,7 @@
     if (check_mid_achieve[nth]) {
       badgeName.innerText = manda_mid[nth];
       badge.classList.add("achieve");
-    }else{
+    } else {
       badgeName.innerText = manda_mid[nth];
     }
   }
@@ -196,7 +197,9 @@
               }
             }
             else if (j == 5) {
-
+              if (check_mid_achieve[i - 1]) {
+                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
+              }
             }
             else {
               if (manda_small_achieve[i - 1][j - 2]) {
@@ -211,7 +214,9 @@
               }
             }
             else if (j == 5) {
-
+              if (check_mid_achieve[i - 2]) {
+                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
+              }
             }
             else {
               if (manda_small_achieve[i - 2][j - 2]) {
@@ -256,8 +261,6 @@
         document.getElementById(id + (i + 1) + 5).value = manda_mid[i - 1];
       }
     }
-    console.log(manda_small);
-    console.log(manda_small_achieve);
     for (let i = 1; i <= 9; i++) {
       for (let j = 1; j <= 9; j++) {
         if (i == 5 || j == 5) continue;
@@ -363,7 +366,7 @@
               let parentNode = document.getElementsByClassName("badges")[0];
               for (let i = 0; i < 8; i++) {
                 drawBadge(parentNode, i);
-                parentNode.children[i].classList.add("badge"+i);
+                parentNode.children[i].classList.add("badge" + i);
               }
             </script>
           </div>
