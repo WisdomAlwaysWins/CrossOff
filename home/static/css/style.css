@@ -97,10 +97,12 @@ button{
 .btn-white{
     background-color: var(--color-white--);
     color: #3e3260;
+    border: 1px solid transparent;
 }
 .btn-white:hover{ 
     background-color: white;
     color:#3e3260;
+    border: 1px solid var(--color-black--);
 }
 .btn-lightgray{
     background-color:rgb(215, 210, 216);
@@ -1518,18 +1520,24 @@ button{
     margin-left: 10px;
     color:var(--color-black--);
 }
-.dashboard__content_bottom .plan__content .edit .btn-purple{
+.dashboard__content_bottom .plan__content .edit .manda__table form{
+    position: relative;
+}
+.dashboard__content_bottom .plan__content .edit .btn-white{
     position:absolute;
-    top: 50px;
-    right: 238px;
+    top: -60px;
+    right: 5px;
     width:fit-content;
     height: 50px;
-    padding:10px 15px;
+    padding:5px 15px;
     margin:0;
-    border:none;
+    border:1px solid transparent;
     font-size: 15px;
     transition: var(--transition-duration--);
     border-radius: var(--border-radius--);
+}
+.dashboard__content_bottom .plan__content .edit .btn-white:hover{
+    border: 1px solid var(--color-black--);
 }
 .dashboard__content_bottom .plan__content .delete{
     width:100%;
