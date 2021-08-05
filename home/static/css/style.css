@@ -54,7 +54,9 @@ input,
 select{
     border:none;
     color:#3e3260;
+    
 }
+textarea:focus,
 input:focus,
 select:focus{
     outline:none;
@@ -95,10 +97,12 @@ button{
 .btn-white{
     background-color: var(--color-white--);
     color: #3e3260;
+    border: 1px solid transparent;
 }
 .btn-white:hover{ 
     background-color: white;
     color:#3e3260;
+    border: 1px solid var(--color-black--);
 }
 .btn-lightgray{
     background-color:rgb(215, 210, 216);
@@ -1246,6 +1250,10 @@ button{
     margin: 5px;
     /* padding: 5px; */
 }
+.dashboard__content_bottom .plan__content .table .manda__table .box .inside__box .achieve__check{
+    width: 35px;
+    height:35px;
+}
 .dashboard__content_bottom .plan__content .table .manda__table .box .element{
     background-color: #eee;
     border: 2px solid white;
@@ -1512,18 +1520,24 @@ button{
     margin-left: 10px;
     color:var(--color-black--);
 }
-.dashboard__content_bottom .plan__content .edit .btn-purple{
+.dashboard__content_bottom .plan__content .edit .manda__table form{
+    position: relative;
+}
+.dashboard__content_bottom .plan__content .edit .btn-white{
     position:absolute;
-    top: 50px;
-    right: 238px;
+    top: -60px;
+    right: 5px;
     width:fit-content;
     height: 50px;
-    padding:10px 15px;
+    padding:5px 15px;
     margin:0;
-    border:none;
+    border:1px solid transparent;
     font-size: 15px;
     transition: var(--transition-duration--);
     border-radius: var(--border-radius--);
+}
+.dashboard__content_bottom .plan__content .edit .btn-white:hover{
+    border: 1px solid var(--color-black--);
 }
 .dashboard__content_bottom .plan__content .delete{
     width:100%;
@@ -1588,7 +1602,7 @@ button{
 }
 
 .password_reset_body button:hover{
- background-color: #613ec0d5;
+    background-color: #613ec0d5;
 }
 .password_reset_done_body{
     position:absolute;
