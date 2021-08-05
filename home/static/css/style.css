@@ -1552,7 +1552,7 @@ button{
 .password_reset_body{
     position:absolute;
     width:300px;
-    height:280px;
+    height:320px;
     padding: 30PX 20px 10PX 20px;
     background-color:#FFFFFF;
     text-align:center;
@@ -1593,7 +1593,7 @@ button{
 .password_reset_done_body{
     position:absolute;
     width:300px;
-    height:200px;
+    height:280px;
     padding: 30PX 20px 10PX 20px;
     background-color:#FFFFFF;
     text-align:center;
@@ -1603,3 +1603,102 @@ button{
     border-radius: 10px;
     box-shadow: 0 0 100px 9px rgb(214, 214, 214);
 }
+.password_reset_email{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px auto ;
+}
+.password_reset_done_body button{
+    position:relative;
+    left:40%;
+    transform: translateX(-50%);
+    width:80%;
+    height:40px;
+    background:#603ec0;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+    font-size: 15px;
+    border-radius: 0;
+}
+
+.password_reset_done_body button:hover{
+ background-color: #613ec0d5;
+}
+.password_reset_body_retry{
+    position:absolute;
+    width:350px;
+    height:340px;
+    padding: 30PX 20px 30PX 20px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:30%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+}
+.password_reset_body_retry button{
+    position:relative;
+    left:40%;
+    transform: translateX(-50%);
+    width:80%;
+    height:40px;
+    background:#603ec0;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+    font-size: 15px;
+    border-radius: 0;
+}
+
+.password_reset_body_retry button:hover{
+ background-color: #613ec0d5;
+}
+.password_reset_password{
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px auto ;
+    text-align: left;
+    margin-left: 25px;
+    margin-bottom: 30px;
+}
+.password_reset_body_complete{
+    position:absolute;
+    width:350px;
+    height:240px;
+    padding: 30PX 20px 30PX 20px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:30%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+}
+
+.password_reset_body_complete button{
+    position:relative;
+    left:40%;
+    transform: translateX(-50%);
+    width:80%;
+    height:40px;
+    background:#603ec0;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+    font-size: 15px;
+    border-radius: 0;
+}
+.password_reset_body_complete button:hover{
+    background-color: #613ec0d5;
+   }

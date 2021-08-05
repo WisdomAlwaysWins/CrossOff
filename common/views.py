@@ -240,14 +240,14 @@ class UserPasswordResetView(PasswordResetView):
         if User.objects.filter(email=self.request.POST.get("email")).exists():
             return super().form_valid(form)
         else:
-            return render(self.request, 'password_reset_done_fail.html')
+            return render(self.request, 'common/password_reset_done_fail.html')
 
             
 class UserPasswordResetDoneView(PasswordResetDoneView):
     template_name = 'common/password_reset_done.html' #템플릿을 변경하려면 이와같은 형식으로 입력
 
 class UserPasswordResetConfirmView(PasswordResetConfirmView):
-    form_class = SetPasswordForm
+    form_class = CustomPasswordSetForm
     success_url=reverse_lazy('password_reset_complete')
     template_name = 'common/password_reset_confirm.html'
 
