@@ -1,97 +1,128 @@
 {% load static %}
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>CROSS OFF - 새로운 삶</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <link rel="stylesheet" href="{%static 'css/big.css'%}">
-</head>
+    <link rel="stylesheet" href="{%static 'css/big.css'%}" />
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'favicon.png' %}" />
+  </head>
 
-<body>
+  <body>
     <!-- 이 예제에서는 필요한 js, css 를 링크걸어 사용 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/css/swiper.min.css"
+    />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.5.1/js/swiper.min.js"></script>
 
     <form action="{% url 'mandalart:new' %}" method="POST">
-        {% csrf_token %}
-        <div class="swiper-container">
-            <ul class="swiper-wrapper">
-                <li class="swiper-slide">
-                    <div id="question_1">
-                        <div class="q">
-                            <p class="l">|</p>
-                            <p for="answer_1">어떤 한 해를 보내고 싶으신가요?</p>
-                        </div>
+      {% csrf_token %}
+      <div class="swiper-container">
+        <ul class="swiper-wrapper">
+          <li class="swiper-slide">
+            <div id="question_1">
+              <div class="q">
+                <p class="l">|</p>
+                <p for="answer_1">어떤 한 해를 보내고 싶으신가요?</p>
+              </div>
 
-                        <div>
-                            <textarea class="biggoal" autocomplete="off" id="answer_1" name="big" cols="50" rows="7"
-                                placeholder="Ex. 좋은 사람 되기, 꿈에 가까워지는 한 해"></textarea><br>
-                        </div>
+              <div>
+                <textarea
+                  class="biggoal"
+                  autocomplete="off"
+                  id="answer_1"
+                  name="big"
+                  cols="50"
+                  rows="7"
+                  placeholder="Ex. 좋은 사람 되기, 꿈에 가까워지는 한 해"
+                ></textarea
+                ><br />
+              </div>
+            </div>
+          </li>
+          <li class="swiper-slide">
+            <div id="question_2">
+              <div class="q">
+                <p class="l">|</p>
+                <p for="answer_2">
+                  올해 이루고 싶은 목표 여덟 가지를 적어주세요.
+                </p>
+              </div>
 
+              <div class="midgoals">
+                <div>
+                  <script>
+                    var i = 1;
+                    while (i <= 4) {
+                      document.write(
+                        '<textarea class="midgoal" autocomplete="off"  id="midgoal_' +
+                          i +
+                          '" name="mid' +
+                          i +
+                          '" placeholder="목표 ' +
+                          i +
+                          '"cols="15" rows="10""></textarea>'
+                      );
+                      i += 1;
+                    }
+                    document.write("<br>");
+                    while (i <= 8) {
+                      document.write(
+                        '<textarea class="midgoal" autocomplete="off"  id="midgoal_' +
+                          i +
+                          '" name="mid' +
+                          i +
+                          '" placeholder="목표 ' +
+                          i +
+                          '"cols="15" rows="10""></textarea>'
+                      );
+                      i += 1;
+                    }
+                    document.write("<br>");
+                  </script>
+                </div>
+              </div>
 
-                    </div>
-                </li>
-                <li class="swiper-slide">
-                    <div id="question_2">
-                        <div class="q">
-                            <p class="l">|</p>
-                            <p for="answer_2"> 올해 이루고 싶은 목표 여덟 가지를 적어주세요.</p>
-                        </div>
+              <br />
+              <input
+                type="submit"
+                value="세부 계획 짜러 가기"
+                class="final_btn"
+              />
+            </div>
+          </li>
+        </ul>
 
-                        <div class="midgoals">
-                            <div>
-                                <script>
-                                    var i = 1;
-                                    while (i <= 4) {
-                                        document.write('<textarea class="midgoal" autocomplete="off"  id="midgoal_' + i + '" name="mid' + i + '" placeholder="목표 ' + i + '"cols="15" rows="10""></textarea>');
-                                        i += 1;
-                                    }
-                                    document.write('<br>')
-                                    while (i <= 8) {
-                                        document.write('<textarea class="midgoal" autocomplete="off"  id="midgoal_' + i + '" name="mid' + i + '" placeholder="목표 ' + i + '"cols="15" rows="10""></textarea>');
-                                        i += 1;
-                                    }
-                                    document.write('<br>')
-                                </script>
-                            </div>
-
-                        </div>
-
-                        <br>
-                        <input type="submit" value="세부 계획 짜러 가기" class="final_btn" />
-                    </div>
-                </li>
-
-            </ul>
-
-            <!-- 네비게이션 버튼 -->
-            <div class="swiper-button-next"></div><!-- 다음 버튼 (오른쪽에 있는 버튼) -->
-            <div class="swiper-button-prev"></div><!-- 이전 버튼 -->
-            <!-- 페이징 -->
-            <div class="swiper-pagination"></div>
-        </div>
+        <!-- 네비게이션 버튼 -->
+        <div class="swiper-button-next"></div>
+        <!-- 다음 버튼 (오른쪽에 있는 버튼) -->
+        <div class="swiper-button-prev"></div>
+        <!-- 이전 버튼 -->
+        <!-- 페이징 -->
+        <div class="swiper-pagination"></div>
+      </div>
     </form>
     <script>
-        new Swiper('.swiper-container', {
+      new Swiper(".swiper-container", {
+        effect: "fade", // 페이드 효과 사용
 
-            effect: 'fade', // 페이드 효과 사용
-
-            // 무한 반복
-            pagination: { // 페이징 설정
-                el: '.swiper-pagination',
-                clickable: true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
-            },
-            navigation: { // 네비게이션 설정
-                nextEl: '.swiper-button-next', // 다음 버튼 클래스명
-                prevEl: '.swiper-button-prev', // 이번 버튼 클래스명
-            },
-        });
+        // 무한 반복
+        pagination: {
+          // 페이징 설정
+          el: ".swiper-pagination",
+          clickable: true, // 페이징을 클릭하면 해당 영역으로 이동, 필요시 지정해 줘야 기능 작동
+        },
+        navigation: {
+          // 네비게이션 설정
+          nextEl: ".swiper-button-next", // 다음 버튼 클래스명
+          prevEl: ".swiper-button-prev", // 이번 버튼 클래스명
+        },
+      });
     </script>
-</body>
-
-
+  </body>
 </html>
