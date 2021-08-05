@@ -1207,6 +1207,17 @@ button{
     justify-content: center;
     align-items: center;
 }
+.dashboard__content_bottom .plan__content .table .manda__table .box .inside__box{
+    width:130px;
+    height:130px;
+    display:flex;
+    flex-flow :column;
+    justify-content: center;
+    align-items: center;
+    border: 0px 1px 1px 1px #aaa solid;
+    margin: 5px;
+    /* padding: 5px; */
+}
 .dashboard__content_bottom .plan__content .table .manda__table .box .element{
     background-color: #eee;
     border: 2px solid white;
@@ -1222,82 +1233,185 @@ button{
     padding: 35.7% 5% 35.7% 5%;
     resize: none;
     word-break: break-all;
-
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box1 .element{
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit15,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit25,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit35,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit45,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit55,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit65,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit75,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit85,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit95,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit51,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit52,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit53,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit54,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit56,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit57,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit58,
+.dashboard__content_bottom .plan__content .table .manda__table .box #element_edit59{
+    width: 130px;
+    height: 130px;
+    background-color: #eee;
+    border: 2px solid white;
+    border-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-style: bold;
+    font-size: large;
+    overflow: hidden;
+    padding: 0px;
+    margin-left: 3px;
+    resize: none;
+    word-break: break-all;
+}
+
+.dashboard__content_bottom .plan__content .table .manda__table .box .element_edit{
+    width: 130px;
+    height: 110px;
+    background-color: #eee;
+    border: 2px solid white;
+    border-bottom: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-align: center;
+    font-weight: bold;
+    font-style: bold;
+    font-size: large;
+    overflow: hidden;
+    padding: 0px;
+    resize: none;
+    word-break: break-all;
+}
+.dashboard__content_bottom .plan__content .table .manda__table #box1 .element, 
+.dashboard__content_bottom .plan__content .table .manda__table #box1 .element_edit, 
+.dashboard__content_bottom .plan__content .table .manda__table #box1 .inside__box{
     background: #F8D4D0;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box1 #element15,.dashboard__content_bottom .plan__content .table .manda__table #box1 #element_edit15{
+.dashboard__content_bottom .plan__content .table .manda__table #box1 #element15,
+.dashboard__content_bottom .plan__content .table .manda__table #box1 #element_edit15,
+.dashboard__content_bottom .plan__content .table .manda__table #box1 #inside__box15{
     background: #EC9790;
 } 
-.dashboard__content_bottom .plan__content .table .manda__table #box2 .element{
+.dashboard__content_bottom .plan__content .table .manda__table #box2 .element,
+.dashboard__content_bottom .plan__content .table .manda__table #box2 .element_edit, 
+.dashboard__content_bottom .plan__content .table .manda__table #box2 .inside__box{
     background: #FAD9BE;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box2 #element25,.dashboard__content_bottom .plan__content .table .manda__table #box2 #element_edit25{
+.dashboard__content_bottom .plan__content .table .manda__table #box2 #element25,
+.dashboard__content_bottom .plan__content .table .manda__table #box2 #element_edit25,
+.dashboard__content_bottom .plan__content .table .manda__table #box2 #inside__box25{
     background: #FAC188;
 } 
-.dashboard__content_bottom .plan__content .table .manda__table #box3 .element{
+.dashboard__content_bottom .plan__content .table .manda__table #box3 .element,
+.dashboard__content_bottom .plan__content .table .manda__table #box3 .element_edit, 
+.dashboard__content_bottom .plan__content .table .manda__table #box3 .inside__box{
     background: #F9EDBB;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box3 #element35,.dashboard__content_bottom .plan__content .table .manda__table #box3 #element_edit35{
+.dashboard__content_bottom .plan__content .table .manda__table #box3 #element35,
+.dashboard__content_bottom .plan__content .table .manda__table #box3 #element_edit35,
+.dashboard__content_bottom .plan__content .table .manda__table #box3 #inside__box35{
     background: #F4DA85;
 } 
-.dashboard__content_bottom .plan__content .table .manda__table #box4 .element{
+.dashboard__content_bottom .plan__content .table .manda__table #box4 .element,
+.dashboard__content_bottom .plan__content .table .manda__table #box4 .element_edit,
+.dashboard__content_bottom .plan__content .table .manda__table #box4 .inside__box{
     background: #EFDDEB;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box4 #element45,.dashboard__content_bottom .plan__content .table .manda__table #box4 #element_edit45{
+.dashboard__content_bottom .plan__content .table .manda__table #box4 #element45,
+.dashboard__content_bottom .plan__content .table .manda__table #box4 #element_edit45,
+.dashboard__content_bottom .plan__content .table .manda__table #box4 #inside__box45{
     background: #CD9BC4;
 } 
-.dashboard__content_bottom .plan__content .table .manda__table #box6 .element{
+.dashboard__content_bottom .plan__content .table .manda__table #box6 .element,
+.dashboard__content_bottom .plan__content .table .manda__table #box6 .element_edit, 
+.dashboard__content_bottom .plan__content .table .manda__table #box6 .inside__box{
     background: #DBECE2;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box6 #element65,.dashboard__content_bottom .plan__content .table .manda__table #box6 #element_edit65{
+.dashboard__content_bottom .plan__content .table .manda__table #box6 #element65,
+.dashboard__content_bottom .plan__content .table .manda__table #box6 #element_edit65,
+.dashboard__content_bottom .plan__content .table .manda__table #box6 #inside__box65{
     background: #9AD1B2;
 } 
-.dashboard__content_bottom .plan__content .table .manda__table #box7 .element{
+.dashboard__content_bottom .plan__content .table .manda__table #box7 .element,
+.dashboard__content_bottom .plan__content .table .manda__table #box7 .element_edit, 
+.dashboard__content_bottom .plan__content .table .manda__table #box7 .inside__box{
     background: #C9D5ED;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box7 #element75,.dashboard__content_bottom .plan__content .table .manda__table #box7 #element_edit75{
+.dashboard__content_bottom .plan__content .table .manda__table #box7 #element75,
+.dashboard__content_bottom .plan__content .table .manda__table #box7 #element_edit75,
+.dashboard__content_bottom .plan__content .table .manda__table #box7 #inside__box75{
     background: #82A0D2;
 } 
-.dashboard__content_bottom .plan__content .table .manda__table #box8 .element{
+.dashboard__content_bottom .plan__content .table .manda__table #box8 .element,
+.dashboard__content_bottom .plan__content .table .manda__table #box8 .element_edit, 
+.dashboard__content_bottom .plan__content .table .manda__table #box8 .inside__box{
     background: #E3EDF7;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box8 #element85,.dashboard__content_bottom .plan__content .table .manda__table #box8 #element_edit85{
+.dashboard__content_bottom .plan__content .table .manda__table #box8 #element85,
+.dashboard__content_bottom .plan__content .table .manda__table #box8 #element_edit85,
+.dashboard__content_bottom .plan__content .table .manda__table #box8 #inside__box85{
     background: #BAD3EF;
 } 
-.dashboard__content_bottom .plan__content .table .manda__table #box9 .element{
+.dashboard__content_bottom .plan__content .table .manda__table #box9 .element,
+.dashboard__content_bottom .plan__content .table .manda__table #box9 .element_edit, 
+.dashboard__content_bottom .plan__content .table .manda__table #box9 .inside__box{
     background: #D0EAEB;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box9 #element95,.dashboard__content_bottom .plan__content .table .manda__table #box9 #element_edit95{
+.dashboard__content_bottom .plan__content .table .manda__table #box9 #element95,
+.dashboard__content_bottom .plan__content .table .manda__table #box9 #element_edit95,
+.dashboard__content_bottom .plan__content .table .manda__table #box9 #inside__box95{
     background: #51BDBD;
 } 
 
 .dashboard__content_bottom .plan__content .table .manda__table #box5 #element55{
     background: var(--color-white--);
 } 
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element51,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit51{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element51,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit51,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #inside__box51{
     background: #EC9790;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element52,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit52{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element52,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit52,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #inside__box52{
     background: #FAC188;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element53,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit53{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element53,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit53,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #inside__box53{
     background: #F4DA85;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element54,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit54{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element54,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit54,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #inside__box54{
     background: #CD9BC4;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element56,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit56{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element56,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit56,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #inside__box56{
     background: #9AD1B2;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element57,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit57{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element57,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit57,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #inside__box57{
     background: #82A0D2;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element58,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit58{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element58,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit58,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #inside__box58{
     background: #BAD3EF;
 }
-.dashboard__content_bottom .plan__content .table .manda__table #box5 #element59,.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit59{
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element59,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #element_edit59,
+.dashboard__content_bottom .plan__content .table .manda__table #box5 #inside__box59{
     background: #51BDBD;  
 }
 

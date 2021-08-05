@@ -71,13 +71,17 @@ def dashboard(request, id):
     mid = MidGoal.objects.filter(big=big)
     lst2 = []
     lst4 = {}
+    lst5 = {}
     for i in range(len(mid)):
         lst3 = []
+        lst6 = []
         lst2.append(mid[i].content)
         spe = SpecificGoal.objects.filter(mid=mid[i])
         for j in range(len(spe)):
             lst3.append(spe[j].content)
+            lst6.append(spe[j].is_achieved)
         lst4[i] = lst3
+        lst5[i] = lst6
 
     achieve_goal = SpecificGoal.objects.filter(is_achieved=True)
     achieve_num = len(achieve_goal)
@@ -90,13 +94,13 @@ def dashboard(request, id):
         else:
             # 달성하지 못했으면 0 저장
             check_mid_achieve.append(0)
-
     return render(
         request, 'common/dashboard.html', {
             'user': user,
             'manda': json.dumps(lst),
             'manda_mid': json.dumps(lst2),
             'manda_small': json.dumps(lst4),
+            'manda_small_achieve': json.dumps(lst5),
             'manda_mid1': json.dumps(lst2[0], ensure_ascii=False),
             'manda_mid2': json.dumps(lst2[1], ensure_ascii=False),
             'manda_mid3': json.dumps(lst2[2], ensure_ascii=False),

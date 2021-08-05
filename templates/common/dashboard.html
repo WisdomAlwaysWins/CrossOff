@@ -1,10 +1,7 @@
 {% extends 'layout.html' %} {% load static %} {% block title %} Dashboard
 {%endblock title %} {% block css %}
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 {% endblock css %} {% block content %}
 <script>
@@ -27,6 +24,14 @@
   );
   let manda_small = JSON.parse(
     "{{manda_small}}"
+      .replace(/&quot;/g, '"')
+      .replace(/\r/gi, "\\r")
+      .replace(/\n/gi, "\\n")
+      .replace(/\t/gi, "\\t")
+      .replace(/\f/gi, "\\f")
+  );
+  let manda_small_achieve = JSON.parse(
+    "{{manda_small_achieve}}"
       .replace(/&quot;/g, '"')
       .replace(/\r/gi, "\\r")
       .replace(/\n/gi, "\\n")
@@ -158,19 +163,42 @@
   }
   function drawMandaTable(parentNode, isEdit) {
     let id = "element";
-    if (isEdit) id += "_edit";
+    let elemclass = "element";
+    if (isEdit) {
+      id += "_edit";
+      elemclass += "_edit";
+    }
     for (let i = 1; i <= 9; i++) {
       let box = document.createElement("div");
       box.className = "box";
       box.id = "box" + i;
       for (let j = 1; j <= 9; j++) {
         let elem = document.createElement("textarea");
-        elem.className = "element";
+        elem.className = elemclass;
         elem.id = id + i + j;
         elem.name = "box" + i + j;
         elem.setAttribute("autocomplete", "on");
-        if (!isEdit) elem.setAttribute("readonly", true);
-        box.appendChild(elem);
+        if (isEdit) {
+          if (i == 5 || j == 5) {
+            box.appendChild(elem);
+            continue;
+          }
+          let boxwrap = document.createElement("div");
+          boxwrap.className = "inside__box";
+          boxwrap.id = "inside__box" + i + j;
+          let achieveBox = document.createElement("input");
+          achieveBox.setAttribute("type", "checkbox");
+          achieveBox.setAttribute("value", "True");
+          achieveBox.name = "chk" + i + j;
+          achieveBox.id = "chk" + i + j;
+          boxwrap.appendChild(elem);
+          boxwrap.appendChild(achieveBox);
+          box.appendChild(boxwrap);
+        }
+        else {
+          elem.setAttribute("readonly", true);
+          box.appendChild(elem);
+        }
       }
       parentNode.appendChild(box);
     }
@@ -189,19 +217,25 @@
       for (let j = 1; j <= 9; j++) {
         if (i == 5 || j == 5) continue;
         if (i < 5) {
-          if (j < 5)
-            document.getElementById(id + i + j).value =
-              manda_small[i - 1][j - 1];
-          else
-            document.getElementById(id + i + j).value =
-              manda_small[i - 1][j - 2];
+          if (j < 5) {
+            document.getElementById(id + i + j).value = manda_small[i - 1][j - 1];
+            if (isEdit && manda_small_achieve[i - 1][j - 1])
+              document.getElementById("chk" + i + j).setAttribute("checked", true);
+          }
+          else {
+            document.getElementById(id + i + j).value = manda_small[i - 1][j - 2];
+            if (isEdit && manda_small_achieve[i - 1][j - 2])
+              document.getElementById("chk" + i + j).setAttribute("checked", true);
+          }
         } else {
           if (j < 5) {
-            document.getElementById(id + i + j).value =
-              manda_small[i - 2][j - 1];
+            document.getElementById(id + i + j).value = manda_small[i - 2][j - 1];
+            if (isEdit && manda_small_achieve[i - 2][j - 1])
+              document.getElementById("chk" + i + j).setAttribute("checked", true);
           } else {
-            document.getElementById(id + i + j).value =
-              manda_small[i - 2][j - 2];
+            document.getElementById(id + i + j).value = manda_small[i - 2][j - 2];
+            if (isEdit && manda_small_achieve[i - 2][j - 2])
+              document.getElementById("chk" + i + j).setAttribute("checked", true);
           }
         }
       }
@@ -231,7 +265,10 @@
         let specontent = document.createElement("label");
         spegoal.className = "object__small";
         spechkbox.setAttribute("type", "checkbox");
+        spechkbox.setAttribute("disabled", true);
         spechkbox.className = "elements";
+        if (manda_small_achieve[i - 1][j])
+          spechkbox.setAttribute("checked", true);
         spechkbox.id = "obj" + i + (j + 1);
         specontent.setAttribute("for", "obj" + i + (j + 1));
         specontent.innerText = manda_small[i - 1][j];
@@ -288,17 +325,9 @@
               <p class="title">TO DO LIST</p>
               <p id="day"></p>
             </div>
-            <form
-              action="{% url 'mandalart:addTodo' %}"
-              id="todo-form"
-              method="POST"
-            >
+            <form action="{% url 'mandalart:addTodo' %}" id="todo-form" method="POST">
               {% csrf_token %}
-              <input
-                type="text"
-                placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!"
-                name="todoInput"
-              />
+              <input type="text" placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!" name="todoInput" />
               <input type="submit" value="🤍" />
             </form>
             <ul id="todo-list">
@@ -313,9 +342,7 @@
         <div class="goal_achievement">
           <span id="total_goal_num">64개의 세부 목표 중 </span>
           <span id="achieve">{{achieve_num}}</span>
-          <span
-            >개의 목표를 완료! 더 많은 목표를 달성해 배지를 모아보세요 💜</span
-          >
+          <span>개의 목표를 완료! 더 많은 목표를 달성해 배지를 모아보세요 💜</span>
         </div>
       </div>
     </div>
@@ -363,11 +390,7 @@
         </div>
         <div class="plan table edit" data-type="edit">
           <div class="manda__table" id="manda_table">
-            <form
-              action="{% url 'mandalart:edit' %}"
-              method="POST"
-              id="editMandaForm"
-            >
+            <form action="{% url 'mandalart:edit' %}" method="POST" id="editMandaForm">
               <input type="submit" value="변경 내용 저장" class="btn-purple" />
               {% csrf_token %}
               <script>

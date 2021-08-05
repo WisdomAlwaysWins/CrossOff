@@ -86,8 +86,10 @@ def editMandalart(request):
     bigcontent = ''
     midlst = []
     spelst = {}
+    achievedlst = {}
     for i in range(1, 10):
         t = []
+        t2 = []
         for j in range(1, 10):
             if i == 5:
                 if not j == 5:
@@ -98,12 +100,18 @@ def editMandalart(request):
                 if j == 5:
                     continue
                 t.append(request.POST['box' + str(i) + str(j)])
+                t2.append(request.POST.get('chk' + str(i) + str(j), False))
             if i <= 5:
                 spelst[i] = t
+                achievedlst[i] = t2
             else:
                 spelst[i - 1] = t
+                achievedlst[i - 1] = t2
     manda = Mandalart.objects.get(user=request.user.id)
     big = BigGoal.objects.get(manda=manda)
+    if(bigcontent != big.content):
+        big.content = bigcontent
+        big.save()
     mids = MidGoal.objects.filter(big=big)
     for i in range(len(mids)):
         spes = SpecificGoal.objects.filter(mid=mids[i])
@@ -111,9 +119,10 @@ def editMandalart(request):
             mids[i].content = midlst[i]
             mids[i].save()
         for j in range(len(spes)):
+            spes[j].is_achieved = achievedlst[i + 1][j]
             if spes[j].content != spelst[i + 1][j]:
                 spes[j].content = spelst[i + 1][j]
-                spes[j].save()
+            spes[j].save()
 
     return redirect('/common/dashboard/' + str(request.user.id))
 
