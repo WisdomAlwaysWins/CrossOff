@@ -1,5 +1,6 @@
 {% extends 'layout.html' %} {% load static %} {% block title %} Dashboard
 {%endblock title %} {% block css %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -125,21 +126,30 @@
   function drawBadge(parentNode, nth) {
     let badge = document.createElement("div");
     let badgeImgWrap = document.createElement("div");
+    let badgeContent = badgeImgWrap.innerHTML = "<img src='{% static 'img/stamp.png' %}'/>";
+    let lockContent = document.createElement("span");
     let badgeNameWrap = document.createElement("div");
     let badgeName = document.createElement("p");
     badge.className = "badge";
     badgeImgWrap.className = "badge_img";
+    badgeContent.className = "badge_content";
+    lockContent.className = "lock-icon";
+    lockContent.classList.add("material-icons");
+    lockContent.innerText = "lock";
+    badgeImgWrap.append(lockContent);
     badgeNameWrap.className = "name";
-    badgeName.classList.add("badge_name", "material-icons");
-    badgeName.innerText = "lock";
-    if (check_mid_achieve[nth]) {
-      badgeName.classList.remove("material-icons");
-      badgeName.innerText = manda_mid[nth];
-    }
+    badgeName.classList.add("badge_name");
     badgeNameWrap.appendChild(badgeName);
     badge.appendChild(badgeImgWrap);
     badge.appendChild(badgeNameWrap);
     parentNode.appendChild(badge);
+
+    if (check_mid_achieve[nth]) {
+      badgeName.innerText = manda_mid[nth];
+      badge.classList.add("achieve");
+    }else{
+      badgeName.innerText = manda_mid[nth];
+    }
   }
   function drawTodoList() {
     let toDoList = document.getElementById("todo-list");
@@ -353,6 +363,7 @@
               let parentNode = document.getElementsByClassName("badges")[0];
               for (let i = 0; i < 8; i++) {
                 drawBadge(parentNode, i);
+                parentNode.children[i].classList.add("badge"+i);
               }
             </script>
           </div>

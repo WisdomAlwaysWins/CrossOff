@@ -24,6 +24,7 @@ body{
     margin:0;
     padding:0;
     font-family: 'Noto Sans KR', sans-serif;
+    cursor: default;
 }
 ul{
     list-style:none;
@@ -444,7 +445,7 @@ button{
 
 .login_body{
     position:absolute;
-    width:300px;
+    width:320px;
     height:400px;
     padding: 40px 30px 30px 30px;
     background-color:#FFFFFF;
@@ -994,35 +995,48 @@ button{
     grid-template-columns: 1fr 1fr 1fr 1fr;
     padding-bottom: 30px;
 }
+/* badges -> badge -> badge_img -> img (stamp) / span (lock) */
 .dashboard__content_top .top .badges .badge{
     display: flex;
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    opacity: 0.5;
     position: relative;
 }
-.dashboard__content_top .top .badges .badge.achieve{
+.dashboard__content_top .top .badges .badge_img{
+    position: relative;
+    margin : 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+.dashboard__content_top .top .badges .badge_img img{
+    width:60px;
+    height: 60px;
+    opacity: 0.5;
+}
+.dashboard__content_top .top .badges .badge.achieve img{
     opacity: 1;
 }
-.dashboard__content_top .top .badges .badge .badge_img{
-    margin : 0 auto;
-    background: rosybrown;
-    width: 60px;
-    height: 60px;
-    border: 5px solid var(--color-white--);
-    border-radius: 50%;
+.dashboard__content_top .top .badges .badge_img span{
+    z-index: 10;
+    position: absolute;
+    left:19px;
+    top:21px;
+    font-size: 15px;
+    border-radius: 3px;
+    padding: 3px;
+    background-color:rgb(103, 84, 123);
+    color:white;
 }
-.dashboard__content_top .top .badges .badge img{
-    margin : 0 auto;
-    background: rosybrown;
-    width: 60px;
-    height: 60px;
-    border: 5px solid var(--color-white--);
-    border-radius: 50%;
+.dashboard__content_top .top .badges .badge.achieve span{
+    display:none;
 }
 .dashboard__content_top .top .badges .badge .name{
-    margin-top: 5px;
+    margin-top: 10px;
 }
 .dashboard__content_top .top .badges .badge .name .badge_name{
     display:inline-block;
@@ -1032,6 +1046,10 @@ button{
     border-radius: var(--border-radius--);
     color:var(--color-black--);
     box-shadow: 0px 2px 5px gray;
+    opacity: 0.5;
+}
+.dashboard__content_top .top .badges .badge.achieve .badge_name{
+    opacity: 1;
 }
 .dashboard__content_top .top .todo{
     width: 50%;
@@ -1163,7 +1181,6 @@ button{
     justify-content: center;
     margin:0;
 }
-
 .dashboard__content_bottom .manda__nav{
     width:100%;
     height: 50px;
@@ -1526,4 +1543,69 @@ button{
 .dashboard__content_bottom .plan__content.anim-out{
     opacity: 0.6;
     transform: scale(0.98) translateY(15px);
+}
+
+/* password_reset */
+.password_reset_background{
+    background: #eee;
+    width: 100%; 
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+}
+
+.password_reset_body{
+    position:absolute;
+    width:300px;
+    height:280px;
+    padding: 30PX 20px 10PX 20px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:30%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+}
+.password_reset__logo{
+    text-decoration: line-through #603ec0;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align: center;
+
+    
+}
+.password_reset_body button{
+    position:relative;
+    left:40%;
+    transform: translateX(-50%);
+    width:80%;
+    height:40px;
+    background:#603ec0;
+    color:white;
+    font-weight: bold;
+    border:none;
+    cursor:pointer;
+    transition: 0.4s;
+    display:inline;
+    font-size: 15px;
+    border-radius: 0;
+}
+
+.password_reset_body button:hover{
+    background-color: #613ec0d5;
+}
+.password_reset_done_body{
+    position:absolute;
+    width:300px;
+    height:200px;
+    padding: 30PX 20px 10PX 20px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:30%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 0 0 100px 9px rgb(214, 214, 214);
 }
