@@ -43,7 +43,7 @@ def plan_small(request):
         manda = Mandalart.objects.get(user=request.user.id)
         big = BigGoal.objects.get(manda=manda)
         lst.append(big.content)
-        mid = MidGoal.objects.filter(big=big).order_by()
+        mid = MidGoal.objects.filter(big=big).order_by('id')
         lst2 = []
         for i in range(len(mid)):
             lst2.append(mid[i].content)
@@ -58,12 +58,12 @@ def test(request):
     manda = Mandalart.objects.get(user=request.user.id)
     big = BigGoal.objects.get(manda=manda)
     lst.append(big.content)
-    mid = MidGoal.objects.filter(big=big).order_by()
+    mid = MidGoal.objects.filter(big=big).order_by('id')
     for i in range(len(mid)):
         lst2 = []
         lst3 = []
         lst2.append(mid[i].content)
-        spe = SpecificGoal.objects.filter(mid=mid[i]).order_by()
+        spe = SpecificGoal.objects.filter(mid=mid[i]).order_by('id')
         for j in range(len(spe)):
             lst3.append(spe[j].content)
         lst2.append(lst3)
@@ -112,9 +112,9 @@ def editMandalart(request):
     if (bigcontent != big.content):
         big.content = bigcontent
         big.save()
-    mids = MidGoal.objects.filter(big=big).order_by()
+    mids = MidGoal.objects.filter(big=big).order_by('id')
     for i in range(len(mids)):
-        spes = SpecificGoal.objects.filter(mid=mids[i]).order_by()
+        spes = SpecificGoal.objects.filter(mid=mids[i]).order_by('id')
         if mids[i].content != midlst[i]:
             mids[i].content = midlst[i]
             mids[i].save()

@@ -12,6 +12,4 @@ urlpatterns = [
     path('profile/<str:id>', views.profile, name='profile'),
     path('profile/update/', views.profileUpdate, name='profile_update'),
     path('profile/password/', views.passwordEdit, name='edit_password'),
-
-
 ]

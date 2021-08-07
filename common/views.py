@@ -124,7 +124,7 @@ def dashboard(request, id):
     manda = Mandalart.objects.get(user=user.id)
     big = BigGoal.objects.get(manda=manda)
     lst.append((big.content, big.is_achieved))
-    mid = MidGoal.objects.filter(big=big).order_by()
+    mid = MidGoal.objects.filter(big=big).order_by('id')
     lst2 = []
     lst4 = {}
     lst5 = {}
@@ -135,7 +135,7 @@ def dashboard(request, id):
         lst3 = []
         lst6 = []
         lst2.append(mid[i].content)
-        spe = SpecificGoal.objects.filter(mid=mid[i]).order_by()
+        spe = SpecificGoal.objects.filter(mid=mid[i]).order_by('id')
         for j in range(len(spe)):
             lst3.append(spe[j].content)
             lst6.append(spe[j].is_achieved)
