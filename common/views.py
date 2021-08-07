@@ -118,6 +118,7 @@ def dashboard(request, id):
     lst4 = {}
     lst5 = {}
     midcnt = 0
+    achieve_spe_num = 0 
     for i in range(len(mid)):
         specnt = 0
         lst3 = []
@@ -129,6 +130,7 @@ def dashboard(request, id):
             lst6.append(spe[j].is_achieved)
             if spe[j].is_achieved:
                 specnt += 1
+                achieve_spe_num += 1
         if specnt == 8:
             mid[i].is_achieved = True
             mid[i].save()
@@ -139,8 +141,7 @@ def dashboard(request, id):
         big.is_achieved = True
         big.save()
 
-    achieve_goal = SpecificGoal.objects.filter(is_achieved=True)
-    achieve_num = len(achieve_goal)
+    achieve_num = achieve_spe_num
 
     check_mid_achieve = []
     for i in range(len(mid)):
