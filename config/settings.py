@@ -20,12 +20,12 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-5u5bk5%@r&*fbia@=m94grke1=^w=8q24w4+bfk5#g-6g8_#y)'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = (os.environ.get('DEBUG', 'True') != 'False')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -42,6 +42,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -139,10 +140,10 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = '587'
 # gmail과의 통신하는 포트
 
-EMAIL_HOST_USER = 'jiggy0429@likelion.org'
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 # 발신할 이메일
 
-EMAIL_HOST_PASSWORD = '63544330'
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 # 발신할 메일의 비밀번호
 
 EMAIL_USE_TLS = True
@@ -151,11 +152,6 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER
 # 사이트와 관련한 자동응답을 받을 이메일 주소
 
-
-# # 발신할 이메일
-# # EMAIL_HOST_USER = '구글아이디@gmail.com'
-# EMAIL_HOST_USER = get_secret("jiggy0429@likelion.net")
-
-# # 발신할 메일의 비밀번호
-# # EMAIL_HOST_PASSWORD = '구글비밀번호'
-# EMAIL_HOST_PASSWORD = get_secret("63544330")
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
