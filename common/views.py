@@ -3,7 +3,12 @@ from django.shortcuts import redirect, render, resolve_url
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import views as auth_views
-from django.contrib.auth.forms import (AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm,)
+from django.contrib.auth.forms import (
+    AuthenticationForm,
+    PasswordChangeForm,
+    PasswordResetForm,
+    SetPasswordForm,
+)
 from django.contrib.auth.views import LoginView, LogoutView, PasswordResetCompleteView, PasswordResetConfirmView, PasswordResetView, PasswordResetDoneView
 from .forms import *
 from .models import *
@@ -34,11 +39,17 @@ except ImportError:
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.decorators.http import require_POST
 from django.contrib.auth import (
-    REDIRECT_FIELD_NAME, get_user_model, login as auth_login,
-    logout as auth_logout, update_session_auth_hash,
+    REDIRECT_FIELD_NAME,
+    get_user_model,
+    login as auth_login,
+    logout as auth_logout,
+    update_session_auth_hash,
 )
 from django.contrib.auth.forms import (
-    AuthenticationForm, PasswordChangeForm, PasswordResetForm, SetPasswordForm,
+    AuthenticationForm,
+    PasswordChangeForm,
+    PasswordResetForm,
+    SetPasswordForm,
 )
 from django.contrib.auth.tokens import default_token_generator
 from django.utils.decorators import method_decorator
@@ -112,19 +123,19 @@ def dashboard(request, id):
         return redirect('mandalart:new')
     manda = Mandalart.objects.get(user=user.id)
     big = BigGoal.objects.get(manda=manda)
-    lst.append(big.content)
-    mid = MidGoal.objects.filter(big=big)
+    lst.append((big.content, big.is_achieved))
+    mid = MidGoal.objects.filter(big=big).order_by()
     lst2 = []
     lst4 = {}
     lst5 = {}
     midcnt = 0
-    achieve_spe_num = 0 
+    achieve_spe_num = 0
     for i in range(len(mid)):
         specnt = 0
         lst3 = []
         lst6 = []
         lst2.append(mid[i].content)
-        spe = SpecificGoal.objects.filter(mid=mid[i])
+        spe = SpecificGoal.objects.filter(mid=mid[i]).order_by()
         for j in range(len(spe)):
             lst3.append(spe[j].content)
             lst6.append(spe[j].is_achieved)
@@ -135,15 +146,25 @@ def dashboard(request, id):
             mid[i].is_achieved = True
             mid[i].save()
             midcnt += 1
+        elif specnt < 8:
+            mid[i].is_achieved = False
+            mid[i].save()
+
         lst4[i] = lst3
         lst5[i] = lst6
     if midcnt == 8:
         big.is_achieved = True
         big.save()
-
+    elif midcnt < 8:
+        big.is_achieved = False
+        big.save()
     achieve_num = achieve_spe_num
-
     check_mid_achieve = []
+    check_big_achieve = []
+    if big.is_achieved:
+        check_big_achieve.append(1)
+    else:
+        check_big_achieve.append(0)
     for i in range(len(mid)):
         if mid[i].is_achieved == True:
             # mid goal을 달성했으면 1 저장
@@ -154,10 +175,10 @@ def dashboard(request, id):
     return render(
         request, 'common/dashboard.html', {
             'user': user,
-            'manda': json.dumps(lst),
-            'manda_mid': json.dumps(lst2),
-            'manda_small': json.dumps(lst4),
-            'manda_small_achieve': json.dumps(lst5),
+            'manda': json.dumps(lst, ensure_ascii=False),
+            'manda_mid': json.dumps(lst2, ensure_ascii=False),
+            'manda_small': json.dumps(lst4, ensure_ascii=False),
+            'manda_small_achieve': json.dumps(lst5, ensure_ascii=False),
             'manda_mid1': json.dumps(lst2[0], ensure_ascii=False),
             'manda_mid2': json.dumps(lst2[1], ensure_ascii=False),
             'manda_mid3': json.dumps(lst2[2], ensure_ascii=False),
@@ -168,6 +189,7 @@ def dashboard(request, id):
             'manda_mid8': json.dumps(lst2[7], ensure_ascii=False),
             'achieve_num': achieve_num,
             'check_mid_achieve': json.dumps(check_mid_achieve),
+            'check_big_achieve': json.dumps(check_big_achieve),
             'todos': json.dumps(todolst, ensure_ascii=False)
         })
 
@@ -176,6 +198,7 @@ def dashboard(request, id):
 def profile(request, id):
     user = User.objects.get(id=id)
     return render(request, 'common/seeProfile.html', {'user': user})
+
 
 # def password_reset(request):
 #     return render(request, 'common/password_reset.html')
@@ -243,6 +266,7 @@ def passwordEdit(request):
 #         else:
 #             return render(self.request, 'password_reset_done_fail.html')
 
+
 class UserPasswordResetView(PasswordResetView):
     template_name = 'common/password_reset.html'  # 템플릿을 변경하려면 이와같은 형식으로 입력
     success_url = reverse_lazy('password_reset_done')
@@ -262,7 +286,7 @@ class UserPasswordResetDoneView(PasswordResetDoneView):
 class UserPasswordResetConfirmView(PasswordResetConfirmView):
 
     form_class = CustomPasswordSetForm
-    success_url=reverse_lazy('password_reset_complete')
+    success_url = reverse_lazy('password_reset_complete')
 
     template_name = 'common/password_reset_confirm.html'
 

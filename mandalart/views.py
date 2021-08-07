@@ -43,12 +43,11 @@ def plan_small(request):
         manda = Mandalart.objects.get(user=request.user.id)
         big = BigGoal.objects.get(manda=manda)
         lst.append(big.content)
-        mid = MidGoal.objects.filter(big=big)
+        mid = MidGoal.objects.filter(big=big).order_by()
         lst2 = []
         for i in range(len(mid)):
             lst2.append(mid[i].content)
         lst.append(lst2)
-        print(lst)
         return render(request, 'mandalart/plan_small.html',
                       {'manda': json.dumps(lst, ensure_ascii=False)})
 
@@ -59,12 +58,12 @@ def test(request):
     manda = Mandalart.objects.get(user=request.user.id)
     big = BigGoal.objects.get(manda=manda)
     lst.append(big.content)
-    mid = MidGoal.objects.filter(big=big)
+    mid = MidGoal.objects.filter(big=big).order_by()
     for i in range(len(mid)):
         lst2 = []
         lst3 = []
         lst2.append(mid[i].content)
-        spe = SpecificGoal.objects.filter(mid=mid[i])
+        spe = SpecificGoal.objects.filter(mid=mid[i]).order_by()
         for j in range(len(spe)):
             lst3.append(spe[j].content)
         lst2.append(lst3)
@@ -107,14 +106,15 @@ def editMandalart(request):
             else:
                 spelst[i - 1] = t
                 achievedlst[i - 1] = t2
+
     manda = Mandalart.objects.get(user=request.user.id)
     big = BigGoal.objects.get(manda=manda)
-    if(bigcontent != big.content):
+    if (bigcontent != big.content):
         big.content = bigcontent
         big.save()
-    mids = MidGoal.objects.filter(big=big)
+    mids = MidGoal.objects.filter(big=big).order_by()
     for i in range(len(mids)):
-        spes = SpecificGoal.objects.filter(mid=mids[i])
+        spes = SpecificGoal.objects.filter(mid=mids[i]).order_by()
         if mids[i].content != midlst[i]:
             mids[i].content = midlst[i]
             mids[i].save()

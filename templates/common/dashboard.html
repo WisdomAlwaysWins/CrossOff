@@ -1,9 +1,16 @@
 {% extends 'layout.html' %} {% load static %} {% block title %} Dashboard
 {%endblock title %} {% block css %}
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-  integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+<link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+  integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+  crossorigin="anonymous"
+/>
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 {% endblock css %} {% block content %}
 <script>
@@ -123,11 +130,20 @@
       .replace(/\t/gi, "\\t")
       .replace(/\f/gi, "\\f")
   );
+  let check_big_achieve = JSON.parse(
+    "{{check_big_achieve}}"
+      .replace(/&quot;/g, '"')
+      .replace(/\r/gi, "\\r")
+      .replace(/\n/gi, "\\n")
+      .replace(/\t/gi, "\\t")
+      .replace(/\f/gi, "\\f")
+  );
   // functions
   function drawBadge(parentNode, nth) {
     let badge = document.createElement("div");
     let badgeImgWrap = document.createElement("div");
-    let badgeContent = badgeImgWrap.innerHTML = "<img src='{% static 'img/stamp.png' %}'/>";
+    let badgeContent = (badgeImgWrap.innerHTML =
+      "<img src='{% static 'img/stamp.png' %}'/>");
     let lockContent = document.createElement("span");
     let badgeNameWrap = document.createElement("div");
     let badgeName = document.createElement("p");
@@ -189,44 +205,14 @@
         elem.id = id + i + j;
         elem.name = "box" + i + j;
         elem.setAttribute("autocomplete", "on");
-        if (!isEdit) {
-          if (i < 5) {
-            if (j < 5) {
-              if (manda_small_achieve[i - 1][j - 1]) {
-                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
-              }
-            }
-            else if (j == 5) {
-              if (check_mid_achieve[i - 1]) {
-                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
-              }
-            }
-            else {
-              if (manda_small_achieve[i - 1][j - 2]) {
-                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
-              }
-            }
-          }
-          else {
-            if (j < 5) {
-              if (manda_small_achieve[i - 2][j - 1]) {
-                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
-              }
-            }
-            else if (j == 5) {
-              if (check_mid_achieve[i - 2]) {
-                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
-              }
-            }
-            else {
-              if (manda_small_achieve[i - 2][j - 2]) {
-                elem.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
-              }
-            }
-          }
-        }
+
         if (isEdit) {
-          if (i == 5 || j == 5) {
+          if (i == 5) {
+            box.appendChild(elem);
+            continue;
+          }
+          if (j == 5) {
+            elem.setAttribute("readonly", true);
             box.appendChild(elem);
             continue;
           }
@@ -242,9 +228,78 @@
           boxwrap.appendChild(elem);
           boxwrap.appendChild(achieveBox);
           box.appendChild(boxwrap);
-        }
-        else {
+        } else {
           elem.setAttribute("readonly", true);
+          if (i < 5) {
+            if (j < 5) {
+              if (manda_small_achieve[i - 1][j - 1]) {
+                elem.setAttribute(
+                  "style",
+                  "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;"
+                );
+              }
+            } else if (j == 5) {
+              if (check_mid_achieve[i - 1]) {
+                elem.setAttribute(
+                  "style",
+                  "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;"
+                );
+              }
+            } else {
+              if (manda_small_achieve[i - 1][j - 2]) {
+                elem.setAttribute(
+                  "style",
+                  "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;"
+                );
+              }
+            }
+          } else if (i == 5) {
+            if (j < 5) {
+              if (check_mid_achieve[j - 1]) {
+                elem.setAttribute(
+                  "style",
+                  "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;"
+                );
+              }
+            } else if (j == 5) {
+              if (check_big_achieve[0]) {
+                elem.setAttribute(
+                  "style",
+                  "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;"
+                );
+              }
+            } else {
+              if (check_mid_achieve[j - 2]) {
+                elem.setAttribute(
+                  "style",
+                  "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;"
+                );
+              }
+            }
+          } else {
+            if (j < 5) {
+              if (manda_small_achieve[i - 2][j - 1]) {
+                elem.setAttribute(
+                  "style",
+                  "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;"
+                );
+              }
+            } else if (j == 5) {
+              if (check_mid_achieve[i - 2]) {
+                elem.setAttribute(
+                  "style",
+                  "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;"
+                );
+              }
+            } else {
+              if (manda_small_achieve[i - 2][j - 2]) {
+                elem.setAttribute(
+                  "style",
+                  "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;"
+                );
+              }
+            }
+          }
           box.appendChild(elem);
         }
       }
@@ -255,7 +310,8 @@
       if (i < 4) {
         document.getElementById(id + 5 + (i + 1)).value = manda_mid[i];
         document.getElementById(id + (i + 1) + 5).value = manda_mid[i];
-      } else if (i == 4) document.getElementById(id + 55).value = manda_big[0];
+      } else if (i == 4)
+        document.getElementById(id + 55).value = manda_big[0][0];
       else {
         document.getElementById(id + 5 + (i + 1)).value = manda_mid[i - 1];
         document.getElementById(id + (i + 1) + 5).value = manda_mid[i - 1];
@@ -266,24 +322,35 @@
         if (i == 5 || j == 5) continue;
         if (i < 5) {
           if (j < 5) {
-            document.getElementById(id + i + j).value = manda_small[i - 1][j - 1];
+            document.getElementById(id + i + j).value =
+              manda_small[i - 1][j - 1];
             if (isEdit && manda_small_achieve[i - 1][j - 1])
-              document.getElementById("chk" + i + j).setAttribute("checked", true);
-          }
-          else {
-            document.getElementById(id + i + j).value = manda_small[i - 1][j - 2];
+              document
+                .getElementById("chk" + i + j)
+                .setAttribute("checked", true);
+          } else {
+            document.getElementById(id + i + j).value =
+              manda_small[i - 1][j - 2];
             if (isEdit && manda_small_achieve[i - 1][j - 2])
-              document.getElementById("chk" + i + j).setAttribute("checked", true);
+              document
+                .getElementById("chk" + i + j)
+                .setAttribute("checked", true);
           }
         } else {
           if (j < 5) {
-            document.getElementById(id + i + j).value = manda_small[i - 2][j - 1];
+            document.getElementById(id + i + j).value =
+              manda_small[i - 2][j - 1];
             if (isEdit && manda_small_achieve[i - 2][j - 1])
-              document.getElementById("chk" + i + j).setAttribute("checked", true);
+              document
+                .getElementById("chk" + i + j)
+                .setAttribute("checked", true);
           } else {
-            document.getElementById(id + i + j).value = manda_small[i - 2][j - 2];
+            document.getElementById(id + i + j).value =
+              manda_small[i - 2][j - 2];
             if (isEdit && manda_small_achieve[i - 2][j - 2])
-              document.getElementById("chk" + i + j).setAttribute("checked", true);
+              document
+                .getElementById("chk" + i + j)
+                .setAttribute("checked", true);
           }
         }
       }
@@ -317,7 +384,10 @@
         spechkbox.className = "elements";
         if (manda_small_achieve[i - 1][j]) {
           spechkbox.setAttribute("checked", true);
-          specontent.setAttribute("style", "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;");
+          specontent.setAttribute(
+            "style",
+            "text-decoration: line-through; text-decoration-color: var(--color-white--);text-decoration-thickness: 0.2em;"
+          );
         }
         spechkbox.id = "obj" + i + (j + 1);
         specontent.setAttribute("for", "obj" + i + (j + 1));
@@ -377,9 +447,17 @@
               <p class="title">TO DO LIST</p>
               <p id="day"></p>
             </div>
-            <form action="{% url 'mandalart:addTodo' %}" id="todo-form" method="POST">
+            <form
+              action="{% url 'mandalart:addTodo' %}"
+              id="todo-form"
+              method="POST"
+            >
               {% csrf_token %}
-              <input type="text" placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!" name="todoInput" />
+              <input
+                type="text"
+                placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!"
+                name="todoInput"
+              />
               <input type="submit" value="🤍" />
             </form>
             <ul id="todo-list">
@@ -394,7 +472,9 @@
         <div class="goal_achievement">
           <span id="total_goal_num">64개의 세부 목표 중 </span>
           <span id="achieve">{{achieve_num}}</span>
-          <span>개의 목표를 완료! 더 많은 목표를 달성해 배지를 모아보세요 💜</span>
+          <span
+            >개의 목표를 완료! 더 많은 목표를 달성해 배지를 모아보세요 💜</span
+          >
         </div>
       </div>
     </div>
@@ -442,7 +522,11 @@
         </div>
         <div class="plan table edit" data-type="edit">
           <div class="manda__table" id="manda_table">
-            <form action="{% url 'mandalart:edit' %}" method="POST" id="editMandaForm">
+            <form
+              action="{% url 'mandalart:edit' %}"
+              method="POST"
+              id="editMandaForm"
+            >
               <input type="submit" value="변경 내용 저장" class="btn-white" />
               {% csrf_token %}
               <script>
