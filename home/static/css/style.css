@@ -1253,7 +1253,7 @@ button{
     flex-flow :column;
     justify-content: center;
     align-items: center;
-    border: 0px 1px 1px 1px #aaa solid;
+    border: 0px 1px 1px 1px solid #aaa ;
     margin: 5px;
     /* padding: 5px; */
 }
@@ -1838,7 +1838,8 @@ button{
 
     /* dashboard */
     #dashboard .dashboard__content{
-        /* height:300vh; */
+        height: 320vh;
+        background-color: rgba(216, 216, 216, 0.2);
     }
     .dashboard__title{
         margin-left:0;
@@ -1938,7 +1939,7 @@ button{
     .dashboard__content_bottom .plan__content .checkbox .object .mid p{
         font-size:var(--font-size-title--);
     }
-    .dashboard__content_bottom .plan__content .checkbox .object .object__small label{
+    .dashboard__content_bottom .plan__content .checkbox .object .object__small label {
         font-size: var(--font-size-content--);
     }
     .dashboard__content_bottom .plan__content .checkbox #object1{
@@ -1962,6 +1963,7 @@ button{
     }
     .dashboard__content_bottom .plan__content .table .manda__table,
     .dashboard__content_bottom .plan__content .table .manda__table form{
+        width:100vw;
         height:360px;
         display: grid;
         grid-template-rows: 1fr 1fr 1fr;
@@ -1970,6 +1972,31 @@ button{
     .dashboard__content_bottom .plan__content .table .manda__table .box{
         width:120px;
         height:120px;
+    }
+    .dashboard__content_bottom .plan__content .table .manda__table .box .element{
+        border: 1px solid white;
+        font-size: var(--font-size-mini--);
+        padding: 30% 0%;
+    }
+
+    /* Edit */
+    .dashboard__content_bottom .plan__content .table .manda__table .box .inside__box{
+        width:40px;
+        height:40px;
+        margin: 0;
+    }
+    .dashboard__content_bottom .plan__content .table .manda__table .box .inside__box .element_edit{
+        width:40px;
+        height:15px;
+        font-size:var(--font-size-mini--);
+        font-weight: 500;
+        overflow-y: scroll;
+        border:none;
+    }
+    .dashboard__content_bottom .plan__content .table .manda__table .box .inside__box .achieve__check{
+        margin: 0;
+        width: 30px;
+        height: 8px;
     }
     .dashboard__content_bottom .plan__content .table .manda__table .box #element_edit15,
     .dashboard__content_bottom .plan__content .table .manda__table .box #element_edit25,
@@ -1988,13 +2015,25 @@ button{
     .dashboard__content_bottom .plan__content .table .manda__table .box #element_edit57,
     .dashboard__content_bottom .plan__content .table .manda__table .box #element_edit58,
     .dashboard__content_bottom .plan__content .table .manda__table .box #element_edit59{
-        width: 120px;
-        height: 120px;
-        border: 1px solid white;
+        width: 38px;
+        height:38px;
+        font-size:var(--font-size-mini--);
+        font-weight:600;
+        margin-left:0px;
+        border:1px solid white;
     }
-    .dashboard__content_bottom .plan__content .table .manda__table .box .element{
-        border: 1px solid white;
-        font-size: var(--font-size-mini--);
-        padding: 30% 0%;
+    .dashboard__content_bottom .plan__content .edit .btn-white{
+        position:absolute;
+        top: -50px;
+        left:50%;
+        transform: translate(-50%,0);
+        width:100px;
+        height: 22px;
+        padding:5px 8px;
+        margin:0;
+        border:1px solid transparent;
+        font-size: var(--font-size-content--);
+        transition: var(--transition-duration--);
+        border-radius: var(--border-radius--);
     }
 }
