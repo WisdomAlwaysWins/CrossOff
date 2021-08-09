@@ -1,7 +1,25 @@
 {% extends 'layout.html' %} {% load static %}{% block title %} {{nickname}}님의
 만다라트{% endblock title %}{% block content %}
-
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
+  window.twttr = (function (d, s, id) {
+    var js,
+      fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
+
+    t._e = [];
+    t.ready = function (f) {
+      t._e.push(f);
+    };
+
+    return t;
+  })(document, "script", "twitter-wjs");
+
   let manda = JSON.parse(
     "{{manda}}"
       .replace(/&quot;/g, '"')
@@ -60,6 +78,7 @@
       }
     }
   }
+  function shareKakao() {}
 </script>
 
 <div id="fb-root"></div>
@@ -73,13 +92,36 @@
 <div class="dashboard__content_bottom">
   <p>{{nickname}}님의 만다라트</p>
   <br /><br />
-  <div class="fb-share-button" data-layout="button" data-size="large">
-    <a
-      target="_blank"
-      href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fmandalart%2Fshare%2Ff785a52c-653c-4aec-9f4b-346973a39101&amp;src=sdkpreparse"
-      class="fb-xfbml-parse-ignore"
-      >공유하기</a
+  <div class="share--buttons">
+    <div class="fb-share-button" data-layout="button" data-size="large">
+      <a
+        target="_blank"
+        href="https://www.facebook.com/sharer/sharer.php?u="
+        class="fb-xfbml-parse-ignore"
+        id="fb_share"
+        >공유하기</a
+      >
+    </div>
+    <div class="twitter-share-button" data-layout="button">
+      <a
+        class="twitter-share-button"
+        href="https://twitter.com/intent/tweet"
+        data-size="large"
+        data-hashtags="만다라트,계획표"
+        id="tw_share"
+      >
+        Tweet</a
+      >
+    </div>
+    <div
+      class="kakao-share-button"
+      data-layout="button"
+      id="btnKakao"
+      onclick="shareKakao();"
     >
+      <img class="kakao-logo" src={% static 'img/kakaolink_btn_small.png' %}>
+      <span href="#">카톡 공유</span>
+    </div>
   </div>
   <div class="plan__content">
     <div class="plan table" data-type="table">
@@ -92,4 +134,38 @@
     </div>
   </div>
 </div>
+<script>
+  window.onload = function () {
+    fb_share.href += encodeURIComponent(location.href);
+  };
+  let protocol = window.location.protocol + "//";
+  let usr_id = window.location.pathname.slice(17);
+  let hostname = window.location.host;
+  let share_url = protocol + hostname + "/mandalart/share/" + usr_id;
+  let options = {
+    container: "#btnKakao",
+    objectType: "feed",
+    content: {
+      title: "Cross Off",
+      description: "만다라트 계획표로 어제보다 나은 오늘",
+      imageUrl:
+        "https://raw.githubusercontent.com/HyunJik-Lee/CrossOff/master/logo.jpg",
+      link: {
+        webUrl: share_url,
+        mobileWebUrl: share_url,
+      },
+    },
+    buttons: [
+      {
+        title: "웹으로 이동",
+        link: {
+          webUrl: share_url,
+          mobileWebUrl: share_url,
+        },
+      },
+    ],
+  };
+  Kakao.init("63d35744d122208296eafc04bbcec0f5");
+  Kakao.Link.createDefaultButton(options);
+</script>
 {%endblock content %}
