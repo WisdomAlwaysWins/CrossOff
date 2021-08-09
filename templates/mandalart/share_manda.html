@@ -1,5 +1,6 @@
 {% extends 'layout.html' %} {% load static %}{% block title %} {{nickname}}님의
 만다라트{% endblock title %}{% block content %}
+<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 <script>
   window.twttr = (function (d, s, id) {
     var js,
@@ -18,8 +19,6 @@
 
     return t;
   })(document, "script", "twitter-wjs");
-</script>
-<script>
   let manda = JSON.parse(
     "{{manda}}"
       .replace(/&quot;/g, '"')
@@ -78,6 +77,31 @@
       }
     }
   }
+  function shareKakao() {
+    Kakao.init("63d35744d122208296eafc04bbcec0f5");
+    Kakao.Link.createDefaultButton({
+      container: "#btnKakao",
+      objectType: "feed",
+      content: {
+        title: "Cross Off",
+        description: "만다라트 계획표로 어제보다 나은 오늘을",
+        imageUrl:
+          "https://raw.githubusercontent.com/HyunJik-Lee/CrossOff/master/logo.jpg",
+        link: {
+          mobileWebUrl: "https://developers.kakao.com",
+          androidExecutionParams: "test",
+        },
+      },
+      buttons: [
+        {
+          title: "웹으로 이동",
+          link: {
+            mobileWebUrl: "https://peaceful-sands-44637.herokuapp.com/",
+          },
+        },
+      ],
+    });
+  }
 </script>
 
 <div id="fb-root"></div>
@@ -111,6 +135,9 @@
       >
         Tweet</a
       >
+    </div>
+    <div class="kakao-share-button" data-layout="button">
+      <a id="btnKakao" href-"javascript:shareKakao();">카톡 공유</a>
     </div>
   </div>
   <div class="plan__content">
