@@ -138,9 +138,10 @@
   window.onload = function () {
     fb_share.href += encodeURIComponent(location.href);
   };
-  let usr_id = window.location.pathname.slice(18);
+  let protocol = window.location.protocol + "//";
+  let usr_id = window.location.pathname.slice(17);
   let hostname = window.location.host;
-  let share_url = hostname + "/mandalart/share/" + usr_id;
+  let share_url = protocol + hostname + "/mandalart/share/" + usr_id;
   let options = {
     container: "#btnKakao",
     objectType: "feed",
