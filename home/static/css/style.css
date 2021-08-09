@@ -1716,3 +1716,9 @@ button{
 .password_reset_body_complete button:hover{
     background-color: #613ec0d5;
    }
+
+/* share_manda */
+.dashboard__content_bottom p{
+    font-size: 24px;
+    font-weight: 600;
+}

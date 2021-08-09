@@ -1,0 +1,95 @@
+{% extends 'layout.html' %} {% load static %}{% block title %} {{nickname}}님의
+만다라트{% endblock title %}{% block content %}
+
+<script>
+  let manda = JSON.parse(
+    "{{manda}}"
+      .replace(/&quot;/g, '"')
+      .replace(/\r/gi, "\\r")
+      .replace(/\n/gi, "\\n")
+      .replace(/\t/gi, "\\t")
+      .replace(/\f/gi, "\\f")
+  );
+  let manda_big = manda[0];
+
+  function drawMandaTable(parentNode) {
+    let id = "element";
+    let elemclass = "element";
+
+    for (let i = 1; i <= 9; i++) {
+      let box = document.createElement("div");
+      box.className = "box";
+      box.id = "box" + i;
+      for (let j = 1; j <= 9; j++) {
+        let elem = document.createElement("textarea");
+        elem.className = elemclass;
+        elem.id = id + i + j;
+        elem.name = "box" + i + j;
+        elem.setAttribute("autocomplete", "on");
+        elem.setAttribute("readonly", true);
+        box.appendChild(elem);
+      }
+      parentNode.appendChild(box);
+    }
+    for (let i = 1; i <= 9; i++) {
+      if (i <= 4) {
+        document.getElementById(id + 5 + i).value = manda[i][0];
+        document.getElementById(id + i + 5).value = manda[i][0];
+      } else if (i == 5) document.getElementById(id + 55).value = manda[0];
+      else {
+        document.getElementById(id + 5 + i).value = manda[i - 1][0];
+        document.getElementById(id + i + 5).value = manda[i - 1][0];
+      }
+    }
+    for (let i = 1; i <= 9; i++) {
+      for (let j = 1; j <= 9; j++) {
+        if (i == 5 || j == 5) continue;
+        if (i < 5) {
+          if (j < 5) {
+            document.getElementById(id + i + j).value = manda[i][1][j - 1];
+          } else {
+            document.getElementById(id + i + j).value = manda[i][1][j - 2];
+          }
+        } else {
+          if (j < 5) {
+            document.getElementById(id + i + j).value = manda[i - 1][1][j - 1];
+          } else {
+            document.getElementById(id + i + j).value = manda[i - 1][1][j - 2];
+          }
+        }
+      }
+    }
+  }
+</script>
+
+<div id="fb-root"></div>
+<script
+  async
+  defer
+  crossorigin="anonymous"
+  src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v11.0"
+  nonce="hvi7AwlU"
+></script>
+<div class="dashboard__content_bottom">
+  <p>{{nickname}}님의 만다라트</p>
+  <br /><br />
+  <div class="fb-share-button" data-layout="button" data-size="large">
+    <a
+      target="_blank"
+      href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fmandalart%2Fshare%2Ff785a52c-653c-4aec-9f4b-346973a39101&amp;src=sdkpreparse"
+      class="fb-xfbml-parse-ignore"
+      >공유하기</a
+    >
+  </div>
+  <div class="plan__content">
+    <div class="plan table" data-type="table">
+      <div class="manda__table" id="manda_table_share">
+        <script>
+          let manda_share = document.getElementById("manda_table_share");
+          drawMandaTable(manda_share);
+        </script>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock content %}
