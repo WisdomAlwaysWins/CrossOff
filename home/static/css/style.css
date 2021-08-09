@@ -1934,12 +1934,12 @@ button{
         flex-direction: column;
     }
     .dashboard__content_bottom .plan__content .checkbox .object{
-        margin-bottom: 40px;`
+        margin-bottom: 40px;
     }
     .dashboard__content_bottom .plan__content .checkbox .object .mid p{
         font-size:var(--font-size-title--);
     }
-    .dashboard__content_bottom .plan__content .checkbox .object .object__small label{
+    .dashboard__content_bottom .plan__content .checkbox .object .object__small label {
         font-size: var(--font-size-content--);
     }
     .dashboard__content_bottom .plan__content .checkbox #object1{
@@ -1997,7 +1997,6 @@ button{
         margin: 0;
         width: 30px;
         height: 8px;
-        transform: scale(1);
     }
     .dashboard__content_bottom .plan__content .table .manda__table .box #element_edit15,
     .dashboard__content_bottom .plan__content .table .manda__table .box #element_edit25,
