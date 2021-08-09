@@ -420,7 +420,7 @@
                 <p>{{user.nickname}} 님</p>
               </div>
               <div class="buttons">
-                <button class="btn btn-white" >
+                <button class="btn btn-white">
                   <a href="{% url 'common:edit_password' %}">Edit Password</a>
                 </button>
                 <button class="btn btn-white">
@@ -488,6 +488,9 @@
           <button class="btn btn-lightgray" data-filter="edit">
             <span class="material-icons">edit</span>
           </button>
+          <button class="btn btn-lightgray" data-filter="share">
+            <span class="material-icons">share</span>
+          </button>
           <button class="btn btn-lightgray" data-filter="delete">
             <span class="material-icons">delete</span>
           </button>
@@ -553,6 +556,10 @@
       e.target.dataset.filter || e.target.parentNode.dataset.filter;
     if (filter == null) {
       return;
+    }
+    if (filter == "share") {
+      window.location.href =
+        "/mandalart/share/" + window.location.pathname.slice(18);
     }
     if (filter == "delete") {
       let answer = window.confirm("정말로 삭제하시겠습니까?");
