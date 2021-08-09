@@ -1723,6 +1723,12 @@ button{
     background-color: #613ec0d5;
 }
 
+/* share_manda */
+.dashboard__content_bottom p{
+    font-size: 24px;
+    font-weight: 600;
+}
+
 @media screen and (max-width : 380px) {
     /* layout.html */
     .header__container .navbar{

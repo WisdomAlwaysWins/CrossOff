@@ -10,5 +10,6 @@ urlpatterns = [
     path('delete/', views.delMandalart, name='delete'),
     path('edit/', views.editMandalart, name='edit'),
     path('addTodo/', views.addTodo, name='addTodo'),
-    path('delTodo/<int:id>', views.delTodo, name='delTodo')
+    path('delTodo/<int:id>', views.delTodo, name='delTodo'),
+    path('share/<str:id>', views.shareManda, name='share'),
 ]

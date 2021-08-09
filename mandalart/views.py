@@ -142,3 +142,25 @@ def delTodo(request, id):
     deltodo = Todo.objects.get(user=u, id=id)
     deltodo.delete()
     return redirect('/common/dashboard/' + str(request.user.id))
+
+
+def shareManda(request, id):
+    u = User.objects.get(id=id)
+    manda = Mandalart.objects.get(user=u)
+    lst = []
+    big = BigGoal.objects.get(manda=manda)
+    lst.append(big.content)
+    mid = MidGoal.objects.filter(big=big).order_by('id')
+    for i in range(len(mid)):
+        lst2 = []
+        lst3 = []
+        lst2.append(mid[i].content)
+        spe = SpecificGoal.objects.filter(mid=mid[i]).order_by('id')
+        for j in range(len(spe)):
+            lst3.append(spe[j].content)
+        lst2.append(lst3)
+        lst.append(lst2)
+    return render(request, 'mandalart/share_manda.html', {
+        'manda': json.dumps(lst, ensure_ascii=False),
+        'nickname': u.nickname
+    })

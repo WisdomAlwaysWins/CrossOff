@@ -93,10 +93,8 @@ def login_(request):
             if user is not None:
                 login(request, user)
                 remember_session = request.POST.get('keepLogin', False)
-                print(settings.SESSION_EXPIRE_AT_BROWSER_CLOSE)
                 if remember_session:
                     settings.SESSION_EXPIRE_AT_BROWSER_CLOSE = False
-                    print(settings.SESSION_EXPIRE_AT_BROWSER_CLOSE)
                 return redirect('mandalart:new')
         else:
             return redirect('home:home')
