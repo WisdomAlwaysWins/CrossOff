@@ -1,6 +1,24 @@
 {% extends 'layout.html' %} {% load static %}{% block title %} {{nickname}}님의
 만다라트{% endblock title %}{% block content %}
+<script>
+  window.twttr = (function (d, s, id) {
+    var js,
+      fjs = d.getElementsByTagName(s)[0],
+      t = window.twttr || {};
+    if (d.getElementById(id)) return t;
+    js = d.createElement(s);
+    js.id = id;
+    js.src = "https://platform.twitter.com/widgets.js";
+    fjs.parentNode.insertBefore(js, fjs);
 
+    t._e = [];
+    t.ready = function (f) {
+      t._e.push(f);
+    };
+
+    return t;
+  })(document, "script", "twitter-wjs");
+</script>
 <script>
   let manda = JSON.parse(
     "{{manda}}"
@@ -73,12 +91,24 @@
 <div class="dashboard__content_bottom">
   <p>{{nickname}}님의 만다라트</p>
   <br /><br />
-  <div class="fb-share-button" data-layout="button" data-size="large">
+  <div class="share--buttons">
+    <div class="fb-share-button" data-layout="button" data-size="large">
+      <a
+        target="_blank"
+        href="https://www.facebook.com/sharer/sharer.php?u="
+        class="fb-xfbml-parse-ignore"
+        id="fb_share"
+        >공유하기</a
+      >
+    </div>
     <a
-      target="_blank"
-      href="https://www.facebook.com/sharer/sharer.php?u=http%3A%2F%2F127.0.0.1%3A8000%2Fmandalart%2Fshare%2Ff785a52c-653c-4aec-9f4b-346973a39101&amp;src=sdkpreparse"
-      class="fb-xfbml-parse-ignore"
-      >공유하기</a
+      class="twitter-share-button"
+      href="https://twitter.com/intent/tweet"
+      data-size="large"
+      data-hashtags="만다라트,계획표"
+      id="tw_share"
+    >
+      Tweet</a
     >
   </div>
   <div class="plan__content">
@@ -92,4 +122,9 @@
     </div>
   </div>
 </div>
+<script>
+  window.onload = function () {
+    fb_share.href += encodeURIComponent(location.href);
+  };
+</script>
 {%endblock content %}
