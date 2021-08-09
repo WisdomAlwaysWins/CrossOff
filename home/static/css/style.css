@@ -1728,6 +1728,9 @@ button{
     font-size: 24px;
     font-weight: 600;
 }
+.share--buttons{
+    display:flex;
+}
 
 @media screen and (max-width : 380px) {
     /* layout.html */
