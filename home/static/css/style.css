@@ -1744,6 +1744,9 @@ button{
     justify-content: center;
     padding: 1px 10px 1px 9px;
 }
+.share--buttons .kakao-share-button:hover{
+    cursor: pointer;
+}
 .share--buttons .kakao-share-button .kakao-logo{
     top:2px;
     height: 20px;

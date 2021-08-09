@@ -19,6 +19,7 @@
 
     return t;
   })(document, "script", "twitter-wjs");
+
   let manda = JSON.parse(
     "{{manda}}"
       .replace(/&quot;/g, '"')
@@ -77,30 +78,7 @@
       }
     }
   }
-  function shareKakao() {
-    Kakao.init("63d35744d122208296eafc04bbcec0f5");
-    Kakao.Link.createDefaultButton({
-      container: "#btnKakao",
-      objectType: "feed",
-      content: {
-        title: "Cross Off",
-        description: "만다라트 계획표로 어제보다 나은 오늘을",
-        imageUrl:
-          "https://raw.githubusercontent.com/HyunJik-Lee/CrossOff/master/logo.jpg",
-        link: {
-          mobileWebUrl: "https://peaceful-sands-44637.herokuapp.com/",
-        },
-      },
-      buttons: [
-        {
-          title: "웹으로 이동",
-          link: {
-            mobileWebUrl: "https://peaceful-sands-44637.herokuapp.com/",
-          },
-        },
-      ],
-    });
-  }
+  function shareKakao() {}
 </script>
 
 <div id="fb-root"></div>
@@ -135,9 +113,14 @@
         Tweet</a
       >
     </div>
-    <div class="kakao-share-button" data-layout="button">
+    <div
+      class="kakao-share-button"
+      data-layout="button"
+      id="btnKakao"
+      onclick="shareKakao();"
+    >
       <img class="kakao-logo" src={% static 'img/kakaolink_btn_small.png' %}>
-      <a id="btnKakao" href="javascript:shareKakao();">카톡 공유</a>
+      <span href="#">카톡 공유</span>
     </div>
   </div>
   <div class="plan__content">
@@ -155,5 +138,33 @@
   window.onload = function () {
     fb_share.href += encodeURIComponent(location.href);
   };
+  let usr_id = window.location.pathname.slice(18);
+  let hostname = window.location.host;
+  let share_url = hostname + "/mandalart/share/" + usr_id;
+  let options = {
+    container: "#btnKakao",
+    objectType: "feed",
+    content: {
+      title: "Cross Off",
+      description: "만다라트 계획표로 어제보다 나은 오늘",
+      imageUrl:
+        "https://raw.githubusercontent.com/HyunJik-Lee/CrossOff/master/logo.jpg",
+      link: {
+        webUrl: share_url,
+        mobileWebUrl: share_url,
+      },
+    },
+    buttons: [
+      {
+        title: "웹으로 이동",
+        link: {
+          webUrl: share_url,
+          mobileWebUrl: share_url,
+        },
+      },
+    ],
+  };
+  Kakao.init("63d35744d122208296eafc04bbcec0f5");
+  Kakao.Link.createDefaultButton(options);
 </script>
 {%endblock content %}
