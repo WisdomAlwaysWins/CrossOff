@@ -1,0 +1,60 @@
+/* Global setting */
+:root{
+    /* color */
+    --color-main--:#603ec0;
+    --color-white--:#eee;
+    --color-black--:#333;
+
+    /* Transition Duration */
+    --transition-duration--: 400ms ;
+
+    /* Border Radius */
+    --border-radius--:10px;
+
+
+}
+
+/* BUTTON */
+button{
+    padding:10px 15px;
+    margin:0;
+    border:none;
+    background-color: transparent;
+    font-size: 15px;
+    transition: var(--transition-duration--);
+    border-radius: var(--border-radius--);
+}
+.btn-black{
+    background-color: var(--color-black--);
+    color:white;
+}
+.btn-black:hover{
+    background-color: black;
+}
+.btn-purple{
+    background-color: rgba(96,62,192,0.8);
+    color:white;
+}
+.btn-purple:hover{ 
+    background-color: #603ec0; 
+    color:white;
+}
+.btn-white{
+    background-color: var(--color-white--);
+    color: #3e3260;
+    border: 1px solid transparent;
+}
+.btn-white:hover{ 
+    background-color: white;
+    color:#3e3260;
+    border: 1px solid var(--color-black--);
+}
+.btn-lightgray{
+    background-color:rgb(215, 210, 216);
+    color: var(--color-black--);
+}
+.btn-lightgray:hover{
+    background-color:rgb(191, 187, 192);
+    color: var(--color-black--);
+}
+

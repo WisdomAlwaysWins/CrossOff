@@ -17,6 +17,7 @@ Home
 />
 <link rel="stylesheet" href="{% static 'css/jquery.fullPage.css' %}" />
 <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+<link rel="stylesheet" href="{% static 'css/media.css' %}" />
 {% endblock css %}
 {% block content %}
   <section class="home__content">
@@ -39,7 +40,7 @@ Home
             </div>
             <div class="swiper-slide">
               <span class="material-icons">check_circle</span>
-              <p>목표를 세웠지만 무슨 일부터 해야할 지 고민하고 있는 당신</p>
+              <p>목표를 세웠지만 무슨 일부터 해야할 지 고민하는 당신</p>
             </div>
             <div class="swiper-slide">
               <span class="material-icons">check_circle</span>
@@ -48,10 +49,14 @@ Home
           </div>
         </div>
         <div class="getTogether">
-          <p class="getTogether-logo">Cross Off</p>
-          <p>가 제공하는 
-          <p class="getTogether-mandalart">만다라트 계획표</p>
-          <p>와 함께 작년보다 나은 한 해를 보내세요!</p>
+          <div class="first-line line">
+            <p class="getTogether-logo">Cross Off</p>
+            <p>가 제공하는 
+          </div>
+          <div class="second-line line">
+            <p class="getTogether-mandalart">만다라트 계획표</p>
+            <p>와 함께 작년보다 나은 한 해를 보내세요!</p>
+          </div>
         </div>
       </div>
       <!-- Section 2 - What is Mandal-art planner -->
@@ -60,8 +65,31 @@ Home
           <p class="title">Mandal-Art Planner</p> 
           <div class="description">
             <span class="detail one">목적을 달성하는 기술을 가진 플래너 📒</span>
-            <span class="detail second">일본 디자이너 이마이즈미 히로아키가 1987년 <p>만다라</p>의 모양에서 영감을 얻어 고안한 것으로<br></span>
-            <span class="detail second"><p>핵심 목표</p>를 중심으로 확산하는 형태의 <p>세부 목표</p>를 작성하는 <p>계획표</p>입니다.<br></span>
+            <ul class="detail second">
+              <li>일본 디자이너 이마이즈미 히로아키가 1987년에 </li>
+              <li>
+                <p class="strong">만다라</p>
+                <p>의 모양에서 영감을 얻어 고안한 것으로</p>
+              </li>
+              <li></li>
+            </ul>
+            <ul class="detail third">
+              <li>
+                <p class="strong">핵심 목표</p>
+                <p>를 중심으로</p>
+                <p>확산하는 형태의</p>
+              </li>
+              <li>
+                <p class="strong">세부 목표</p>
+                <p>를 작성하는</p>
+                <p class="strong">계획표</p>
+                <p>입니다.</p>
+              </li>
+              <li></li>
+            </ul>
+          </div>
+          <div class="explanation__swiper">
+            <p>옆으로 넘기며 내용을 확인해보세요.</p>
           </div>
         </div>
         <div class="slide" id="slide2">
@@ -72,7 +100,7 @@ Home
           <p class="title">How To</p>
           <div class="description">
             <span class="detail">9X9의 표의 가운데에 이루고자 하는 <p>핵심 목표</p>를 기입합니다.<br></span>
-            <span class="detail">핵심 목표를 둘러싼 8개의 사각형에는 <p>그 목표를 실현하기 위한 목표</p>를 적습니다.<br></span>
+            <span class="detail">핵심 목표 주변 8개 사각형에 <p>목표를 실현하기 위한 목표</p>를 적습니다.<br></span>
             <span class="detail">그 8개의 목표를 주변으로 확장해 <p>세부 목표</p>를 작성합니다.<br></span>
             <span class="detail">한눈에 목표를 확인하면서 <p>체계적⌛</p>으로 계획을 괸리할 수 있습니다.<br></span>
             <span class="detail">작은 성취가 모여 최종 목표까지 달성했을 때에 성취감🎉을 느껴보세요!<br></span>
@@ -113,8 +141,8 @@ Home
       </div>
     </div>
     <div class="startBtn__content">
-      <button id="startBtn" class="btn-purple">
-        <a href="{% url 'common:register' %}">START</a>
+      <button id="startBtn" class="btn-purple" onclick="location.href ='/common/register'">
+        START
       </button>
     </div>
     <div class="toggleupBtn__content">
