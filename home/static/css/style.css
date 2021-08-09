@@ -1740,6 +1740,34 @@ button{
 }
 
 @media only screen and (min-device-width : 375px) and (max-device-width : 479px) {
+
+    .share--buttons{
+        display:inline-flex;
+        flex-wrap: wrap;
+    }
+    .share--buttons > div{
+        margin: 2px;
+    }
+    .share--buttons .kakao-share-button{
+        top: 2px;
+        background-color:#FEE500;
+        border-radius: 4px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1px 10px 1px 9px;
+    }
+    .share--buttons .kakao-share-button:hover{
+        cursor: pointer;
+    }
+    .share--buttons .kakao-share-button .kakao-logo{
+        top:2px;
+        height: 20px;
+        width: 20px;
+    }
+    .share--buttons .kakao-share-button > a{
+        color:#000000 85%;
+    }
     /* layout.html */
     .header__container .navbar{
         position: absolute;
