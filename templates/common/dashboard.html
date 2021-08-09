@@ -420,7 +420,7 @@
                 <p>{{user.nickname}} 님</p>
               </div>
               <div class="buttons">
-                <button class="btn btn-white">
+                <button class="btn btn-white" >
                   <a href="{% url 'common:edit_password' %}">Edit Password</a>
                 </button>
                 <button class="btn btn-white">
@@ -430,7 +430,6 @@
             </div>
           </div>
           <!-- 배지 -->
-
           <div class="badges">
             <script>
               let parentNode = document.getElementsByClassName("badges")[0];
@@ -472,9 +471,8 @@
         <div class="goal_achievement">
           <span id="total_goal_num">64개의 세부 목표 중 </span>
           <span id="achieve">{{achieve_num}}</span>
-          <span
-            >개의 목표를 완료! 더 많은 목표를 달성해 배지를 모아보세요 💜</span
-          >
+          <span>개의 목표를 완료!</span>
+          <span>더 많은 목표를 달성해 배지를 모아보세요 💜</span>
         </div>
       </div>
     </div>
@@ -497,6 +495,7 @@
       </div>
       <div class="plan__content">
         <div class="plan table" data-type="table">
+          <p class="moblie__mention">손가락으로 확대할 수 있습니다 :D</p>
           <div class="manda__table" id="manda_table1">
             <script>
               let manda1 = document.getElementById("manda_table1");

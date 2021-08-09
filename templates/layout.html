@@ -23,6 +23,7 @@
   {% block css %}
   {% endblock css %}
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="stylesheet" href="{% static 'css/media.css' %}" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 
@@ -35,26 +36,21 @@
         </a>
       </div>
       <div class="navbar">
-        <ul id="menu">
-          <li>
-            <span>
-              <!-- <a href="">FIND GROUP</a> -->
-            </span>
-          </li>
-        </ul>
-        <div class="member">
-
-          {% if user.is_authenticated %}
-          <span class="dashboard"><a href="{% url 'common:dashboard' user.id %}">{{user.nickname}}님</a></span>
-          <span class="logout"><a href="{% url 'common:logout' %}">LOG OUT</a></span>
-          {% endif %}
-          {% if not user.is_authenticated %}
-          <span class="signin">
-            <a href="{% url 'common:register' %}">SIGN UP</a></span>
-          <span class="login"><a href="{% url 'common:login' %}">LOG IN</a></span>
-          {% endif %}
-
-        </div>
+        {% if user.is_authenticated %}
+        <span class="dashboard navbar__item">
+          <a href="{% url 'common:dashboard' user.id %}">{{user.nickname}}님</a>
+        </span>
+        <span class="logout navbar__item">
+          <a href="{% url 'common:logout' %}">LOG OUT</a>
+        </span>
+        {% endif %}
+        {% if not user.is_authenticated %}
+        <span class="signin navbar__item">
+          <a href="{% url 'common:register' %}">SIGN UP</a></span>
+        <span class="login navbar__item">
+          <a href="{% url 'common:login' %}">LOG IN</a>
+        </span>
+        {% endif %}
       </div>
   </header>
 

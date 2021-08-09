@@ -178,3 +178,8 @@ p{
     background-color: #613ec0c4;
 }
 
+@media screen and (max-width : 380px){
+    p{
+        font-size:40px;
+    }
+}
