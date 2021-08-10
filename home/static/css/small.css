@@ -21,18 +21,28 @@ textarea {
     background-color: violet;
     color: white;
     text-decoration: none;
-    font-size: 130%;
+    font-size: 115%;
 }
 .small_example a:link{
     background-color: orchid;
+    border-radius: 5px;
+    padding: 2px 10px;
+    margin: 0 2px;
     color: white;
     text-decoration: none;
+    transition: 400ms;
 }
 .small_example a:visited{
     background-color: orchid;
     color: white;
     text-decoration: none;
 }
+.board_container{
+    display:flex;
+    
+    justify-content: center;
+}
+
 .board {
     display: grid;
     grid-template-rows: 390px 390px 390px;
@@ -144,12 +154,9 @@ textarea {
     .small_top h1{
         font-size: 50px;
     }
-
     .board {
-        display: grid;
         grid-template-rows: 1fr 1fr 1fr;
-        grid-template-columns: 1fr 1fr 1fr;
-        margin: 2% 0 5% 0;  
+        grid-template-columns: 1fr 1fr 1fr; 
     }
     .box {
         display: grid;
