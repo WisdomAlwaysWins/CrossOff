@@ -46,9 +46,7 @@ class SpecificGoal(models.Model):
 
 
 class Todo(models.Model):
-    user = models.ForeignKey(User,
-                             on_delete=models.CASCADE,
-                             related_name='todo')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='todo')
     content = models.CharField(max_length=200, null=True, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     is_achieved = models.BooleanField(default=False, null=False)
@@ -56,7 +54,15 @@ class Todo(models.Model):
     def __str__(self):
         return str(self.user.nickname) + '의 ' + str(self.content)
 
+
+
 class Block(models.Model):
-    user= models.ForeignKey(User, on_delete=models.CASCADE,related_name='block')
+    user= models.ForeignKey(User, on_delete=models.CASCADE, related_name='block')
     content = models.TextField()
     created_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.user.nickname) + '의 ' + str(self.created_date)+'날짜의 '+ str(self.content[:10])
+
+class Spelist(models.Model):
+    
