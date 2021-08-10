@@ -1019,6 +1019,7 @@ button{
     flex-direction: column;
     justify-content: center;
     text-align: center;
+    align-items: center;
     position: relative;
 }
 .dashboard__content_top .top .badges .badge_img{
@@ -1055,16 +1056,20 @@ button{
 }
 .dashboard__content_top .top .badges .badge .name{
     margin-top: 10px;
-}
-.dashboard__content_top .top .badges .badge .name .badge_name{
+    width: 80%;
+    height: 22px;
+    overflow-y: scroll;
     display:inline-block;
     font-size: 12px;
     background-color: var(--color-white--);
-    padding: 5px 10px;
+    padding: 2px 5px;
     border-radius: var(--border-radius--);
     color:var(--color-black--);
     box-shadow: 0px 2px 5px gray;
     opacity: 0.5;
+    display:flex;
+    align-items: center;
+    justify-content: center;
 }
 .dashboard__content_top .top .badges .badge.achieve .badge_name{
     opacity: 1;
@@ -1496,6 +1501,8 @@ button{
     text-align: center;
     padding: 10px 0;
     border-radius: 5px;
+    height: 40px;
+    overflow-y: scroll;
 }
 .dashboard__content_bottom .plan__content .checkbox .object #object__mid1{
     background-color: #EC9790;
