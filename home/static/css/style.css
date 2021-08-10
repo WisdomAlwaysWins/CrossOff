@@ -149,6 +149,19 @@ button{
     text-decoration: line-through;
     text-decoration-color: var(--color-main--);
 }
+.header__container .menu__items{
+    margin-left: 20vw;
+    width: 20vw;
+}
+.header__container .menu__items .menu{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.header__container .menu__items .menu li{
+    color:var(--color-white--);
+}
 .header__container .navbar{
     display:flex;
     margin-right:30px;
@@ -1780,6 +1793,9 @@ button{
         position: absolute;
         right:0;
     }
+    .header__container .logo{
+        margin-left:15px;
+    }
     .header__container .logo p{
         display:inline-block;
         color:black;
@@ -1788,10 +1804,17 @@ button{
         text-decoration: line-through;
         text-decoration-color: var(--color-main--);
     }
+    .header__container .navbar{
+        margin-right: 15px;
+    }
+    .header__container .navbar .navbar__item{
+        padding: 8px 2px;
+    }
     .header__container .navbar .navbar__item a {
         color:var(--color-black--);
         font-size: var(--font-size-content--);
     }
+
     
     .home__content #fullpage #section1{
         background:rgb(238, 238, 238);

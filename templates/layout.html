@@ -41,8 +41,15 @@
       </div>
       <div class="navbar">
         {% if user.is_authenticated %}
+        <!-- 달력 페이지랑 연결되어 있지 않아요 -->
         <span class="dashboard navbar__item">
-          <a href="{% url 'common:dashboard' user.id %}">{{user.nickname}}님</a>
+          <a href='#'>CALENDA</a>
+        </span>
+        <span class="dashboard navbar__item">
+          <a href="{% url 'common:dashboard' user.id %}">DASHBOARD</a>
+        </span>
+        <span class="dashboard navbar__item">
+          <a href="{% url 'common:profile' user.id %}">PROFILE</a>
         </span>
         <span class="logout navbar__item">
           <a href="{% url 'common:logout' %}">LOG OUT</a>
