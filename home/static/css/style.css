@@ -1794,7 +1794,7 @@ button{
     font-weight: 600;
 }
 
-@media only screen and (min-device-width : 375px) and (max-device-width : 479px) {
+@media only screen and (min-device-width : 360px) and (max-device-width : 479px) {
     .share__conent{
         display: flex;
         flex-direction: column;
