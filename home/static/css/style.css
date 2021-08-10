@@ -12,6 +12,7 @@
     --border-radius--:10px;
 
     /* Font size */
+    --font-size-large-title-- : 18px;
     --font-size-title-- : 14px;
     --font-size-content-- : 12px;
     --font-size-mini--: 4px;
@@ -743,7 +744,7 @@ button{
     display:flex;
 }
 .seeProfile__background .seeProfile__content .buttons .btn{
-    margin: 0 10px;
+    margin: 0 5px;
 }
 .seeProfile__background .seeProfile__content .buttons .btn a{
     color:white;
@@ -889,7 +890,7 @@ button{
     border-bottom: 1px solid #ccc;
     display: flex;
     flex-direction: column;
-    padding: 30px;
+    padding: 30px 10px;
 }
 #editPassword .background .editPassword__content form .password .basic__content{
     display:flex;
@@ -1740,7 +1741,6 @@ button{
 }
 
 @media only screen and (min-device-width : 375px) and (max-device-width : 479px) {
-
     .share--buttons{
         display:inline-flex;
         flex-wrap: wrap;
@@ -2077,4 +2077,61 @@ button{
         border-radius: var(--border-radius--);
     }
 
+    /* See Profile */
+    .seeProfile__background .content__title #nickname,
+    .seeProfile__background .content__title p,
+    #updateProfile .background .content__title #nickname,
+    #updateProfile .background .content__title p,
+    #editPassword .background .content__title p{
+        font-size:var(--font-size-large-title--);
+    }
+    .seeProfile__background .seeProfile__content,
+    #updateProfile .background .updateProfile__content,
+    #editPassword .background .editPassword__content{
+        width: 85vw;
+    }
+    .seeProfile__background .seeProfile__content .customer_table th,
+    #updateProfile .background .updateProfile__content .profile_edit_table th{
+        width: 80px;
+        padding: 20px;
+        font-size: var(--font-size-title--);
+    }
+    .seeProfile__background .seeProfile__content .customer_table td,
+    #updateProfile .background .updateProfile__content .profile_edit_table td{
+        width: 100px;
+        padding: 20px;
+        font-size:var(--font-size-title--);
+    }
+    .seeProfile__background .seeProfile__content .buttons{
+        flex-direction: column;
+        bottom:50px;
+    }
+    .seeProfile__background .seeProfile__content .buttons .back{
+        display:none;
+    }
+    .seeProfile__background .seeProfile__content .buttons .btn{
+        margin: 5px 0;
+    }
+    .seeProfile__background .seeProfile__content .buttons .btn a{
+        font-size: var(--font-size-content--);
+    }
+    #updateProfile .background .updateProfile__content,
+    #editPassword .background .editPassword__content{
+        margin-top:110px;
+    }
+    #updateProfile .background .updateProfile__content .buttons{
+        bottom: 60px;
+    }
+    #updateProfile .background .updateProfile__content .buttons .btn,
+    #editPassword .background .editPassword__content form .buttons .btn{
+        margin: 0 10px;
+        font-size:var(--font-size-content--);
+    }
+    #editPassword .background .editPassword__content form .password .basic__content label{
+        width: 100px;
+        font-size:var(--font-size-title--);
+    }
+    #editPassword .background .editPassword__content form .password .basic__content .input_content{
+        width: 150px;
+    }
 }
