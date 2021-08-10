@@ -459,7 +459,21 @@ button{
     background-size: cover;
     position: absolute;
 }
-
+.login_btn{
+    position:relative;
+              left:40%;
+              transform: translateX(-50%);
+              width:80%;
+              height:40px;
+              background:#603ec0;
+              color:white;
+              font-weight: bold;
+              border:none;
+              cursor:pointer;
+              transition: 0.4s;
+              display:inline;
+              font-size: 15px;
+}
 .login_body{
     position:absolute;
     width:320px;
@@ -526,7 +540,29 @@ button{
     background-size: cover;
     position: absolute;
 }
-
+.register_logo{
+    text-decoration: line-through #603ec0;
+    font-size: 40px;
+    font-weight: bolder;
+    margin: 2rem 3rem 1rem 3rem;
+    text-align: center;
+}
+.register_button{
+    position: relative;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 100%;
+                height: 40px;
+                background: #603ec0;
+                color: white;
+                font-weight: bold;
+                border: none;
+                cursor: pointer;
+                transition: 0.4s;
+                display: inline;
+                font-size: 15px;
+                margin-top: 2rem;
+}
 .register_body{
     margin-top: 10%;
     margin-bottom: 30%;
@@ -1738,7 +1774,6 @@ button{
     font-size: 24px;
     font-weight: 600;
 }
-
 @media only screen and (min-device-width : 375px) and (max-device-width : 479px) {
 
     .share--buttons{
@@ -2076,5 +2111,444 @@ button{
         transition: var(--transition-duration--);
         border-radius: var(--border-radius--);
     }
+    /* login */
+    .login_body{
+        position:absolute;
+        width: 85vw;
+        height: 45vh;
+        padding: 40px 30px 30px 30px;
+        background-color:#FFFFFF;
+        text-align:center;
+        top:30%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 20px;
+        box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+        margin-top: 20vh;
+    }
+    .login_logo{
+        text-decoration: line-through #603ec0;
+        font-size: 65px;
+        font-weight: bolder;
+        margin: 6rem 3rem;
+    }
+    .login_idForm{
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        margin-top: 3rem;
+        margin-bottom: 0.6rem;
+        width:80%;
+        height:60px;
+        font-weight: bold;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 15px;
+    }
+    
+    .login_pwForm{
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        margin-bottom: 0.6rem;
+        width:80%;
+        height:60px;
+        font-weight: bold;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 15px;
+    
+    }
+    .login_check{
+        font-size: 25px;
+        left:50%;
+        margin-bottom: 50px;
+        margin-top: 10px;
+    }
+    .login_no{
+        font-size: 23px;
+        margin-top: 30px;
+    }
+    #keepLogin{
+        size: 10px;
+    }
+    .login_content_submit input{
+        left:40%;
+        transform: translateX(-50%);
+        width:80%;
+        height:60px;
+        background:#603ec0;
+        color:white;
+        font-weight: bold;
+        border:none;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 20px; 
+    }
+    /* password_reset */
+    .password_reset_body{
+        position:absolute;
+        width: 85vw;
+        height: 45vh;
+        padding: 30PX 20px 10PX 20px;
+        background-color:#FFFFFF;
+        text-align:center;
+        top:30%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 20px;
+        box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+        margin-top: 20vh;
+    }
+    .password_reset__logo{
+        text-decoration: line-through #603ec0;
+        font-size: 65px;
+        font-weight: bolder;
+        margin: 6rem 3rem 0 3rem;
+    }
+    .password_reset_body button{
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        width:80%;
+        height:60px;
+        background:#603ec0;
+        color:white;
+        font-weight: bold;
+        border:none;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 20px;
+        border-radius: 0;
+        margin-top: 6rem;
+    }
+    .password_reset_body h2{
+        font-size: 45px;
+        margin-top: 6rem;
+    }
+    .password_reset_body h5, .password_reset_done_body h5{
+        font-size: 25px;
+    }
+    .password_reset_email p{
+        margin-top: 3rem;
+    }
+    .password_reset_email label{
+        font-size: 30px;
+    }
+    .password_reset_email input{
+        font-size: 30px;
+        border: #333333;
+    }
 
+    /* password_reset_done_fail */
+
+    .password_reset_done_body{
+        position:absolute;
+        width: 85vw;
+        height: 45vh;
+        padding: 30PX 20px 10PX 20px;
+        background-color:#FFFFFF;
+        text-align:center;
+        top:30%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 20px;
+        box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+        margin-top: 20vh;
+    }
+    .password_reset_email{
+        font-size: 18px;
+        font-weight: bold;
+        margin: 100px auto 15px auto;
+    }
+    .password_reset_done_body button{
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        width:80%;
+        height:60px;
+        background:#603ec0;
+        color:white;
+        font-weight: bold;
+        border:none;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 20px;
+        border-radius: 0;
+        margin-top: 6rem;
+    }
+    .password_reset_done_body h2{
+        font-size: 45px;
+        margin-top: 12rem;
+    }
+
+ 
+    /* password_reset_comfirm */
+    .password_reset_body_retry{
+        position:absolute;
+        width: 85vw;
+        height: 45vh;
+        padding: 30PX 20px 10PX 20px;
+        background-color:#FFFFFF;
+        text-align:center;
+        top:30%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 20px;
+        box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+        margin-top: 20vh;
+    }
+    .password_reset_body_retry form{
+       margin-top: 50px;
+    }
+    .password_reset_body_retry h2{
+        font-size: 45px;
+        margin-top: 6rem;
+    }
+    .password_reset_body h5, .password_reset_done_body h5, .password_reset_body_retry h5{
+        font-size: 25px;
+    }
+    .password_reset_body_retry button{
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        width:80%;
+        height:60px;
+        background:#603ec0;
+        color:white;
+        font-weight: bold;
+        border:none;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 25px;
+        border-radius: 0;
+        margin-top: 6rem;
+    }
+    .password_reset_password{
+        margin-left: 150px;
+    }
+    .password_reset_password p{
+        font-size: 25px;
+        margin-top: 15px;
+    }
+        /* password_reset_complete */
+    .password_reset_body_complete{
+        position:absolute;
+        width: 85vw;
+        height: 45vh;
+        padding: 30PX 20px 10PX 20px;
+        background-color:#FFFFFF;
+        text-align:center;
+        top:30%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 20px;
+        box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+        margin-top: 20vh;
+    }
+    .password_reset_body_complete h2{
+        font-size: 45px;
+        margin-top: 13rem;
+    }
+    .form-signin button{
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        width:80%;
+        height:60px;
+        background:#603ec0;
+        color:white;
+        font-weight: bold;
+        border:none;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 25px;
+        border-radius: 0;
+        margin-top: 10rem;
+    }
+    /*register*/
+       /* register */
+
+       .register_body{
+        margin-bottom: 30%;
+        position:absolute;
+        width: 85vw;
+        height: 60vh;
+        padding: 30PX 20px 10PX 20px;
+        background-color:#FFFFFF;
+        text-align:center;
+        top:30%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 10px;
+        box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+        margin-top: 10vh;
+        align-items: center;
+    }
+
+    .register_logo{
+        text-decoration: line-through #603ec0;
+        font-size: 65px;
+        font-weight: bolder;
+        margin: 6rem 3rem 0 3rem;
+        text-align: center;
+    }
+
+    .register_bottom{
+        margin-top: 80px;
+    }
+    .register_bottom p{
+        margin: 30px;
+        font-size: 25px;    
+    }
+    .register_bottom select{
+        font-size: 20px;    
+    }
+    .register_button{
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        width:80%;
+        height:60px;
+        background:#603ec0;
+        color:white;
+        font-weight: bold;
+        border:none;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 25px;
+        border-radius: 0;
+        margin-top: 4rem;   
+    }
+    .register_idForm{
+        position:relative;
+        left:45%;
+        transform: translateX(-50%);
+        margin-top: 35px;
+        margin-bottom: 10px;
+        width:60%;
+        height:35px;
+        font-weight: bold;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 25px;
+    }
+    
+    .register_pwForm{
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        width:60%;
+        height:35px;
+        font-weight: bold;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 25px;
+    }
+    
+    .register_pwcheckForm{
+        position:relative;
+        left:36%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        width:60%;
+        height:35px;
+        font-weight: bold;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 15px;
+    }
+    
+    .register_nicknameForm{
+        position:relative;
+        left:44%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        width:60%;
+        height:35px;
+        font-weight: bold;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 15px;
+    }
+    
+    .register_emailForm{
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        left:43.2%;
+        width:60%;
+        height:35px;
+        font-weight: bold;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 15px;
+    }
+    
+    .register_birthForm{
+        position:relative;
+        left:40%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        left:20.2%;
+        width:20%;
+        height:35px;
+        font-weight: bold;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 15px;
+    }
+    
+    .register_genderForm{
+        position:relative;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        left:44%;
+        width:60%;
+        height:35px;
+        font-weight: bold;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 15px;
+    }
+    .register_jobForm{
+        position:relative;
+        left:44%;
+        transform: translateX(-50%);
+        margin-bottom: 10px;
+        width:60%;
+        height:35px;
+        font-weight: bold;
+        cursor:pointer;
+        transition: 0.4s;
+        display:inline;
+        font-size: 15px;
+    }
+    .register_ok{
+        font-size: 25px;
+        margin-top: 30px;
+    }
+    
+    .errorlist li{
+        color: red;
+        font-weight: bold;
+    }
 }
+
