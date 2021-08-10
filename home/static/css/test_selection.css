@@ -1,0 +1,14 @@
+.selectedGoalContent{
+    width: 500px;
+    height: 200px;
+    background-color: cadetblue;
+    overflow-y: scroll;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+#selected-list{
+    padding:0;
+    list-style: none;
+    background-color: wheat;
+}

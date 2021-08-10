@@ -299,3 +299,29 @@ class UserPasswordResetCompleteView(PasswordResetCompleteView):
         context = super().get_context_data(**kwargs)
         context['login_url'] = resolve_url(settings.LOGIN_URL)
         return context
+
+
+@login_required
+def selectionForm(request, id):
+    user = User.objects.get(id=id)
+    if not user.is_manda:
+        return redirect('mandalart:new')
+
+    manda = Mandalart.objects.get(user=user.id)
+    big = BigGoal.objects.get(manda=manda)
+    mid = MidGoal.objects.filter(big=big).order_by('id')
+    lst2 = []
+    lst4 = {}
+    lst5 = {}
+    for i in range(len(mid)):
+        lst3 = []
+        lst6 = []
+        lst2.append(mid[i].content)
+
+        lst4[i] = lst3
+        lst5[i] = lst6
+    return render(
+        request, 'common/test_selection.html', {
+            'manda_mid': json.dumps(lst2, ensure_ascii=False),
+            'manda_small': json.dumps(lst4, ensure_ascii=False),
+        })

@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/test_selection.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!-- script for selection variable -->
+    <script>
+        const midGoal = JSON.parse(
+          "{{manda_mid}}"
+            .replace(/&quot;/g, '"')
+            .replace(/\r/gi, "\\r")
+            .replace(/\n/gi, "\\n")
+            .replace(/\t/gi, "\\t")
+            .replace(/\f/gi, "\\f")
+        );
+        const detailGoal = JSON.parse(
+          "{{manda_small}}"
+            .replace(/&quot;/g, '"')
+            .replace(/\r/gi, "\\r")
+            .replace(/\n/gi, "\\n")
+            .replace(/\t/gi, "\\t")
+            .replace(/\f/gi, "\\f")
+        );
+    </script> 
+</head>
+<body>
+    <div class="selection__content">
+        <form action="" class="selection_form" method="get">
+            <select name="" id="midSelectedBox">
+                <!-- Fill Mid Goal Select -->
+                <script>
+                    const midSelectedBox = document.querySelector('#midSelectedBox');
+                    const maxGoalNum = 8;
+
+                    // Fill Option
+                    function fillOption(goal_name, select_name){
+                        for(let i=0;i<maxGoalNum; i++){
+                            if(goal_name[i].length != 0){
+                                let option = document.createElement('option');
+                                let content = goal_name[i];
+                                option.value = i;
+                                option.text = content;
+                                select_name.append(option);
+                            }
+                        }
+                    }
+                    function fillMidGoal(){
+                        fillOption(midGoal, midSelectedBox);
+                    }
+                    fillMidGoal();
+                </script>
+            </select>
+            <select name="" id="detailedSelectedBox">
+                <!-- 기본값으로 첫번째 Mid Goal의 세부 목표를 넣어놨습니다. -->
+                <script>
+                    for(let n=0;n<8;n++){
+                        if(midGoal[n].length != 0){
+                            fillOption(detailGoal[n], detailedSelectedBox);
+                            break;
+                        }
+                    }
+                </script>
+                <!-- Fill Detailed Goal selection -->
+                <script>
+                    const detailedSelectedBox = document.querySelector('#detailedSelectedBox');
+                    midSelectedBox.addEventListener('change', (e)=>{
+                        let selectedNum = e.target.value;
+                        detailedSelectedBox.options.length =0;
+                        switch(selectedNum){
+                            case '0': 
+                                fillOption(detailGoal[0], detailedSelectedBox);
+                                break;
+                            case '1': 
+                                fillOption(detailGoal[1], detailedSelectedBox);
+                                break;
+                            case '2':
+                                fillOption(detailGoal[2], detailedSelectedBox);
+                                break;
+                            case '3':
+                                fillOption(detailGoal[3],detailedSelectedBox);
+                                break;
+                            case '4':
+                                fillOption(detailGoal[4],detailedSelectedBox);
+                                break;
+                            case '5':
+                                fillOption(detailGoal[5],detailedSelectedBox);
+                                break;
+                            case '6':
+                                fillOption(detailGoal[6],detailedSelectedBox);
+                                break;
+                            case '7':
+                                fillOption(detailGoal[7],detailedSelectedBox);
+                                break;
+                        }
+                    })
+                </script>
+            </select>
+            <button class="addBtn" type="button">추가</button>
+            <div class="selectedGoalContent">
+                <ul id="selected-list">
+                </ul>
+            </div>
+        </form>
+    </div>
+    <!-- Add List -->
+    <script>
+        const submitBtn = document.querySelector('.addBtn');
+        const selectedList = document.getElementById('selected-list');
+
+        function deleteList(event){
+            const li = event.target.parentElement;
+            li.remove();
+        };
+
+        submitBtn.addEventListener('click', ()=>{
+            const li = document.createElement("li");
+            const icon =document.createElement("span");
+            const span = document.createElement("span");
+            icon.className = "material-icons";
+            icon.innerText ="check_circle";
+            const button = document.createElement("button");
+            button.setAttribute('type', 'button');
+            button.innerText = "❌";
+            li.className = "detailGoal";
+            const midValue = midSelectedBox.options[midSelectedBox.selectedIndex].value;
+            const detailValue = detailedSelectedBox.options[detailedSelectedBox.selectedIndex].value;
+            const detailText = detailedSelectedBox.options[detailedSelectedBox.selectedIndex].text;
+            const NameOfClass = midValue+detailValue;
+            li.classList.add(NameOfClass);
+            span.innerText = detailText;
+            button.addEventListener("click", deleteList);
+            li.appendChild(icon);
+            li.appendChild(span);
+            li.appendChild(button);
+            selectedList.appendChild(li);
+        })
+    </script>
+</body>
+</html>
