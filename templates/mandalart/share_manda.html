@@ -89,38 +89,42 @@
   src="https://connect.facebook.net/ko_KR/sdk.js#xfbml=1&version=v11.0"
   nonce="hvi7AwlU"
 ></script>
-<div class="dashboard__content_bottom">
-  <p>{{nickname}}님의 만다라트</p>
-  <br /><br />
-  <div class="share--buttons">
-    <div class="fb-share-button" data-layout="button" data-size="large">
-      <a
-        target="_blank"
-        href="https://www.facebook.com/sharer/sharer.php?u="
-        class="fb-xfbml-parse-ignore"
-        id="fb_share"
-        >공유하기</a
+<div class="dashboard__content_bottom share__content">
+  <div class="share__title">
+    <p class="whos">💜 {{nickname}}님의 만다라트 💜</p>
+    <div class="share--buttons">
+      <div class="fb-share-button share-button" data-layout="button" data-size="large">
+        <a
+          target="_blank"
+          href="https://www.facebook.com/sharer/sharer.php?u="
+          class="fb-xfbml-parse-ignore"
+          id="fb_share"
+          >공유하기</a
+        >
+      </div>
+      <div class="twitter-share-button share-button" data-layout="button">
+        <a
+          class="twitter-share-button"
+          href="https://twitter.com/intent/tweet"
+          data-size="large"
+          data-hashtags="만다라트,계획표"
+          id="tw_share"
+        >
+          Tweet</a
+        >
+      </div>
+      <div
+        class="kakao-share-button share-button"
+        data-layout="button"
+        id="btnKakao"
+        onclick="shareKakao();"
       >
-    </div>
-    <div class="twitter-share-button" data-layout="button">
-      <a
-        class="twitter-share-button"
-        href="https://twitter.com/intent/tweet"
-        data-size="large"
-        data-hashtags="만다라트,계획표"
-        id="tw_share"
-      >
-        Tweet</a
-      >
-    </div>
-    <div
-      class="kakao-share-button"
-      data-layout="button"
-      id="btnKakao"
-      onclick="shareKakao();"
-    >
       <img class="kakao-logo" src={% static 'img/kakaolink_btn_small.png' %}>
-      <span href="#">카톡 공유</span>
+        <!-- <span href="#">카톡 공유</span> -->
+      </div>
+      <button class="go-home btn btn-purple" onclick="location.href ='/'">
+        Cross Off 함께하기
+      </button>
     </div>
   </div>
   <div class="plan__content">
