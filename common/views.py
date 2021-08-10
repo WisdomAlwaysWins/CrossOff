@@ -306,17 +306,36 @@ def selectionForm(request, id):
     user = User.objects.get(id=id)
     if not user.is_manda:
         return redirect('mandalart:new')
+    lst = []
 
     manda = Mandalart.objects.get(user=user.id)
     big = BigGoal.objects.get(manda=manda)
+    lst.append((big.content, big.is_achieved))
     mid = MidGoal.objects.filter(big=big).order_by('id')
     lst2 = []
     lst4 = {}
     lst5 = {}
+    midcnt = 0
+    achieve_spe_num = 0
     for i in range(len(mid)):
+        specnt = 0
         lst3 = []
         lst6 = []
         lst2.append(mid[i].content)
+        spe = SpecificGoal.objects.filter(mid=mid[i]).order_by('id')
+        for j in range(len(spe)):
+            lst3.append(spe[j].content)
+            lst6.append(spe[j].is_achieved)
+            if spe[j].is_achieved:
+                specnt += 1
+                achieve_spe_num += 1
+        if specnt == 8:
+            mid[i].is_achieved = True
+            mid[i].save()
+            midcnt += 1
+        elif specnt < 8:
+            mid[i].is_achieved = False
+            mid[i].save()
 
         lst4[i] = lst3
         lst5[i] = lst6
