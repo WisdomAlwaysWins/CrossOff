@@ -1755,38 +1755,85 @@ button{
 }
 
 /* share_manda */
+.share__conent{
+    display: flex;
+    flex-direction: column;
+    margin:0;
+}
+.dashboard__content_bottom .share__title{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.dashboard__content_bottom .share__title .whos{
+    padding: 20px;
+}
+.dashboard__content_bottom .share__title .share--buttons{
+    display:flex;
+    flex-direction: row;
+    padding: 20px;
+    /* align-items: center; */
+}
+.share-button{
+    margin: 0 5px;
+}
+.kakao-share-button img{
+    height:27px;
+}
+.go-home{
+    height:27px;
+    font-size:12px;
+    padding: 0 10px;
+    border-radius: 4px;
+    margin: 0 10px;
+    
+}
 .dashboard__content_bottom p{
     font-size: 24px;
     font-weight: 600;
 }
 
 @media only screen and (min-device-width : 375px) and (max-device-width : 479px) {
+    .share__conent{
+        display: flex;
+        flex-direction: column;
+        margin:0;
+    }
     .share--buttons{
-        display:inline-flex;
+        width: 70vw;
+        display:flex;
         flex-wrap: wrap;
+        justify-content: center;
+        padding: 0;
     }
     .share--buttons > div{
         margin: 2px;
     }
     .share--buttons .kakao-share-button{
         top: 2px;
+        height:22px;
         background-color:#FEE500;
         border-radius: 4px;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 1px 10px 1px 9px;
+        padding: 0px 10px 0px 10px;
     }
     .share--buttons .kakao-share-button:hover{
         cursor: pointer;
     }
     .share--buttons .kakao-share-button .kakao-logo{
         top:2px;
-        height: 20px;
-        width: 20px;
+        height: 15px;
+        width: 15px;
     }
     .share--buttons .kakao-share-button > a{
         color:#000000 85%;
+    }
+    .go-home{
+        height:24px;
+        margin: 0 10px;
     }
     /* layout.html */
     .header__container .navbar{
