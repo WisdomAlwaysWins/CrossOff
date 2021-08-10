@@ -55,3 +55,8 @@ class Todo(models.Model):
 
     def __str__(self):
         return str(self.user.nickname) + '의 ' + str(self.content)
+
+class Block(models.Model):
+    user= models.ForeignKey(User, on_delete=models.CASCADE,related_name='block')
+    content = models.TextField()
+    created_date = models.DateTimeField(auto_now_add=True)
