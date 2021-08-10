@@ -55,14 +55,26 @@ class Todo(models.Model):
         return str(self.user.nickname) + '의 ' + str(self.content)
 
 
-
 class Block(models.Model):
-    user= models.ForeignKey(User, on_delete=models.CASCADE, related_name='block')
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='block')
     content = models.TextField()
-    created_date = models.DateTimeField(auto_now_add=True)
+    created_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.user.nickname) + '의 ' + str(self.created_date)+'날짜의 '+ str(self.content[:10])
+        return str(self.user.nickname) + '의 ' + str(self.created_date) + '날짜의 ' + str(self.content[:10])
+
 
 class Spelist(models.Model):
-    
+    id = models.BigAutoField(primary_key=True)
+    block = models.OneToOneField(Block, on_delete=models.CASCADE, related_name='spelist')
+
+    def __str__(self):
+        return str(self.block.user.nickname) + '의 ' + str(self.block.created_date) + ' 날짜의 세부목표 목록'
+
+
+class Item(models.Model):
+    spelist = models.ForeignKey(Spelist, on_delete=models.CASCADE, related_name='item')
+    specificgoal = models.ForeignKey(SpecificGoal, on_delete=models.CASCADE, related_name='specificgoal')
+
+    def __str__(self) -> str:
+        return str(self.spelist.block.user.nickname) + '의 ' + str(self.spelist.block.created_date) + ' 날짜의 ' + str(self.spegoal.content)
