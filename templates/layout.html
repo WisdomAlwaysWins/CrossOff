@@ -44,8 +44,15 @@
         <span class="signin navbar__item">
           <a href="{% url 'daily:calendar' %}">DAILY</a>
         </span>
+
         <span class="dashboard navbar__item">
-          <a href="{% url 'common:dashboard' user.id %}">{{user.nickname}}님</a>
+          <a href='#'>CALENDA</a>
+        </span>
+        <span class="dashboard navbar__item">
+          <a href="{% url 'common:dashboard' user.id %}">DASHBOARD</a>
+        </span>
+        <span class="dashboard navbar__item">
+          <a href="{% url 'common:profile' user.id %}">PROFILE</a>
         </span>
         <span class="logout navbar__item">
           <a href="{% url 'common:logout' %}">LOG OUT</a>

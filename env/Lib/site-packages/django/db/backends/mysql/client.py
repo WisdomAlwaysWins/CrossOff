@@ -8,10 +8,7 @@ class DatabaseClient(BaseDatabaseClient):
     def settings_to_cmd_args_env(cls, settings_dict, parameters):
         args = [cls.executable_name]
         env = None
-        database = settings_dict['OPTIONS'].get(
-            'database',
-            settings_dict['OPTIONS'].get('db', settings_dict['NAME']),
-        )
+        db = settings_dict['OPTIONS'].get('db', settings_dict['NAME'])
         user = settings_dict['OPTIONS'].get('user', settings_dict['USER'])
         password = settings_dict['OPTIONS'].get(
             'password',
@@ -54,7 +51,7 @@ class DatabaseClient(BaseDatabaseClient):
             args += ["--ssl-key=%s" % client_key]
         if charset:
             args += ['--default-character-set=%s' % charset]
-        if database:
-            args += [database]
+        if db:
+            args += [db]
         args.extend(parameters)
         return args, env

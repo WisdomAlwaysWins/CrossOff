@@ -10,10 +10,10 @@ from django.utils import termcolors
 
 try:
     import colorama
-    colorama.init()
-except (ImportError, OSError):
+except ImportError:
     HAS_COLORAMA = False
 else:
+    colorama.init()
     HAS_COLORAMA = True
 
 

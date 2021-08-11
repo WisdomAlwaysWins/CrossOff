@@ -18,26 +18,18 @@
         {% csrf_token %}
         {{form.as_p}}
         <div class="login_content_submit">
-          <input type="submit" value="로그인" style="position:relative;
-              left:40%;
-              transform: translateX(-50%);
-              width:80%;
-              height:40px;
-              background:#603ec0;
-              color:white;
-              font-weight: bold;
-              border:none;
-              cursor:pointer;
-              transition: 0.4s;
-              display:inline;
-              font-size: 15px;" />
+          <input class ="login_btn"type="submit" value="로그인" />
         </div>
         <br>
       <div class="login_check">
         <input type="checkbox" id="keepLogin" name="keepLogin" value="True">
         <label for="keepLogin"><span>로그인 상태 유지</span></label>
-        {% comment %} <input type="checkbox" id="keepLogin" name="keepLogin">
-        <label for="keepLogin"><span>아이디 저장</span></label> {% endcomment %}
+        {% comment %} 
+        <input type="checkbox" id="keepLogin" name="keepLogin">
+        <label for="keepLogin">
+          <span>아이디 저장</span>
+        </label> 
+        {% endcomment %}
       </div>
       </form>
       <div class="login_no">

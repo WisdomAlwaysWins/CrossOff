@@ -1,5 +1,4 @@
 from django.core.exceptions import FieldError
-from django.db.models.expressions import Col
 from django.db.models.sql import compiler
 
 
@@ -46,16 +45,8 @@ class SQLUpdateCompiler(compiler.SQLUpdateCompiler, SQLCompiler):
         if self.query.order_by:
             order_by_sql = []
             order_by_params = []
-            db_table = self.query.get_meta().db_table
             try:
-                for resolved, (sql, params, _) in self.get_order_by():
-                    if (
-                        isinstance(resolved.expression, Col) and
-                        resolved.expression.alias != db_table
-                    ):
-                        # Ignore ordering if it contains joined fields, because
-                        # they cannot be used in the ORDER BY clause.
-                        raise FieldError
+                for _, (sql, params, _) in self.get_order_by():
                     order_by_sql.append(sql)
                     order_by_params.extend(params)
                 update_query += ' ORDER BY ' + ', '.join(order_by_sql)
