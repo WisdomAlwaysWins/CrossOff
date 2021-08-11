@@ -23,7 +23,7 @@ urlpatterns = [
     path('common/', include('common.urls')),
     path('', include('home.urls')),
     path('mandalart/', include('mandalart.urls')),
-
+    path('daily/', include('daily.urls')),
     # path('password_reset/', cv.password_reset, name="password_reset"),
     # path('password_reset_done/', cv.password_reset_done, name="password_reset_done"),
     # path('password_reset_done_fail/', cv.password_reset_done_fail, name="password_reset_done_fial"),

@@ -41,6 +41,9 @@
       </div>
       <div class="navbar">
         {% if user.is_authenticated %}
+        <span class="signin navbar__item">
+          <a href="{% url 'daily:calendar' %}">DAILY</a>
+        </span>
         <span class="dashboard navbar__item">
           <a href="{% url 'common:dashboard' user.id %}">{{user.nickname}}님</a>
         </span>
@@ -50,7 +53,8 @@
         {% endif %}
         {% if not user.is_authenticated %}
         <span class="signin navbar__item">
-          <a href="{% url 'common:register' %}">SIGN UP</a></span>
+          <a href="{% url 'common:register' %}">SIGN UP</a>
+        </span>
         <span class="login navbar__item">
           <a href="{% url 'common:login' %}">LOG IN</a>
         </span>
