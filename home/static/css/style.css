@@ -463,7 +463,44 @@ button{
     background-color: white;
 }
 
-
+/* error */
+.error_body{
+    position:absolute;
+    width:320px;
+    height:430px;
+    padding: 40px 30px 30px 30px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:30%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+    margin-top: 5rem;
+}
+.error_num p{
+    font-weight: bold;
+    font-size: 70px;
+}
+.error_btns button{
+    position:relative;
+            left:20%;
+            transform: translateX(-50%);
+            width:40%;
+            height:40px;
+            background:#603ec0;
+            color:white;
+            font-weight: bold;
+            border:none;
+            cursor:pointer;
+            transition: 0.4s;
+            display:inline;
+            font-size: 13px;
+            padding: 5px 10px;
+}
+.btns{
+    margin-top: 2rem;
+}
 /* login */
 .login_background{
     background: #eee;
@@ -491,7 +528,7 @@ button{
 .login_body{
     position:absolute;
     width:320px;
-    height:400px;
+    height:430px;
     padding: 40px 30px 30px 30px;
     background-color:#FFFFFF;
     text-align:center;
@@ -500,7 +537,9 @@ button{
     transform: translate(-50%,-50%);
     border-radius: 10px;
     box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+    margin-top: 5rem;
 }
+
 .login_logo{
     text-decoration: line-through #603ec0;
     font-size: 40px;
@@ -1834,6 +1873,7 @@ button{
     font-weight: 600;
 }
 
+
 @media only screen and (min-device-width : 360px) and (max-device-width : 479px) {
     .share__conent{
         display: flex;
@@ -2198,7 +2238,7 @@ button{
     .login_body{
         position:absolute;
         width: 85vw;
-        height: 45vh;
+        height: 1000px;
         padding: 40px 30px 30px 30px;
         background-color:#FFFFFF;
         text-align:center;
@@ -2227,7 +2267,7 @@ button{
         cursor:pointer;
         transition: 0.4s;
         display:inline;
-        font-size: 15px;
+        font-size: 25px;
     }
     
     .login_pwForm{
@@ -2241,7 +2281,7 @@ button{
         cursor:pointer;
         transition: 0.4s;
         display:inline;
-        font-size: 15px;
+        font-size: 25px;
     
     }
     .login_check{
@@ -2269,13 +2309,13 @@ button{
         cursor:pointer;
         transition: 0.4s;
         display:inline;
-        font-size: 20px; 
+        font-size: 30px; 
     }
     /* password_reset */
     .password_reset_body{
         position:absolute;
         width: 85vw;
-        height: 45vh;
+        height: 1000px;
         padding: 30PX 20px 10PX 20px;
         background-color:#FFFFFF;
         text-align:center;
@@ -2305,7 +2345,7 @@ button{
         cursor:pointer;
         transition: 0.4s;
         display:inline;
-        font-size: 20px;
+        font-size: 30px;
         border-radius: 0;
         margin-top: 6rem;
     }
@@ -2332,7 +2372,7 @@ button{
     .password_reset_done_body{
         position:absolute;
         width: 85vw;
-        height: 45vh;
+        height: 1000px;
         padding: 30PX 20px 10PX 20px;
         background-color:#FFFFFF;
         text-align:center;
@@ -2361,7 +2401,7 @@ button{
         cursor:pointer;
         transition: 0.4s;
         display:inline;
-        font-size: 20px;
+        font-size: 30px;
         border-radius: 0;
         margin-top: 6rem;
     }
@@ -2374,7 +2414,7 @@ button{
     .password_reset_body_retry{
         position:absolute;
         width: 85vw;
-        height: 45vh;
+        height: 1000px;
         padding: 30PX 20px 10PX 20px;
         background-color:#FFFFFF;
         text-align:center;
@@ -2408,14 +2448,14 @@ button{
         cursor:pointer;
         transition: 0.4s;
         display:inline;
-        font-size: 25px;
+        font-size: 30px;
         border-radius: 0;
         margin-top: 6rem;
     }
     .password_reset_password{
         margin-left: 150px;
     }
-    .password_reset_password p{
+    .password_reset_password p,.password_reset_password input{
         font-size: 25px;
         margin-top: 15px;
     }
@@ -2423,7 +2463,7 @@ button{
     .password_reset_body_complete{
         position:absolute;
         width: 85vw;
-        height: 45vh;
+        height: 1000px;
         padding: 30PX 20px 10PX 20px;
         background-color:#FFFFFF;
         text-align:center;
@@ -2451,7 +2491,7 @@ button{
         cursor:pointer;
         transition: 0.4s;
         display:inline;
-        font-size: 25px;
+        font-size: 30px;
         border-radius: 0;
         margin-top: 10rem;
     }
@@ -2462,7 +2502,7 @@ button{
         margin-bottom: 30%;
         position:absolute;
         width: 85vw;
-        height: 60vh;
+        height: 1300px;
         padding: 30PX 20px 10PX 20px;
         background-color:#FFFFFF;
         text-align:center;
@@ -2506,7 +2546,7 @@ button{
         cursor:pointer;
         transition: 0.4s;
         display:inline;
-        font-size: 25px;
+        font-size: 30px;
         border-radius: 0;
         margin-top: 4rem;   
     }
