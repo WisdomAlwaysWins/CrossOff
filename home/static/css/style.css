@@ -463,7 +463,44 @@ button{
     background-color: white;
 }
 
-
+/* error */
+.error_body{
+    position:absolute;
+    width:320px;
+    height:430px;
+    padding: 40px 30px 30px 30px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:30%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+    margin-top: 5rem;
+}
+.error_num p{
+    font-weight: bold;
+    font-size: 70px;
+}
+.error_btns button{
+    position:relative;
+            left:20%;
+            transform: translateX(-50%);
+            width:40%;
+            height:40px;
+            background:#603ec0;
+            color:white;
+            font-weight: bold;
+            border:none;
+            cursor:pointer;
+            transition: 0.4s;
+            display:inline;
+            font-size: 13px;
+            padding: 5px 10px;
+}
+.btns{
+    margin-top: 2rem;
+}
 /* login */
 .login_background{
     background: #eee;
@@ -500,7 +537,9 @@ button{
     transform: translate(-50%,-50%);
     border-radius: 10px;
     box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+    margin-top: 5rem;
 }
+
 .login_logo{
     text-decoration: line-through #603ec0;
     font-size: 40px;
@@ -1833,6 +1872,7 @@ button{
     font-size: 24px;
     font-weight: 600;
 }
+
 
 @media only screen and (min-device-width : 360px) and (max-device-width : 479px) {
     .share__conent{
