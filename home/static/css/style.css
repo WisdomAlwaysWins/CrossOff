@@ -794,6 +794,7 @@ button{
 }
 .seeProfile__background .seeProfile__content .buttons .btn{
     margin: 0 5px;
+    color:white;
 }
 .seeProfile__background .seeProfile__content .buttons .btn a{
     color:white;
@@ -1551,7 +1552,10 @@ button{
     padding: 10px 0;
     border-radius: 5px;
     height: 40px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
+    display:flex;
+    align-items: center;
+    justify-content: center;    
 }
 .dashboard__content_bottom .plan__content .checkbox .object #object__mid1{
     background-color: #EC9790;
