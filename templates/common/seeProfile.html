@@ -1,4 +1,9 @@
 {% extends 'layout.html' %}
+
+{% block title %}
+{{user.nickname}}님의 프로필
+{% endblock title %}
+
 {% block content %}
 <section id="seePropfile">
   <div class="seeProfile__background">
@@ -38,8 +43,8 @@
         </tr>
       </table>
       <div class="buttons">
-        <button class="btn back btn-lightgray">
-          <a href="{% url 'common:dashboard' user.id %}">뒤로 가기</a>
+        <button class="btn back btn-lightgray" onclick="location.href ='/'">
+          홈으로 가기
         </button>
         <button class="btn btn-purple">
           <a href="{% url 'common:profile_update' %}">프로필 편집</a>
