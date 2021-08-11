@@ -12,34 +12,19 @@
     <div class="register_background">
       <div class="register_body">
         <!-- logo -->
-        <div class="login_logo">Cross off</div>
-        <br />
-        <form action="{% url 'common:register' %}" method="POST">
-          {% csrf_token %} {{form.as_p}}
-          <br />
-          <div class="login_content_submit">
-            <input
-              type="submit"
-              value="회원가입"
-              style="
-                position: relative;
-                left: 50%;
-                transform: translateX(-50%);
-                width: 100%;
-                height: 40px;
-                background: #603ec0;
-                color: white;
-                font-weight: bold;
-                border: none;
-                cursor: pointer;
-                transition: 0.4s;
-                display: inline;
-                font-size: 15px;
-              "
-            />
-          </div>
-        </form>
-        <br />
+        <div class="register_logo">Cross off</div>
+        <div class="register_bottom">
+          <form action="{% url 'common:register' %}" method="POST">
+            {% csrf_token %} {{form.as_p}}
+            <br />
+            <div class="login_content_submit">
+              <input class="register_button"
+                type="submit"
+                value="회원가입"
+              />
+            </div>
+          </form>
+        </div>
         <div class="register_ok">
           이미 회원이신가요?
           <a href="{% url 'common:login' %}"><b>로그인</b></a>
