@@ -1108,7 +1108,7 @@ button{
     margin-top: 10px;
     width: 80%;
     height: 22px;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
     display:inline-block;
     font-size: 12px;
     background-color: var(--color-white--);
