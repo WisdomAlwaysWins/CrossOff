@@ -174,8 +174,7 @@ def profileUpdate(request):
         return redirect('/common/dashboard/' + str(request.user.id))
     else:
         user_change_form = CustomUserChangeForm(instance=request.user)
-        return render(request, 'common/updateProfile.html',
-                      {'user_change_form': user_change_form})
+        return render(request, 'common/updateProfile.html', {'user_change_form': user_change_form})
 
 
 @login_required
@@ -189,8 +188,7 @@ def passwordEdit(request):
             return redirect('/common/dashboard/' + str(request.user.id))
     else:
         password_change_form = CustomPasswordChangeForm(request.user)
-    return render(request, 'common/editPassword.html',
-                  {'password_change_form': password_change_form})
+    return render(request, 'common/editPassword.html', {'password_change_form': password_change_form})
 
 
 class UserPasswordResetView(PasswordResetView):
