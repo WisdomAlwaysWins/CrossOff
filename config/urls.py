@@ -25,6 +25,7 @@ urlpatterns = [
     path('common/', include('common.urls')),
     path('', include('home.urls')),
     path('mandalart/', include('mandalart.urls')),
+    path('daily/', include('daily.urls')),
     path('password_reset/', cv.UserPasswordResetView.as_view(), name="password_reset"),
     path('password_reset_done/', cv.UserPasswordResetDoneView.as_view(), name="password_reset_done"),
     path('password_reset_confirm/<uidb64>/<token>/', cv.UserPasswordResetConfirmView.as_view(), name="password_reset_confirm"),
