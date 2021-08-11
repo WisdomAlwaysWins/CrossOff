@@ -86,19 +86,19 @@ def dashboard(request, id):
     BigGoalList.append((big.content, big.is_achieved))
     mid = MidGoal.objects.filter(big=big).order_by('id')
     MidGoalList = []
-    lst4 = {}
-    lst5 = {}
+    SpecificGoalDict = {}
+    SpecificGoalCheckDict = {}
     midcnt = 0
     achieve_spe_num = 0
     for i in range(len(mid)):
         specnt = 0
-        lst3 = []
-        lst6 = []
+        SpecificGoalList = []
+        SpecificGoalCheckList = []
         MidGoalList.append(mid[i].content)
         spe = SpecificGoal.objects.filter(mid=mid[i]).order_by('id')
         for j in range(len(spe)):
-            lst3.append(spe[j].content)
-            lst6.append(spe[j].is_achieved)
+            SpecificGoalList.append(spe[j].content)
+            SpecificGoalCheckList.append(spe[j].is_achieved)
             if spe[j].is_achieved:
                 specnt += 1
                 achieve_spe_num += 1
@@ -110,8 +110,8 @@ def dashboard(request, id):
             mid[i].is_achieved = False
             mid[i].save()
 
-        lst4[i] = lst3
-        lst5[i] = lst6
+        SpecificGoalDict[i] = SpecificGoalList
+        SpecificGoalCheckDict[i] = SpecificGoalCheckList
     if midcnt == 8:
         big.is_achieved = True
         big.save()
@@ -137,8 +137,8 @@ def dashboard(request, id):
             'user': user,
             'manda': json.dumps(BigGoalList, ensure_ascii=False),
             'manda_mid': json.dumps(MidGoalList, ensure_ascii=False),
-            'manda_small': json.dumps(lst4, ensure_ascii=False),
-            'manda_small_achieve': json.dumps(lst5, ensure_ascii=False),
+            'manda_small': json.dumps(SpecificGoalDict, ensure_ascii=False),
+            'manda_small_achieve': json.dumps(SpecificGoalCheckDict, ensure_ascii=False),
             'achieve_num': achieve_num,
             'check_mid_achieve': json.dumps(check_mid_achieve),
             'check_big_achieve': json.dumps(check_big_achieve),
