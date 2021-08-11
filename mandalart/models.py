@@ -77,4 +77,4 @@ class Item(models.Model):
     specificgoal = models.ForeignKey(SpecificGoal, on_delete=models.CASCADE, related_name='specificgoal')
 
     def __str__(self) -> str:
-        return str(self.spelist.block.user.nickname) + '의 ' + str(self.spelist.block.created_date) + ' 날짜의 ' + str(self.spegoal.content)
+        return str(self.spelist.block.user.nickname) + '의 ' + str(self.spelist.block.created_date) + ' 날짜의 ' + str(self.specificgoal.content)
