@@ -1,7 +1,5 @@
 from django.contrib.auth.forms import PasswordResetForm
-from django.http import response
 from django.shortcuts import redirect, render, resolve_url
-from django.template import RequestContext
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordResetForm
@@ -22,7 +20,6 @@ try:
 except ImportError:
     import json
 from django.utils.translation import gettext_lazy as _
-from django.views import generic
 User = get_user_model()
 INTERNAL_RESET_URL_TOKEN = 'set-password'
 INTERNAL_RESET_SESSION_TOKEN = '_password_reset_token'
@@ -81,14 +78,14 @@ def dashboard(request, id):
     todolst = {}
     for todo in todos:
         todolst[todo.id] = todo.content
-    lst = []
+    BigGoalList = []
     if not user.is_manda:
         return redirect('mandalart:new')
     manda = Mandalart.objects.get(user=user.id)
     big = BigGoal.objects.get(manda=manda)
-    lst.append((big.content, big.is_achieved))
+    BigGoalList.append((big.content, big.is_achieved))
     mid = MidGoal.objects.filter(big=big).order_by('id')
-    lst2 = []
+    MidGoalList = []
     lst4 = {}
     lst5 = {}
     midcnt = 0
@@ -97,7 +94,7 @@ def dashboard(request, id):
         specnt = 0
         lst3 = []
         lst6 = []
-        lst2.append(mid[i].content)
+        MidGoalList.append(mid[i].content)
         spe = SpecificGoal.objects.filter(mid=mid[i]).order_by('id')
         for j in range(len(spe)):
             lst3.append(spe[j].content)
@@ -138,18 +135,10 @@ def dashboard(request, id):
     return render(
         request, 'common/dashboard.html', {
             'user': user,
-            'manda': json.dumps(lst, ensure_ascii=False),
-            'manda_mid': json.dumps(lst2, ensure_ascii=False),
+            'manda': json.dumps(BigGoalList, ensure_ascii=False),
+            'manda_mid': json.dumps(MidGoalList, ensure_ascii=False),
             'manda_small': json.dumps(lst4, ensure_ascii=False),
             'manda_small_achieve': json.dumps(lst5, ensure_ascii=False),
-            'manda_mid1': json.dumps(lst2[0], ensure_ascii=False),
-            'manda_mid2': json.dumps(lst2[1], ensure_ascii=False),
-            'manda_mid3': json.dumps(lst2[2], ensure_ascii=False),
-            'manda_mid4': json.dumps(lst2[3], ensure_ascii=False),
-            'manda_mid5': json.dumps(lst2[4], ensure_ascii=False),
-            'manda_mid6': json.dumps(lst2[5], ensure_ascii=False),
-            'manda_mid7': json.dumps(lst2[6], ensure_ascii=False),
-            'manda_mid8': json.dumps(lst2[7], ensure_ascii=False),
             'achieve_num': achieve_num,
             'check_mid_achieve': json.dumps(check_mid_achieve),
             'check_big_achieve': json.dumps(check_big_achieve),

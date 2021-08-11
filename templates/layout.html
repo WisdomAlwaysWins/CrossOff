@@ -25,10 +25,10 @@
   <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   <link rel="stylesheet" href="{% static 'css/media.css' %}" />
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <meta property="og:image"           content="https://raw.githubusercontent.com/HyunJik-Lee/CrossOff/master/logo.jpg" /> 
-  <meta property="og:title"              content="Cross off" />
-  <meta property="og:description"        content="만다라트 계획표를 통해 어제보다 나은 오늘을" />
-  
+  <meta property="og:image" content="https://raw.githubusercontent.com/HyunJik-Lee/CrossOff/master/logo.jpg" />
+  <meta property="og:title" content="Cross off" />
+  <meta property="og:description" content="만다라트 계획표를 통해 어제보다 나은 오늘을" />
+
 </head>
 
 <body>
@@ -42,11 +42,7 @@
       <div class="navbar">
         {% if user.is_authenticated %}
         <span class="signin navbar__item">
-          <a href="{% url 'daily:calendar' %}">DAILY</a>
-        </span>
-
-        <span class="dashboard navbar__item">
-          <a href='#'>CALENDA</a>
+          <a href="{% url 'daily:calendar' user.id %}">DAILY</a>
         </span>
         <span class="dashboard navbar__item">
           <a href="{% url 'common:dashboard' user.id %}">DASHBOARD</a>

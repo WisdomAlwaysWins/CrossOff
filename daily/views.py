@@ -44,6 +44,7 @@ from django.contrib.auth.forms import (
 )
 from django.utils.translation import gettext_lazy as _
 
+User = get_user_model()
 
 
 @login_required
@@ -84,6 +85,7 @@ def calendar(request, id):
 
         lst4[i] = lst3
         lst5[i] = lst6
+
     return render(
         request, 'daily/calendar.html', {
             'manda_mid': json.dumps(lst2, ensure_ascii=False),
