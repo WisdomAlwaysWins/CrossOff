@@ -1,9 +1,10 @@
-{% extends 'layout.html' %} 
-{% load static %} 
-{% block title %} 
+{% extends 'layout.html' %}
+{% load static %}
+{% block title %}
 Days
-{% endblock title %} 
+{% endblock title %}
 {% block js %}
+<<<<<<< HEAD
 {% endblock js %}
 
 {% block css %}
@@ -11,6 +12,8 @@ Days
   <link rel="stylesheet" href="{% static 'css/calendar.css' %} ">
 {% endblock css %}
 {% block content %}
+=======
+>>>>>>> d35b62c3bb611fef5bb3f742ae255a058079e3b7
 <script>
   const midGoal = JSON.parse(
     "{{manda_mid}}"
@@ -28,171 +31,197 @@ Days
       .replace(/\t/gi, "\\t")
       .replace(/\f/gi, "\\f")
   );
+<<<<<<< HEAD
 </script> 
 
+=======
+  const abc = JSON.parse(
+    "{{blocks}}"
+      .replace(/&quot;/g, '"')
+      .replace(/\r/gi, "\\r")
+      .replace(/\n/gi, "\\n")
+      .replace(/\t/gi, "\\t")
+      .replace(/\f/gi, "\\f")
+  );
+</script>
+{% endblock js %}
+{% block css %}
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="{% static 'css/calendar.css' %} ">
+{% endblock css %}
+{% block content %}
+>>>>>>> d35b62c3bb611fef5bb3f742ae255a058079e3b7
 <div class="main">
-    <div class="content-wrap">
-      <div class="content-right">
-        <table id="calendar" align="center">
-          <thead>
-            <tr class="btn-wrap clearfix">
-              <td>
-                <label id="prev">
-                    &#60;
-                </label>
-              </td>
-              <td align="center" id="current-year-month" colspan="5"></td>
-              <td>
-                <label id="next">
-                    &#62;
-                </label>
-              </td>
-            </tr>
-            <tr>
-                <td class = "sun" align="center">Sun</td>
-                <td align="center">Mon</td>
-                <td align="center">Tue</td>
-                <td align="center">Wed</td>
-                <td align="center">Thu</td>
-                <td align="center">Fri</td>
-                <td class= "sat" align="center">Sat</td>
-              </tr>
-          </thead>
-          <tbody id="calendar-body" class="calendar-body"></tbody>
-        </table>
+  <div class="content-wrap">
+    <div class="content-right">
+      <table id="calendar" align="center">
+        <thead>
+          <tr class="btn-wrap clearfix">
+            <td>
+              <label id="prev">
+                &#60;
+              </label>
+            </td>
+            <td align="center" id="current-year-month" colspan="5"></td>
+            <td>
+              <label id="next">
+                &#62;
+              </label>
+            </td>
+          </tr>
+          <tr>
+            <td class="sun" align="center">Sun</td>
+            <td align="center">Mon</td>
+            <td align="center">Tue</td>
+            <td align="center">Wed</td>
+            <td align="center">Thu</td>
+            <td align="center">Fri</td>
+            <td class="sat" align="center">Sat</td>
+          </tr>
+        </thead>
+        <tbody id="calendar-body" class="calendar-body"></tbody>
+      </table>
+    </div>
+    <div class="content-left">
+      <div class="main-wrap">
+        <div id="main-day" class="main-day"></div>
+        <div id="main-date" class="main-date"></div>
       </div>
-      <div class="content-left">
-        <div class="main-wrap">
-          <div id="main-day" class="main-day"></div>
-          <div id="main-date" class="main-date"></div>
-        </div>
-        <div class="todo-wrap">
-          <div class="todo-title">Today</div>
-          <div class="input-wrap">
-            <div class="selection__content">
-              <form action="" class="selection_form" method="get">
-                  <select name="" id="midSelectedBox">
-                      <!-- Fill Mid Goal Select -->
-                      <script>
-                          const midSelectedBox = document.querySelector('#midSelectedBox');
-                          const maxGoalNum = 8;
-      
-                          // Fill Option
-                          function fillOption(goal_name, select_name){
-                              for(let i=0;i<maxGoalNum; i++){
-                                  if(goal_name[i].length != 0){
-                                      let option = document.createElement('option');
-                                      let content = goal_name[i];
-                                      option.value = i;
-                                      option.text = content;
-                                      select_name.append(option);
-                                  }
-                              }
-                          }
-                          function fillMidGoal(){
-                              fillOption(midGoal, midSelectedBox);
-                          }
-                          fillMidGoal();
-                      </script>
-                  </select>
-                  <select name="" id="detailedSelectedBox">
-                      <!-- 기본값으로 첫번째 Mid Goal의 세부 목표를 넣어놨습니다. -->
-                      <script>
-                          for(let n=0;n<8;n++){
-                              if(midGoal[n].length != 0){
-                                  fillOption(detailGoal[n], detailedSelectedBox);
-                                  break;
-                              }
-                          }
-                      </script>
-                      <!-- Fill Detailed Goal selection -->
-                      <script>
-                          const detailedSelectedBox = document.querySelector('#detailedSelectedBox');
-                          midSelectedBox.addEventListener('change', (e)=>{
-                              let selectedNum = e.target.value;
-                              detailedSelectedBox.options.length =0;
-                              switch(selectedNum){
-                                  case '0': 
-                                      fillOption(detailGoal[0], detailedSelectedBox);
-                                      break;
-                                  case '1': 
-                                      fillOption(detailGoal[1], detailedSelectedBox);
-                                      break;
-                                  case '2':
-                                      fillOption(detailGoal[2], detailedSelectedBox);
-                                      break;
-                                  case '3':
-                                      fillOption(detailGoal[3],detailedSelectedBox);
-                                      break;
-                                  case '4':
-                                      fillOption(detailGoal[4],detailedSelectedBox);
-                                      break;
-                                  case '5':
-                                      fillOption(detailGoal[5],detailedSelectedBox);
-                                      break;
-                                  case '6':
-                                      fillOption(detailGoal[6],detailedSelectedBox);
-                                      break;
-                                  case '7':
-                                      fillOption(detailGoal[7],detailedSelectedBox);
-                                      break;
-                              }
-                          })
-                      </script>
-                  </select>
-                  <button class="addBtn" type="button">추가</button>
-                  <div class="selectedGoalContent">
-                      <ul id="selected-list">
-                      </ul>
-                  </div>
-              </form>
-          </div>
-          <!-- Add List -->
-          <script>
-              const submitBtn = document.querySelector('.addBtn');
-              const selectedList = document.getElementById('selected-list');
-      
-              function deleteList(event){
-                  const li = event.target.parentElement;
-                  li.remove();
-              };
-      
-              submitBtn.addEventListener('click', ()=>{
-                  const li = document.createElement("li");
-                  const icon =document.createElement("span");
-                  const span = document.createElement("span");
-                  icon.className = "material-icons";
-                  icon.innerText ="check_circle";
-                  const button = document.createElement("button");
-                  button.setAttribute('type', 'button');
-                  button.innerText = "❌";
-                  li.className = "detailGoal";
-                  const midValue = midSelectedBox.options[midSelectedBox.selectedIndex].value;
-                  const detailValue = detailedSelectedBox.options[detailedSelectedBox.selectedIndex].value;
-                  const detailText = detailedSelectedBox.options[detailedSelectedBox.selectedIndex].text;
-                  const NameOfClass = midValue+detailValue;
-                  li.classList.add(NameOfClass);
-                  span.innerText = detailText;
-                  button.addEventListener("click", deleteList);
-                  li.appendChild(icon);
-                  li.appendChild(span);
-                  li.appendChild(button);
-                  selectedList.appendChild(li);
-              })
-          </script>
-            <textarea id="input-box" class="input-box" type="text" cols="30" rows="5" placeholder="글로 남기고 싶은 오늘 하루를 기록하세요 :)">
+      <div class="todo-wrap">
+        <div class="input-wrap">
+          <div class="selection__content">
+            <form action="{% url 'daily:addblock' %}" method="POST">
+              {% csrf_token %}
+              <form action="" class="selection_form" method="GET">
+                <select name="midSelectedBox" id="midSelectedBox">
+                </select>
+                <select name="detailedSelectedBox" id="detailedSelectedBox">
 
-            </textarea>
-            <form action="">
-            {% csrf_token %}
-                <input type="button"  id="save-data" class="save-data" value="저장">
+                </select>
+                <button class="addBtn" type="button">추가</button>
+                <div class="selectedGoalContent">
+                  <ul id="selected-list">
+                  </ul>
+                </div>
+                <textarea id="input-box" class="input-box" type="text" cols="30" rows="5"
+                  placeholder="글로 남기고 싶은 오늘 하루를 기록하세요 :)" name=content>
+                </textarea>
+                <input type="submit" id="save-data" class="save-data" value="저장">
+              </form>
             </form>
+<<<<<<< HEAD
             <div id="input-list" class="input-list">
             </div>
+=======
+>>>>>>> d35b62c3bb611fef5bb3f742ae255a058079e3b7
           </div>
+
+          <div id="input-list" class="input-list"></div>
         </div>
       </div>
     </div>
   </div>
+</div>
+<script>
+  /* Fill Mid Goal Select  */
+  const midSelectedBox = document.querySelector('#midSelectedBox');
+  const maxGoalNum = 8;
+
+  // Fill Option
+  function fillOption(goal_name, select_name) {
+    for (let i = 0; i < maxGoalNum; i++) {
+      if (goal_name[i].length != 0) {
+        let option = document.createElement('option');
+        let content = goal_name[i];
+        option.value = i;
+        option.text = content;
+        select_name.append(option);
+      }
+    }
+  }
+  function fillMidGoal() {
+    fillOption(midGoal, midSelectedBox);
+  }
+  fillMidGoal();
+  const detailedSelectedBox = document.querySelector('#detailedSelectedBox');
+  // <!-- 기본값으로 첫번째 Mid Goal의 세부 목표를 넣어놨습니다. -->
+  for (let n = 0; n < 8; n++) {
+    if (midGoal[n].length != 0) {
+      fillOption(detailGoal[n], detailedSelectedBox);
+      break;
+    }
+  }
+  // <!-- Fill Detailed Goal selection -->
+
+  midSelectedBox.addEventListener('change', (e) => {
+    let selectedNum = e.target.value;
+    detailedSelectedBox.options.length = 0;
+    switch (selectedNum) {
+      case '0':
+        fillOption(detailGoal[0], detailedSelectedBox);
+        break;
+      case '1':
+        fillOption(detailGoal[1], detailedSelectedBox);
+        break;
+      case '2':
+        fillOption(detailGoal[2], detailedSelectedBox);
+        break;
+      case '3':
+        fillOption(detailGoal[3], detailedSelectedBox);
+        break;
+      case '4':
+        fillOption(detailGoal[4], detailedSelectedBox);
+        break;
+      case '5':
+        fillOption(detailGoal[5], detailedSelectedBox);
+        break;
+      case '6':
+        fillOption(detailGoal[6], detailedSelectedBox);
+        break;
+      case '7':
+        fillOption(detailGoal[7], detailedSelectedBox);
+        break;
+    }
+  })
+  // <!-- Add List -->
+  const submitBtn = document.querySelector('.addBtn');
+  const selectedList = document.getElementById('selected-list');
+
+  function deleteList(event) {
+    const li = event.target.parentElement;
+    li.remove();
+  };
+
+  submitBtn.addEventListener('click', () => {
+    const li = document.createElement("li");
+    const icon = document.createElement("span");
+    const span = document.createElement("input");
+    const hidden = document.createElement("input");
+    icon.className = "material-icons";
+    icon.innerText = "check_circle";
+    const button = document.createElement("button");
+    button.setAttribute('type', 'button');
+    button.innerText = "❌";
+    li.className = "detailGoal";
+    const midValue = midSelectedBox.options[midSelectedBox.selectedIndex].value;
+    const detailValue = detailedSelectedBox.options[detailedSelectedBox.selectedIndex].value;
+    const detailText = detailedSelectedBox.options[detailedSelectedBox.selectedIndex].text;
+    const NameOfClass = midValue + detailValue;
+    li.classList.add(NameOfClass);
+    span.value = detailText;
+    span.setAttribute('disabled', true);
+    span.setAttribute('style', 'background-color:transparent;')
+    hidden.value += NameOfClass;
+    hidden.name = "spes";
+    hidden.setAttribute('type', 'hidden');
+    span.name = NameOfClass;
+    button.addEventListener("click", deleteList);
+    li.appendChild(icon);
+    li.appendChild(span);
+    li.appendChild(button);
+    selectedList.appendChild(li);
+    selectedList.appendChild(hidden);
+  })
+</script>
 <script src="/static/js/calendar.js"></script>
 {% endblock content %}
