@@ -147,15 +147,17 @@ form{
 	-webkit-appearance: none;
 	-moz-appearance: none;
 	appearance: none;
+	resize: none;
 }
 .save-data{
 	cursor: pointer;
 	font-size: large;
+	font-weight: bold;
 	padding: 10px;
 	margin: 20px 0 30px 0;
-	background: darkorchid;
+	background: #eee;
 	border: none;
-	color: #fff;
+	color: black;
 	border-radius: 10px;
 }
 .save-data:hover{

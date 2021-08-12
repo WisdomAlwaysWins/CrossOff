@@ -1,6 +1,6 @@
-{% extends 'layout.html' %} {% load static %} 
-{% block title %} Days 
-{% endblock title %} 
+{% extends 'layout.html' %} {% load static %}
+{% block title %} Days
+{% endblock title %}
 {% block js %}
 <script>
   const midGoal = JSON.parse(
@@ -29,10 +29,7 @@
   );
 </script>
 {% endblock js %} {% block css %}
-<link
-  rel="stylesheet"
-  href="https://fonts.googleapis.com/icon?family=Material+Icons"
-/>
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
 <link rel="stylesheet" href="{% static 'css/calendar.css' %} " />
 {% endblock css %} {% block content %}
 <div class="main">
@@ -75,30 +72,15 @@
               <input type="hidden" id="hdate" name="date" />
               <form action="" class="selection_form" method="GET">
                 <select name="midSelectedBox" id="midSelectedBox"></select>
-                <select
-                  name="detailedSelectedBox"
-                  id="detailedSelectedBox"
-                ></select>
+                <select name="detailedSelectedBox" id="detailedSelectedBox"></select>
                 <button class="addBtn btn-white" type="button">추가</button>
                 <div class="selectedGoalContent">
                   <ul id="selected-list"></ul>
                 </div>
-                <textarea
-                  id="input-box"
-                  class="input-box"
-                  type="text"
-                  cols="30"
-                  rows="5"
-                  placeholder=" 글로 남기고 싶은 오늘 하루를 기록하세요 :)"
-                  name="content"
-                >
+                <textarea id="input-box" class="input-box" type="text" cols="30" rows="5"
+                  placeholder=" 글로 남기고 싶은 오늘 하루를 기록하세요 :)" name="content">
                 </textarea>
-                <input
-                  type="submit"
-                  id="save-data"
-                  class="save-data"
-                  value="저장"
-                />
+                <input type="submit" id="save-data" class="save-data" value="저장" />
               </form>
             </form>
           </div>
@@ -209,8 +191,8 @@
     li.appendChild(icon);
     li.appendChild(span);
     li.appendChild(button);
+    li.appendChild(hidden);
     selectedList.appendChild(li);
-    selectedList.appendChild(hidden);
   }
   submitBtn.addEventListener("click", addItem);
   saveBtn.addEventListener("click", () => {
@@ -504,7 +486,7 @@
         submitBtn.setAttribute('style', '');
         midSelectedBox.setAttribute('style', '');
         detailedSelectedBox.setAttribute('style', '');
-        inputBox.setAttribute('readonly', false);
+        inputBox.removeAttribute('readonly');
 
         while (selectedList.hasChildNodes()) {
           selectedList.removeChild(selectedList.firstChild);
