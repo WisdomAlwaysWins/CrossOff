@@ -1681,9 +1681,9 @@ button{
 
 .password_reset_body{
     position:absolute;
-    width:300px;
-    height:320px;
-    padding: 30PX 20px 10PX 20px;
+    width:320px;
+    height:430px;
+    padding: 40px 30px 30px 30px;
     background-color:#FFFFFF;
     text-align:center;
     top:30%;
@@ -1691,6 +1691,7 @@ button{
     transform: translate(-50%,-50%);
     border-radius: 10px;
     box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+    margin-top: 5rem;
 }
 .password_reset__logo{
     text-decoration: line-through #603ec0;
@@ -1699,6 +1700,9 @@ button{
     text-align: center;
 
     
+}
+.password_reset_body p{
+    margin-top: 3rem;
 }
 .password_reset_body button{
     position:relative;
@@ -1715,6 +1719,7 @@ button{
     display:inline;
     font-size: 15px;
     border-radius: 0;
+    margin-top: 2rem;
 }
 
 .password_reset_body button:hover{
@@ -1722,9 +1727,9 @@ button{
 }
 .password_reset_done_body{
     position:absolute;
-    width:300px;
-    height:280px;
-    padding: 30PX 20px 10PX 20px;
+    width:320px;
+    height:430px;
+    padding: 40px 30px 30px 30px;
     background-color:#FFFFFF;
     text-align:center;
     top:30%;
@@ -1732,6 +1737,13 @@ button{
     transform: translate(-50%,-50%);
     border-radius: 10px;
     box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+    margin-top: 5rem;
+}
+.password_reset_done_body h2{
+    margin-top: 6rem;
+}
+.password_reset_done_body h5{
+    margin-top: 3rem;
 }
 .password_reset_email{
     font-size: 18px;
@@ -1753,6 +1765,7 @@ button{
     display:inline;
     font-size: 15px;
     border-radius: 0;
+    margin-top: 3rem;
 }
 
 .password_reset_done_body button:hover{
@@ -1760,9 +1773,9 @@ button{
 }
 .password_reset_body_retry{
     position:absolute;
-    width:350px;
-    height:340px;
-    padding: 30PX 20px 30PX 20px;
+    width:320px;
+    height:430px;
+    padding: 40px 30px 30px 30px;
     background-color:#FFFFFF;
     text-align:center;
     top:30%;
@@ -1770,6 +1783,13 @@ button{
     transform: translate(-50%,-50%);
     border-radius: 10px;
     box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+    margin-top: 5rem;
+}
+.password_reset_body_retry h2{
+    margin-top: 4rem;
+}
+.password_reset_body_retry p{
+    margin-top: 10px;
 }
 .password_reset_body_retry button{
     position:relative;
@@ -1786,13 +1806,16 @@ button{
     display:inline;
     font-size: 15px;
     border-radius: 0;
+    margin-top: 1rem;
 }
-
+.password_reset_body h2{
+    margin-top: 3rem;
+}
 .password_reset_body_retry button:hover{
  background-color: #613ec0d5;
 }
 .password_reset_password{
-    font-size: 18px;
+    font-size: 15px;
     font-weight: bold;
     margin: 15px auto ;
     text-align: left;
@@ -1828,6 +1851,7 @@ button{
     display:inline;
     font-size: 15px;
     border-radius: 0;
+    margin-top: 1rem;
 }
 .password_reset_body_complete button:hover{
     background-color: #613ec0d5;
