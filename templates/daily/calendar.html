@@ -409,6 +409,7 @@ Days
         submitBtn.setAttribute('style', 'display:none;');
         midSelectedBox.setAttribute('style', 'display:none;');
         detailedSelectedBox.setAttribute('style', 'display:none;');
+        inputBox.setAttribute('readonly', true);
         if (block.specificCount > 0) {
           for (let i = 0; i < block.specificCount; i++) {
             const li = document.createElement("li");
@@ -440,6 +441,7 @@ Days
         submitBtn.setAttribute('style', '');
         midSelectedBox.setAttribute('style', '');
         detailedSelectedBox.setAttribute('style', '');
+        inputBox.setAttribute('readonly', false);
         while (selectedList.hasChildNodes()) {
           selectedList.removeChild(selectedList.firstChild);
         }
