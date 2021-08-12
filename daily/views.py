@@ -19,11 +19,20 @@ User = get_user_model()
 @login_required
 def calendar(request, id):
     user = User.objects.get(id=id)
-    blocks = Block.objects.filter(user=user, created_date__year=timezone.now().year)
+    blocks = Block.objects.filter(user=user, date__year__gte=timezone.now().year).order_by('date')
     blockList = []
-    specount = 0
-    blocksObj = serializers.serialize('json', blocks, fields=('content', 'created_date', 'spelist'))
-
+    for block in blocks:
+        blockObj = {}
+        blockObj['content'] = block.content
+        blockObj['date'] = str(block.date)
+        items = block.spelist.item.all()
+        speList = []
+        for item in items:
+            speList.append(item.specificgoal.content)
+        blockObj['specificList'] = speList
+        blockObj['specificCount'] = len(speList)
+        blockList.append(blockObj)
+    blocksObj = json.dumps(blockList, ensure_ascii=False)
     BigGoalList = []
     if not user.is_manda:
         return redirect('mandalart:new')
@@ -44,13 +53,15 @@ def calendar(request, id):
         request, 'daily/calendar.html', {
             'manda_mid': json.dumps(MidGoalList, ensure_ascii=False),
             'manda_small': json.dumps(SpecificGoalDict, ensure_ascii=False),
-            'blocks': blocksObj
+            'blocks': blocksObj,
         })
 
 
 def addBlock(request):
     u = request.user
+    date = request.POST['date']
     block = Block(user=u, content=request.POST['content'])
+    block.date = date
     block.save()
     spelist = Spelist(block=block)
     spelist.save()
@@ -59,3 +70,7 @@ def addBlock(request):
         item = Item(spelist=spelist, specificgoal=u.mandalart.biggoal.midgoal.all()[int(spe[0])].specificgoal.all()[int(spe[1])])
         item.save()
     return redirect('/daily/calendar/' + str(request.user.id))
+
+
+def delBlock(request):
+    pass

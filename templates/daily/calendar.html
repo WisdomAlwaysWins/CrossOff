@@ -77,11 +77,11 @@ Days
           <div class="selection__content">
             <form action="{% url 'daily:addblock' %}" method="POST">
               {% csrf_token %}
+              <input type="hidden" id="hdate" name="date">
               <form action="" class="selection_form" method="GET">
                 <select name="midSelectedBox" id="midSelectedBox">
                 </select>
                 <select name="detailedSelectedBox" id="detailedSelectedBox">
-
                 </select>
                 <button class="addBtn" type="button">추가</button>
                 <div class="selectedGoalContent">
@@ -90,12 +90,12 @@ Days
                 </div>
                 <textarea id="input-box" class="input-box" type="text" cols="30" rows="5"
                   placeholder="글로 남기고 싶은 오늘 하루를 기록하세요 :)" name=content>
+
                 </textarea>
                 <input type="submit" id="save-data" class="save-data" value="저장">
               </form>
             </form>
           </div>
-
           <div id="input-list" class="input-list"></div>
         </div>
       </div>
@@ -165,18 +165,20 @@ Days
   })
   // <!-- Add List -->
   const submitBtn = document.querySelector('.addBtn');
+  const saveBtn = document.querySelector('.save-data');
   const selectedList = document.getElementById('selected-list');
 
   function deleteList(event) {
     const li = event.target.parentElement;
     li.remove();
   };
-
-  submitBtn.addEventListener('click', () => {
+  function addItem() {
     const li = document.createElement("li");
     const icon = document.createElement("span");
     const span = document.createElement("input");
     const hidden = document.createElement("input");
+    const date = document.createElement("input");
+
     icon.className = "material-icons";
     icon.innerText = "check_circle";
     const button = document.createElement("button");
@@ -201,7 +203,345 @@ Days
     li.appendChild(button);
     selectedList.appendChild(li);
     selectedList.appendChild(hidden);
+  }
+  submitBtn.addEventListener('click', addItem)
+  saveBtn.addEventListener('click', () => {
+    const dateinput = document.getElementById('hdate');
+    const selectedDate = document.getElementsByClassName('active')[0];
+    const date = selectedDate.id.substr(0, 4) + '-' + selectedDate.id.substr(4, 2) + '-' + selectedDate.id.substr(6, 2);
+    dateinput.value = date;
+
   })
 </script>
-<script src="/static/js/calendar.js"></script>
+<script>
+  var currentTitle = document.getElementById('current-year-month');
+  var calendarBody = document.getElementById('calendar-body');
+  var today = new Date();
+  var first = new Date(today.getFullYear(), today.getMonth(), 1);
+  var dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  var monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  var notLeapYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  var pageFirst = first;
+  var pageYear;
+  var inputBox = document.getElementById('input-box');
+  if (first.getFullYear() % 4 === 0) {
+    pageYear = leapYear;
+  } else {
+    pageYear = notLeapYear;
+  }
+
+  function showCalendar() {
+    let monthCnt = 100;
+    let cnt = 1;
+    for (var i = 0; i < 6; i++) {
+      var $tr = document.createElement('tr');
+      $tr.setAttribute('id', monthCnt);
+      for (var j = 0; j < 7; j++) {
+        if ((i === 0 && j < first.getDay()) || cnt > pageYear[first.getMonth()]) {
+          var $td = document.createElement('td');
+          $tr.appendChild($td);
+        } else {
+          var $td = document.createElement('td');
+          $td.textContent = cnt;
+          let year = today.getFullYear().toString();
+          let month = (today.getMonth() + 1).toString();
+          if (month < 10)
+            month = '0' + month;
+          var day = cnt;
+          if (cnt < 10)
+            day = '0' + day;
+          $td.setAttribute('id', year + month + day);
+          for (const block of abc) {
+            let blockDate = block.date.replace(/-/gi, '');
+            let blockSpeCount = parseInt((block.specificCount + 1) / 2);
+            if (blockSpeCount >= 4) blockSpeCount = 4;
+            if (blockDate == year + month + day) {
+              switch (blockSpeCount) {
+                case 1:
+                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192,0.4);');
+                  break;
+                case 2:
+                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192,0.6);');
+                  break;
+                case 3:
+                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192,0.8);');
+                  break;
+                case 4:
+                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192);');
+                  break;
+              }
+            }
+          }
+          $tr.appendChild($td);
+          cnt++;
+        }
+      }
+      monthCnt++;
+      calendarBody.appendChild($tr);
+    }
+  }
+  showCalendar();
+
+  function removeCalendar() {
+    let catchTr = 100;
+    for (var i = 100; i < 106; i++) {
+      var $tr = document.getElementById(catchTr);
+      $tr.remove();
+      catchTr++;
+    }
+  }
+
+
+  function prev() {
+    inputBox.value = "";
+    const $divs = document.querySelectorAll('#input-list > div');
+    $divs.forEach(function (e) {
+      e.remove();
+    });
+    const $btns = document.querySelectorAll('#input-list > button');
+    $btns.forEach(function (e1) {
+      e1.remove();
+    });
+    if (pageFirst.getMonth() === 1) {
+      pageFirst = new Date(first.getFullYear() - 1, 12, 1);
+      first = pageFirst;
+      if (first.getFullYear() % 4 === 0) {
+        pageYear = leapYear;
+      } else {
+        pageYear = notLeapYear;
+      }
+    } else {
+      pageFirst = new Date(first.getFullYear(), first.getMonth() - 1, 1);
+      first = pageFirst;
+    }
+    today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
+    currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
+    removeCalendar();
+    showCalendar();
+    showMain();
+    let year = today.getFullYear().toString();
+    let month = (today.getMonth() + 1).toString();
+    let day = today.getDate().toString();
+    if (month < 10)
+      month = '0' + month;
+    if (day < 10)
+      day = '0' + day;
+    let id = year + month + day;
+    clickedDate1 = document.getElementById(id);
+    clickedDate1.classList.add('active');
+    clickStart();
+    reshowingList();
+  }
+
+  function next() {
+    inputBox.value = "";
+    const $divs = document.querySelectorAll('#input-list > div');
+    $divs.forEach(function (e) {
+      e.remove();
+    });
+    const $btns = document.querySelectorAll('#input-list > button');
+    $btns.forEach(function (e1) {
+      e1.remove();
+    });
+    if (pageFirst.getMonth() === 12) {
+      pageFirst = new Date(first.getFullYear() + 1, 1, 1);
+      first = pageFirst;
+      if (first.getFullYear() % 4 === 0) {
+        pageYear = leapYear;
+      } else {
+        pageYear = notLeapYear;
+      }
+    } else {
+      pageFirst = new Date(first.getFullYear(), first.getMonth() + 1, 1);
+      first = pageFirst;
+    }
+    today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
+    currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
+    removeCalendar();
+    showCalendar();
+    showMain();
+    let year = today.getFullYear().toString();
+    let month = (today.getMonth() + 1).toString();
+    let day = today.getDate().toString();
+    if (month < 10)
+      month = '0' + month;
+    if (day < 10)
+      day = '0' + day;
+    let id = year + month + day;
+    clickedDate1 = document.getElementById(id);
+    clickedDate1.classList.add('active');
+    clickStart();
+    reshowingList();
+  }
+
+
+  function showMain() {
+    mainTodayDay.innerHTML = dayList[today.getDay()];
+    mainTodayDate.innerHTML = today.getDate();
+  }
+  let year = today.getFullYear().toString();
+  let month = (today.getMonth() + 1).toString();
+  let day = today.getDate().toString();
+  if (month < 10)
+    month = '0' + month;
+  if (day < 10)
+    day = '0' + day;
+  let id = year + month + day;
+  var clickedDate1 = document.getElementById(id);
+  var mainTodayDay = document.getElementById('main-day');
+  var mainTodayDate = document.getElementById('main-date');
+  clickedDate1.classList.add('active');
+  var prevBtn = document.getElementById('prev');
+  var nextBtn = document.getElementById('next');
+  prevBtn.addEventListener('click', prev);
+  nextBtn.addEventListener('click', next);
+  var tdGroup = [];
+  function clickStart() {
+    for (let i = 1; i <= pageYear[first.getMonth()]; i++) {
+      let year = first.getFullYear().toString();
+      let month = (first.getMonth() + 1).toString();
+      let day = i.toString();
+      if (month < 10)
+        month = '0' + month;
+      if (day < 10)
+        day = '0' + day;
+      let id = year + month + day;
+      tdGroup[i] = document.getElementById(id);
+      tdGroup[i].addEventListener('click', () => { changeToday(event, id) });
+    }
+  }
+
+  function changeToday(e, id) {
+    for (let i = 1; i <= pageYear[first.getMonth()]; i++) {
+      if (tdGroup[i].classList.contains('active')) {
+        tdGroup[i].classList.remove('active');
+      }
+    }
+    for (const block of abc.reverse()) {
+      const date = block.date.replace(/-/gi, '');
+
+      if (date == id) {
+        if (block.content == '') {
+          inputBox.value = '이미 작성함';
+        }
+        else inputBox.value = block.content;
+        saveBtn.setAttribute('style', 'display:none;');
+        submitBtn.setAttribute('style', 'display:none;');
+        midSelectedBox.setAttribute('style', 'display:none;');
+        detailedSelectedBox.setAttribute('style', 'display:none;');
+        inputBox.setAttribute('readonly', true);
+        if (block.specificCount > 0) {
+          for (let i = 0; i < block.specificCount; i++) {
+            const li = document.createElement("li");
+            const icon = document.createElement("span");
+            const span = document.createElement("input");
+            icon.className = "material-icons";
+            icon.innerText = "check_circle";
+            li.className = "detailGoal";
+            const detailText = block.specificList[i];
+            span.value = detailText;
+            span.setAttribute('disabled', true);
+            span.setAttribute('style', 'background-color:transparent;')
+            li.appendChild(icon);
+            li.appendChild(span);
+            selectedList.appendChild(li);
+          }
+        }
+        else {
+          while (selectedList.hasChildNodes()) {
+            selectedList.removeChild(selectedList.firstChild);
+          }
+        }
+
+        break;
+      }
+      else {
+        inputBox.value = '';
+        saveBtn.setAttribute('style', '');
+        submitBtn.setAttribute('style', '');
+        midSelectedBox.setAttribute('style', '');
+        detailedSelectedBox.setAttribute('style', '');
+        inputBox.setAttribute('readonly', false);
+        while (selectedList.hasChildNodes()) {
+          selectedList.removeChild(selectedList.firstChild);
+        }
+      }
+
+    }
+    clickedDate1 = e.currentTarget;
+    clickedDate1.classList.add('active');
+    today = new Date(today.getFullYear(), today.getMonth(), clickedDate1.id.substring(6));
+    showMain();
+    keyValue = today.getFullYear() + '' + today.getMonth() + '' + today.getDate();
+    reshowingList();
+  }
+
+
+
+  function reshowingList() {
+    keyValue = today.getFullYear() + '' + today.getMonth() + '' + today.getDate();
+    if (todoList[keyValue] === undefined) {
+      inputList.textContent = '';
+      todoList[keyValue] = [];
+      const $divs = document.querySelectorAll('#input-list > div');
+      $divs.forEach(function (e) {
+        e.remove();
+      });
+      const $btns = document.querySelectorAll('#input-list > button');
+      $btns.forEach(function (e1) {
+        e1.remove();
+      });
+    } else if (todoList[keyValue].length === 0) {
+      inputList.textContent = "";
+      const $divs = document.querySelectorAll('#input-list > div');
+      $divs.forEach(function (e) {
+        e.remove();
+      });
+      const $btns = document.querySelectorAll('#input-list > button');
+      $btns.forEach(function (e1) {
+        e1.remove();
+      });
+    } else {
+      const $divs = document.querySelectorAll('#input-list > div');
+      $divs.forEach(function (e) {
+        e.remove();
+      });
+      const $btns = document.querySelectorAll('#input-list > button');
+      $btns.forEach(function (e1) {
+        e1.remove();
+      });
+      var $div = document.createElement('div');
+      for (var i = 0; i < todoList[keyValue].length; i++) {
+        var $div = document.createElement('div');
+        $div.textContent = '-' + todoList[keyValue][i];
+        var $btn = document.createElement('input');
+        $btn.setAttribute('type', 'button');
+        $btn.setAttribute('id', 'del-ata');
+        $btn.setAttribute('id', dataCnt + keyValue);
+        $btn.setAttribute('class', 'del-data');
+        $btn.textContent = delText;
+        inputList.appendChild($div);
+        inputList.appendChild($btn);
+        $div.addEventListener('click', checkList);
+        $btn.addEventListener('click', deleteTodo);
+        inputBox.value = '';
+        function deleteTodo() {
+          $div.remove();
+          $btn.remove();
+        }
+      }
+    }
+
+  }
+
+  var inputDate = document.getElementById('save-data');
+  var inputList = document.getElementById('input-list');
+  let todoList = [];
+
+  prev();
+  next();
+  clickedDate1.click();
+  //오늘날짜에 해당하는 거 한번 누르기
+</script>
 {% endblock content %}
