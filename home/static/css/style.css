@@ -452,13 +452,17 @@ button{
     padding:18px 45px;
     font-size:18px;
 }
-
-#box{
-    margin: 150px 100px 150px 100px;
-    width:800px;
-    height:800px;
-    border-radius: 20px;
-    background:url(../img/manda.jpg) no-repeat 0 0;  
+.animation_page_container{
+    width: 1500px;
+    height: 600px;
+    display: flex;
+}
+#box1{
+    margin-top: 57px;
+    width:600px;
+    height:400px;
+    background:url(../img/mandalart.jpg) no-repeat 0 0;  
+    background-size: 2400px 400px;
 
     /*- webkit접두어생략 파이5어폭스에서 테스트!!
     - bg이미지는 (한 방향) / (같은 크기)로 만드는것이 바람직하다.
@@ -466,21 +470,21 @@ button{
     - 4s는 애니메이션이 일어나는 총시간 4000ms (1~9까지 장면이 4초에 끝난다.)  
     - steps(9)는 나뉘어진 이미지의 갯수 (9장의 이미지가 연속으로 바뀌며 애니메이션)
     - infinite 무한반복*/
-    animation:box 4s steps(4) infinite;
+    animation:box1 4s steps(4) infinite;
 
 }
 
-@keyframes box {
+@keyframes box1 {
     
     from {background-position:0 0}
-    to   {background-position:-3200px 0}  /*2700px는 bg이미지의 총 길이*/
+    to   {background-position:-2400px 0}  /*2700px는 bg이미지의 총 길이*/
 }
-.box_container{
+.box_container1{
     display: flex;
     margin: 10% auto;
     position:absolute;
-    width:1200px;
-    height:1000px;
+    width:600px;
+    height:470px;
     background-color:#FFFFFF;
     text-align:center;
     top:30%;
@@ -489,26 +493,83 @@ button{
     border-radius: 10px;
     box-shadow: 0 30px 55px 0 rgba(116, 116, 116, 0.822);
     background-image: url(../img/aaa.png) ;
-    background-size: 1200px 1000px;
+    background-size: 600px 470px;
     }
 
- .box_text{
-    text-align: center;
-    margin-left: 40%;
-    margin-bottom: 10%;
+
+ .box_dashtext{
+    text-align: left;
+    margin-left: 55%;
+    margin-top: 20px;
 
 }   
-.box_text #text1{
-    font-size: 50px;
-    font-weight: bolder;
+.box_dashtext #text1{
+    font-size: 42px;
+    font-weight: 600;
+    color: #3e3260;
+}
+.box_dashtext #text2{
+    font-size: 15px;
+    color: #eee;
+    padding: 20px 0;
+}
+
+#box2{
+    margin-top: 57px;
+    width:600px;
+    height:400px;
+    background:url(../img/mandalart.jpg) no-repeat 0 0;  
+    background-size: 2400px 400px;
+
+    /*- webkit접두어생략 파이5어폭스에서 테스트!!
+    - bg이미지는 (한 방향) / (같은 크기)로 만드는것이 바람직하다.
+    - box란 이름을 가진 @keyframes 애니메이션 한다는 의미
+    - 4s는 애니메이션이 일어나는 총시간 4000ms (1~9까지 장면이 4초에 끝난다.)  
+    - steps(9)는 나뉘어진 이미지의 갯수 (9장의 이미지가 연속으로 바뀌며 애니메이션)
+    - infinite 무한반복*/
+    animation:box2 4s steps(4) infinite;
+
+}
+
+@keyframes box2 {
+    
+    from {background-position:0 0}
+    to   {background-position:-2400px 0}  /*2700px는 bg이미지의 총 길이*/
+}
+.box_container2{
+    display: flex;
+    margin: 10% auto;
+    position:absolute;
+    width:600px;
+    height:470px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:30%;
+    left:70%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 0 30px 55px 0 rgba(116, 116, 116, 0.822);
+    background-image: url(../img/aaa.png) ;
+    background-size: 600px 470px;
+    }
+
+.box_diarytext{
+    text-align: right;
+    margin-right: 55%;
+    margin-top: 20px;
+}   
+.box_diarytext #text1{
+    font-size: 42px;
+    font-weight: 600;
     color: #3e3260;
 
 }
-.box_text #text2{
-    font-size: 25px;
-    color: white;
-    padding: 10px;
+.box_diarytext #text2{
+    font-size: 15px;
+    color: #eee;
+    padding: 20px 0;
 }
+
 /* Toggle up Button - go to top */
 .toggleupBtn__content{
     position: fixed;
