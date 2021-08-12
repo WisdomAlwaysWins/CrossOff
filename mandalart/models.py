@@ -65,6 +65,9 @@ class Block(models.Model):
     content = models.TextField()
     date = models.DateField(auto_now_add=False, null=False)
 
+    class Meta:
+        unique_together = ('user', 'date')
+
     def __str__(self):
         return str(self.user.nickname) + '의 ' + str(self.date) + '날짜의 ' + str(self.content[:10])
 

@@ -19,7 +19,7 @@ User = get_user_model()
 @login_required
 def calendar(request, id):
     user = User.objects.get(id=id)
-    blocks = Block.objects.filter(user=user, date__year=timezone.now().year)
+    blocks = Block.objects.filter(user=user, date__year__gte=timezone.now().year)
     blockList = []
     for block in blocks:
         blockObj = {}
@@ -70,3 +70,7 @@ def addBlock(request):
         item = Item(spelist=spelist, specificgoal=u.mandalart.biggoal.midgoal.all()[int(spe[0])].specificgoal.all()[int(spe[1])])
         item.save()
     return redirect('/daily/calendar/' + str(request.user.id))
+
+
+def delBlock(request):
+    pass
