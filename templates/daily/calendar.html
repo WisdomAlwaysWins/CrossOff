@@ -252,6 +252,28 @@ Days
           if (cnt < 10)
             day = '0' + day;
           $td.setAttribute('id', year + month + day);
+          for (const block of abc) {
+            let blockDate = block.date.replace(/-/gi, '');
+            let blockSpeCount = parseInt((block.specificCount + 1) / 2);
+            if (blockSpeCount >= 4) blockSpeCount = 4;
+            if (blockDate == year + month + day) {
+              switch (blockSpeCount) {
+                case 1:
+                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192,0.4);');
+                  break;
+                case 2:
+                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192,0.6);');
+                  break;
+                case 3:
+                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192,0.8);');
+                  break;
+                case 4:
+                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192);');
+                  break;
+              }
+            }
+            // break;
+          }
           $tr.appendChild($td);
           cnt++;
         }

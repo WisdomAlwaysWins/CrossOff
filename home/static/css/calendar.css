@@ -83,6 +83,10 @@ html, body{
 	color: #FFFFFF;
 	text-decoration:line-through
   }
+  #selected-list{
+	  height:120px;
+	  overflow-y: scroll;
+  }
   .del-data{
 	display: block;
 	color: #fff;
