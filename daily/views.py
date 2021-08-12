@@ -19,10 +19,10 @@ User = get_user_model()
 @login_required
 def calendar(request, id):
     user = User.objects.get(id=id)
-    blocks = Block.objects.filter(user=user, created_date__year=timezone.now().year)
+    blocks = Block.objects.filter(user=user, date__year=timezone.now().year)
     blockList = []
     specount = 0
-    blocksObj = serializers.serialize('json', blocks, fields=('content', 'created_date', 'spelist'))
+    blocksObj = serializers.serialize('json', blocks, fields=('content', 'date', 'spelist'))
 
     BigGoalList = []
     if not user.is_manda:
@@ -50,6 +50,7 @@ def calendar(request, id):
 
 def addBlock(request):
     u = request.user
+
     block = Block(user=u, content=request.POST['content'])
     block.save()
     spelist = Spelist(block=block)

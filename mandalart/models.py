@@ -14,8 +14,8 @@ class Mandalart(models.Model):
 
 class BigGoal(models.Model):
     manda = models.OneToOneField(Mandalart,
-                                 on_delete=models.CASCADE,
-                                 primary_key=True)
+                                on_delete=models.CASCADE,
+                                primary_key=True)
     content = models.CharField(max_length=200)
     is_achieved = models.BooleanField(default=False, null=False)
 
@@ -54,14 +54,17 @@ class Todo(models.Model):
     def __str__(self):
         return str(self.user.nickname) + '의 ' + str(self.content)
 
+class BlockManager(models.Manager):
+    def get_by_natural_key(self, user):
+        pass
 
 class Block(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='block')
     content = models.TextField()
-    created_date = models.DateField(auto_now_add=True)
+    date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.user.nickname) + '의 ' + str(self.created_date) + '날짜의 ' + str(self.content[:10])
+        return str(self.user.nickname) + '의 ' + str(self.date) + '날짜의 ' + str(self.content[:10])
 
 
 class Spelist(models.Model):
