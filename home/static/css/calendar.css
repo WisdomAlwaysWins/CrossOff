@@ -1,3 +1,45 @@
+button{
+    padding:10px 15px;
+    margin:0;
+    border:none;
+    background-color: transparent;
+    font-size: 15px;
+    transition: var(--transition-duration--);
+    border-radius: var(--border-radius--);
+}
+.btn-black{
+    background-color: var(--color-black--);
+    color:white;
+}
+.btn-black:hover{
+    background-color: black;
+}
+.btn-purple{
+    background-color: rgba(96,62,192,0.8);
+    color:white;
+}
+.btn-purple:hover{ 
+    background-color: #603ec0; 
+    color:white;
+}
+.btn-white{
+    background-color: var(--color-white--);
+    color: #3e3260;
+    border: 1px solid transparent;
+}
+.btn-white:hover{ 
+    background-color: white;
+    color:#3e3260;
+    border: 1px solid var(--color-black--);
+}
+.btn-lightgray{
+    background-color:rgb(215, 210, 216);
+    color: var(--color-black--);
+}
+.btn-lightgray:hover{
+    background-color:rgb(191, 187, 192);
+    color: var(--color-black--);
+}
 html, body{
 	background-color: #FFFFFF;
 	font-family: 'Roboto', sans-serif;
@@ -15,7 +57,7 @@ html, body{
 	background: #FFFFFF;
   }
   .content-left{
-	background: mediumorchid;
+	background: #785fc0;
 	color:#fff;
 	float: left;
 	width: 100%;
@@ -118,6 +160,44 @@ html, body{
 	background:mediumorchid;
 	color: #ffffff;
   }
+  form{
+	  margin-top: 50px;
+  }
+  #midSelectedBox{
+	width: 120px;
+	height: 30px;
+  }
+  #detailedSelectedBox{
+	  width: 150px;
+	  height: 30px;
+  }
+  .addBtn{
+	  background-color: #785fc0;
+	  margin-left: 10px;
+	  padding: 4px;
+  }
+  .selectedGoalContent{
+	  height: 100px;
+	  overflow-y: scroll;
+	  margin: 10px 0;
+  }
+  #selected-list li{
+	  display:flex;
+	  flex-direction: row;
+	  align-items: center;
+  }
+  #selected-list li .material-icons,
+  #selected-list li input{
+	  font-size: 14px;
+  }
+  #input-box{
+	  border-radius: 3px;
+	  font-size:14px;
+  }
+  #input-box::placeholder{
+	font-size: 14px;
+}
+
   
 /* ---------------------------반응형--------------------------- */
 
@@ -139,7 +219,7 @@ html, body{
 	  background: #fffffe;
 	}
 	.content-left{
-	  background: mediumorchid;
+	  background: #785fc0;  
 	  color:#fffffe;
 	  float: left;
 	  width: 560px;
@@ -155,12 +235,13 @@ html, body{
 	  font-weight: bold;
 	}
 	.main-date{
-	  font-size: 120px;
+	  font-size: 45px;
 	  font-weight: bold;
 	  margin: 20px 0;
 	}
 	.todo-wrap{
 	  padding: 0 0 0 40px;
+	  height:70%;
 	}
 	.todo-title{
 	  font-size: 20px;
@@ -186,9 +267,9 @@ html, body{
 	  font-size: large;
 	  padding: 10px;
 	  margin: 20px 0 30px 0;
-	  background: darkorchid;
+	  background: white;
 	  border: none;
-	  color: #fff;
+	  color: #333;
 	  border-radius: 10px;
 	}
 	.save-data:hover{
