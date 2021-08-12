@@ -309,6 +309,12 @@ button{
     padding: 0 10px;
     font-size: 15px;
 }
+.home__content #fullpage #section2 #slide1 img{
+    width: 30vw;
+    height: 30vw;
+    margin-bottom: 2vw;
+}
+
 .home__content #fullpage #section2 #slide2{
     position: relative;
     text-align: center;
@@ -375,6 +381,7 @@ button{
     font-size:12px;
     color:rgb(214, 214, 214);
 }
+
 /* section 3 - people involved in */
 .home__content #fullpage #section3{
     height: 1000px;
@@ -446,6 +453,62 @@ button{
     font-size:18px;
 }
 
+#box{
+    margin: 150px 100px 150px 100px;
+    width:800px;
+    height:800px;
+    border-radius: 20px;
+    background:url(../img/manda.jpg) no-repeat 0 0;  
+
+    /*- webkit접두어생략 파이5어폭스에서 테스트!!
+    - bg이미지는 (한 방향) / (같은 크기)로 만드는것이 바람직하다.
+    - box란 이름을 가진 @keyframes 애니메이션 한다는 의미
+    - 4s는 애니메이션이 일어나는 총시간 4000ms (1~9까지 장면이 4초에 끝난다.)  
+    - steps(9)는 나뉘어진 이미지의 갯수 (9장의 이미지가 연속으로 바뀌며 애니메이션)
+    - infinite 무한반복*/
+    animation:box 4s steps(4) infinite;
+
+}
+
+@keyframes box {
+    
+    from {background-position:0 0}
+    to   {background-position:-3200px 0}  /*2700px는 bg이미지의 총 길이*/
+}
+.box_container{
+    display: flex;
+    margin: 10% auto;
+    position:absolute;
+    width:1200px;
+    height:1000px;
+    background-color:#FFFFFF;
+    text-align:center;
+    top:30%;
+    left:30%;
+    transform: translate(-50%,-50%);
+    border-radius: 10px;
+    box-shadow: 0 30px 55px 0 rgba(116, 116, 116, 0.822);
+    background-image: url(../img/aaa.png) ;
+    background-size: 1200px 1000px;
+    }
+
+ .box_text{
+    text-align: center;
+    margin-left: 40%;
+    margin-bottom: 10%;
+
+}   
+.box_text #text1{
+    font-size: 50px;
+    font-weight: bolder;
+    color: #3e3260;
+
+}
+.box_text #text2{
+    font-size: 25px;
+    color: white;
+    padding: 10px;
+}
 /* Toggle up Button - go to top */
 .toggleupBtn__content{
     position: fixed;
