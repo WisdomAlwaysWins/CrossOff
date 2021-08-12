@@ -1,8 +1,6 @@
-{% extends 'layout.html' %}
-{% load static %}
-{% block title %}
-Days
-{% endblock title %}
+{% extends 'layout.html' %} {% load static %} 
+{% block title %} Days 
+{% endblock title %} 
 {% block js %}
 <script>
   const midGoal = JSON.parse(
@@ -30,12 +28,13 @@ Days
       .replace(/\f/gi, "\\f")
   );
 </script>
-{% endblock js %}
-{% block css %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-<link rel="stylesheet" href="{% static 'css/calendar.css' %} ">
-{% endblock css %}
-{% block content %}
+{% endblock js %} {% block css %}
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
+<link rel="stylesheet" href="{% static 'css/calendar.css' %} " />
+{% endblock css %} {% block content %}
 <div class="main">
   <div class="content-wrap">
     <div class="content-right">
@@ -43,15 +42,11 @@ Days
         <thead>
           <tr class="btn-wrap clearfix">
             <td>
-              <label id="prev">
-                &#60;
-              </label>
+              <label id="prev"> &#60; </label>
             </td>
             <td align="center" id="current-year-month" colspan="5"></td>
             <td>
-              <label id="next">
-                &#62;
-              </label>
+              <label id="next"> &#62; </label>
             </td>
           </tr>
           <tr>
@@ -77,22 +72,33 @@ Days
           <div class="selection__content">
             <form action="{% url 'daily:addblock' %}" method="POST">
               {% csrf_token %}
-              <input type="hidden" id="hdate" name="date">
+              <input type="hidden" id="hdate" name="date" />
               <form action="" class="selection_form" method="GET">
-                <select name="midSelectedBox" id="midSelectedBox">
-                </select>
-                <select name="detailedSelectedBox" id="detailedSelectedBox">
-                </select>
-                <button class="addBtn" type="button">추가</button>
+                <select name="midSelectedBox" id="midSelectedBox"></select>
+                <select
+                  name="detailedSelectedBox"
+                  id="detailedSelectedBox"
+                ></select>
+                <button class="addBtn btn-white" type="button">추가</button>
                 <div class="selectedGoalContent">
-                  <ul id="selected-list">
-                  </ul>
+                  <ul id="selected-list"></ul>
                 </div>
-                <textarea id="input-box" class="input-box" type="text" cols="30" rows="5"
-                  placeholder="글로 남기고 싶은 오늘 하루를 기록하세요 :)" name=content>
-
+                <textarea
+                  id="input-box"
+                  class="input-box"
+                  type="text"
+                  cols="30"
+                  rows="5"
+                  placeholder=" 글로 남기고 싶은 오늘 하루를 기록하세요 :)"
+                  name="content"
+                >
                 </textarea>
-                <input type="submit" id="save-data" class="save-data" value="저장">
+                <input
+                  type="submit"
+                  id="save-data"
+                  class="save-data"
+                  value="저장"
+                />
               </form>
             </form>
           </div>
@@ -104,14 +110,14 @@ Days
 </div>
 <script>
   /* Fill Mid Goal Select  */
-  const midSelectedBox = document.querySelector('#midSelectedBox');
+  const midSelectedBox = document.querySelector("#midSelectedBox");
   const maxGoalNum = 8;
 
   // Fill Option
   function fillOption(goal_name, select_name) {
     for (let i = 0; i < maxGoalNum; i++) {
       if (goal_name[i].length != 0) {
-        let option = document.createElement('option');
+        let option = document.createElement("option");
         let content = goal_name[i];
         option.value = i;
         option.text = content;
@@ -123,7 +129,7 @@ Days
     fillOption(midGoal, midSelectedBox);
   }
   fillMidGoal();
-  const detailedSelectedBox = document.querySelector('#detailedSelectedBox');
+  const detailedSelectedBox = document.querySelector("#detailedSelectedBox");
   // <!-- 기본값으로 첫번째 Mid Goal의 세부 목표를 넣어놨습니다. -->
   for (let n = 0; n < 8; n++) {
     if (midGoal[n].length != 0) {
@@ -133,45 +139,45 @@ Days
   }
   // <!-- Fill Detailed Goal selection -->
 
-  midSelectedBox.addEventListener('change', (e) => {
+  midSelectedBox.addEventListener("change", (e) => {
     let selectedNum = e.target.value;
     detailedSelectedBox.options.length = 0;
     switch (selectedNum) {
-      case '0':
+      case "0":
         fillOption(detailGoal[0], detailedSelectedBox);
         break;
-      case '1':
+      case "1":
         fillOption(detailGoal[1], detailedSelectedBox);
         break;
-      case '2':
+      case "2":
         fillOption(detailGoal[2], detailedSelectedBox);
         break;
-      case '3':
+      case "3":
         fillOption(detailGoal[3], detailedSelectedBox);
         break;
-      case '4':
+      case "4":
         fillOption(detailGoal[4], detailedSelectedBox);
         break;
-      case '5':
+      case "5":
         fillOption(detailGoal[5], detailedSelectedBox);
         break;
-      case '6':
+      case "6":
         fillOption(detailGoal[6], detailedSelectedBox);
         break;
-      case '7':
+      case "7":
         fillOption(detailGoal[7], detailedSelectedBox);
         break;
     }
-  })
+  });
   // <!-- Add List -->
-  const submitBtn = document.querySelector('.addBtn');
-  const saveBtn = document.querySelector('.save-data');
-  const selectedList = document.getElementById('selected-list');
+  const submitBtn = document.querySelector(".addBtn");
+  const saveBtn = document.querySelector(".save-data");
+  const selectedList = document.getElementById("selected-list");
 
   function deleteList(event) {
     const li = event.target.parentElement;
     li.remove();
-  };
+  }
   function addItem() {
     const li = document.createElement("li");
     const icon = document.createElement("span");
@@ -182,20 +188,22 @@ Days
     icon.className = "material-icons";
     icon.innerText = "check_circle";
     const button = document.createElement("button");
-    button.setAttribute('type', 'button');
+    button.setAttribute("type", "button");
     button.innerText = "❌";
     li.className = "detailGoal";
     const midValue = midSelectedBox.options[midSelectedBox.selectedIndex].value;
-    const detailValue = detailedSelectedBox.options[detailedSelectedBox.selectedIndex].value;
-    const detailText = detailedSelectedBox.options[detailedSelectedBox.selectedIndex].text;
+    const detailValue =
+      detailedSelectedBox.options[detailedSelectedBox.selectedIndex].value;
+    const detailText =
+      detailedSelectedBox.options[detailedSelectedBox.selectedIndex].text;
     const NameOfClass = midValue + detailValue;
     li.classList.add(NameOfClass);
     span.value = detailText;
-    span.setAttribute('disabled', true);
-    span.setAttribute('style', 'background-color:transparent;')
+    span.setAttribute("disabled", true);
+    span.setAttribute("style", "background-color:transparent;");
     hidden.value += NameOfClass;
     hidden.name = "spes";
-    hidden.setAttribute('type', 'hidden');
+    hidden.setAttribute("type", "hidden");
     span.name = NameOfClass;
     button.addEventListener("click", deleteList);
     li.appendChild(icon);
@@ -204,27 +212,52 @@ Days
     selectedList.appendChild(li);
     selectedList.appendChild(hidden);
   }
-  submitBtn.addEventListener('click', addItem)
-  saveBtn.addEventListener('click', () => {
-    const dateinput = document.getElementById('hdate');
-    const selectedDate = document.getElementsByClassName('active')[0];
-    const date = selectedDate.id.substr(0, 4) + '-' + selectedDate.id.substr(4, 2) + '-' + selectedDate.id.substr(6, 2);
+  submitBtn.addEventListener("click", addItem);
+  saveBtn.addEventListener("click", () => {
+    const dateinput = document.getElementById("hdate");
+    const selectedDate = document.getElementsByClassName("active")[0];
+    const date =
+      selectedDate.id.substr(0, 4) +
+      "-" +
+      selectedDate.id.substr(4, 2) +
+      "-" +
+      selectedDate.id.substr(6, 2);
     dateinput.value = date;
-
-  })
+  });
 </script>
 <script>
-  var currentTitle = document.getElementById('current-year-month');
-  var calendarBody = document.getElementById('calendar-body');
+  var currentTitle = document.getElementById("current-year-month");
+  var calendarBody = document.getElementById("calendar-body");
   var today = new Date();
   var first = new Date(today.getFullYear(), today.getMonth(), 1);
-  var dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  var monthList = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  var dayList = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  var monthList = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ];
   var leapYear = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   var notLeapYear = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
   var pageFirst = first;
   var pageYear;
-  var inputBox = document.getElementById('input-box');
+  var inputBox = document.getElementById("input-box");
   if (first.getFullYear() % 4 === 0) {
     pageYear = leapYear;
   } else {
@@ -235,19 +268,21 @@ Days
     let monthCnt = 100;
     let cnt = 1;
     for (var i = 0; i < 6; i++) {
-      var $tr = document.createElement('tr');
-      $tr.setAttribute('id', monthCnt);
+      var $tr = document.createElement("tr");
+      $tr.setAttribute("id", monthCnt);
       for (var j = 0; j < 7; j++) {
-        if ((i === 0 && j < first.getDay()) || cnt > pageYear[first.getMonth()]) {
-          var $td = document.createElement('td');
+        if (
+          (i === 0 && j < first.getDay()) ||
+          cnt > pageYear[first.getMonth()]
+        ) {
+          var $td = document.createElement("td");
           $tr.appendChild($td);
         } else {
-          var $td = document.createElement('td');
+          var $td = document.createElement("td");
           $td.textContent = cnt;
           let year = today.getFullYear().toString();
           let month = (today.getMonth() + 1).toString();
-          if (month < 10)
-            month = '0' + month;
+          if (month < 10) month = "0" + month;
           var day = cnt;
           if (cnt < 10)
             day = '0' + day;
@@ -273,6 +308,7 @@ Days
               }
             }
           }
+
           $tr.appendChild($td);
           cnt++;
         }
@@ -292,14 +328,13 @@ Days
     }
   }
 
-
   function prev() {
     inputBox.value = "";
-    const $divs = document.querySelectorAll('#input-list > div');
+    const $divs = document.querySelectorAll("#input-list > div");
     $divs.forEach(function (e) {
       e.remove();
     });
-    const $btns = document.querySelectorAll('#input-list > button');
+    const $btns = document.querySelectorAll("#input-list > button");
     $btns.forEach(function (e1) {
       e1.remove();
     });
@@ -315,32 +350,37 @@ Days
       pageFirst = new Date(first.getFullYear(), first.getMonth() - 1, 1);
       first = pageFirst;
     }
-    today = new Date(today.getFullYear(), today.getMonth() - 1, today.getDate());
-    currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
+    today = new Date(
+      today.getFullYear(),
+      today.getMonth() - 1,
+      today.getDate()
+    );
+    currentTitle.innerHTML =
+      monthList[first.getMonth()] +
+      "&nbsp;&nbsp;&nbsp;&nbsp;" +
+      first.getFullYear();
     removeCalendar();
     showCalendar();
     showMain();
     let year = today.getFullYear().toString();
     let month = (today.getMonth() + 1).toString();
     let day = today.getDate().toString();
-    if (month < 10)
-      month = '0' + month;
-    if (day < 10)
-      day = '0' + day;
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
     let id = year + month + day;
     clickedDate1 = document.getElementById(id);
-    clickedDate1.classList.add('active');
+    clickedDate1.classList.add("active");
     clickStart();
     reshowingList();
   }
 
   function next() {
     inputBox.value = "";
-    const $divs = document.querySelectorAll('#input-list > div');
+    const $divs = document.querySelectorAll("#input-list > div");
     $divs.forEach(function (e) {
       e.remove();
     });
-    const $btns = document.querySelectorAll('#input-list > button');
+    const $btns = document.querySelectorAll("#input-list > button");
     $btns.forEach(function (e1) {
       e1.remove();
     });
@@ -356,25 +396,29 @@ Days
       pageFirst = new Date(first.getFullYear(), first.getMonth() + 1, 1);
       first = pageFirst;
     }
-    today = new Date(today.getFullYear(), today.getMonth() + 1, today.getDate());
-    currentTitle.innerHTML = monthList[first.getMonth()] + '&nbsp;&nbsp;&nbsp;&nbsp;' + first.getFullYear();
+    today = new Date(
+      today.getFullYear(),
+      today.getMonth() + 1,
+      today.getDate()
+    );
+    currentTitle.innerHTML =
+      monthList[first.getMonth()] +
+      "&nbsp;&nbsp;&nbsp;&nbsp;" +
+      first.getFullYear();
     removeCalendar();
     showCalendar();
     showMain();
     let year = today.getFullYear().toString();
     let month = (today.getMonth() + 1).toString();
     let day = today.getDate().toString();
-    if (month < 10)
-      month = '0' + month;
-    if (day < 10)
-      day = '0' + day;
+    if (month < 10) month = "0" + month;
+    if (day < 10) day = "0" + day;
     let id = year + month + day;
     clickedDate1 = document.getElementById(id);
-    clickedDate1.classList.add('active');
+    clickedDate1.classList.add("active");
     clickStart();
     reshowingList();
   }
-
 
   function showMain() {
     mainTodayDay.innerHTML = dayList[today.getDay()];
@@ -383,43 +427,41 @@ Days
   let year = today.getFullYear().toString();
   let month = (today.getMonth() + 1).toString();
   let day = today.getDate().toString();
-  if (month < 10)
-    month = '0' + month;
-  if (day < 10)
-    day = '0' + day;
+  if (month < 10) month = "0" + month;
+  if (day < 10) day = "0" + day;
   let id = year + month + day;
   var clickedDate1 = document.getElementById(id);
-  var mainTodayDay = document.getElementById('main-day');
-  var mainTodayDate = document.getElementById('main-date');
-  clickedDate1.classList.add('active');
-  var prevBtn = document.getElementById('prev');
-  var nextBtn = document.getElementById('next');
-  prevBtn.addEventListener('click', prev);
-  nextBtn.addEventListener('click', next);
+  var mainTodayDay = document.getElementById("main-day");
+  var mainTodayDate = document.getElementById("main-date");
+  clickedDate1.classList.add("active");
+  var prevBtn = document.getElementById("prev");
+  var nextBtn = document.getElementById("next");
+  prevBtn.addEventListener("click", prev);
+  nextBtn.addEventListener("click", next);
   var tdGroup = [];
   function clickStart() {
     for (let i = 1; i <= pageYear[first.getMonth()]; i++) {
       let year = first.getFullYear().toString();
       let month = (first.getMonth() + 1).toString();
       let day = i.toString();
-      if (month < 10)
-        month = '0' + month;
-      if (day < 10)
-        day = '0' + day;
+      if (month < 10) month = "0" + month;
+      if (day < 10) day = "0" + day;
       let id = year + month + day;
       tdGroup[i] = document.getElementById(id);
-      tdGroup[i].addEventListener('click', () => { changeToday(event, id) });
+      tdGroup[i].addEventListener("click", () => {
+        changeToday(event, id);
+      });
     }
   }
 
   function changeToday(e, id) {
     for (let i = 1; i <= pageYear[first.getMonth()]; i++) {
-      if (tdGroup[i].classList.contains('active')) {
-        tdGroup[i].classList.remove('active');
+      if (tdGroup[i].classList.contains("active")) {
+        tdGroup[i].classList.remove("active");
       }
     }
     for (const block of abc.reverse()) {
-      const date = block.date.replace(/-/gi, '');
+      const date = block.date.replace(/-/gi, "");
 
       if (date == id) {
         if (block.content == '') {
@@ -431,6 +473,7 @@ Days
         midSelectedBox.setAttribute('style', 'display:none;');
         detailedSelectedBox.setAttribute('style', 'display:none;');
         inputBox.setAttribute('readonly', true);
+
         if (block.specificCount > 0) {
           for (let i = 0; i < block.specificCount; i++) {
             const li = document.createElement("li");
@@ -441,14 +484,13 @@ Days
             li.className = "detailGoal";
             const detailText = block.specificList[i];
             span.value = detailText;
-            span.setAttribute('disabled', true);
-            span.setAttribute('style', 'background-color:transparent;')
+            span.setAttribute("disabled", true);
+            span.setAttribute("style", "background-color:transparent;");
             li.appendChild(icon);
             li.appendChild(span);
             selectedList.appendChild(li);
           }
-        }
-        else {
+        } else {
           while (selectedList.hasChildNodes()) {
             selectedList.removeChild(selectedList.firstChild);
           }
@@ -463,85 +505,89 @@ Days
         midSelectedBox.setAttribute('style', '');
         detailedSelectedBox.setAttribute('style', '');
         inputBox.setAttribute('readonly', false);
+
         while (selectedList.hasChildNodes()) {
           selectedList.removeChild(selectedList.firstChild);
         }
       }
-
     }
     clickedDate1 = e.currentTarget;
-    clickedDate1.classList.add('active');
-    today = new Date(today.getFullYear(), today.getMonth(), clickedDate1.id.substring(6));
+    clickedDate1.classList.add("active");
+    today = new Date(
+      today.getFullYear(),
+      today.getMonth(),
+      clickedDate1.id.substring(6)
+    );
     showMain();
-    keyValue = today.getFullYear() + '' + today.getMonth() + '' + today.getDate();
+    keyValue =
+      today.getFullYear() + "" + today.getMonth() + "" + today.getDate();
     reshowingList();
   }
 
-
-
   function reshowingList() {
-    keyValue = today.getFullYear() + '' + today.getMonth() + '' + today.getDate();
+    keyValue =
+      today.getFullYear() + "" + today.getMonth() + "" + today.getDate();
     if (todoList[keyValue] === undefined) {
-      inputList.textContent = '';
+      inputList.textContent = "";
       todoList[keyValue] = [];
-      const $divs = document.querySelectorAll('#input-list > div');
+      const $divs = document.querySelectorAll("#input-list > div");
       $divs.forEach(function (e) {
         e.remove();
       });
-      const $btns = document.querySelectorAll('#input-list > button');
+      const $btns = document.querySelectorAll("#input-list > button");
       $btns.forEach(function (e1) {
         e1.remove();
       });
     } else if (todoList[keyValue].length === 0) {
       inputList.textContent = "";
-      const $divs = document.querySelectorAll('#input-list > div');
+      const $divs = document.querySelectorAll("#input-list > div");
       $divs.forEach(function (e) {
         e.remove();
       });
-      const $btns = document.querySelectorAll('#input-list > button');
+      const $btns = document.querySelectorAll("#input-list > button");
       $btns.forEach(function (e1) {
         e1.remove();
       });
     } else {
-      const $divs = document.querySelectorAll('#input-list > div');
+      const $divs = document.querySelectorAll("#input-list > div");
       $divs.forEach(function (e) {
         e.remove();
       });
-      const $btns = document.querySelectorAll('#input-list > button');
+      const $btns = document.querySelectorAll("#input-list > button");
       $btns.forEach(function (e1) {
         e1.remove();
       });
-      var $div = document.createElement('div');
+      var $div = document.createElement("div");
       for (var i = 0; i < todoList[keyValue].length; i++) {
-        var $div = document.createElement('div');
-        $div.textContent = '-' + todoList[keyValue][i];
-        var $btn = document.createElement('input');
-        $btn.setAttribute('type', 'button');
-        $btn.setAttribute('id', 'del-ata');
-        $btn.setAttribute('id', dataCnt + keyValue);
-        $btn.setAttribute('class', 'del-data');
+        var $div = document.createElement("div");
+        $div.textContent = "-" + todoList[keyValue][i];
+        var $btn = document.createElement("input");
+        $btn.setAttribute("type", "button");
+        $btn.setAttribute("id", "del-ata");
+        $btn.setAttribute("id", dataCnt + keyValue);
+        $btn.setAttribute("class", "del-data");
         $btn.textContent = delText;
         inputList.appendChild($div);
         inputList.appendChild($btn);
-        $div.addEventListener('click', checkList);
-        $btn.addEventListener('click', deleteTodo);
-        inputBox.value = '';
+        $div.addEventListener("click", checkList);
+        $btn.addEventListener("click", deleteTodo);
+        inputBox.value = "";
         function deleteTodo() {
           $div.remove();
           $btn.remove();
         }
       }
     }
-
   }
 
-  var inputDate = document.getElementById('save-data');
-  var inputList = document.getElementById('input-list');
+  var inputDate = document.getElementById("save-data");
+  var inputList = document.getElementById("input-list");
   let todoList = [];
 
   prev();
   next();
   clickedDate1.click();
   //오늘날짜에 해당하는 거 한번 누르기
+
 </script>
 {% endblock content %}
