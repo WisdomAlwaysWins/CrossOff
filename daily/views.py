@@ -19,7 +19,7 @@ User = get_user_model()
 @login_required
 def calendar(request, id):
     user = User.objects.get(id=id)
-    blocks = Block.objects.filter(user=user, date__year__gte=timezone.now().year)
+    blocks = Block.objects.filter(user=user, date__year__gte=timezone.now().year).order_by('date')
     blockList = []
     for block in blocks:
         blockObj = {}
