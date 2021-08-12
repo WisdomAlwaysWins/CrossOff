@@ -134,6 +134,7 @@ function clickStart(){
         tdGroup[i].addEventListener('click',changeToday);
     }
 }
+
 function changeToday(e){
     for(let i = 1; i <= pageYear[first.getMonth()]; i++){
         if(tdGroup[i].classList.contains('active')){
@@ -206,7 +207,7 @@ function reshowingList(){
 
 }
 var inputBox = document.getElementById('input-box');
-var inputDate = document.getElementById('input-data');
+var inputDate = document.getElementById('save-data');
 var inputList = document.getElementById('input-list');
 var delText = 'X';
 inputDate.addEventListener('click',addTodoList);

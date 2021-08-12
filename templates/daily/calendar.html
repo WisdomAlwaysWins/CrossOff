@@ -5,6 +5,12 @@ Days
 {% endblock title %} 
 {% block js %}
 {% endblock js %}
+
+{% block css %}
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="{% static 'css/calendar.css' %} ">
+{% endblock css %}
+{% block content %}
 <script>
   const midGoal = JSON.parse(
     "{{manda_mid}}"
@@ -23,11 +29,7 @@ Days
       .replace(/\f/gi, "\\f")
   );
 </script> 
-{% block css %}
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="{% static 'css/calendar.css' %} ">
-{% endblock css %}
-{% block content %}
+
 <div class="main">
     <div class="content-wrap">
       <div class="content-right">
@@ -185,7 +187,8 @@ Days
             {% csrf_token %}
                 <input type="button"  id="save-data" class="save-data" value="저장">
             </form>
-            <div id="input-list" class="input-list"></div>
+            <div id="input-list" class="input-list">
+            </div>
           </div>
         </div>
       </div>
