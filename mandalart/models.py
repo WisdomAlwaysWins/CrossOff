@@ -55,13 +55,21 @@ class Todo(models.Model):
         return str(self.user.nickname) + '의 ' + str(self.content)
 
 
+class BlockManager(models.Manager):
+    def get_by_natural_key(self, user):
+        pass
+
+
 class Block(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='block')
     content = models.TextField()
-    created_date = models.DateField(auto_now_add=True)
+    date = models.DateField(auto_now_add=False, null=False)
+
+    class Meta:
+        unique_together = ('user', 'date')
 
     def __str__(self):
-        return str(self.user.nickname) + '의 ' + str(self.created_date) + '날짜의 ' + str(self.content[:10])
+        return str(self.user.nickname) + '의 ' + str(self.date) + '날짜의 ' + str(self.content[:10])
 
 
 class Spelist(models.Model):
@@ -69,7 +77,7 @@ class Spelist(models.Model):
     block = models.OneToOneField(Block, on_delete=models.CASCADE, related_name='spelist')
 
     def __str__(self):
-        return str(self.block.user.nickname) + '의 ' + str(self.block.created_date) + ' 날짜의 세부목표 목록'
+        return str(self.block.user.nickname) + '의 ' + str(self.block.date) + ' 날짜의 세부목표 목록'
 
 
 class Item(models.Model):
@@ -77,4 +85,4 @@ class Item(models.Model):
     specificgoal = models.ForeignKey(SpecificGoal, on_delete=models.CASCADE, related_name='specificgoal')
 
     def __str__(self) -> str:
-        return str(self.spelist.block.user.nickname) + '의 ' + str(self.spelist.block.created_date) + ' 날짜의 ' + str(self.specificgoal.content)
+        return str(self.spelist.block.user.nickname) + '의 ' + str(self.spelist.block.date) + ' 날짜의 ' + str(self.specificgoal.content)
