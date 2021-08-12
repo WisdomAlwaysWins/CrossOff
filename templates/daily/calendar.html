@@ -405,6 +405,7 @@ Days
           inputBox.value = '이미 작성함';
         }
         else inputBox.value = block.content;
+        saveBtn.setAttribute('style', 'display:none;')
         if (block.specificCount > 0) {
           for (let i = 0; i < block.specificCount; i++) {
             const li = document.createElement("li");
@@ -432,6 +433,7 @@ Days
       }
       else {
         inputBox.value = '';
+        saveBtn.setAttribute('style', '');
         while (selectedList.hasChildNodes()) {
           selectedList.removeChild(selectedList.firstChild);
         }
@@ -510,7 +512,7 @@ Days
 
   prev();
   next();
-  console.log(clickedDate1);
+  clickedDate1.click();
   //오늘날짜에 해당하는 거 한번 누르기
 </script>
 {% endblock content %}
