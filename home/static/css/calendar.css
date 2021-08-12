@@ -49,10 +49,6 @@ html, body{
 	color: #FFFFFF;
 	text-decoration:line-through
 }
-#selected-list{
-	height:120px;
-	overflow-y: scroll;
-}
 
 .main{
 	width: 100%;
@@ -71,7 +67,7 @@ html, body{
 	overflow: hidden;
 
 	background: #FFFFFF;
-  }
+}
 .content-left{
 	background: #785fc0;
 	color:#fff;
@@ -79,6 +75,43 @@ html, body{
 	width: 560px;
 	height: 600px;
 	padding: 0 20px 20px 0;
+}
+form{
+	margin-top: 50px;
+}
+#midSelectedBox{
+  width: 120px;
+  height: 30px;
+}
+#detailedSelectedBox{
+	width: 150px;
+	height: 30px;
+}
+.addBtn{
+	background-color: #785fc0;
+	margin-left: 10px;
+	padding: 4px;
+}
+.selectedGoalContent{
+	height: 100px;
+	overflow-y: scroll;
+	margin: 10px 0;
+}
+#selected-list li{
+	display:flex;
+	flex-direction: row;
+	align-items: center;
+}
+#selected-list li .material-icons,
+#selected-list li input{
+	font-size: 14px;
+}
+#input-box{
+	border-radius: 3px;
+	font-size:14px;
+}
+#input-box::placeholder{
+	font-size: 14px;
 }
 .main-wrap{
 	text-align: center;
