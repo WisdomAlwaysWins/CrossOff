@@ -1,7 +1,5 @@
-{% extends 'layout.html' %} {% load static %}
-{% block title %} Days
-{% endblock title %}
-{% block js %}
+{% extends 'layout.html' %} {% load static %} {% block title %} Days {% endblock
+title %} {% block js %}
 <script>
   const midGoal = JSON.parse(
     "{{manda_mid}}"
@@ -29,7 +27,10 @@
   );
 </script>
 {% endblock js %} {% block css %}
-<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+<link
+  rel="stylesheet"
+  href="https://fonts.googleapis.com/icon?family=Material+Icons"
+/>
 <link rel="stylesheet" href="{% static 'css/calendar.css' %} " />
 {% endblock css %} {% block content %}
 <div class="main">
@@ -72,15 +73,30 @@
               <input type="hidden" id="hdate" name="date" />
               <form action="" class="selection_form" method="GET">
                 <select name="midSelectedBox" id="midSelectedBox"></select>
-                <select name="detailedSelectedBox" id="detailedSelectedBox"></select>
+                <select
+                  name="detailedSelectedBox"
+                  id="detailedSelectedBox"
+                ></select>
                 <button class="addBtn btn-white" type="button">추가</button>
                 <div class="selectedGoalContent">
                   <ul id="selected-list"></ul>
                 </div>
-                <textarea id="input-box" class="input-box" type="text" cols="30" rows="5"
-                  placeholder=" 글로 남기고 싶은 오늘 하루를 기록하세요 :)" name="content">
+                <textarea
+                  id="input-box"
+                  class="input-box"
+                  type="text"
+                  cols="30"
+                  rows="5"
+                  placeholder=" 글로 남기고 싶은 오늘 하루를 기록하세요 :)"
+                  name="content"
+                >
                 </textarea>
-                <input type="submit" id="save-data" class="save-data" value="저장" />
+                <input
+                  type="submit"
+                  id="save-data"
+                  class="save-data"
+                  value="저장"
+                />
               </form>
             </form>
           </div>
@@ -266,31 +282,41 @@
           let month = (today.getMonth() + 1).toString();
           if (month < 10) month = "0" + month;
           var day = cnt;
-          if (cnt < 10)
-            day = '0' + day;
-          $td.setAttribute('id', year + month + day);
+          if (cnt < 10) day = "0" + day;
+          $td.setAttribute("id", year + month + day);
           for (const block of abc) {
-            let blockDate = block.date.replace(/-/gi, '');
+            let blockDate = block.date.replace(/-/gi, "");
             let blockSpeCount = parseInt((block.specificCount + 1) / 2);
             if (blockSpeCount >= 4) blockSpeCount = 4;
             if (blockDate == year + month + day) {
               switch (blockSpeCount) {
                 case 1:
-                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192,0.4);');
+                  $td.setAttribute(
+                    "style",
+                    "background-color:rgba(120, 95, 192,0.4);"
+                  );
                   break;
                 case 2:
-                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192,0.6);');
+                  $td.setAttribute(
+                    "style",
+                    "background-color:rgba(120, 95, 192,0.6);"
+                  );
                   break;
                 case 3:
-                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192,0.8);');
+                  $td.setAttribute(
+                    "style",
+                    "background-color:rgba(120, 95, 192,0.8);"
+                  );
                   break;
                 case 4:
-                  $td.setAttribute('style', 'background-color:rgba(120, 95, 192);');
+                  $td.setAttribute(
+                    "style",
+                    "background-color:rgba(120, 95, 192);"
+                  );
                   break;
               }
             }
           }
-
           $tr.appendChild($td);
           cnt++;
         }
@@ -446,15 +472,14 @@
       const date = block.date.replace(/-/gi, "");
 
       if (date == id) {
-        if (block.content == '') {
-          inputBox.value = '이미 작성함';
-        }
-        else inputBox.value = block.content;
-        saveBtn.setAttribute('style', 'display:none;');
-        submitBtn.setAttribute('style', 'display:none;');
-        midSelectedBox.setAttribute('style', 'display:none;');
-        detailedSelectedBox.setAttribute('style', 'display:none;');
-        inputBox.setAttribute('readonly', true);
+        if (block.content == "") {
+          inputBox.value = "이미 작성함";
+        } else inputBox.value = block.content;
+        saveBtn.setAttribute("style", "display:none;");
+        submitBtn.setAttribute("style", "display:none;");
+        midSelectedBox.setAttribute("style", "display:none;");
+        detailedSelectedBox.setAttribute("style", "display:none;");
+        inputBox.setAttribute("readonly", true);
 
         if (block.specificCount > 0) {
           for (let i = 0; i < block.specificCount; i++) {
@@ -479,14 +504,13 @@
         }
 
         break;
-      }
-      else {
-        inputBox.value = '';
-        saveBtn.setAttribute('style', '');
-        submitBtn.setAttribute('style', '');
-        midSelectedBox.setAttribute('style', '');
-        detailedSelectedBox.setAttribute('style', '');
-        inputBox.removeAttribute('readonly');
+      } else {
+        inputBox.value = "";
+        saveBtn.setAttribute("style", "");
+        submitBtn.setAttribute("style", "");
+        midSelectedBox.setAttribute("style", "");
+        detailedSelectedBox.setAttribute("style", "");
+        inputBox.removeAttribute("readonly");
 
         while (selectedList.hasChildNodes()) {
           selectedList.removeChild(selectedList.firstChild);
@@ -570,6 +594,5 @@
   next();
   clickedDate1.click();
   //오늘날짜에 해당하는 거 한번 누르기
-
 </script>
 {% endblock content %}
