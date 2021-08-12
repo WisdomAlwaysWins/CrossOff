@@ -21,9 +21,18 @@ def calendar(request, id):
     user = User.objects.get(id=id)
     blocks = Block.objects.filter(user=user, date__year=timezone.now().year)
     blockList = []
-    specount = 0
-    blocksObj = serializers.serialize('json', blocks, fields=('content', 'date', 'spelist'))
-
+    for block in blocks:
+        blockObj = {}
+        blockObj['content'] = block.content
+        blockObj['date'] = str(block.date)
+        items = block.spelist.item.all()
+        speList = []
+        for item in items:
+            speList.append(item.specificgoal.content)
+        blockObj['specificList'] = speList
+        blockObj['specificCount'] = len(speList)
+        blockList.append(blockObj)
+    blocksObj = json.dumps(blockList, ensure_ascii=False)
     BigGoalList = []
     if not user.is_manda:
         return redirect('mandalart:new')
