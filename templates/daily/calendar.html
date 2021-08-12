@@ -405,7 +405,10 @@ Days
           inputBox.value = '이미 작성함';
         }
         else inputBox.value = block.content;
-        saveBtn.setAttribute('style', 'display:none;')
+        saveBtn.setAttribute('style', 'display:none;');
+        submitBtn.setAttribute('style', 'display:none;');
+        midSelectedBox.setAttribute('style', 'display:none;');
+        detailedSelectedBox.setAttribute('style', 'display:none;');
         if (block.specificCount > 0) {
           for (let i = 0; i < block.specificCount; i++) {
             const li = document.createElement("li");
@@ -434,6 +437,9 @@ Days
       else {
         inputBox.value = '';
         saveBtn.setAttribute('style', '');
+        submitBtn.setAttribute('style', '');
+        midSelectedBox.setAttribute('style', '');
+        detailedSelectedBox.setAttribute('style', '');
         while (selectedList.hasChildNodes()) {
           selectedList.removeChild(selectedList.firstChild);
         }
