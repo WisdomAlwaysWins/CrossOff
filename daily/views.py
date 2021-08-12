@@ -44,14 +44,15 @@ def calendar(request, id):
         request, 'daily/calendar.html', {
             'manda_mid': json.dumps(MidGoalList, ensure_ascii=False),
             'manda_small': json.dumps(SpecificGoalDict, ensure_ascii=False),
-            'blocks': blocksObj
+            'blocks': blocksObj,
         })
 
 
 def addBlock(request):
     u = request.user
-
+    date = request.POST['date']
     block = Block(user=u, content=request.POST['content'])
+    block.date = date
     block.save()
     spelist = Spelist(block=block)
     spelist.save()

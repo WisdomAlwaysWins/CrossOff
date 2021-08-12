@@ -173,6 +173,7 @@ function clickStart(){
         tdGroup[i].addEventListener('click',changeToday);
     }
 }
+
 function changeToday(e){
     for(let i = 1; i <= pageYear[first.getMonth()]; i++){
         if(tdGroup[i].classList.contains('active')){

@@ -61,7 +61,7 @@ class BlockManager(models.Manager):
 class Block(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='block')
     content = models.TextField()
-    date = models.DateField(auto_now_add=True)
+    date = models.DateField(auto_now_add=False, null=False)
 
     def __str__(self):
         return str(self.user.nickname) + '의 ' + str(self.date) + '날짜의 ' + str(self.content[:10])
