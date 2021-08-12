@@ -50,8 +50,9 @@ def calendar(request, id):
 
 def addBlock(request):
     u = request.user
-
+    date = request.POST['date']
     block = Block(user=u, content=request.POST['content'])
+    block.date = date
     block.save()
     spelist = Spelist(block=block)
     spelist.save()

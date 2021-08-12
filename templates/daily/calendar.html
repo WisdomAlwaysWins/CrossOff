@@ -77,7 +77,7 @@ Days
           <div class="selection__content">
             <form action="{% url 'daily:addblock' %}" method="POST">
               {% csrf_token %}
-              <input type="hidden" id="hdate">
+              <input type="hidden" id="hdate" name="date">
               <form action="" class="selection_form" method="GET">
                 <select name="midSelectedBox" id="midSelectedBox">
                 </select>
@@ -207,9 +207,10 @@ Days
     selectedList.appendChild(hidden);
   })
   saveBtn.addEventListener('click',()=>{
-    const date = document.getElementById('hdate');
+    const dateinput = document.getElementById('hdate');
     const selectedDate = document.getElementsByClassName('active')[0];
-    date.value = selectedDate.id;
+    const date = selectedDate.id.substr(0,4) + '-' + selectedDate.id.substr(4,2) +'-' +selectedDate.id.substr(6,2);
+    dateinput.value = date;
 
   })
 </script>
