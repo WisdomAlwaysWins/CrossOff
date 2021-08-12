@@ -72,8 +72,7 @@ def test(request):
     blocks = request.user.block.all()
     block = blocks[0].spelist.item.all()[1].specificgoal.content
 
-    return render(request, 'mandalart/test.html', {'manda':block})
-
+    return render(request, 'mandalart/test.html', {'manda': block})
 
 
 @login_required
