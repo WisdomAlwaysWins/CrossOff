@@ -44,7 +44,7 @@ def calendar(request, id):
         request, 'daily/calendar.html', {
             'manda_mid': json.dumps(MidGoalList, ensure_ascii=False),
             'manda_small': json.dumps(SpecificGoalDict, ensure_ascii=False),
-            'blocks': blocksObj
+            'blocks': blocksObj,
         })
 
 

@@ -4,16 +4,6 @@
 Days
 {% endblock title %}
 {% block js %}
-<<<<<<< HEAD
-{% endblock js %}
-
-{% block css %}
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="{% static 'css/calendar.css' %} ">
-{% endblock css %}
-{% block content %}
-=======
->>>>>>> d35b62c3bb611fef5bb3f742ae255a058079e3b7
 <script>
   const midGoal = JSON.parse(
     "{{manda_mid}}"
@@ -31,10 +21,6 @@ Days
       .replace(/\t/gi, "\\t")
       .replace(/\f/gi, "\\f")
   );
-<<<<<<< HEAD
-</script> 
-
-=======
   const abc = JSON.parse(
     "{{blocks}}"
       .replace(/&quot;/g, '"')
@@ -50,7 +36,6 @@ Days
 <link rel="stylesheet" href="{% static 'css/calendar.css' %} ">
 {% endblock css %}
 {% block content %}
->>>>>>> d35b62c3bb611fef5bb3f742ae255a058079e3b7
 <div class="main">
   <div class="content-wrap">
     <div class="content-right">
@@ -92,6 +77,7 @@ Days
           <div class="selection__content">
             <form action="{% url 'daily:addblock' %}" method="POST">
               {% csrf_token %}
+              <input type="hidden" id="hdate">
               <form action="" class="selection_form" method="GET">
                 <select name="midSelectedBox" id="midSelectedBox">
                 </select>
@@ -109,11 +95,6 @@ Days
                 <input type="submit" id="save-data" class="save-data" value="저장">
               </form>
             </form>
-<<<<<<< HEAD
-            <div id="input-list" class="input-list">
-            </div>
-=======
->>>>>>> d35b62c3bb611fef5bb3f742ae255a058079e3b7
           </div>
 
           <div id="input-list" class="input-list"></div>
@@ -185,13 +166,14 @@ Days
   })
   // <!-- Add List -->
   const submitBtn = document.querySelector('.addBtn');
+  const saveBtn = document.querySelector('.save-data');
   const selectedList = document.getElementById('selected-list');
 
   function deleteList(event) {
     const li = event.target.parentElement;
     li.remove();
   };
-
+  
   submitBtn.addEventListener('click', () => {
     const li = document.createElement("li");
     const icon = document.createElement("span");
@@ -221,6 +203,12 @@ Days
     li.appendChild(button);
     selectedList.appendChild(li);
     selectedList.appendChild(hidden);
+  })
+  saveBtn.addEventListener('click',()=>{
+    const date = document.getElementById('hdate');
+    const selectedDate = document.getElementsByClassName('active')[0];
+    date.value = selectedDate.id;
+
   })
 </script>
 <script src="/static/js/calendar.js"></script>
