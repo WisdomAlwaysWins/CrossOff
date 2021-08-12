@@ -1,0 +1,49 @@
+<!-- <div class="error" data-text="400">400</div>
+    <div class="errorm">
+        <p>BAD REQUEST</p>
+        <p>잘못된 요청입니다.</p>
+        <p>관리자에게 문의하십시오.</p>
+        <a href="mailto:jiggy0429@likelion.org">이메일로 문의하기</a>
+        <a href="/">홈 화면으로 돌아가기</a>
+    </div> -->
+
+
+
+
+
+{% load static %}
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+    <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
+    <title>login</title>
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/favicon.png' %}" />
+</head>
+
+<body>
+    <div class="login_background">
+        <div class="error_body">
+            <!-- logo -->
+            <div class="login_logo"> Cross <br> off </div>
+            <div class="error_num" data-text="400"><p>400</p></div>
+            <div class="errorm">
+                <h3>BAD REQUEST</h3>
+                <h4>잘못된 요청입니다.</h4>
+                <h4>관리자에게 문의하십시오.</h4>
+                <div class="error_btns">
+                    <button onclick="location.href ='mailto:jiggy0429@likelion.org'">
+                        이메일로 문의하기
+                    </button>
+                    <button onclick="location.href ='/'">
+                        홈으로 돌아가기
+                    </button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

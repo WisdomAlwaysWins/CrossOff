@@ -1,16 +1,9 @@
 {% extends 'layout.html' %} {% load static %} {% block title %} Dashboard
 {%endblock title %} {% block css %}
-<link
-  rel="stylesheet"
-  href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
-  integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
-  crossorigin="anonymous"
-/>
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+  integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous" />
 <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <script src="//code.jquery.com/jquery-3.4.1.min.js"></script>
 {% endblock css %} {% block content %}
 <script>
@@ -47,73 +40,7 @@
       .replace(/\t/gi, "\\t")
       .replace(/\f/gi, "\\f")
   );
-  let manda_mid1 = JSON.parse(
-    "{{manda_mid1}}"
-      .replace(/&quot;/g, '"')
-      .replace(/\r/gi, "\\r")
-      .replace(/\n/gi, "\\n")
-      .replace(/\t/gi, "\\t")
-      .replace(/\f/gi, "\\f")
-  );
-  let manda_mid2 = JSON.parse(
-    "{{manda_mid2}}"
-      .replace(/&quot;/g, '"')
-      .replace(/\r/gi, "\\r")
-      .replace(/\n/gi, "\\n")
-      .replace(/\t/gi, "\\t")
-      .replace(/\f/gi, "\\f")
-  );
-  let manda_mid3 = JSON.parse(
-    "{{manda_mid3}}"
-      .replace(/&quot;/g, '"')
-      .replace(/\r/gi, "\\r")
-      .replace(/\n/gi, "\\n")
-      .replace(/\t/gi, "\\t")
-      .replace(/\f/gi, "\\f")
-  );
-  let manda_mid4 = JSON.parse(
-    "{{manda_mid4}}"
-      .replace(/&quot;/g, '"')
-      .replace(/\r/gi, "\\r")
-      .replace(/\n/gi, "\\n")
-      .replace(/\t/gi, "\\t")
-      .replace(/\f/gi, "\\f")
-  );
-  let manda_mid5 = JSON.parse(
-    "{{manda_mid5}}"
-      .replace(/&quot;/g, '"')
-      .replace(/\r/gi, "\\r")
-      .replace(/\n/gi, "\\n")
-      .replace(/\t/gi, "\\t")
-      .replace(/\f/gi, "\\f")
-  );
 
-  let manda_mid6 = JSON.parse(
-    "{{manda_mid6}}"
-      .replace(/&quot;/g, '"')
-      .replace(/\r/gi, "\\r")
-      .replace(/\n/gi, "\\n")
-      .replace(/\t/gi, "\\t")
-      .replace(/\f/gi, "\\f")
-  );
-
-  let manda_mid7 = JSON.parse(
-    "{{manda_mid7}}"
-      .replace(/&quot;/g, '"')
-      .replace(/\r/gi, "\\r")
-      .replace(/\n/gi, "\\n")
-      .replace(/\t/gi, "\\t")
-      .replace(/\f/gi, "\\f")
-  );
-
-  let manda_mid8 = JSON.parse(
-    "{{manda_mid8}}"
-      .replace(/&quot;/g, '"')
-      .replace(/\r/gi, "\\r")
-      .replace(/\n/gi, "\\n")
-      .replace(/\t/gi, "\\t")
-      .replace(/\f/gi, "\\f")
-  );
   let todos = JSON.parse(
     "{{todos}}"
       .replace(/&quot;/g, '"')
@@ -443,17 +370,9 @@
               <p class="title">TO DO LIST</p>
               <p id="day"></p>
             </div>
-            <form
-              action="{% url 'mandalart:addTodo' %}"
-              id="todo-form"
-              method="POST"
-            >
+            <form action="{% url 'mandalart:addTodo' %}" id="todo-form" method="POST">
               {% csrf_token %}
-              <input
-                type="text"
-                placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!"
-                name="todoInput"
-              />
+              <input type="text" placeholder="오늘 할 일을 5개 정도 정하고 실천해보세요!" name="todoInput" />
               <input type="submit" value="🤍" />
             </form>
             <ul id="todo-list">
@@ -521,11 +440,7 @@
         </div>
         <div class="plan table edit" data-type="edit">
           <div class="manda__table" id="manda_table">
-            <form
-              action="{% url 'mandalart:edit' %}"
-              method="POST"
-              id="editMandaForm"
-            >
+            <form action="{% url 'mandalart:edit' %}" method="POST" id="editMandaForm">
               <input type="submit" value="변경 내용 저장" class="btn-white" />
               {% csrf_token %}
               <script>

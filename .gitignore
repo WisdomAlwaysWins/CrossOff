@@ -12,6 +12,7 @@ db.sqlite3
 db.sqlite3-journal
 media
 */__pycache__/
+staticfiles
 
 
 ### VisualStudioCode ###
@@ -21,7 +22,7 @@ media
 !.vscode/launch.json
 !.vscode/extensions.json
 *.code-workspace
-
+.vscode/
 # Local History for Visual Studio Code
 .history/
 
