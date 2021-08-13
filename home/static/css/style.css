@@ -457,7 +457,7 @@ button{
     height: 600px;
     display: flex;
 }
-#box1{
+#box_dash{
     margin-top: 57px;
     width:600px;
     height:400px;
@@ -479,7 +479,7 @@ button{
     from {background-position:0 0}
     to   {background-position:-2400px 0}  /*2700px는 bg이미지의 총 길이*/
 }
-.box_container1{
+.box_dash_container{
     display: flex;
     margin: 10% auto;
     position:absolute;
@@ -514,7 +514,7 @@ button{
     padding: 20px 0;
 }
 
-#box2{
+#box_diary{
     margin-top: 57px;
     width:600px;
     height:400px;
@@ -536,7 +536,7 @@ button{
     from {background-position:0 0}
     to   {background-position:-2400px 0}  /*2700px는 bg이미지의 총 길이*/
 }
-.box_container2{
+.box_diary_container{
     display: flex;
     margin: 10% auto;
     position:absolute;
@@ -2018,7 +2018,11 @@ button{
     font-size: 24px;
     font-weight: 600;
 }
-
+.box_dashtext #text1 p,
+.box_diarytext #text1 p{
+    color:white; 
+    font-size: 38px;
+}
 
 @media only screen and (min-device-width : 360px) and (max-device-width : 479px) {
     .share__conent{
@@ -2176,6 +2180,34 @@ button{
     }
     .toggleupBtn__content{
         display: none;
+    }
+    .box_container1,
+    .box_container2{
+        display:none;
+    }
+    .box_dashtext,
+    .box_diarytext{
+        margin-left: 0;
+        margin-right:0;
+        margin-top: 0;
+    }
+    .box_dashtext #text1,
+    .box_dashtext #text1 p,
+    .box_diarytext #text1,
+    .box_diarytext #text1 p{
+        font-size:var(--font-size-large-title--);
+    }
+    .box_dashtext #text1,
+    .box_diarytext #text1{
+        margin: 0 30px;
+    }
+    .box_dashtext #text2{
+        margin-left:30px;
+        font-size: var(--font-size-content--);
+    }
+    .box_diarytext #text2{
+        margin-right:30px;
+        font-size: var(--font-size-content--);
     }
 
     /* dashboard */
