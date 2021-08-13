@@ -2183,12 +2183,12 @@ button{
     }
     .box_dash_container,
     .box_diary_container{
-        display: none;
         left: 50%;
         width: 300px;
         height: 250px;
-        bottom: 70%;
+        bottom: 7%;
         background-size: 300px 250px;
+        margin: 0;
   
 
     }
@@ -2197,7 +2197,7 @@ button{
         height: 200px;
         margin-top: 35px;
         background-size: 1200px 200px;
-        background:url(../img/mandalart.jpg) no-repeat 0 0;  
+        background:url(../img/mandalart.jpg) center/cover no-repeat 0 0;  
 
     
         /*- webkit접두어생략 파이5어폭스에서 테스트!!
@@ -2221,7 +2221,7 @@ button{
         height: 200px;
         margin-top: 35px;
         background-size: 900px 200px;
-        background:url(../img/dash.jpg) no-repeat 0 0;  
+        background:url(../img/dash.jpg) center/cover no-repeat 0 0;  
 
     
         /*- webkit접두어생략 파이5어폭스에서 테스트!!
@@ -2242,8 +2242,9 @@ button{
 
     .box_dashtext,
     .box_diarytext{
-        margin-left: 0;
-        margin-right:0;
+        margin-left: 5%;
+        margin-right:5%;
+        margin-top: 70%;
 
     }
     .box_dashtext #text1,
@@ -2254,15 +2255,18 @@ button{
     }
     .box_dashtext #text1,
     .box_diarytext #text1{
-        margin: 0 30px;
+        margin: 0 30px ;
     }
     .box_dashtext #text2{
         margin-left:30px;
         font-size: var(--font-size-content--);
+        padding: 0;
     }
     .box_diarytext #text2{
         margin-right:30px;
         font-size: var(--font-size-content--);
+        padding: 0;
+
     }
 
     /* dashboard */
