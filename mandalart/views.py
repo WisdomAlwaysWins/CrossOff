@@ -48,11 +48,19 @@ def plan_small(request):
         for i in range(len(mid)):
             lst2.append(mid[i].content)
         lst.append(lst2)
-        return render(request, 'mandalart/plan_small.html',
-                      {'manda': json.dumps(lst, ensure_ascii=False)})
+        c = 0
+        for m in mid:
+            spe = m.specificgoal.all()
+            c += len(spe)
+        print(c)
+        if c >= 64:
+            return redirect('/common/dashboard/' + str(request.user.id))
+        else:
+            return render(request, 'mandalart/plan_small.html',
+                          {'manda': json.dumps(lst, ensure_ascii=False)})
 
 
-@login_required
+@ login_required
 def test(request):
     # lst = []
     # manda=  request.user.mandalart
@@ -75,7 +83,7 @@ def test(request):
     return render(request, 'mandalart/test.html', {'manda': block})
 
 
-@login_required
+@ login_required
 def delMandalart(request):
     manda = Mandalart.objects.get(user=request.user.id)
     manda.delete()
@@ -84,7 +92,7 @@ def delMandalart(request):
     return redirect('mandalart:new')
 
 
-@login_required
+@ login_required
 def editMandalart(request):
     bigcontent = ''
     midlst = []
@@ -131,7 +139,7 @@ def editMandalart(request):
     return redirect('/common/dashboard/' + str(request.user.id))
 
 
-@login_required
+@ login_required
 def addTodo(request):
     u = request.user
     newTodo = Todo(user=u)
@@ -140,7 +148,7 @@ def addTodo(request):
     return redirect('/common/dashboard/' + str(request.user.id))
 
 
-@login_required
+@ login_required
 def delTodo(request, id):
     u = request.user
     deltodo = Todo.objects.get(user=u, id=id)
