@@ -6,5 +6,6 @@ app_name = 'daily'
 
 urlpatterns = [
     path('calendar/<str:id>', views.calendar, name='calendar'),
-    path('calendar/add/Block', views.addBlock, name='addblock'),
+    path('calendar/block/add', views.addBlock, name='addblock'),
+    path('calendar/block/delete/<str:date>', views.delBlock, name='delblock')
 ]

@@ -56,7 +56,7 @@ def calendar(request, id):
             'blocks': blocksObj,
         })
 
-
+@login_required
 def addBlock(request):
     u = request.user
     date = request.POST['date']
@@ -71,6 +71,9 @@ def addBlock(request):
         item.save()
     return redirect('/daily/calendar/' + str(request.user.id))
 
-
-def delBlock(request):
-    pass
+@login_required
+def delBlock(request, date):
+    u = request.user
+    block = Block.objects.get(user=u, date=date)
+    block.delete()
+    return redirect('/daily/calendar/' + str(request.user.id))
