@@ -132,10 +132,13 @@ button{
 .crossoff_logo{
     width:5rem;
 }
-.login_logo .crossoff_logo,
-.register_logo .crossoff_logo,
+
 .password_reset__logo .crossoff_logo{
-    width:10rem;
+    width:5rem;
+}
+.login_logo .crossoff_logo,
+.register_logo .crossoff_logo{
+    width:7rem;
 }
 /* HEADER */
 .header__container{
