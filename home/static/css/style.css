@@ -17,6 +17,8 @@
     --font-size-content-- : 12px;
     --font-size-mini--: 4px;
 }
+
+
 /* 사파리 */
 textarea,
 button{
@@ -500,9 +502,8 @@ button{
     height:470px;
     background-color:#FFFFFF;
     text-align:center;
-    top:30%;
-    left:30%;
-    transform: translate(-50%,-50%);
+    top:0%;
+    transform: translate(-30%,-70%);
     border-radius: 10px;
     box-shadow: 0 30px 55px 0 rgba(116, 116, 116, 0.822);
     background-image: url(../img/aaa.png) ;
@@ -511,6 +512,8 @@ button{
 
 
  .box_dashtext{
+    display: flex;
+    position:absolute;
     text-align: left;
     margin-left: 55%;
     margin-top: 20px;
@@ -2202,19 +2205,19 @@ button{
     .box_dash_container,
     .box_diary_container{
         left: 50%;
-        width: 300px;
-        height: 250px;
-        bottom: 7%;
-        background-size: 300px 250px;
+        width: 240px;
+        height: 200px;
+        bottom: 5%;
+        background-size: 240px 200px;
         margin: 0;
-  
+        box-shadow: 0 5px 30px 0 rgba(116, 116, 116, 0.822);
 
     }
     #box_dash{
-        width: 300px;
-        height: 200px;
+        width: 240px;
+        height: 160px;
         margin-top: 35px;
-        background-size: 1200px 200px;
+        background-size: 960px 160px;
         background:url(../img/mandalart.jpg) center/cover no-repeat 0 0;  
 
     
@@ -2231,14 +2234,14 @@ button{
     @keyframes box_dash {
         
         from {background-position:0 0}
-        to   {background-position:-1200px 0}  /*2700px는 bg이미지의 총 길이*/
+        to   {background-position:-960px 0}  /*2700px는 bg이미지의 총 길이*/
     }
 
     #box_diary{
-        width: 300px;
-        height: 200px;
+        width: 240px;
+        height: 160px;
         margin-top: 35px;
-        background-size: 900px 200px;
+        background-size: 720px 160px;
         background:url(../img/dash.jpg) center/cover no-repeat 0 0;  
 
     
@@ -2255,7 +2258,7 @@ button{
     @keyframes box_diary {
         
         from {background-position:0 0}
-        to   {background-position:-900px 0}  /*2700px는 bg이미지의 총 길이*/
+        to   {background-position:-720px 0}  /*2700px는 bg이미지의 총 길이*/
     }
 
     .box_dashtext,
@@ -2279,11 +2282,18 @@ button{
         margin-left:30px;
         font-size: var(--font-size-content--);
         padding: 0;
+        margin-top: -5%;
+        line-height: 80%;
+        
     }
+
+
     .box_diarytext #text2{
         margin-right:30px;
         font-size: var(--font-size-content--);
         padding: 0;
+        margin-top: -5%;
+        line-height: 80%;
 
     }
 
