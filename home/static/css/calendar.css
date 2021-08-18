@@ -205,7 +205,7 @@ td.active{
 @media only screen and (min-device-width : 360px) and (max-device-width : 479px) {
 	
 	.content-wrap{
-		display: grid;
+
 		width: 360px;
 		height: 400px;
 		margin:0 ;
