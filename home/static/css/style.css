@@ -499,9 +499,8 @@ button{
     height:470px;
     background-color:#FFFFFF;
     text-align:center;
-    top:30%;
-    left:30%;
-    transform: translate(-50%,-50%);
+    top:0%;
+    transform: translate(-30%,-70%);
     border-radius: 10px;
     box-shadow: 0 30px 55px 0 rgba(116, 116, 116, 0.822);
     background-image: url(../img/aaa.png) ;
@@ -510,6 +509,8 @@ button{
 
 
  .box_dashtext{
+    display: flex;
+    position:absolute;
     text-align: left;
     margin-left: 55%;
     margin-top: 20px;
