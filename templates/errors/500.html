@@ -1,15 +1,4 @@
 {% load static %}
-<!-- 
-<section id="error">
-    <div class="error" data-text="500">500</div>
-    <p>SERVER ERROR</p>
-    <p>서버에 오류가 발생하였습니다.</p>
-    <p>관리자에게 문의하십시오.</p>
-    <a href="mailto:jiggy0429@likelion.org">이메일로 문의하기</a>
-    <a href="/">홈 화면으로 돌아가기</a>
-
-</section> -->
-
 
 <html lang="en">
 
@@ -25,7 +14,9 @@
     <div class="login_background">
         <div class="error_body" >
             <!-- logo -->
-            <div class="login_logo"> Cross <br> off </div>
+            <div class="login_logo"> 
+                <img class="crossoff_logo" src="{% static 'img/favicon.png' %}" alt="">
+            </div>
 
             <div class="error_num" data-text="500"><p>500</p></div>
             <h3>SERVER ERROR</h3>
