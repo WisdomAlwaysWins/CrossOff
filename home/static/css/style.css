@@ -132,6 +132,11 @@ button{
 .crossoff_logo{
     width:5rem;
 }
+.login_logo .crossoff_logo,
+.register_logo .crossoff_logo,
+.password_reset__logo .crossoff_logo{
+    width:10rem;
+}
 /* HEADER */
 .header__container{
     z-index:100;
@@ -2030,6 +2035,11 @@ button{
 }
 
 @media only screen and (min-device-width : 360px) and (max-device-width : 479px) {
+    /* LOGO */
+    .crossoff_logo{
+        width: 3.5rem;
+    }
+
     .share__conent{
         display: flex;
         flex-direction: column;
@@ -2493,8 +2503,6 @@ button{
     }
     .login_logo{
         text-decoration: line-through #603ec0;
-        font-size: 65px;
-        font-weight: bolder;
         margin: 6rem 3rem;
     }
     .login_idForm{
