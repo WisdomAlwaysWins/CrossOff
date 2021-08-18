@@ -184,7 +184,7 @@ button{
     margin : 0 4px;
 }
 .header__container .navbar .navbar__item a {
-    color:var(--color-white--);
+    color:var(--color-black--);
 
 }
 .header__container .navbar .navbar__item a:hover{
