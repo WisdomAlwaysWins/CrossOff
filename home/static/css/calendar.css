@@ -64,7 +64,6 @@ html, body{
 	width: 1000px;
 	height: 600px;
 	margin:0 auto;
-	border: 4px solid rgba(161, 161, 161, 0.5); 
 	border-radius: 10px;
 	overflow: hidden;
 	box-shadow: 0 0 100px 9px rgb(50 50 50 / 20%);
@@ -200,4 +199,172 @@ form{
 td.active{
 	box-sizing: border-box;
 	border: 3px solid gray;
+}
+
+@media only screen and (min-device-width : 360px) and (max-device-width : 479px) {
+
+	button{
+		padding:10px 15px;
+		margin:0;
+		border:none;
+		background-color: transparent;
+		font-size: 15px;
+		transition: var(--transition-duration--);
+		border-radius: var(--border-radius--);
+	}
+	.input-list > .checked{
+		color: #FFFFFF;
+		text-decoration:line-through
+	}
+	
+	.main{
+		width: 100%;
+		display: flex;
+		align-items:baseline;
+		justify-content:  center;
+		width: 100vw;
+		height: auto;
+	}
+	.content-wrap{
+		width: 350px;
+		height: auto;
+		margin:110px auto 20px auto;
+		/* border: 4px solid rgba(161, 161, 161, 0.5);  */
+		border-radius: 10px;
+		overflow: hidden;
+		box-shadow: 0 0 30px 0px rgb(50 50 50 / 10%);
+		background: #FFFFFF;
+	}
+	.content-left{
+		background: #785fc0;
+		color:#fff;
+		float: left;
+		width: 350px;
+		height: 600px;
+		padding: 10px 0px 0px 0px
+	}
+	form{
+		margin-top: 50px;
+	}
+	#midSelectedBox{
+	  width: 120px;
+	  height: 30px;
+	}
+	#detailedSelectedBox{
+		width: 130px;
+		height: 30px;
+	}
+	.addBtn{
+		background-color: #785fc0;
+		margin-left: 10px;
+		padding: 4px;
+	}
+	.selectedGoalContent{
+		height: 100px;
+		overflow-y: scroll;
+		margin: 10px 0;
+	}
+	#selected-list li{
+		display:flex;
+		flex-direction: row;
+		align-items: center;
+	}
+	#selected-list li .material-icons,
+	#selected-list li input{
+		font-size: 14px;
+	}
+	#input-box{
+		border-radius: 3px;
+		font-size:14px;
+	}
+	#input-box::placeholder{
+		font-size: 14px;
+	}
+	.main-wrap{
+		text-align: center;
+		margin: 20px 0 0 0;
+	}
+	.main-day{
+		font-size: 30px;
+		font-weight: bold;
+	}
+	.main-date{
+		font-size: 120px;
+		font-weight: bold;
+		margin: 20px 0;
+	}
+	.todo-wrap{
+		padding: 0 20px 0 20px;
+	}
+	.todo-title{
+		font-size: 20px;
+		font-weight: 100;
+		margin: 0 0 10px 0;
+	}
+	.input-box{
+		width: 100%;
+		height: auto; 
+		background: #fff;
+		color: black;
+		line-height : normal;
+		padding: 0;
+		border: none;
+		font-family: inherit;
+		outline-style: none;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		resize: none;
+	}
+	.save-data{
+		cursor: pointer;
+		font-size: large;
+		font-weight: bold;
+		padding: 10px;
+		margin: 20px 0 30px 0;
+		background: #eee;
+		border: none;
+		color: black;
+		border-radius: 10px;
+	}
+	.save-data:hover{
+		background: #ffffff;
+		color: #0b0809;
+	}
+	.input-list > div{
+		font-size: 10px;
+		width: 60%;
+		float: left;
+		color: #fff;
+	}
+	
+	.content-right{
+		float: left;
+		width: 360px;
+		height: 400px;
+		padding: 20px 0px 10px 0px
+	}
+	.sun{
+		color:#ef3333;
+	}
+	.sat{
+		color:#2107e0;
+	}
+	.content-right table{
+		border-collapse: separate;
+	}
+	.content-right table tr td{
+		width: 50px;
+		height: 50px;
+		text-align: center;
+		font-size: 20px;
+		font-weight: bold;
+		vertical-align: middle;
+	}
+	
+	td.active{
+		box-sizing: border-box;
+		border: 3px solid gray;
+	}
+	
 }
