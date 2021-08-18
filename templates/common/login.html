@@ -13,7 +13,9 @@
   <div class="login_background">
     <div class=login_body>
       <!-- logo -->
-      <div class="login_logo"> Cross <br> off </div>
+      <div class="login_logo"> 
+        <img class="crossoff_logo" src="{% static 'img/favicon.png' %}" alt="">
+      </div>
       <form action="{% url 'common:login' %}" method="POST">
         {% csrf_token %}
         {{form.as_p}}
