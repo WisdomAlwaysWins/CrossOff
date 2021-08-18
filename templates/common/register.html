@@ -12,7 +12,9 @@
     <div class="register_background">
       <div class="register_body">
         <!-- logo -->
-        <div class="register_logo">Cross off</div>
+        <div class="register_logo">
+          <img class="crossoff_logo" src="{% static 'img/favicon.png' %}" alt="">
+        </div>
         <div class="register_bottom">
           <form action="{% url 'common:register' %}" method="POST">
             {% csrf_token %} {{form.as_p}}
