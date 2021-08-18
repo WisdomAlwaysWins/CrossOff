@@ -78,6 +78,7 @@
                   placeholder=" 글로 남기고 싶은 오늘 하루를 기록하세요 :)" name="content">
                 </textarea>
                 <input type="submit" id="save-data" class="save-data" value="저장" />
+                <button class="save-data" type="button" id="del-block">삭제</button>
               </form>
             </form>
           </div>
@@ -150,8 +151,9 @@
   });
   // <!-- Add List -->
   const submitBtn = document.querySelector(".addBtn");
-  const saveBtn = document.querySelector(".save-data");
+  const saveBtn = document.querySelector("#save-data");
   const selectedList = document.getElementById("selected-list");
+  const delBlockBtn = document.getElementById("del-block");
 
   function deleteList(event) {
     const li = event.target.parentElement;
@@ -202,6 +204,21 @@
       "-" +
       selectedDate.id.substr(6, 2);
     dateinput.value = date;
+  });
+  delBlockBtn.addEventListener("click", () => {
+    let answer = window.confirm("해당 날짜의 일기를 삭제하시겠습니까?");
+    
+    if (answer) {
+      const selectedDate = document.getElementsByClassName("active")[0];
+      const date =
+      selectedDate.id.substr(0, 4) +
+      "-" +
+      selectedDate.id.substr(4, 2) +
+      "-" +
+      selectedDate.id.substr(6, 2);
+      window.location.href = "/daily/calendar/block/delete/"+date;
+    }
+    return;    
   });
 </script>
 <script>
@@ -458,6 +475,7 @@
         } else inputBox.value = block.content;
         saveBtn.setAttribute("style", "display:none;");
         submitBtn.setAttribute("style", "display:none;");
+        delBlockBtn.setAttribute("style", "");
         midSelectedBox.setAttribute("style", "display:none;");
         detailedSelectedBox.setAttribute("style", "display:none;");
         inputBox.setAttribute("readonly", true);
@@ -489,6 +507,7 @@
         inputBox.value = "";
         saveBtn.setAttribute("style", "");
         submitBtn.setAttribute("style", "");
+        delBlockBtn.setAttribute("style", "display:none");
         midSelectedBox.setAttribute("style", "");
         detailedSelectedBox.setAttribute("style", "");
         inputBox.removeAttribute("readonly");

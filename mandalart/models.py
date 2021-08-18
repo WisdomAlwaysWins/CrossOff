@@ -55,11 +55,6 @@ class Todo(models.Model):
         return str(self.user.nickname) + '의 ' + str(self.content)
 
 
-class BlockManager(models.Manager):
-    def get_by_natural_key(self, user):
-        pass
-
-
 class Block(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='block')
     content = models.TextField()
