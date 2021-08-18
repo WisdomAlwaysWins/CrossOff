@@ -127,6 +127,11 @@ button{
     background-color:rgb(191, 187, 192);
     color: var(--color-black--);
 }
+
+/* LOGO */
+.crossoff_logo{
+    width:5rem;
+}
 /* HEADER */
 .header__container{
     z-index:100;
