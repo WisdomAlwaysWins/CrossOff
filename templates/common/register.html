@@ -13,12 +13,12 @@
       <div class="register_body">
         <!-- logo -->
         <div class="register_logo">
-          <img class="crossoff_logo" src="{% static 'img/favicon.png' %}" alt="">
+          <a href="/"><img class="crossoff_logo" src="{% static 'img/favicon.png' %}" alt="logo"></a>
         </div>
         <div class="register_bottom">
           <form action="{% url 'common:register' %}" method="POST">
             {% csrf_token %} {{form.as_p}}
-            <br />
+            <!-- <br /> -->
             <div class="login_content_submit">
               <input class="register_button"
                 type="submit"

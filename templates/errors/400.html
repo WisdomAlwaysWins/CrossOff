@@ -1,16 +1,3 @@
-<!-- <div class="error" data-text="400">400</div>
-    <div class="errorm">
-        <p>BAD REQUEST</p>
-        <p>잘못된 요청입니다.</p>
-        <p>관리자에게 문의하십시오.</p>
-        <a href="mailto:jiggy0429@likelion.org">이메일로 문의하기</a>
-        <a href="/">홈 화면으로 돌아가기</a>
-    </div> -->
-
-
-
-
-
 {% load static %}
 <html lang="en">
 
@@ -26,7 +13,9 @@
     <div class="login_background">
         <div class="error_body">
             <!-- logo -->
-            <div class="login_logo"> Cross <br> off </div>
+            <div class="error_logo"> 
+                <img class="error_logo" src="{% static 'img/favicon.png' %}" alt="">
+            </div>
             <div class="error_num" data-text="400"><p>400</p></div>
             <div class="errorm">
                 <h3>BAD REQUEST</h3>

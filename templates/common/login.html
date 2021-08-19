@@ -13,8 +13,8 @@
   <div class="login_background">
     <div class=login_body>
       <!-- logo -->
-      <div class="login_logo"> 
-        <img class="crossoff_logo" src="{% static 'img/favicon.png' %}" alt="">
+      <div class="login_logo">
+        <a href="/"> <img class="crossoff_logo" src="{% static 'img/favicon.png' %}" alt="logo"></a>
       </div>
       <form action="{% url 'common:login' %}" method="POST">
         {% csrf_token %}
@@ -26,12 +26,6 @@
       <div class="login_check">
         <input type="checkbox" id="keepLogin" name="keepLogin" value="True">
         <label for="keepLogin"><span>로그인 상태 유지</span></label>
-        {% comment %} 
-        <input type="checkbox" id="keepLogin" name="keepLogin">
-        <label for="keepLogin">
-          <span>아이디 저장</span>
-        </label> 
-        {% endcomment %}
       </div>
       </form>
       <div class="login_no">

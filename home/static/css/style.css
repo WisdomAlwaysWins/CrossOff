@@ -134,10 +134,18 @@ button{
 .crossoff_logo{
     width:5rem;
 }
-.login_logo .crossoff_logo,
-.register_logo .crossoff_logo,
+
 .password_reset__logo .crossoff_logo{
-    width:10rem;
+    width:8rem;
+}
+.error_logo {
+    margin: auto;
+    width: 8rem;
+}
+.login_logo .crossoff_logo,
+.register_logo .crossoff_logo{
+    width:7rem;
+
 }
 /* HEADER */
 .header__container{
@@ -183,7 +191,7 @@ button{
     margin : 0 4px;
 }
 .header__container .navbar .navbar__item a {
-    color:var(--color-white--);
+    color:var(--color-black--);
 
 }
 .header__container .navbar .navbar__item a:hover{
@@ -2540,7 +2548,7 @@ button{
     }
     .login_logo{
         text-decoration: line-through #603ec0;
-        margin: 6rem 3rem;
+        margin: 0rem 3rem;
     }
     .login_idForm{
         position:relative;
@@ -3016,6 +3024,47 @@ button{
     }
     #editPassword .background .editPassword__content form .password .basic__content .input_content{
         width: 150px;
+    }
+    /*media error*/
+    .error_body{
+        position:absolute;
+        width: 85vw;
+        height: 1000px;
+        padding: 40px 30px 30px 30px;
+        background-color:#FFFFFF;
+        text-align:center;
+        top:30%;
+        left:50%;
+        transform: translate(-50%,-50%);
+        border-radius: 20px;
+        box-shadow: 0 0 100px 9px rgb(214, 214, 214);
+        margin-top: 20vh;
+    }
+    .error_logo {
+        margin: 1rem auto 0 auto;
+        width: 15rem;
+    }
+    .error_num p{
+        font-size: 160px;
+    }
+    .errorm h3{
+        font-size: 50px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+    }
+    .errorm h4{
+        font-size: 40px;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+    }
+
+    .error_btns button {
+        height: 85px;
+        font-size: 32px;
+        padding: 5px 10px;
+    }
+    .error_btns{
+        margin-top: 50px;
     }
 }
 
