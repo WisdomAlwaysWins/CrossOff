@@ -498,8 +498,9 @@ button{
     width:600px;
     height:470px;
     background-color:#FFFFFF;
-    text-align:center;
-    top:0%;
+    text-align:left;
+    top:20%;
+    right: 75%;
     transform: translate(-30%,-70%);
     border-radius: 10px;
     box-shadow: 0 30px 55px 0 rgba(116, 116, 116, 0.822);
@@ -508,20 +509,23 @@ button{
     }
 
 
- .box_dashtext{
+.box_dashtext{
+    height:400px;
     display: flex;
     position:absolute;
     text-align: left;
     margin-left: 55%;
-    margin-top: 20px;
-
+    
 }   
 .box_dashtext #text1{
+    position: absolute;
     font-size: 42px;
     font-weight: 600;
     color: #3e3260;
+    top: -150px;
 }
 .box_dashtext #text2{
+
     font-size: 20px;
     color: #eee;
     padding: 20px 0;
@@ -556,32 +560,40 @@ button{
     width:600px;
     height:470px;
     background-color:#FFFFFF;
-    text-align:center;
-    top:30%;
-    left:70%;
-    transform: translate(-50%,-50%);
+    text-align:right;
+    top:20%;
+    left: 160%;
+    transform: translate(-30%,-70%);
     border-radius: 10px;
     box-shadow: 0 30px 55px 0 rgba(116, 116, 116, 0.822);
     background-image: url(../img/aaa.png) ;
     background-size: 600px 470px;
     }
 
+
 .box_diarytext{
+    height:400px;
+    display: flex;
+    position:absolute;
     text-align: right;
-    margin-right: 55%;
-    margin-top: 20px;
+    right: 55%;
+    
 }   
 .box_diarytext #text1{
+    position: absolute;
     font-size: 42px;
     font-weight: 600;
     color: #3e3260;
-
+    top: -150px;
+    left: 65%;
 }
 .box_diarytext #text2{
+
     font-size: 20px;
     color: #eee;
     padding: 20px 0;
 }
+
 
 /* Toggle up Button - go to top */
 .toggleupBtn__content{
@@ -2199,16 +2211,24 @@ button{
     .toggleupBtn__content{
         display: none;
     }
-    .box_dash_container,
-    .box_diary_container{
-        left: 50%;
+    .box_dash_container{
+        left: 46%;
+        top: -75%;
+        position:absolute;
         width: 240px;
         height: 200px;
-        bottom: 5%;
         background-size: 240px 200px;
-        margin: 0;
         box-shadow: 0 5px 30px 0 rgba(116, 116, 116, 0.822);
 
+    }
+    .box_diary_container{
+        left: 26%;
+        top: -75%;
+        position:absolute;
+        width: 240px;
+        height: 200px;
+        background-size: 240px 200px;
+        box-shadow: 0 5px 30px 0 rgba(116, 116, 116, 0.822);
     }
     #box_dash{
         width: 240px;
@@ -2258,12 +2278,17 @@ button{
         to   {background-position:-720px 0}  /*2700px는 bg이미지의 총 길이*/
     }
 
-    .box_dashtext,
+    .box_dashtext{
+        margin-left: 5%;
+        margin-right:5%;
+        margin-top: 45%;
+
+    }
     .box_diarytext{
         margin-left: 5%;
         margin-right:5%;
-        margin-top: 70%;
-
+        margin-top: 45%;
+        right: 0%;
     }
     .box_dashtext #text1,
     .box_dashtext #text1 p,
@@ -2271,15 +2296,17 @@ button{
     .box_diarytext #text1 p{
         font-size:var(--font-size-large-title--);
     }
-    .box_dashtext #text1,
-    .box_diarytext #text1{
+    .box_dashtext #text1{
         margin: 0 30px ;
+    }
+    .box_diarytext #text1{
+        margin: 0;
     }
     .box_dashtext #text2{
         margin-left:30px;
         font-size: var(--font-size-content--);
         padding: 0;
-        margin-top: -5%;
+        margin-top: -20%;
         line-height: 80%;
         
     }
@@ -2289,7 +2316,7 @@ button{
         margin-right:30px;
         font-size: var(--font-size-content--);
         padding: 0;
-        margin-top: -5%;
+        margin-top: -20%;
         line-height: 80%;
 
     }
